@@ -1,0 +1,52 @@
+{# Каталог — двухколоночный layout как node/223 #}
+{% set p = posadochnaya|default({}) %}
+{% set catalog_display = p.catalog_display|default('block_6') %}
+
+<section class="posadochnaya-catalog-sidebar bg1" id="catalog">
+    <div class="townhouses-first-container container">
+        <div class="townhouses-first in-container">
+            {% if p.catalog_title or p.catalog_lead %}
+            <div class="posadochnaya-catalog-sidebar__head">
+                {% if p.catalog_title %}
+                <h2 class="posadochnaya-catalog-sidebar__title">{{ p.catalog_title }}</h2>
+                {% endif %}
+                {% if p.catalog_lead %}
+                <div class="posadochnaya-catalog-sidebar__lead">{{ p.catalog_lead|raw }}</div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="townhouses-first-catalog">
+                <div class="townhouses-first-catalog-left">
+                    <div class="posadochnaya-catalog-sidebar__filters-hidden">
+                        {{ page.content }}
+                    </div>
+
+                    {% if catalog_display == 'block_1' %}
+                    <div class="townhouses-first-catalog-left-nav" id="dynamic-filter"></div>
+                    {% else %}
+                    <div class="main-catalog-tabs townhouses-first-catalog-left-nav posadochnaya-catalog-sidebar__tabs">
+                        <div><a href="#" class="tab-link active" data-tab="1">Готовые дома</a></div>
+                        <div><a href="#" class="tab-link" data-tab="2">Cтроящиеся дома</a></div>
+                        <div><a href="#" class="tab-link" data-tab="4">Таунхаусы</a></div>
+                        <div><a href="/uchastok-s-podryadom-v-podmoskovye">Дома с подрядом</a></div>
+                    </div>
+                    {% endif %}
+
+                    <div class="townhouses-first-catalog-left-nav townhouses-first-catalog-left-nav2">
+                        <div><a href="/uchastok-s-podryadom-v-podmoskovye">Участки с подрядом</a></div>
+                        <div><a href="/taunhausy">Таунхаусы</a></div>
+                        <div><a href="/arhitekturnoe-atele">По своему проекту</a></div>
+                        <div><a href="/rezidents">VIP-резиденции</a></div>
+                    </div>
+                    <div class="townhouses-first-catalog-left-btn regular-desc">
+                        <a href="#tour">записаться на экскурсию</a>
+                    </div>
+                </div>
+                <div class="townhouses-first-catalog-right">
+                    {{ drupal_view('gotovye_doma', catalog_display) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

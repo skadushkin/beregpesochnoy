@@ -1,0 +1,9 @@
+<div class="popular-project-item">
+    {{ fields.field_mainproject_image.content }}
+    <div class="popular-project-item-desc">
+        <div class="popular-project-name">{{ fields.title.content }}</div>
+        <div class="popular-project-info"><span>{{ fields.field_total_area.content }} м2</span>       <span>{{ fields.field_storeys.content }} этажа</span>      <span>{{ fields.field_general_area.content }} соток</span></div>
+        {# <div class="popular-project-price">от {{ fields.field_project_price3.content }} ₽</div> #}
+        <a href="{{ fields.view_node.content|striptags }}" class="popular-project-btn">Подробнее о проекте</a>
+    </div>`
+</div>

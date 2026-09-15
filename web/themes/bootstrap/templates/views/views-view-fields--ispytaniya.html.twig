@@ -1,0 +1,15 @@
+<div class="video-catalog-item" >
+    <div class="video-catalog-item-prev" style="background-image: url('{{ fields.field_image.content|striptags|trim }}')">
+        <a href="#" data-fancybox data-src="#isp{{ fields.nid.content|striptags|trim }}"><img src="/sites/default/files/img/ShortPlayIcon.svg" alt=""></a>
+    </div>
+    <div class="video-catalog-item-text">{{ fields.title.content }}</div>
+</div>
+
+<div id="isp{{ fields.nid.content|striptags|trim }}" class="new-popup" style="display: none; width:100%; height: 700px">
+    <div class="row" style="height:100%">
+        <div class="col" style="height:100%">
+            {{ fields.field_kod_video_html.content|raw }}
+        </div>
+    </div>
+
+</div>

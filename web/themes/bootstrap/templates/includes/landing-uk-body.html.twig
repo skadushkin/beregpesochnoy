@@ -1,0 +1,162 @@
+{# Лендинг УК / сервис. Node 980. Figma uk-lg 7554:1786 #}
+{% set uk_img = '/themes/bootstrap/landing-istra/img/' %}
+
+<main class="ponton uk landing">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="ponton-hero uk-hero" id="top">
+        <div class="ponton-hero__bg uk-hero__bg" aria-hidden="true">
+            <img src="/themes/bootstrap/landing-infrastructure/img/hero-infra-122032.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ponton-hero__content uk-hero__content">
+            <div class="uk-hero__main">
+                <div class="uk-hero__copy">
+                    <h1 class="uk-hero__title">Забота о доме<br>начинается здесь</h1>
+                    <p class="uk-hero__lead">Единая служба для решения бытовых и технических задач жителей «Берега Песочной» — от ухода за участком до электромонтажных и сантехнических работ.</p>
+                    <div class="uk-hero__actions">
+                        <a href="#services" class="btn btn--gold">Посмотреть услуги <span class="btn-arrow">→</span></a>
+                    </div>
+                </div>
+                <div class="uk-hero__stats">
+                    <article class="uk-stat">
+                        <strong class="uk-stat__v">3</strong>
+                        <span class="uk-stat__l">направления</span>
+                    </article>
+                    <article class="uk-stat">
+                        <strong class="uk-stat__v">70+</strong>
+                        <span class="uk-stat__l">видов работ</span>
+                    </article>
+                    <article class="uk-stat uk-stat--wide">
+                        <strong class="uk-stat__v uk-stat__v--sm">Единая форма заявки</strong>
+                        <span class="uk-stat__l">Все вопросы — в одном обращении</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ ПРЕИМУЩЕСТВА ═══ -->
+    <section class="section uk-about" id="about">
+        <div class="cl section__inner uk-about__inner">
+            <div class="uk-about__head">
+                <h2 class="h2 uk-about__title">Помощь рядом, когда она нужна</h2>
+                <p class="uk-about__text">Сохранять комфорт, порядок и надежность инфраструктуры вашего дома и участка.</p>
+            </div>
+            <div class="uk-bento">
+                <article class="uk-bento__card uk-bento__card--3">
+                    <h3 class="uk-bento__title">Знакомые специалисты</h3>
+                    <p class="uk-bento__text">Работы выполняются с учетом особенностей домов, инженерных систем и территории поселка.</p>
+                </article>
+                <article class="uk-bento__card uk-bento__card--5">
+                    <h3 class="uk-bento__title">Понятная заявка</h3>
+                    <p class="uk-bento__text">Вы сразу выбираете нужную услугу, адрес и удобное время для обратной связи.</p>
+                </article>
+                <article class="uk-bento__card uk-bento__card--4">
+                    <h3 class="uk-bento__title">Единое сопровождение</h3>
+                    <p class="uk-bento__text">От первичного обращения и уточнения задачи до согласования объема и выполнения работ.</p>
+                </article>
+                <article class="uk-bento__card uk-bento__card--4">
+                    <h3 class="uk-bento__title">Для дома и участка</h3>
+                    <p class="uk-bento__text">Сезонные работы, благоустройство, электрика, водоснабжение и канализация в одном сервисе.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ УСЛУГИ ═══ -->
+    <section class="section uk-services" id="services">
+        <div class="cl section__inner uk-services__inner">
+            <div class="uk-services__head">
+                <h2 class="h2 uk-services__title">Наши услуги</h2>
+                <p class="uk-services__lead">Стоимость и сроки определяются после уточнения задачи. Для нестандартных работ опишите ситуацию в комментарии к заявке.</p>
+                <nav class="uk-services__pills" aria-label="Категории услуг" data-uk-pills>
+                    <button type="button" class="uk-pill is-active" data-filter="all">Все услуги</button>
+                    <button type="button" class="uk-pill" data-filter="plot">Участок и территория</button>
+                    <button type="button" class="uk-pill" data-filter="electro">Электрика</button>
+                    <button type="button" class="uk-pill" data-filter="plumb">Сантехника</button>
+                </nav>
+            </div>
+
+            <div class="uk-services__grid" data-uk-services>
+                <article class="uk-service-card" data-category="plot">
+                    <div class="uk-service-card__photo">
+                        <img src="{{ uk_img }}uk-card-plot.png" alt="Уход за участком" width="1100" height="420">
+                    </div>
+                    <div class="uk-service-card__body">
+                        <h3 class="uk-service-card__title">Участок и территория</h3>
+                        <p class="uk-service-card__desc">Сезонный уход, благоустройство и хозяйственные работы.</p>
+                        <ul class="uk-service-card__list">
+                            <li>Расчистка снега и покос травы</li>
+                            <li>Уборка территории и вывоз мусора</li>
+                            <li>Стрижка живой изгороди</li>
+                            <li>Хозяйственные работы на участке</li>
+                        </ul>
+                        <button type="button" class="uk-service-card__link open-lv2-tour-modal">Смотреть все 16 услуг <span aria-hidden="true">→</span></button>
+                    </div>
+                </article>
+
+                <article class="uk-service-card" data-category="electro">
+                    <div class="uk-service-card__photo">
+                        <img src="{{ uk_img }}uk-card-electro.png" alt="Электромонтажные работы" width="1100" height="420">
+                    </div>
+                    <div class="uk-service-card__body">
+                        <h3 class="uk-service-card__title">Электрика</h3>
+                        <p class="uk-service-card__desc">Монтаж, подключение, диагностика и ремонт электросетей.</p>
+                        <ul class="uk-service-card__list">
+                            <li>Монтаж и замена розеток</li>
+                            <li>Подключение бытовой техники</li>
+                            <li>Диагностика электросети</li>
+                            <li>Ремонт щитов и автоматов</li>
+                        </ul>
+                        <button type="button" class="uk-service-card__link open-lv2-tour-modal">Смотреть все 14 услуг <span aria-hidden="true">→</span></button>
+                    </div>
+                </article>
+
+                <article class="uk-service-card" data-category="plumb">
+                    <div class="uk-service-card__photo">
+                        <img src="{{ uk_img }}uk-card-plumb.png" alt="Сантехнические работы" width="1100" height="420">
+                    </div>
+                    <div class="uk-service-card__body">
+                        <h3 class="uk-service-card__title">Сантехника</h3>
+                        <p class="uk-service-card__desc">Водоснабжение, отопление, бойлеры и канализация.</p>
+                        <ul class="uk-service-card__list">
+                            <li>Устранение протечек</li>
+                            <li>Обслуживание бойлеров</li>
+                            <li>Ремонт системы отопления</li>
+                            <li>Прочистка канализации</li>
+                        </ul>
+                        <button type="button" class="uk-service-card__link open-lv2-tour-modal">Смотреть все 16 услуг <span aria-hidden="true">→</span></button>
+                    </div>
+                </article>
+
+                {# 4-я карточка — как в Figma 7554:1953 / 7554:2240 (в макете дубль «Участок») #}
+                <article class="uk-service-card" data-category="plot">
+                    <div class="uk-service-card__photo">
+                        <img src="{{ uk_img }}uk-card-plot.png" alt="Уход за участком" width="1100" height="420">
+                    </div>
+                    <div class="uk-service-card__body">
+                        <h3 class="uk-service-card__title">Участок и территория</h3>
+                        <p class="uk-service-card__desc">Сезонный уход, благоустройство и хозяйственные работы.</p>
+                        <ul class="uk-service-card__list">
+                            <li>Расчистка снега и покос травы</li>
+                            <li>Уборка территории и вывоз мусора</li>
+                            <li>Стрижка живой изгороди</li>
+                            <li>Хозяйственные работы на участке</li>
+                        </ul>
+                        <button type="button" class="uk-service-card__link open-lv2-tour-modal">Смотреть все 16 услуг <span aria-hidden="true">→</span></button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'Лендинг УК — заявка на услугу'
+    } %}
+
+</main>

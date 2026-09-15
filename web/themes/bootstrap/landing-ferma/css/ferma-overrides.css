@@ -1,0 +1,119 @@
+html:has(body.path-ferma) {
+  overflow-x: clip;
+}
+
+body.path-ferma {
+  position: relative;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.path-ferma #page-wrapper,
+body.path-ferma #page,
+body.path-ferma #main-wrapper,
+body.path-ferma #main,
+body.path-ferma #main > .row,
+body.path-ferma main[role="main"],
+body.path-ferma .landing {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.path-ferma #main.container {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.path-ferma article.node,
+body.path-ferma .breadcrumb,
+body.path-ferma .region-highlighted {
+  display: none !important;
+}
+
+body.path-ferma #header-main-sec.inner-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: transparent !important;
+  background-image: none !important;
+  pointer-events: none;
+}
+
+body.path-ferma #header-main-sec .ipoteka-header,
+body.path-ferma #header-main-sec .header {
+  background: transparent !important;
+  background-image: none !important;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+body.path-ferma .tap-menu-container {
+  z-index: 10100 !important;
+}
+
+body.path-ferma #header-main-sec .header-menu {
+  width: 1150px;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 30px 0;
+  box-sizing: border-box;
+}
+
+body.path-ferma #header-main-sec .header-menu-items,
+body.path-ferma #header-main-sec .header-menu-item,
+body.path-ferma #header-main-sec .header-menu-item a,
+body.path-ferma #header-main-sec .header-menu-link {
+  color: #fff !important;
+}
+
+body.path-ferma #header-main-sec .header-menu-item a:hover,
+body.path-ferma #header-main-sec .header-menu-link:hover {
+  color: #b3ce7d !important;
+}
+
+body.path-ferma #header-main-sec .header-menu-tel {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+body.path-ferma #header-main-sec .ipoteka-header .header-menu-item:last-child img,
+body.path-ferma #header-main-sec .ipoteka-header .header-menu-item:first-child img {
+  filter: none !important;
+}
+
+body.path-ferma .site-theme-footer .footer-container,
+body.path-ferma .footer-container {
+  background: #252525 !important;
+  background-image: none !important;
+}
+
+body.path-ferma .site-theme-footer .footer-container > .footer {
+  width: 1150px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap;
+  background: transparent !important;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1023px) {
+  body.path-ferma .site-theme-footer .footer-container > .footer {
+    flex-wrap: wrap;
+  }
+
+  body.path-ferma #header-main-sec .header-menu {
+    width: 100%;
+    padding: 30px;
+  }
+}

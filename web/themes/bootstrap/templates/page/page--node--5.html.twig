@@ -1,0 +1,97 @@
+<section class="bg1">
+    <div class="first-container"{{ content_attributes }}>
+        <div class="invest-first">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="first-title">
+                <h1>генплан <br> коттеджного поселка<br><span>берег песочной</span></h1>
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</section>
+
+<section class="bg1">
+{# Как на странице генплана (node 746): карта на всю ширину #}
+{% set genplan_variant = 'v2' %}
+        <div class="first-container{% if genplan_variant == 'v2' %} genplan-page-wrap genplan-page-wrap--v2{% endif %}">
+            
+            <!--<div class="map-legends">
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/mangal2.svg"> зона барбекю
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/game2.svg"> досуговый центр
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/workout2.svg"> воркаут-площадка
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/voley2.svg"> поле для волейбола
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/rezident2.svg"> резиденции
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/football2.svg"> футбольное поле
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/kids2.svg"> детские площадки
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/tennis2.svg"> теннис
+                </div>
+                <div class="map-legend">
+                    <img src="/sites/default/files/img/parking2.svg"> гостевая парковка
+                </div>
+            </div>-->
+
+{% if genplan_variant == 'v2' %}
+  {{ attach_library('bootstrap/genplan_map_v2') }}
+{% else %}
+  {{ attach_library('bootstrap/genplan_map') }}
+{% endif %}
+{% include '@bootstrap/includes/genplan-map.html.twig' with { genplan_variant: genplan_variant } %}
+        </div>
+</section>
+
+
+<section class="bg2">
+
+    <div class="action-container">
+        <div class="container_w">
+
+            <ul class="gallery-filter genplan-buttons">
+
+                <li><a href="#" data-fancybox="" data-src="#mess">записаться на экскурсию</a></li>
+                <li><a href="/kupit-dom-v-kottedzhnom-poselke" class="filter-option" data-value="2">перейти в каталог домов</a></li>
+                <li><a href="/investoram" class="filter-option" data-value="3">узнать про инвестиции</a></li>
+            </ul>
+            
+            <div class="actions-items">
+
+                <div class="actions-item">
+                    <div class="actions-item-left">
+                        <img src="/sites/default/files/img/ipoteka.svg" class="ipoteka-icon">
+                        <a href="/kreditovanie"><img src="/sites/default/files/img/actions_2.png" alt="" class="actions-item-img"></a>
+                    </div>
+                    <div class="actions-item-right">
+                        <div class="action-item-right-title2">ИПОТЕКА ОТ <span>6%</span></div>
+                        <div class="action-item-right-desc">ПОМОЖЕМ ОФОРМИТЬ
+                            ИПОТЕКУ НА ЛУЧШИХ УСЛОВИЯХ</div>
+                        <a href="/kreditovanie" class="actions-item-link">УЗНАТЬ ПОДРОБНЕЕ</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    {{ drupal_view('zhizn_v_poselke', 'block_3') }}
+
+</section>

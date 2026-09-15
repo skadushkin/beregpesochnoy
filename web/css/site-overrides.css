@@ -1,0 +1,270 @@
+/**
+ * Глобальные переопределения legacy-стилей (bootstrap/css/style.css).
+ *
+ * ВАЖНО: style.css задаёт .bg6 { margin-top: -250px } для block 44 (форма снизу).
+ * На лендингах и SEO-страницах перед block 44 идут FAQ/тексты — отрицательный
+ * margin наезжает на контент. Сбрасываем margin-top на всех таких страницах.
+ */
+
+/* main.css задаёт * { font-family: Cera Pro } — span внутри заголовков теряет Kudryashev */
+h1,
+h2,
+h1 *,
+h2 * {
+  font-family: "Kudryashev Headline", serif !important;
+}
+
+/* ─── Мобильное меню: 2-й уровень (Figma 1895:86 / 7629:2028) ─── */
+.tap-menu-mobile__stack {
+  position: relative;
+  width: 100%;
+}
+
+.tap-menu-mobile__level--root {
+  display: flex;
+  flex-direction: column;
+}
+
+.tap-menu-mobile__level--root[hidden],
+.tap-menu-mobile__level--sub[hidden] {
+  display: none !important;
+}
+
+.tap-menu-mobile__level--sub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.tap-menu-top-item.has-children .tap-menu-top-item__btn,
+.tap-menu-top-item.has-children .tap-menu-top-item__btn * {
+  font-family: "Kudryashev Headline", serif !important;
+}
+
+.tap-menu-top-item.has-children .tap-menu-top-item__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 55px;
+  text-align: left;
+  color: #fff;
+  text-transform: uppercase;
+  transition: 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tap-menu-top-item.has-children .tap-menu-top-item__btn:hover,
+.tap-menu-top-item.has-children .tap-menu-top-item__btn:focus-visible {
+  color: rgba(233, 203, 156, 1);
+  border-bottom-color: rgba(233, 203, 156, 1);
+}
+
+.tap-menu-top-item__arrow {
+  font-size: 0.85em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.tap-menu-mobile__back,
+.tap-menu-mobile__back * {
+  font-family: "Kudryashev Headline", serif !important;
+}
+
+.tap-menu-mobile__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.tap-menu-mobile__back:hover,
+.tap-menu-mobile__back:focus-visible {
+  color: rgba(233, 203, 156, 1);
+}
+
+.tap-menu-mobile__back-arrow {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.tap-menu-mobile__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tap-menu-sub-item__link {
+  display: inline-block;
+  font-family: Cera Pro, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: left;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s;
+}
+
+.tap-menu-sub-item__link:hover,
+.tap-menu-sub-item__link.active,
+.tap-menu-sub-item.is-active .tap-menu-sub-item__link {
+  color: rgba(233, 203, 156, 1);
+  border-bottom-color: rgba(233, 203, 156, 1);
+}
+
+.tap-menu-container.is-submenu-open .tap-menu-desctop {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .tap-menu-top-item.has-children .tap-menu-top-item__btn {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .tap-menu-sub-item__link {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+
+body.page-node-50 .bg6,
+body.page-node-223 .bg6,
+body.page-node-980 .bg6,
+body.page-node-852 .bg6,
+body.page-node-838 .bg6,
+body.page-node-840 .bg6,
+body.page-node-850 .bg6,
+body.page-node-851 .bg6,
+body.page-node-875 .bg6,
+body.page-node-954 .bg6,
+body.page-node-955 .bg6,
+body.page-node-956 .bg6,
+body.page-node-968 .bg6,
+body.page-node-969 .bg6,
+body.page-node-978 .bg6,
+body.page-node-853 .bg6,
+body.page-node-854 .bg6,
+body.page-node-511 .bg6,
+body.path-mfk .bg6,
+body.page-view-mfk .bg6,
+body.page-node-type-posadochnaya-katalog .bg6,
+body.page-node-type-posadochnaya-ponton .bg6,
+/* Карточка проекта: на мобилке what-doing2 скрыт → .bg6 -250px наезжает на сертификаты */
+body.node--type-lot .bg6,
+body.node--type-project .bg6,
+body.node--type-house .bg6,
+body.node--type-townhouse .bg6,
+body.node--type-house-under-construction .bg6,
+body.page-node-type-lot .bg6,
+body.page-node-type-project .bg6,
+body.page-node-type-house .bg6,
+body.page-node-type-townhouse .bg6,
+body.page-node-type-house-under-construction .bg6,
+.posadochnaya-katalog .bg6,
+.posadochnaya-ponton .bg6,
+.seo-page-faq ~ .bg6,
+.posadochnaya-faq ~ .bg6,
+.town-videos ~ .bg6,
+.what-doing2 ~ .bg6,
+/* shorts внутри .bg2, форма — соседний section.bg6 (не sibling у .town-videos) */
+section.bg2:has(.town-videos) + .bg6,
+section.bg2:has(.shorts-block-container) + .bg6,
+section:has(.town-videos) + .bg6,
+body.path-mfk .seo-page-faq ~ .bg6,
+body.page-view-mfk .seo-page-faq ~ .bg6 {
+  margin-top: 0 !important;
+}
+
+/* Плашка «Окончание строительства» — Figma 7783:2012 */
+.catalog-item-img,
+.product-card > a:first-child {
+  position: relative;
+}
+
+.construction-finish-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f4eada;
+  color: #765e50;
+  box-sizing: border-box;
+}
+
+.catalog-item-img .construction-finish-badge,
+.product-card > a:first-child .construction-finish-badge {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  max-width: calc(100% - 16px);
+}
+
+.cart-first-second-info-left .construction-finish-badge {
+  position: static;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 16px;
+}
+
+.construction-finish-badge__icon {
+  flex-shrink: 0;
+  display: flex;
+  width: 32px;
+  height: 32px;
+}
+
+.construction-finish-badge__icon svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.construction-finish-badge__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.construction-finish-badge__label {
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #765e50;
+}
+
+.construction-finish-badge__value {
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #765e50;
+}

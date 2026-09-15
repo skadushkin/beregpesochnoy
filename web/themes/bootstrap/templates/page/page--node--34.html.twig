@@ -1,0 +1,67 @@
+<section>
+    <div class="townhouses-first-container container">
+        <div class="townhouses-first in-container">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="townhouses-first-top">
+                <div class="townhouses-first-title t1-desc t1-mob"><h1><span>Проекты дом с подрядом -
+</span><br>построим<br>
+                        за 45 дней</h1></div>
+                <div class="townhouses-first-top-desc regular-desc regular-mob">
+                    <div>Более 200 проектов в каталоге</div>
+                </div>
+
+
+            </div>
+
+            <div class="townhouses-first-catalog pt-140">
+
+                <div class="townhouses-first-catalog-right" style="padding-bottom: 100px">
+
+
+                    {{ drupal_view('gotovye_doma', 'block_7') }}
+
+
+                </div>
+            </div>
+
+            {#            <div class="townhouses-first-catalog-more">#}
+            {#                <a href="">загрузить еще</a>#}
+            {#            </div>#}
+
+        </div>
+    </div>
+</section>
+
+
+
+<section class="bg2">
+
+    <div class="action-container">
+        <div class="container_w">
+            <div class="actions-items">
+
+                <div class="actions-item">
+                    <div class="actions-item-left">
+                        <img src="/sites/default/files/img/ipoteka.svg" class="ipoteka-icon">
+                        <a href="#"><img src="/sites/default/files/img/actions_2.png" alt="" class="actions-item-img"></a>
+                    </div>
+                    <div class="actions-item-right">
+                        <div class="action-item-right-title2">ИПОТЕКА ОТ <span>6%</span></div>
+                        <div class="action-item-right-desc">ПОМОЖЕМ ОФОРМИТЬ
+                            ИПОТЕКУ НА ЛУЧШИХ УСЛОВИЯХ</div>
+                        <a href="/kreditovanie" class="actions-item-link">УЗНАТЬ ПОДРОБНЕЕ</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {{ drupal_view('zhizn_v_poselke', 'block_3') }}
+</section>
+
+{{ drupal_entity('block_content', '44') }}

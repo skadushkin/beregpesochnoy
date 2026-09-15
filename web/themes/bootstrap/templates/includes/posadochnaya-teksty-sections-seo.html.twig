@@ -1,0 +1,20 @@
+{# Текстовые секции после каталога — field_teksty, стандартный SEO-стиль #}
+{% set sections = posadochnaya.teksty|default([]) %}
+{% if sections is not empty %}
+  {% for section in sections %}
+    <section class="seo-page-section{% if loop.index is even %} seo-page-section--alt{% endif %}">
+      <div class="container">
+        <div class="in-container">
+          {% if section.title %}
+            <h2 class="seo-page-section__title">{{ section.title|raw }}</h2>
+          {% endif %}
+          {% if section.text %}
+            <div class="regular-desc seo-page-section__text">
+              {{ section.text|raw }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,15 @@
+{%
+  set classes = [
+    'views-view-list',
+    'views-view-list--mfk',
+    'mfk-bento',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% for row in rows %}
+    {% set layout = loop.index0 is odd ? 'text-right' : 'text-left' %}
+    <div class="mfk-bento__row mfk-bento__row--{{ layout }}">
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,18 @@
+
+
+
+<div class="rewiews-items">
+    {% for row in rows %}
+        {#            {{ dump(row) }}#}
+        {{ row.content }}
+
+    {% endfor %}
+
+</div>
+<div class="slider2-nav">
+
+    {% for row in rows %}
+        <div class="slider2-nav-dot {% if loop.first %}active{% endif %}" data-slide="{{ loop.index0 }}"></div>
+    {% endfor %}
+
+</div>

@@ -1,0 +1,66 @@
+/* Страница таунhausов (node 511) — каталог домов */
+
+/* Shorts не должны залезать на форму: .bg6 margin-top сбрасывается в site-overrides */
+body.page-node-511 .town-videos.shorts-block-container {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  padding-bottom: 80px;
+}
+
+body.page-node-511 .bg6 {
+  position: relative;
+  z-index: 0;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 700px) {
+  body.page-node-511 .town-videos.shorts-block-container {
+    padding-bottom: 64px;
+  }
+}
+
+.townhouses-first .townhouses-first-catalog-right {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  width: auto;
+  display: block;
+  padding-bottom: 0;
+}
+
+/* Grid 2 колонки: карточки внутри .view, не в .views-element-container */
+.townhouses-first .townhouses-first-catalog-right .views-element-container,
+.townhouses-first .townhouses-first-catalog-right .views-infinite-scroll-content-wrapper {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+.townhouses-first .townhouses-first-catalog-right .view,
+.townhouses-first .townhouses-first-catalog-right .view-content {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+  flex-wrap: unset !important;
+  justify-content: unset !important;
+}
+
+.townhouses-first .townhouses-first-catalog-right .catlog-item {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 710px) {
+  .townhouses-first .townhouses-first-catalog-right .view,
+  .townhouses-first .townhouses-first-catalog-right .view-content {
+    grid-template-columns: 1fr;
+  }
+}

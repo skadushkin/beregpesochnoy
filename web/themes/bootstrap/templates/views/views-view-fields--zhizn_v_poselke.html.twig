@@ -1,0 +1,14 @@
+
+<a href="#" data-fancybox data-src="#jizn{{ fields.nid.content|striptags|trim }}"><div class="shorts-block-item" style="background-image: url('{{ fields.field_image.content|striptags|trim }}')">
+    <img src="/sites/default/files/img/ShortPlayIcon.svg" alt="">
+</div></a>
+
+<div id="jizn{{ fields.nid.content|striptags|trim }}" class="new-popup" style="display: none; width:100%; height: 700px">
+    <div class="row" style="height:100%">
+        <div class="col" style="height:100%">
+            {{ fields.field_kod_video_html.content|raw }}
+        </div>
+    </div>
+
+</div>
+

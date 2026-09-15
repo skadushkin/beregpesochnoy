@@ -1,0 +1,16 @@
+{# FAQ в ponton-стиле из field_faq #}
+{% if posadochnaya.faq is not empty %}
+<section class="section istra-faq posadochnaya-faq{% if faq_class %} {{ faq_class }}{% endif %}" id="faq">
+    <div class="cl section__inner istra-faq__inner">
+        <h2 class="h2 h2--center">Частые вопросы</h2>
+        <div class="istra-faq__list">
+            {% for item in posadochnaya.faq %}
+            <details class="istra-faq__item">
+                <summary class="istra-faq__q">{{ item.question }}</summary>
+                <div class="istra-faq__a">{{ item.answer|raw }}</div>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

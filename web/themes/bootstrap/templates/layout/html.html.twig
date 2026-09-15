@@ -1,0 +1,931 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - path_info.args: Array of URL arguments un aliassed.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'node--type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+  ]
+%}
+{% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    {% if not is_lighthouse %}
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+      
+      <link
+              rel="stylesheet"
+              href="/themes/bootstrap/css/fancybox.css"
+      />
+      <link
+              rel="stylesheet"
+              href="/themes/bootstrap/css/swiper.css"
+      />
+      <script src="/themes/bootstrap/js/fancybox.js"></script>
+      <script src="/themes/bootstrap/js/swiper.js"></script>
+      {# <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+      />
+      <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      />
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> #}
+      {% endif %}
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+  
+{#    <a href="#main-content" class="visually-hidden-focusable">#}
+{#      {{ 'Skip to main content'|t }}#}
+{#    </a>#}
+
+
+<div class="tap-menu-container hidden">
+  <div class="tap-menu-close">
+    <img class="menu_close_desc" src="/sites/default/files/img/menu_close.svg" alt="">
+    <img class="menu_close_mob" src="/sites/default/files/img/menu_close_mob.svg" alt="">
+  </div>
+  <div class="tap-menu">
+    <div class="tap-menu-top">
+      <div class="tap-menu-mobile">
+        {# level=1, depth=2, expand=true — чтобы были дети для drill-down (Figma 7629:2028) #}
+        {{ drupal_menu('mobilnoe-menyu', 1, 2, true) }}
+      </div>
+      <div class="tap-menu-desctop">
+        {# level=1, depth=2, expand=true — второй уровень как у мобильного меню #}
+        {{ drupal_menu('bokovoe-menyu-1', 1, 2, true) }}
+      </div>
+      
+{#      {% block your_custom_menu %}#}
+{#        {{ drupal_block('bokovoe-menyu-1') }}#}
+{#      {% endblock %}#}
+      
+    </div>
+    <div class="tap-menu-bot">
+      <div class="tap-menu-bot-left">
+        {{ drupal_menu('bokovoe-menyu-2') }}
+      </div>
+      <div class="tap-menu-bot-right">
+{#        <div class="tap-menu-bot-right-item">#}
+{#          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/jvp.svg" alt=""></div>#}
+{#          <div class="tap-menu-bot-right-item-text"><a href="">ЖИЗНЬ В ПОСЕЛКЕ</a></div>#}
+{#        </div>#}
+        <div class="tap-menu-bot-right-item">
+          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/sp.svg" alt=""></div>
+          <div class="tap-menu-bot-right-item-text"><a href="https://beregpesochnoy.ru/jk-bereg-pesochnoy.pdf">СКАЧАТЬ <br>ПРЕЗЕНТАЦИЮ</a></div>
+        </div>
+        <div class="tap-menu-bot-right-item">
+          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/zne.svg" alt=""></div>
+          <div class="tap-menu-bot-right-item-text"><a href="/#tour">ЗАПИСАТЬСЯ <br>НА ЭКСКУРСИЮ</a></div>
+        </div>
+        <div class="tap-menu-bot-right-item">
+          <div class="menu-bot-right-item-facebook">
+            <a href="https://vk.com/public162705893" rel="nofollow"><img src="/sites/default/files/img/vk_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-inst">
+            <a href="https://dzen.ru/id/5ea953e601d7556f42e9ae56" rel="nofollow"><img src="/sites/default/files/img/dz_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-inst">
+            <a href="https://rutube.ru/channel/32737290" rel="nofollow"><img src="/sites/default/files/img/rut_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-youtube">
+            <a href="https://www.youtube.com/channel/UCoR2ocQa-6VOpIKoffoHQ1g" rel="nofollow"><img src="/sites/default/files/img/menu_yt.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if path('<current>') == '/index3' %}
+  <section id="header-main-sec">
+    <div class="video-background">
+       
+    </div>
+    <div class="header no-select">
+
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="logo-desc" src="/sites/default/files/img/logo.svg" alt="">
+          <img class="logo-mob" src="/sites/default/files/img/logo_mob.svg" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+
+      </div>
+      <div class="header-main">
+        <div class="header-main-title">
+          <h1>БЕРЕГ ПЕСОЧНОЙ</h1>
+        </div>
+        <div class="header-main-undertitle">
+          <h2>Коттеджный поселок бизнес класса на берегу реки Песочной <br>в экологически чистом Истринском районе Подмосковья</h2>
+        </div>
+        <div class="header-main-features">
+          <div class="main-features-icon">
+            <img src="/sites/default/files/img/45geo.svg" alt="">
+          </div>
+          <div class="main-features-text">45 км от МКАД<br>по новорижскому шоссе</div>
+        </div>
+      </div>
+      <div class="header-slider-container">
+        <div class="header-slider-window">
+          <div class="header-slider">
+            <div class="header-slider-left">
+              <div class="header-slider-prev-title">КАТАЛОГ ДОМОВ</div>
+              <div class="header-slider-prev">
+                                <span id="images-container">
+                                  {{ drupal_view('main_slider', 'block_1') }}
+{#                                    <img id="img3" src="/sites/default/files/img/dom.png" alt="КАТАЛОГ ДОМОВ" class="slider-image">#}
+{#                                    <img id="img8" src="/sites/default/files/img/dom.png" alt="КА3" class="slider-image">#}
+{#                                    <img id="img2" src="/sites/default/files/img/dom.png" alt="ФРУКТОВЫЕ САДЫ" class="slider-image">#}
+{#                                    <img id="img1" src="/sites/default/files/img/dom.png" alt="РЫБАЛКА" class="slider-image active">#}
+{#                                    <img id="img4" src="/sites/default/files/img/dom.png" alt="СПОРТИВНЫЕ ПЛОЩАДКИ" class="slider-image active">#}
+{#                                    <img id="img5" src="/sites/default/files/img/dom.png" alt="КРУГЛОСУТОЧНАЯ ОХРАНА" class="slider-image">#}
+{#                                    <img id="img6" src="/sites/default/files/img/dom.png" alt="КА" class="slider-image">#}
+{#                                    <img id="img7" src="/sites/default/files/img/dom.png" alt="КА2" class="slider-image">#}
+                                </span>
+                                <span id="images-container-mobile">
+                                  {{ drupal_view('main_slider', 'block_2') }}
+{#                                    <img id="img3" src="/sites/default/files/img/dom.png" alt="КАТАЛОГ ДОМОВ" class="slider-image">#}
+{#                                    <img id="img8" src="/sites/default/files/img/dom.png" alt="КА3" class="slider-image">#}
+{#                                    <img id="img2" src="/sites/default/files/img/dom.png" alt="ФРУКТОВЫЕ САДЫ" class="slider-image">#}
+{#                                    <img id="img1" src="/sites/default/files/img/dom.png" alt="РЫБАЛКА" class="slider-image active">#}
+{#                                    <img id="img4" src="/sites/default/files/img/dom.png" alt="СПОРТИВНЫЕ ПЛОЩАДКИ" class="slider-image active">#}
+{#                                    <img id="img5" src="/sites/default/files/img/dom.png" alt="КРУГЛОСУТОЧНАЯ ОХРАНА" class="slider-image">#}
+{#                                    <img id="img6" src="/sites/default/files/img/dom.png" alt="КА" class="slider-image">#}
+{#                                    <img id="img7" src="/sites/default/files/img/dom.png" alt="КА2" class="slider-image">#}
+                                </span>
+              </div>
+            </div>
+            <div class="header-slider-right">
+              <div class="header-slider-circ">
+              </div>
+              <div class="header-slider-right-top">
+                <img src="/sites/default/files/img/topline.svg" alt="">
+                <!--                 <div class="header-slider-dot-elem" id="sliderPos3">
+        <div class="slider-dot-elem-text">ФРУКТОВЫЕ САДЫ</div>
+        <div><span></span></div>
+    </div>
+    <div class="header-slider-dot-elem" id="sliderPos4">
+        <div class="slider-dot-elem-text">РЫБАЛКА</div>
+        <div><span></span></div>
+    </div> -->
+              </div>
+              <div class="header-slider-right-mid">
+                <div id="arrowUp">
+                  <svg width="23" height="12" viewBox="0 0 23 12" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.0820312 11.6274L11.0968 0.612549L22.1027 11.6274H0.0820312Z" fill="#F1F3EA" />
+                  </svg>
+                </div>
+                <div class="mid-circ">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.0951 25.7376C21.8626 25.7376 24.9168 22.6834 24.9168 18.9159C24.9168 15.1484 21.8626 12.0942 18.0951 12.0942C14.3276 12.0942 11.2734 15.1484 11.2734 18.9159C11.2734 22.6834 14.3276 25.7376 18.0951 25.7376Z" fill="white" />
+                    <path opacity="0.68" d="M18.0936 31.236C24.8978 31.236 30.4137 25.7201 30.4137 18.9158C30.4137 12.1116 24.8978 6.5957 18.0936 6.5957C11.2894 6.5957 5.77344 12.1116 5.77344 18.9158C5.77344 25.7201 11.2894 31.236 18.0936 31.236Z" stroke="white" stroke-miterlimit="10" />
+                    <path opacity="0.38" d="M18.0954 36.7793C27.9512 36.7793 35.9409 28.7896 35.9409 18.9338C35.9409 9.07804 27.9512 1.08838 18.0954 1.08838C8.23967 1.08838 0.25 9.07804 0.25 18.9338C0.25 28.7896 8.23967 36.7793 18.0954 36.7793Z" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                  </svg>
+                </div>
+                <div id="arrowDown">
+                  <svg width="23" height="12" viewBox="0 0 23 12" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.1027 0.615723L11.0968 11.6216L0.0820312 0.615723H22.1027Z" fill="#F1F3EA" />
+                  </svg>
+                </div>
+              </div>
+              <div class="header-slider-right-bot">
+                <img src="/sites/default/files/img/botline.svg" alt="">
+                <!-- <div class="header-slider-dot-elem" id="sliderPos1">
+        <div class="slider-dot-elem-text">СПОРТИВНЫЕ ПЛОЩАДКИ</div>
+        <div><span></span></div>
+    </div>
+    <div class="header-slider-dot-elem" id="sliderPos2">
+        <div class="slider-dot-elem-text">КРУГЛОСУТОЧНАЯ ОХРАНА</div>
+        <div><span></span></div>
+    </div> -->
+              </div>
+            </div>
+            <div class="header-slider-dots-mob-cont">
+              <div class="header-slider-dots-mob">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-under">
+        <div class="header-under-item">
+          <div class="under-item-btn"><a href="https://player.vimeo.com/video/1055644436" data-fancybox="" data-type="iframe">
+              <img src="/sites/default/files/img/short.svg" alt="">
+            </a></div>
+          <div class="under-item-btn"><a href="tel:{{ site_phone_tel|default('+74951865088') }}">
+              <img src="/sites/default/files/img/phone.svg" alt="">
+            </a></div>
+        </div>
+{#        <div class="header-under-item special">#}
+{#          <a href="/kreditovanie">#}
+{#            <div class="header-under-ipoteka-img">#}
+{#              <img src="/sites/default/files/img/ipoteka.png" alt="">#}
+{#            </div>#}
+{#            <div class="header-under-ipoteka-text">ипотека от 6%</div>#}
+{#            <div class="header-under-ipoteka-bg"></div>#}
+{#            <div class="header-under-ipoteka-price">#}
+{#              <img src="/sites/default/files/img/price.svg" alt="">#}
+{#              <div>цены от завода<br>без посредников</div>#}
+{#            </div>#}
+{#          </a>#}
+{#        </div>#}
+      </div>
+
+    </div>
+  </section>
+
+{% elseif path('<current>') == '/kottedzhnyy-poselok-v-podmoskovye' or path('<current>') == '/sms' %}
+  <section id="header-main-sec" class="header-main-sec-v2">
+    <div class="img-background">
+       
+    </div>
+    <div class="img-overlay">
+      <div class="overlay-image-wrapper">
+    <img class="overlay-image" src="/sites/default/files/img/textura.webp" alt="Наложение">
+  </div>
+       
+    </div>
+    <div class="header no-select">
+
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="logo-desc" src="/sites/default/files/img/logo_mob2.svg" alt="">
+          <img class="logo-mob" src="/sites/default/files/img/logo_mob2.svg" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+
+      </div>
+      {# <div class="header-main header-main-v2">
+        <div class="header-main-title">
+          <h1>БЕРЕГ ПЕСОЧНОЙ</h1>
+        </div>
+        <div class="header-main-undertitle">
+          <h2>Коттеджный поселок бизнес класса на берегу реки Песочной <br>в экологически чистом Истринском районе Подмосковья</h2>
+        </div>
+        <div class="header-main-features">
+          <a class="footer-right-btn" href="" data-fancybox="" data-src="#mess">Записаться на просмотр&nbsp;</a>
+        </div>
+      </div> #}
+      
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!--<div class="header-under">
+        <div class="header-under-item">
+          <div class="under-item-btn"><a href="https://player.vimeo.com/video/1055644436" data-fancybox="" data-type="iframe">
+              <img src="/sites/default/files/img/short.svg" alt="">
+            </a></div>
+          <div class="under-item-btn"><a href="tel:{{ site_phone_tel|default('+74951865088') }}">
+              <img src="/sites/default/files/img/phone.svg" alt="">
+            </a></div>
+        </div>
+
+      </div>-->
+
+    </div>
+
+    <div class="container main-banner">
+        <div class="brown-block in-container">
+            <div class="brown-title">Берег Песочной</div>
+            <p>Коттеджный поселок бизнес-класса на берегу реки Песочной в экологически чистом Истринском районе Подмосковья</p>
+            <div class="brown-buttons">
+                <a href="#tour" class="brown-button1">Записаться на просмотр</a>
+                <a href="#" data-fancybox="" data-src="#online2" class="brown-button2">Получить консультацию</a>
+            </div>
+            <div class="first-image-icons">
+                <div class="first-image-icon">
+                    <div class="first-image-icon-img">
+                        <img src="/sites/default/files/img/main_icon1.svg" alt="">
+                    </div>
+                    <div class="first-image-icon-text">6 готовых домов<br>с участками</div>
+                </div>
+                <div class="first-image-icon">
+                    <div class="first-image-icon-img">
+                        <img src="/sites/default/files/img/main_icon2.svg" alt="">
+                    </div>
+                    <div class="first-image-icon-text">Большой выбор участков</div>
+                </div>
+                <div class="first-image-icon">
+                    <div class="first-image-icon-img">
+                        <img src="/sites/default/files/img/main_icon3.svg" alt="">
+                    </div>
+                    <div class="first-image-icon-text">Строительство  с подрядом</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+  </section>
+
+{% if path('<current>') != '/sms' %}
+
+<section class="bg3">
+    <div class="container">
+        <div class="invest-first">
+            
+            <div class="invest-first-title main-two-title">
+                <h2>Живописная природа <span>для отдыха всей семьей</span></h2>
+            </div>
+
+            <div style="padding-top:48px">За ландшафтом заботливо ухаживают садовники, чтобы прогулки были не только приятными, но и полезными для здоровья. Здесь можно гулять с детьми, устраивать семейные пикники и просто наслаждаться тишиной на скамейке в тени деревьев.</div>
+        </div>
+
+        
+    </div>
+    <div class="container" style="padding-top:48px">
+    <div class="cart-first in-container">
+    <div class="cart-first-slider2  cart-first-slider-main2">
+          <div class="cart-first-slider-main">
+              <div class="swiper swiper-container-project">
+                  {# <img src="/sites/default/files/img/logo2.svg" alt="" class="slider-logo"> #}
+                  {# <div class="slider-title">Готовые дома с участками</div> #}
+                  {# <a class="slider-link" href="" data-fancybox="" data-src="#mess">запишитесь на просмотр</a> #}
+
+                  <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto1.webp" data-fancybox><img src="/sites/default/files/img/bereg-foto1.webp" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto2.webp" data-fancybox><img src="/sites/default/files/img/bereg-foto2.webp" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto3.webp" data-fancybox><img src="/sites/default/files/img/bereg-foto3.webp" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto4.webp" data-fancybox><img src="/sites/default/files/img/bereg-foto4.webp" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto5.webp" data-fancybox><img src="/sites/default/files/img/bereg-foto5.webp" /></a>
+                      </div>
+                      
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/slider2.webp" data-fancybox><img src="/sites/default/files/img/slider2.webp" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/slider3.webp" data-fancybox><img src="/sites/default/files/img/slider3.webp" /></a>
+                      </div>
+                  </div>
+                  <div class="cart-first-slider-main-back swiper-button-prev">
+                      <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+                  </div>
+                  <div class="cart-first-slider-main-next swiper-button-next">
+                      <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+                  </div>
+              </div>
+          </div>
+
+          <div class="cart-first-slider-nav">
+              <div class="swiper swiper-container-thumbs">
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper">
+                      
+               
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto1.webp" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto2.webp" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto3.webp" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto4.webp" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto5.webp" />
+                    </div>
+                    
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/slider2.webp" />
+                    </div>
+                    
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/slider3.webp" />
+                    </div>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endif %}
+
+
+
+
+
+{% else %}
+  {% set header_logo_src = '/sites/default/files/img/logo_mob.svg' %}
+  {% if 'page-node-838' in attributes.class or 'page-node-840' in attributes.class or 'page-node-850' in attributes.class or 'page-node-851' in attributes.class or 'page-node-875' in attributes.class or 'page-node-954' in attributes.class or 'page-node-955' in attributes.class or 'page-node-956' in attributes.class or 'page-node-968' in attributes.class or 'page-node-969' in attributes.class or 'page-node-978' in attributes.class or 'page-node-980' in attributes.class or 'page-node-853' in attributes.class or 'page-node-854' in attributes.class or 'path-mfk' in attributes.class or 'page-view-mfk' in attributes.class or 'page-node-type-posadochnaya-ponton' in attributes.class or 'path-ferma' in attributes.class or 'page-node-1024' in attributes.class %}
+    {% set header_logo_src = '/sites/default/files/img/logo_mob2.svg' %}
+  {% endif %}
+
+  <section class="ipoteka techno inner-header" id="header-main-sec">
+    <div class="header ipoteka-header no-select">
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="ipoteka-logo logo-desc" src="{{ header_logo_src }}" alt="">
+            <img class="logo-mob" src="{{ header_logo_src }}" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+      </div>
+    </div>
+  </section>
+
+{% endif %}
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+
+    <!-- ФУТЕР -->
+    <section class="site-theme-footer">
+      <div class="footer-container">
+        <div class="footer">
+          <div class="footer-col">
+            <a href="/"><img src="/sites/default/files/img/logo-footer2.svg" alt=""></a>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">О ПОСЕЛКЕ</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_first }}
+            </div>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">Информация</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_second }}
+            </div>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">Покупка</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_third }}
+            </div>
+          </div>
+          <div class="footer-col">
+            {{ page.footer_fourth }}
+
+            
+          </div>
+        </div>
+        <div class="footer-underlink">
+          © 2026 все права защищены | <a href="/policy/">Политика конфиденциальности</a>
+          <a href="#" data-fancybox="" data-src="#online2" id="form-chat1"></a>
+        </div>
+      </div>
+    </section>
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+      <div class="shadow">
+        <div class="popup popup-mess new-popup" id="online2">
+          
+          <div class="row consult1">
+              <div class="col-12 col-sm-7" style="background: #00000099;">
+                  <div class="yana-popup pr-30">
+                      <div class="banner3-title">
+                          Получите консультацию специалиста
+                      </div>
+                      <a href="tel:{{ site_phone_tel|default('+74951865088') }}" class="banner-tel">{{ site_phone_display|default('+7 (495) 186-50-88') }}</a>
+                      <span class="banner-span">Пн-Пт с 9:00 до 18:00</span>
+
+                      <a href="https://wa.me/+79255543212" class="btn-transparent-wa"><span>Пишите в мессенджер</span></a>
+
+                      <div class="yana-popup-mob">
+                      <img src="{{ is_investoram ? '/sites/default/files/kastoom_design/bereg-klim.jpg' : '/sites/default/files/kastoom_design/yana_mob.png' }}" class="yana_mob">
+                          <div>
+                              <p>{{ is_investoram ? 'Алексей Климов' : 'Яна Зиновьева' }}</p>
+                              <span>Старший специалист</span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-12 col-sm-5 popup-dark-bg-block">
+                  <div class="">
+                      <div class="banner1-form-title">
+                          Заполните форму и мы вам перезвоним
+                      </div>
+                      
+
+                      <form class="banner-form1">
+                          <input type="hidden" name="source" value="Получить консультацию"/>
+                          <label>
+                              <input type="text" class="phone-field-mask popup-phone1" placeholder="Ваш номер телефона">
+                          </label>
+                          <div class="online-notice"></div>
+                          <label>
+                              <button class="btn-orange-arrow" style="width:100%" id="yana-send"><span>Получить консультацию</span></button>
+                          </label>
+                          <label class="policy-label">
+                              <input type="checkbox" class="popup-consent"> Cогласен с условиями <a href="/policy/">политики конфиденциальности данных</a>
+                          </label>
+                          <div class="online-notice"></div>
+                          <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                          <div class="form-message" style="margin-top: 10px;"></div>
+                      </form>
+                  </div>
+              </div>
+
+
+            </div>
+            
+          </div>
+        </div>
+        <div class="popup popup-mess" id="online">
+          <input type="hidden" id="house" />
+          <div class="popup-close"></div>
+          <a class="popup-title">Заказать звонок</a>
+          <div class="popup-body">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="email" placeholder="Ваш E-mail" />
+              <div class="online-notice"></div>
+            </div>
+            <input type="hidden" name="source" id="form-source" value="Заказать звонок"/>
+            <div class="form-confirmation">
+              <label><input type="checkbox">  Даю согласие на <a href="/policy/" target="_blank">обработку персональных данных</a></label>
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+            </div>
+            <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+            
+          </div>
+        </div>
+          <div class="popup popup-mess " id="mess">
+              <input type="hidden" id="house" />
+              <div class="popup-close"></div>
+              <a class="popup-title">Напишите нам</a>
+              <div class="popup-body">
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="email" placeholder="Ваш E-mail" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <textarea name="mess" placeholder="Ваше сообщение"></textarea>
+                      <div class="online-notice"></div>
+                  </div>
+                  <input type="hidden" name="source" value="Напишите нам"/>
+                  <div class="form-confirmation">
+                      <label><input type="checkbox">  Даю согласие на <a href="/policy/" target="_blank">обработку персональных данных</a></label>
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group popup-button">
+                      <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+                  </div>
+                  <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                  
+              </div>
+          </div>
+
+          <div class="popup popup-mess " id="tour2">
+              <input type="hidden" id="house" />
+              <div class="popup-close"></div>
+              <a class="popup-title">Оставьте заявку</a>
+              <div class="popup-body">
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+                      <div class="online-notice"></div>
+                  </div>
+                  
+                  <input type="hidden" name="source" value="Оставьте заявку"/>
+                  <div class="form-confirmation">
+                      <label><input type="checkbox">  Даю согласие на <a href="/policy/" target="_blank">обработку персональных данных</a></label>
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group popup-button">
+                      <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+                  </div>
+                  <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                  
+              </div>
+          </div>
+        <div class="popup popup-mess " id="success">
+          <div class="popup-close"></div>
+          <div class="popup-title">Заявка отправлена</div>
+          <div class="popup-body">
+            <div class="popup-body-description">Спасибо, ваша заявка отправлена. Наши менеджеры свяжутся в вами в ближайшее время.</div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="popup" id="error">
+          <div class="popup-close"></div>
+          <div class="popup-title">Заявка не отправлена</div>
+          <div class="popup-body">
+            <div class="popup-body-description">Произошла техническая ошибка. Попробуйте отправить заявку позже или обратитесь в администрацию сайта</div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="popup" id="info" >
+          <div class="popup-close"></div>
+          <div class="popup-title">Информация</div>
+          <div class="popup-body">
+            <div class="popup-body-description" style="width: 420px;">
+              Уважаемые посетители <strong>2,3,8,10</strong> мая просмотр поселка осуществляется по предварительной записи.<br>
+              Записаться можно по телефону <a class="callibri_phone" href="tel:+74958774458" style="color: #809b50;">+7 (495) 877-44-58</a>.<br>
+              <strong>4,5,6,7</strong> мая показы осуществляются без предварительной записи с 10-00 до 19-00 часов.<br>
+              <strong>1 и 9 мая</strong>, выходные дни.
+            </div>
+            <!--            <div class="form-group popup-button">-->
+            <!--                <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>-->
+            <!--            </div>-->
+          </div>
+        </div>
+      </div>
+{% if not is_lighthouse %}
+      <!-- Yandex.Metrika counter --> <script > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(30520457, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/30520457" style="position:absolute; left:-9999px;" alt="Яндекс" /></div></noscript> <!-- /Yandex.Metrika counter -->
+{% if not disable_calltouch|default(false) %}
+<!-- calltouch -->
+<script>
+(function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)},m=typeof Array.prototype.find === 'function',n=m?"init-min.js":"init.js";s.async=true;s.src="https://mod.calltouch.ru/"+n+"?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})(window,document,"ct","9spnkrv9");
+</script>
+<!-- calltouch -->
+{% endif %}
+{# {% if 'administrator' in user.roles %} #}
+ <script>
+              GPTConfig = {
+                     user: 'beregpesochnoy-site',
+          source: 'beregpesochnoy',
+                     container: '#gpt',
+              };
+              document.addEventListener("DOMContentLoaded", function() {
+                     GPT.Chat.config.action = '<span onclick="openVrTour()">Тур по сайту</span>';
+                     GPT.Chat.reaction = {
+                            waiting: {
+                                   //src: '/waiting-alex.mp4'
+                            },
+                            welcome: {
+                                   //src: '/hello-alex.mp4'
+                            },
+                            push: {
+                                   //src: '/talking-alex.mp4'
+                            },
+                            calling: {
+                                   ///src: '/calling-friend-alex.mp4'
+                            },
+                            talking: {
+                                   //src: '/talking-alex.mp4'
+                            },
+                            typing: {
+                                   //src: '/typing-alex.mp4'
+                            },
+                     };
+                     GPT.Language.setList({
+                            hello_title: 'Чем я могу помочь?',
+                            hello_description: 'Задавайте мне вопросы голосовой командой или текстом в окне чата, или воспользуйтесь туром-инструкцией по сайту. Также на некоторых страницах я буду показывать вам подсказки.',
+                            hello_btn_title: 'Чат с Софией',
+
+                     });
+                     GPT.expect.config.active = true;
+                     GPT.Action.add('form', function() {
+                            GPT.Chat.commentsWrap.remove();
+                            GPT.Chat.form.remove();
+                            GPT.Chat.chat.html(`
+<form id="example" action="" method="POST">
+<div class="form_container">
+<p class="title">Пожалуйста, заполните форму и менеджер с вами свяжется.</p>
+<p class="decription">Заполните свои данные в форме, и в ближайшее время с вами свяжется менеджер.</p>
+<input type="text" name="name" placeholder="Ваше имя">
+<input type="text" name="phone" placeholder="Ваш телефон">
+<input type="email" name="email" placeholder="Ваше e-mail">
+<textarea name="comment" placeholder="Какой у вас вопрос?"></textarea>
+<button type="submit">Отправить</button>
+<p class="areement">Нажимая кнопку "Отправить", вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+</div>
+</form>
+`);
+                     });
+                     GPT.Action.add('default', function() {
+                            //GPT.Chat.close();
+                            console.log('action done');
+                     });
+                     GPT.Action.add('bpsview', function () {
+                        const chatLink = document.getElementById('form-chat1');
+                        console.log(chatLink);
+                        if (chatLink) {
+                            chatLink.click();
+                        }
+                    }); 
+                    GPT.Action.add('bpsmanager', function () {
+                        const chatLink = document.getElementById('form-chat1');
+                        console.log(chatLink);
+                        if (chatLink) {
+                            chatLink.click();
+                        }
+                        // showPopup('#client-block-2852');
+                    }); 
+                    GPT.Action.add('bpsnoanswer', function () {
+                        const chatLink = document.getElementById('form-chat1');
+                        console.log(chatLink);
+                        if (chatLink) {
+                            chatLink.click();
+                        }
+                        // showPopup('#client-block-2852');
+                    }); 
+                     // GPT.Hello.config.action = '<span class="gpt_btn" onclick="openVrTour()">Тур по сайту</span>';
+                     GPT.Icons.assistant = '<video autoplay muted loop><source src="/assistent.mp4" type="video/mp4"></video>';
+                     GPT.Hello.config.assistent = '/waiting-alex.mp4';
+                     GPT.Chat.config.hello = '<p>Здравствуйте, я София. Чем могу Вам помочь?</p>';
+                    //  GPT.Chat.config.hello = '';
+                     GPT.Chat.templates = ['Как добавить родственника?', 'Как добавить новость?', 'Как посмотреть биографию человека', ];
+                     GPT.Event.on('load', function() {
+                            // if (!GPT.Cookie.get('gpt_hello')) {
+                            //        GPT.Hello.initialize();
+                            //        GPT.Cookie.set('gpt_hello', true);
+                            //        setTimeout(function() {
+                            //               GPT.Hello.close();
+                            //        }, 10000);
+                            // }
+                            if (window.sessionStorage.getItem('gpt_tokens_limit')) {
+                                   GPT.Chat.commentsWrap.remove();
+                                   GPT.Chat.form.remove();
+                                   GPT.Chat.chat.html(window.sessionStorage.getItem('gpt_form_sent') ? spasiboGPT :
+                                          formGPT);
+                            }
+                     });
+                     GPT.Initialize.load();
+                     var formGPT = `
+<form id="example" action="" method="POST"
+class="AddQuestion" onsubmit="AF.Chat.AddQuestion(this); return false;">
+<input type="hidden" name="LANG" value="ru">
+<div class="form_container">
+<p class="title">Извините, у меня появился следующий запрос</p>
+<p class="decription">Заполните свои данные в форме, и в ближайшее время с вами свяжется менеджер.</p>
+<input type="text" name="name" placeholder="Ваше имя">
+<input type="text" name="phone" placeholder="Ваш телефон">
+<input type="email" name="email" placeholder="Ваш e-mail">
+<textarea name="comment" placeholder="Какой у вас вопрос?"></textarea>
+<button type="submit">Отправить</button>
+<p class="areement">Нажимая кнопку "Отправить", вы соглашаетесь с <a href="#" data-toggle="modal" data-target="#Modal_politika">политикой конфиденциальности</a></p>
+</div>
+</form>
+`;
+                     var spasiboGPT = `
+<form id="example" action="" method="POST"
+class="AddQuestion" onsubmit="AF.Chat.AddQuestion(this); return false;">
+<div class="question_ok">Спасибо!<br> <span>С вами скоро свяжутся!</span></div>
+</form>
+`;
+                     GPT.Callbacks.add('Chat.addComment.response.error', '', function() {
+                            GPT.Chat.commentsWrap.remove();
+                            GPT.Chat.form.remove();
+                            GPT.Chat.chat.html(formGPT);
+                            const gptWindow = document.querySelector('#gpt_window');
+                            gptWindow.classList.add('gpt_form');
+                     });
+                     
+              });
+
+              function openVrTour() {
+                     GPT.Hello.close();
+                     GPT.Chat.close();
+                     const path = window.location.pathname;
+                     let trimmedInput = path.replace(/^\/|\/$/g, '');
+                     let formattedInput = trimmedInput.replace(/\//g, '-');
+                     let url = new URL(window.location.href);
+                     let params = new URLSearchParams(url.search);
+                     let configNum = params.get('vrtour')
+                     if (configNum != null && configNum != '1') formattedInput += '-' + configNum;
+                     let configName = `config-${formattedInput}.json`;
+                     if (configName.search('config-.json') == 0) configName = 'config.json';
+                     if (configName.search(`config--${configNum}.json`) == 0) configName =
+                            `config-${configNum}.json`;
+                     const localStep = localStorage.getItem(`vr-tour-config-${configName.replace('.json', '')}`);
+                     if (!localStep) {
+                            localStorage.setItem(`vr-tour-config-${configName.replace('.json', '')}`, 0);
+                     }
+                     // const currentUrl = window.location.pathname;
+                     // const isHomePage = currentUrl === '/' || currentUrl === '/index.html';
+                     // if(!isHomePage && src == "https://test.benpan.store/?vrtour=1") {
+                     // window.location.href = '/?vrtour=1';
+                     // } else if(window.location.href !== src) {
+                     // window.location.href = src;
+                     // } else {
+                     vrTour.start(localStep ? localStep : 0);
+                     // }
+              }
+       </script>
+       <script src="https://myf-assistant-yc.benpan.ru/data"></script>
+    
+    <div class="top_info">
+        <img src="/sites/default/files/alex.webp"/>
+        <div class="top_info_title">
+            <div>София</div>
+            <span>онлайн</span>
+        </div>
+    </div>
+{# {% endif %} #}
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3620103", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3620103;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+
+{% endif %}
+  </body>
+</html>

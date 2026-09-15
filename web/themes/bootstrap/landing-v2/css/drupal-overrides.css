@@ -1,0 +1,307 @@
+/**
+ * node/838 — лендинг + стандартная шапка/футер темы.
+ * Цвета лендинга: --bg #323232, --accent #B3CE7D
+ */
+
+/* 100vw шире видимой области при постоянном scrollbar (Windows) → гориз. прокрутка */
+html:has(body.page-node-838) {
+  overflow-x: clip;
+}
+
+body.page-node-838 {
+  position: relative;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.page-node-838 #page-wrapper,
+body.page-node-838 #page,
+body.page-node-838 #main-wrapper,
+body.page-node-838 #main,
+body.page-node-838 #main > .row,
+body.page-node-838 main[role="main"],
+body.page-node-838 .landing {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.page-node-838 #main.container {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.page-node-838 article.node,
+body.page-node-838 .breadcrumb,
+body.page-node-838 .region-highlighted {
+  /* display: none !important; */
+}
+
+/* Hero на весь экран — как на 840 */
+body.page-node-838 .hero {
+  min-height: 100svh;
+  min-height: 100vh;
+}
+
+body.page-node-838 .hero__bg {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  min-height: 100%;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 24%),
+    linear-gradient(
+      0deg,
+      rgba(37, 37, 37, 0) 79%,
+      rgba(37, 37, 37, 0.5) 87%,
+      rgba(37, 37, 37, 0.7) 91%,
+      rgba(37, 37, 37, 0.85) 94%,
+      rgba(37, 37, 37, 0.93) 97%,
+      #252525 100%
+    ),
+    linear-gradient(180deg,
+      rgba(50, 50, 50, 0) 58%,
+      rgba(50, 50, 50, 0.5) 74%,
+      rgba(50, 50, 50, 0.7) 82%,
+      rgba(50, 50, 50, 0.85) 89%,
+      rgba(50, 50, 50, 0.93) 94%,
+      #323232 100%),
+    url('../img/hero-bg-2c2cbc.png');
+}
+
+body.page-node-838 .hero__intro {
+  min-height: 100svh;
+  min-height: 100vh;
+  padding-top: clamp(140px, 16vh, 240px);
+  padding-bottom: clamp(40px, 6vh, 80px);
+  box-sizing: border-box;
+  justify-content: flex-end;
+}
+
+body.page-node-838 .gallery-block {
+  padding-top: 124px;
+  background: #323232 !important;
+}
+
+body.page-node-838 .footer-container {
+  background: #3C3C3B !important;
+}
+
+body.page-node-838 .catlog-item {
+  width: 100% !important;
+}
+
+/* ─── Шапка: поверх hero, как на 840 ─── */
+body.page-node-838 #header-main-sec.inner-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: transparent !important;
+  background-image: none !important;
+  pointer-events: none;
+}
+
+body.page-node-838 #header-main-sec .ipoteka-header,
+body.page-node-838 #header-main-sec .header {
+  background: transparent !important;
+  background-image: none !important;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+body.page-node-838 .tap-menu-container {
+  z-index: 10100 !important;
+}
+
+body.page-node-838 #header-main-sec .header-menu {
+  width: 1150px;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 30px 0;
+  box-sizing: border-box;
+}
+
+body.page-node-838 #header-main-sec .header-menu-items,
+body.page-node-838 #header-main-sec .header-menu-item,
+body.page-node-838 #header-main-sec .header-menu-item a,
+body.page-node-838 #header-main-sec .header-menu-link {
+  color: #fff !important;
+}
+
+body.page-node-838 #header-main-sec .header-menu-item a:hover,
+body.page-node-838 #header-main-sec .header-menu-link:hover {
+  color: #b3ce7d !important;
+}
+
+body.page-node-838 #header-main-sec .header-menu-tel {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+body.page-node-838 #header-main-sec .ipoteka-header .header-menu-item:last-child img,
+body.page-node-838 #header-main-sec .ipoteka-header .header-menu-item:first-child img {
+  filter: none !important;
+}
+
+/* ─── Футер сайта ─── */
+body.page-node-838 .site-theme-footer .footer-container {
+  background: #3C3C3B !important;
+  background-image: none !important;
+}
+
+body.page-node-838 .site-theme-footer .footer-container > .footer {
+  width: 1150px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap;
+  background: transparent !important;
+  margin-top: 0 !important;
+}
+
+/* ─── Каталог lv2-catalog ─── */
+body.page-node-838 .lv2-catalog__houses .view,
+body.page-node-838 .lv2-catalog__houses .view-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.page-node-838 .lv2-catalog .before-blue,
+body.page-node-838 .lv2-catalog .catalog-container {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+body.page-node-838 .lv2-catalog .catalog-container > .catalog {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: transparent !important;
+}
+
+body.page-node-838 .lv2-catalog .catalog-title,
+body.page-node-838 .lv2-catalog .main-catalog-tabs,
+body.page-node-838 .lv2-catalog > .before-blue > p {
+  display: none !important;
+}
+
+body.page-node-838 .lv2-catalog .catalog-items-cont {
+  overflow-x: clip !important;
+  width: 100% !important;
+}
+
+/* Views-слайдер внутри infra-carousel — без лишней обёртки */
+body.page-node-838 .infra-carousel__stage .view,
+body.page-node-838 .infra-carousel__stage .views-element-container,
+body.page-node-838 .gallery-carousel__stage .view,
+body.page-node-838 .gallery-carousel__stage .views-element-container {
+  display: contents;
+}
+
+body.page-node-838 .lv2-catalog .catalog-items:not(.lv2-catalog__grid) {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  flex-wrap: unset !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+    body.page-node-838 .lv2-catalog .catalog-items:not(.lv2-catalog__grid) {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+    body.page-node-838 .section.cta > .cl {
+    padding-inline: 0 !important;
+  }
+}
+
+body.page-node-838 .lv2-catalog .product-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.page-node-838 .catalog-item-uptext {
+  padding: 15px 20px;
+}
+
+body.page-node-838 .lv2-catalog .product-card h3 a:hover {
+  color: #b3ce7d;
+}
+
+body.page-node-838 .catalog-item-bot-cont {
+  align-items: anchor-center;
+}
+
+body.page-node-838 .catalog-item-price {
+  margin-bottom: 15px;
+}
+
+body.page-node-838 .before-blue::after {
+  content: none !important;
+}
+
+body.page-node-838 .before-blue p,
+body.page-node-838 .lv2-catalog .dots {
+  display: none !important;
+}
+
+body.page-node-838 .lv2-catalog .product-card__go {
+  border: 2px solid #b3ce7d !important;
+  color: #b3ce7d !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.page-node-838 .lv2-catalog .catalog-item-button {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none;
+}
+
+body.page-node-838 .lv2-catalog .catalog-item-button img {
+  margin-right: 20px;
+}
+
+body.page-node-838 .lv2-catalog .catalog-item-button span::after {
+  font-size: 20px;
+  line-height: 1;
+  color: #b3ce7d;
+}
+
+body.page-node-838 .lv2-catalog .product-card__price em,
+body.page-node-838 .lv2-catalog .catalog-item-price > div:nth-child(2) > span {
+  color: #b3ce7d !important;
+  text-decoration: none !important;
+}
+
+@media (max-width: 1023px) {
+    body.page-node-838 .site-theme-footer .footer-container > .footer {
+    flex-wrap: wrap;
+  }
+
+    body.page-node-838 #header-main-sec .header-menu {
+    width: 100%;
+    padding: 30px;
+  }
+}

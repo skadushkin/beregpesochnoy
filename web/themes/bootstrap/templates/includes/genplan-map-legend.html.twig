@@ -1,0 +1,35 @@
+{# genplan_legend_part: all | categories | infra #}
+{% set genplan_legend_part = genplan_legend_part|default('all') %}
+{% if genplan_legend_part in ['all', 'categories'] %}
+<section class="house-categories">
+  <div class="category-item" data-fill="#E28787">
+    <span class="category-indicator sold"></span>
+    <span class="category-label">{% if genplan_variant|default('classic') == 'v2' %}Проданные{% else %}Проданные дома{% endif %}</span>
+  </div>
+  <div class="category-item" data-fill="#99f5f5">
+    <span class="category-indicator ready"></span>
+    <span class="category-label">{% if genplan_variant|default('classic') == 'v2' %}Готовые{% else %}Готовые дома{% endif %}</span>
+  </div>
+  <div class="category-item" data-fill="#2489D3">
+    <span class="category-indicator under-construction"></span>
+    <span class="category-label">{% if genplan_variant|default('classic') == 'v2' %}Строящиеся{% else %}Строящиеся дома{% endif %}</span>
+  </div>
+  <div class="category-item" data-fill="#AD9170">
+    <span class="category-indicator townhouse"></span>
+    <span class="category-label">Таунхаусы</span>
+  </div>
+  <div class="category-item" data-fill="#F6D100">
+    <span class="category-indicator land-with-contract"></span>
+    <span class="category-label">Участки с подрядом</span>
+  </div>
+</section>
+{% endif %}
+{% if genplan_legend_part in ['all', 'infra'] %}
+<div class="infrastructure-toggle">
+  <label class="switch">
+    <input type="checkbox" aria-label="Показать инфраструктуру" id="infra-toggle" />
+    <span class="sliderg"></span>
+  </label>
+  <label class="toggle-label" for="infra-toggle">{% if genplan_variant|default('classic') == 'v2' %}Показать инфраструктуру{% else %}Инфраструктура{% endif %}</label>
+</div>
+{% endif %}

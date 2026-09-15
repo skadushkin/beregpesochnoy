@@ -1,0 +1,177 @@
+/* SEO-страницы 852 / 50 — стандартный стиль сайта */
+
+body.page-node-852 article.node,
+body.page-node-50 article.node,
+body.page-node-type-posadochnaya-katalog article.node,
+body.page-node-852 .region-highlighted,
+body.page-node-50 .region-highlighted,
+body.page-node-type-posadochnaya-katalog .region-highlighted {
+  display: none;
+}
+
+.seo-page-intro p {
+  margin-bottom: 20px;
+}
+
+.seo-page-intro p:last-of-type {
+  margin-bottom: 0;
+}
+
+.seo-page-catalog {
+  padding-top: 24px;
+}
+
+.seo-page-catalog .before-blue::after {
+  display: none;
+}
+
+.seo-page-catalog .catalog-container .catalog > p,
+.seo-page-catalog__lead {
+  padding-top: 32px;
+  margin-bottom: 40px;
+}
+
+.seo-page-catalog .main-catalog-tabs {
+  margin-top: 0;
+}
+
+.seo-page-ready-catalog {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.seo-page-ready-catalog .townhouses-first-catalog-right {
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 0;
+}
+
+/* Каталог: grid 2 колонки вместо flex+carousel (иначе карточки ~50% в один столбик) */
+.seo-page-ready-catalog .catalog-items-cont {
+  width: 100%;
+  overflow: visible;
+}
+
+.seo-page-ready-catalog .catalog-items,
+.seo-page-ready-catalog .townhouses-first-catalog-right .view,
+.seo-page-ready-catalog .townhouses-first-catalog-right .view-content {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+  flex-wrap: unset !important;
+  justify-content: unset !important;
+}
+
+.seo-page-ready-catalog .townhouses-first-catalog-right .views-element-container,
+.seo-page-ready-catalog .townhouses-first-catalog-right .views-infinite-scroll-content-wrapper {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+.seo-page-ready-catalog .catlog-item {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+  box-sizing: border-box;
+}
+
+.seo-page-section {
+  padding: 72px 0;
+}
+
+.seo-page-section--alt {
+  background: #FEFAF4;
+}
+
+.seo-page-section__title {
+  font-family: "Kudryashev Headline", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.15;
+  color: #3C3C3B;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  max-width: 920px;
+}
+
+.seo-page-section__text p {
+  margin-bottom: 20px;
+  max-width: 920px;
+}
+
+.seo-page-section__text p:last-child {
+  margin-bottom: 0;
+}
+
+.seo-page-faq .faq-container {
+  padding: 72px 0 !important;
+  margin-bottom: 0;
+}
+
+/* block 44: отрицательный margin .bg6 сбрасывается в css/site-overrides.css (global-styling) */
+
+body.page-node-852 .gallery-block,
+body.page-node-50 .gallery-block,
+body.page-node-type-posadochnaya-katalog .gallery-block {
+  margin-top: 0;
+  padding-top: 124px !important;
+  background: #3C3C3B;
+}
+
+@media (max-width: 991px) {
+  .seo-page-section {
+    padding: 48px 0;
+  }
+
+  .seo-page-faq .faq-container {
+    padding: 48px 0 !important;
+  }
+
+  body.page-node-852 .gallery-block,
+  body.page-node-50 .gallery-block,
+  body.page-node-type-posadochnaya-katalog .gallery-block {
+    padding-top: 80px !important;
+  }
+
+  /* Кнопка «Записаться» в интро: не наезжает на текст (translateY(-50%) с десктопа) */
+  .seo-page-intro p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .seo-page-intro .desktop-flex {
+    display: block !important;
+    margin-top: 28px;
+    margin-bottom: 0;
+  }
+
+  .seo-page-intro .townhouses-first-catalog-left-btn-desktop,
+  .seo-page-intro .btn-on-tab {
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-right: 0;
+  }
+
+  .seo-page-intro .townhouses-first-catalog-left-btn-desktop a,
+  .seo-page-intro .btn-on-tab a {
+    display: inline-block;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 710px) {
+  .seo-page-ready-catalog .catalog-items,
+  .seo-page-ready-catalog .townhouses-first-catalog-right .view,
+  .seo-page-ready-catalog .townhouses-first-catalog-right .view-content {
+    grid-template-columns: 1fr;
+  }
+}

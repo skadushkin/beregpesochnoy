@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Gallery page view with infinite scroll support.
+ */
+#}
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<section class="bg1">
+  <div class="first-container">
+    <div class="container_w">
+      {# <ul class="gallery-filter">
+        <li><a href="#" class="active">ПОСМОТРЕТЬ ВСЕ</a></li>
+        <li><a href="#">коттеджи</a></li>
+        <li><a href="#">инфраструктура</a></li>
+        <li><a href="#">отделка</a></li>
+      </ul> #}
+
+      <div{{ attributes.addClass(classes) }}>
+        {{ title_prefix }}
+        {{ title_suffix }}
+
+        {% if exposed %}
+          <div class="view-filters">
+            {{ exposed }}
+          </div>
+        {% endif %}
+
+        {% if rows %}
+          {{ rows }}
+        {% elseif empty %}
+          <div class="view-empty">
+            {{ empty }}
+          </div>
+        {% endif %}
+
+        {% if pager %}
+          {{ pager }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

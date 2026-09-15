@@ -1,0 +1,145 @@
+{# МФК — Figma 7278:2242. Страница /mfk. #}
+{% set mfk_hero_img = '/themes/bootstrap/img/mfk_bg.png' %}
+
+<main class="ponton mfk landing">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="ponton-hero mfk-hero" id="top">
+        <div class="ponton-hero__bg mfk-hero__bg" aria-hidden="true">
+            <img src="{{ mfk_hero_img }}" alt="" width="1920" height="821">
+        </div>
+        <div class="cl ponton-hero__content">
+            <div class="ponton-hero__main mfk-hero__main">
+                <div class="ponton-hero__copy mfk-hero__copy">
+                    <h1 class="ponton-hero__title mfk-hero__title">Многофункциональный комплекс<br>ЖК «Берег Песочной»</h1>
+                    <p class="ponton-hero__lead mfk-hero__lead">Центр жизни посёлка. Всё под рукой. Ваше время — для семьи, отдыха и работы, а повседневные заботы мы взяли на себя.</p>
+                    <div class="ponton-hero__actions mfk-hero__actions">
+                        <button type="button" class="btn btn--gold open-lv2-tour-modal">Узнать больше</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ INTRO + BENTO (view mfk) ═══ -->
+    <section class="section mfk-about" id="about">
+        <div class="cl section__inner mfk-about__inner">
+            <div class="mfk-about__head">
+                <h2 class="h2 mfk-about__title">Жизнь за городом <span class="t-accent">без компромиссов</span></h2>
+                <p class="mfk-about__text">Многофункциональный комплекс — это центр жизни коттеджного посёлка «Берег Песочной». Здесь собраны все необходимые сервисы для комфортной жизни за городом: детская комната, бассейн, конференц-зал, магазин, кафе, парикмахерская, аптека, спортзал и сауна — всё в шаговой доступности от вашего дома.</p>
+            </div>
+            <div class="mfk-bento-wrap">
+                {{ page.content }}
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ СЛАЙДЕР «Центр жизни посёлка» ═══ -->
+    <section class="section ponton-scheme infra mfk-scheme" id="scheme">
+        <div class="cl section__inner infra__head">
+            <h2 class="h2 h2--center mfk-scheme__title">Центр жизни посёлка.<br>Всё под рукой</h2>
+        </div>
+
+        <div class="infra-carousel mfk-scheme__carousel" id="mfkSchemeCarousel" aria-live="polite" data-no-categories="1">
+            <div class="infra-carousel__stage" id="mfkSchemeStage">
+                {{ drupal_view('novyy_slayder1', 'block_6') }}
+            </div>
+        </div>
+
+        <div class="cl slider-controls">
+            <button type="button" class="slider-arrow" id="mfkSchemePrev" aria-label="Назад">‹</button>
+            <div class="dots" id="mfkSchemeDots" data-dynamic="1"></div>
+            <button type="button" class="slider-arrow" id="mfkSchemeNext" aria-label="Вперёд">›</button>
+        </div>
+    </section>
+
+
+    <!-- ═══ КАТАЛОГ ═══ -->
+    <section class="section lv2-catalog ponton-catalog mfk-catalog" id="catalog">
+        <div class="cl section__inner">
+            <div class="ponton-catalog__head">
+                <h2 class="h2 h2--center ponton-catalog__h2 mfk-catalog__h2">
+                    <span class="t-merit">Идеальный дом </span><br>
+                    <span class="t-accent">для вас и вашей семьи</span>
+                </h2>
+                <div class="ponton-scheme__pills ponton-catalog__pills">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke" class="ponton-pill is-active">Все</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="ponton-pill">Готовые дома</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ponton-pill">Cтроящиеся дома</a>
+                    <a href="/taunhausy" class="ponton-pill">Таунхаусы</a>
+                    <a href="/uchastok-s-podryadom-v-podmoskovye" class="ponton-pill">Дома с подрядом</a>
+                </div>
+            </div>
+            <div class="lv2-catalog__houses">
+                {{ drupal_view('gotovye_doma', 'block_6') }}
+            </div>
+            <div class="ponton-catalog__cta">
+                <a href="/kupit-dom-v-kottedzhnom-poselke" class="btn btn--gold">Смотреть весь каталог <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ FAQ — Figma 7278:2874 (стандартный блок сайта) ═══ -->
+    <section class="bg2 seo-page-faq mfk-faq" id="faq">
+        <div class="faq-container">
+            <div class="faq">
+                <div class="faq-top">
+                    <h2>Часто<br>задаваемые<br>вопросы</h2>
+                </div>
+                <div class="faq-bot">
+                    <div class="faq-bot-item">
+                        <div>
+                            <div class="faq-item-left">Что входит в многофункциональный комплекс?</div>
+                            <div class="faq-right">
+                                <img class="faq-right-plus" src="/sites/default/files/img/plusfaq.svg" alt="">
+                                <img class="faq-right-minus" src="/sites/default/files/img/minusfaq.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="faq-answer">На территории МФК работают детская комната, бассейн, конференц-зал, продуктовый магазин, кафе, парикмахерская, аптека, спортзал и сауна — всё для повседневного комфорта жителей посёлка.</div>
+                    </div>
+                    <div class="faq-bot-item">
+                        <div>
+                            <div class="faq-item-left">Могут ли пользоваться сервисами только жители посёлка?</div>
+                            <div class="faq-right">
+                                <img class="faq-right-plus" src="/sites/default/files/img/plusfaq.svg" alt="">
+                                <img class="faq-right-minus" src="/sites/default/files/img/minusfaq.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="faq-answer">Большинство сервисов МФК ориентированы на жителей КП «Берег Песочной» и созданы для их повседневных потребностей. Подробности по каждому сервису уточняйте у менеджера.</div>
+                    </div>
+                    <div class="faq-bot-item">
+                        <div>
+                            <div class="faq-item-left">Где находится МФК?</div>
+                            <div class="faq-right">
+                                <img class="faq-right-plus" src="/sites/default/files/img/plusfaq.svg" alt="">
+                                <img class="faq-right-minus" src="/sites/default/files/img/minusfaq.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="faq-answer">Многофункциональный комплекс расположен на территории коттеджного посёлка «Берег Песочной» в Истринском районе Московской области, примерно в 45&nbsp;км от МКАД.</div>
+                    </div>
+                    <div class="faq-bot-item">
+                        <div>
+                            <div class="faq-item-left">Можно ли посмотреть комплекс лично?</div>
+                            <div class="faq-right">
+                                <img class="faq-right-plus" src="/sites/default/files/img/plusfaq.svg" alt="">
+                                <img class="faq-right-minus" src="/sites/default/files/img/minusfaq.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="faq-answer">Да, запишитесь на экскурсию — покажем территорию посёлка, инфраструктуру и ответим на все вопросы.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'МФК — экскурсия'
+    } %}
+
+</main>

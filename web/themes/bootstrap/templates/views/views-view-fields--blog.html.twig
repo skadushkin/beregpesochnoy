@@ -1,0 +1,18 @@
+<div class="news-left-item blog-item">
+
+        <div class="news-left-item-img">
+            {{ fields.field_image.content }}
+
+        </div>
+        <div class="news-left-item-time-mob t2-mob">4 МИН ПРОЧТЕНИЯ  </div>
+        <div class="news-left-item-date news-date">{{ fields.field_news_date.content }}</div>
+        <div class="news-left-item-title">{{ fields.title.content }}</div>
+        <div class="news-left-item-btn">
+
+            <div class="news-left-item-btn-text t2-desc"><a href="{{ fields.view_node.content|striptags }}">подробнее</a></div>
+            <div class="news-left-item-btn-icon">
+                <a href="{{ fields.view_node.content|striptags }}"><img src="/sites/default/files/img/newsarrow.svg" alt=""></a>
+            </div>
+        </div>
+
+</div>

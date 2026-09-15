@@ -1,0 +1,40 @@
+{# Lifestyle-мозаика — Figma 7140:2118 #}
+{% set p = posadochnaya|default({}) %}
+{% set lifestyle_tags = {
+  'vip': 'ponton-lifestyle__tag--family',
+  'morning': 'ponton-lifestyle__tag--morning',
+  'evening': 'ponton-lifestyle__tag--evening',
+  'family': 'ponton-lifestyle__tag--lounge',
+  'route': 'ponton-lifestyle__tag--route'
+} %}
+{% set lifestyle_imgs = {
+  'vip': 'ponton-lifestyle__img--vip',
+  'morning': 'ponton-lifestyle__img--morning',
+  'evening': 'ponton-lifestyle__img--evening',
+  'family': 'ponton-lifestyle__img--family',
+  'route': 'ponton-lifestyle__img--route'
+} %}
+
+{% if p.lifestyle_items is not empty or p.lifestyle_title %}
+<section class="section ponton-lifestyle posadochnaya-lifestyle" id="lifestyle">
+    <div class="cl ponton-lifestyle__cl">
+        <div class="ponton-lifestyle__canvas">
+            {% for item in p.lifestyle_items %}
+                {% if item.image %}
+                <img class="ponton-lifestyle__img {{ lifestyle_imgs[item.slot]|default('ponton-lifestyle__img--vip') }}" src="{{ item.image }}" alt="{{ item.tag|striptags }}">
+                {% endif %}
+                {% if item.tag %}
+                <p class="ponton-lifestyle__tag {{ lifestyle_tags[item.slot]|default('ponton-lifestyle__tag--morning') }}">{{ item.tag }}</p>
+                {% endif %}
+            {% endfor %}
+
+            {% if p.lifestyle_title %}
+            <h2 class="h2 h2--center ponton-lifestyle__h2">{{ p.lifestyle_title }}</h2>
+            {% endif %}
+            <button type="button" class="btn btn--white ponton-lifestyle__cta open-lv2-tour-modal">
+                Записаться на экскурсию <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </div>
+</section>
+{% endif %}

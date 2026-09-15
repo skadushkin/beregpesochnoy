@@ -1,0 +1,55 @@
+yandex_export.admin:
+  path: '/admin/config/yandex-export'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::exportPage'
+    _title: 'Экспорт в XML'
+  requirements:
+    _permission: 'administer site configuration'
+
+yandex_export.feed_projects:
+  path: '/projects.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'projects.xml'
+  requirements:
+    _access: 'TRUE'
+
+yandex_export.feed_direct_projects:
+  path: '/direct_projects.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'direct_projects.xml'
+  requirements:
+    _access: 'TRUE'
+
+yandex_export.feed_projects_house:
+  path: '/projects_house.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'projects_house.xml'
+  requirements:
+    _access: 'TRUE'
+
+yandex_export.feed_direct_projects_house:
+  path: '/direct_projects_house.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'direct_projects_house.xml'
+  requirements:
+    _access: 'TRUE'
+
+yandex_export.feed_projects_under_construction:
+  path: '/projects_under_construction.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'projects_under_construction.xml'
+  requirements:
+    _access: 'TRUE'
+
+yandex_export.feed_direct_projects_under_construction:
+  path: '/direct_projects_under_construction.xml'
+  defaults:
+    _controller: 'Drupal\yandex_export\Controller\YandexExportController::serveFeed'
+    filename: 'direct_projects_under_construction.xml'
+  requirements:
+    _access: 'TRUE'

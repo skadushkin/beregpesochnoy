@@ -1,0 +1,239 @@
+
+<section>
+    <div class="townhouses-first-container container">
+        <div class="townhouses-first in-container">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="townhouses-first-top">
+                <div class="townhouses-first-title t1-desc t1-mob"><h1><span>Купить ТАУНХАУС</span><br>АМСТЕРДАМ</h1></div>
+                <div class="townhouses-first-top-desc regular-desc regular-mob">
+                    <div>Вы можете построить любой дом по проектам, приведенным ниже, либо заказать уникальный проект в нашем архитектурном бюро. Все дома строятся по технологии БЭНПАН. БЭНПАН – инновационная технология строительства домов из железобетонных ребристых панелей.</div>
+                    {# <a href="/infrastruktura">познакомьтесь с инфраструктурой</a> #}
+                </div>
+
+                <div class="first-image first-image-new-town">
+                    <div class="first-image-img">
+                        <div class="swiper swiper-container-project swiper-container-project-main">
+                    <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="/sites/default/files/img/townhouse1.PNG" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                <img src="/sites/default/files/img/taun2.jpg" alt="">
+                                </div>
+                                
+                            </div>
+                            {# <div class="cart-first-slider-main-back swiper-button-prev">
+                                <img src="/sites/default/files/img/cart-first-arrow.svg" alt="" width="30" height="56">
+                            </div>
+                            <div class="cart-first-slider-main-next swiper-button-next">
+                                <img src="/sites/default/files/img/cart-first-arrow.svg" alt="" width="30" height="56">
+                            </div> #}
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="townhouses-invest-icons town-image-icons2">
+                        <div class="first-image-icon">
+                            
+                            <div class="first-image-icon-text">3-этажные<br>дома</div>
+                        </div>
+                        <div class="first-image-icon">
+                            <div class="first-image-icon-text">большой <br>выбор <br>планировок</div>
+                        </div>
+                        <div class="first-image-icon">
+                            <div class="first-image-icon-text">2-уровневые<br>квартиры с <br>террасами</div>
+                        </div>
+                        <div class="first-image-icon">
+                            <div class="first-image-icon-text">5 комнат</div>
+                        </div>
+                        <div class="first-image-icon">
+                            <div class="first-image-icon-text">2 машиноместа</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+<section class="gallery-block">
+    <div class="rezident-manhet-container container">
+        <div class="townhouses-invest in-container">
+
+            <div class="town-inner-info">
+                <div class="brown-block2">
+                    <h2>Своё парковочное место — всегда и только для вас</h2>
+                    <p>Каждый таунхаус включает два парковочных места. Никакой борьбы за парковку — ваш автомобиль всегда под рукой.
+Забыли, что такое парковочные войны. Место для машины — ваше по праву.</p>
+                </div>
+                <div class="gold-block">
+                    <h2>Приватность и тишина</h2>
+                    <p>В отличие от шумных многоэтажек, здесь — максимум два соседа через стену. Нет топота сверху, нет гудящих лифтов — только звуки природы, комфорт и ощущение личного пространства.
+</p>
+                </div>
+                <div><img src="/sites/default/files/img/timg3.png" alt=""></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="townhouses-invest-container container">
+        <div class="townhouses-invest in-container">
+            <div class="townhouses-invest-title t1-desc t1-mob"><h2><span>Варианты</span><br>планировок</h2></div>
+
+            <div class="new-towns-blocks">
+            {{ drupal_view('gotovye_doma', 'block_8') }}
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="">
+    <div class="townhouses-invest-container container pt-0">
+        <div class="townhouses-invest in-container">
+
+            <div class="townhouses-invest-title t1-desc t1-mob mb-60"><h2><span>Галерея</span><br>интерьеров</h2></div>
+
+            <div class="gallery__grid2">
+                <div class="gallery__item big">
+                <img src="/sites/default/files/img/gal1.png" alt="">
+                </div>
+
+                <div class="gallery__item">
+                <img src="/sites/default/files/img/gal1.png" alt="">
+                </div>
+
+                <div class="gallery__item counter">
+                <span class="count">99</span>
+                <span class="text">фото</span>
+                </div>
+
+                <div class="gallery__item">
+                <img src="/sites/default/files/img/gal1.png" alt="">
+                </div>
+            
+
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{{ drupal_view('zhizn_v_poselke', 'block_3') }}
+
+<script>
+
+    function init() {
+        const scrollContainer = document.querySelector('.shorts-block-items');
+        const scrollContent = document.querySelector('.short-block-items-container');
+        const dotsContainer = document.querySelector('.short-navigation-dots');
+
+        if (!scrollContainer) {
+            return;
+        }
+
+        const items = scrollContent.children;
+        const itemWidth = items[0].getBoundingClientRect().width;
+        const gap = 40; // Значение gap
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let currentX = 0;
+
+        function scrollBlockCreateDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < items.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => scrollBlockScrollToItem(i));
+                dotsContainer.appendChild(dot);
+            }
+            scrollBlockUpdateDotsPosition();
+        }
+
+        function scrollBlockUpdateDotsPosition() {
+            const dots = dotsContainer.children;
+            const activeIndex = Math.round(Math.abs(currentX) / (itemWidth + gap));
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            if (dots[activeIndex]) {
+                dots[activeIndex].classList.add('active');
+            }
+        }
+
+        function scrollBlockScrollToItem(index) {
+            currentX = -index * (itemWidth + gap);
+            scrollContent.style.transform = `translateX(${currentX}px)`;
+            scrollBlockUpdateDotsPosition();
+        }
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollContainer.classList.add('active');
+            startX = e.pageX;
+            scrollLeft = currentX;
+            scrollContent.style.transition = `0s`;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+            scrollContent.style.transition = `0.2s`;
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - startX;
+            currentX = scrollLeft + x;
+
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const contentRect = scrollContent.getBoundingClientRect();
+
+            if (currentX > 0) {
+                currentX = 0; // Не позволяем прокрутке идти дальше левой границы
+            }
+
+            if (currentX < containerRect.width - contentRect.width) {
+                currentX = containerRect.width - contentRect.width; // Не позволяем прокрутке идти дальше правой границы
+            }
+
+            scrollContent.style.transform = `translateX(${currentX}px)`;
+            scrollBlockUpdateDotsPosition();
+        });
+
+        scrollBlockCreateDots();
+        scrollBlockUpdateDotsPosition();
+    }
+
+    init();
+
+
+</script>
+
+{{ drupal_entity('block_content', '44') }}

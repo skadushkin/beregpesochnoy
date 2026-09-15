@@ -1,0 +1,28 @@
+{# Lifestyle — SEO-версия Figma 7140:2118 #}
+{% set p = posadochnaya|default({}) %}
+
+{% if p.lifestyle_items is not empty or p.lifestyle_title %}
+<section class="posadochnaya-lifestyle">
+    <div class="container">
+        <div class="in-container">
+            {% if p.lifestyle_title %}
+                <h2 class="posadochnaya-lifestyle__title">{{ p.lifestyle_title }}</h2>
+            {% endif %}
+            {% if p.lifestyle_items is not empty %}
+            <div class="posadochnaya-lifestyle__grid">
+                {% for item in p.lifestyle_items %}
+                <figure class="posadochnaya-lifestyle__item">
+                    {% if item.image %}
+                        <img src="{{ item.image }}" alt="{{ item.tag|striptags }}">
+                    {% endif %}
+                    {% if item.tag %}
+                        <figcaption class="posadochnaya-lifestyle__tag">{{ item.tag }}</figcaption>
+                    {% endif %}
+                </figure>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

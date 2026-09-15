@@ -1,0 +1,267 @@
+{# Лендинг «Свежая зелень» — Figma greenery 7842:1953. #}
+{% set fm_img = '/themes/bootstrap/landing-ferma/img/' %}
+{% set lv2_img = '/themes/bootstrap/landing-v2/img/' %}
+
+<main class="ferma landing">
+
+    <section class="ferma-hero" id="top">
+        <div class="ferma-hero__bg" aria-hidden="true">
+            <img src="{{ fm_img }}hero-ferma.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ferma-hero__content">
+            <div class="ferma-hero__main">
+                <div class="ferma-hero__copy">
+                    <h1 class="ferma-hero__title">
+                        <span class="t-accent">Свежая зелень круглый год —</span><br>
+                        <span class="t-white">прямо в поселке.</span>
+                    </h1>
+                    <p class="ferma-hero__lead">В ЖК «Берег Песочной» загородная жизнь становится самодостаточной: природа, инфраструктура и собственная вертикальная ферма объединяются в одну среду для постоянного проживания.</p>
+                    <div class="ferma-hero__actions">
+                        <a href="/jk-bereg-pesochnoy.pdf" class="btn btn--fill" download>Скачать презентацию <span class="btn-arrow" aria-hidden="true">→</span></a>
+                        <a href="#farm" class="ferma-hero__link">Посмотреть ферму</a>
+                    </div>
+                </div>
+                <div class="ferma-hero__stats">
+                    <article class="ferma-stat">
+                        <strong class="ferma-stat__v">Свежая зелень</strong>
+                        <span class="ferma-stat__l">Полезные сервисы прямо внутри поселка</span>
+                    </article>
+                    <article class="ferma-stat">
+                        <strong class="ferma-stat__v">Каждый день</strong>
+                        <span class="ferma-stat__l">свежая зелень к вашему столу.</span>
+                    </article>
+                    <article class="ferma-stat">
+                        <strong class="ferma-stat__v">Растет рядом</strong>
+                        <span class="ferma-stat__l">выращивается прямо внутри поселка</span>
+                    </article>
+                    <article class="ferma-stat">
+                        <strong class="ferma-stat__v">Круглый год</strong>
+                        <span class="ferma-stat__l">Сезон остается за дверью вертикальной фермы</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-split" id="about">
+        <div class="cl ferma-split__row">
+            <div class="ferma-split__photo">
+                <img src="{{ fm_img }}about-comfort.png" alt="Вертикальная ферма в поселке">
+            </div>
+            <div class="ferma-split__card">
+                <h2 class="h2">За городом<br><span class="t-accent">не значит вдали от комфорта</span></h2>
+                <p>В обычном загородном проекте инфраструктура часто заканчивается дорогами, охраной и прогулочными зонами. В «Береге Песочной» идея шире: полезные сервисы становятся частью самой территории. Собственная вертикальная ферма — один из примеров такой среды.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-split">
+        <div class="cl ferma-split__row ferma-split__row--reverse">
+            <div class="ferma-split__card">
+                <h2 class="h2">Дом определяет, где вы живете.<br><span class="t-accent">Среда — как вы живете</span></h2>
+                <p>Поэтому ферма здесь важна не сама по себе. Она показывает подход к проекту: создавать больше возможностей внутри поселка и делать постоянную загородную жизнь удобнее.</p>
+            </div>
+            <div class="ferma-split__photo">
+                <img src="{{ fm_img }}about-sreda.png" alt="Среда поселка Берег Песочной">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-farm" id="farm">
+        <div class="cl ferma-farm__head">
+            <h2 class="h2 h2--center">Контейнерная ферма прямо на территории</h2>
+            <p class="ferma-farm__lead">Снаружи — аккуратный современный объект. Внутри — многоуровневая ферма с собственным микроклиматом для круглогодичного выращивания свежей зелени.</p>
+        </div>
+        <div class="cl ferma-farm__features">
+            <article class="ferma-feature">
+                <span class="ferma-feature__icon" aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' %}</span>
+                <p>Современная технология, интегрированная в ландшафт поселка</p>
+            </article>
+            <article class="ferma-feature">
+                <span class="ferma-feature__icon" aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' %}</span>
+                <p>Свежая зелень независимо от внешнего сезона</p>
+            </article>
+            <article class="ferma-feature">
+                <span class="ferma-feature__icon" aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' %}</span>
+                <p>Минимальный путь от выращивания до жителей</p>
+            </article>
+            <article class="ferma-feature">
+                <span class="ferma-feature__icon" aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' %}</span>
+                <p>Инфраструктурный объект, который усиливает образ проекта</p>
+            </article>
+        </div>
+        <div class="cl ferma-photos" data-ferma-photos>
+            <div class="ferma-photos__viewport">
+                <div class="ferma-photos__track">
+                    {% if ferma_photos %}
+                        {% for photo in ferma_photos %}
+                            <figure class="ferma-photos__item">
+                                {% if photo.image %}
+                                    <img src="{{ photo.image }}" alt="{{ photo.title }}">
+                                {% endif %}
+                                <span class="ferma-photos__label">{{ photo.title }}</span>
+                            </figure>
+                        {% endfor %}
+                    {% else %}
+                        <figure class="ferma-photos__item">
+                            <img src="{{ fm_img }}farm-outside.png" alt="Снаружи">
+                            <span class="ferma-photos__label">Снаружи</span>
+                        </figure>
+                        <figure class="ferma-photos__item">
+                            <img src="{{ fm_img }}farm-inside.png" alt="Внутри">
+                            <span class="ferma-photos__label">Внутри</span>
+                        </figure>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="ferma-photos__nav" hidden>
+                <button type="button" class="ferma-arrow" data-ferma-photos-prev aria-label="Назад">‹</button>
+                <div class="ferma-dots" data-ferma-photos-dots></div>
+                <button type="button" class="ferma-arrow" data-ferma-photos-next aria-label="Вперёд">›</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-split">
+        <div class="cl ferma-split__row">
+            <div class="ferma-split__photo">
+                <img src="{{ fm_img }}morning.png" alt="Утро в поселке">
+            </div>
+            <div class="ferma-split__card">
+                <h2 class="h2">Утро начинается<br><span class="t-accent">не с дороги в город</span></h2>
+                <p>Свежая зелень выращивается в нескольких минутах от вашего дома. Лес начинается за участком. А полезная инфраструктура остается внутри поселка. Так выглядит загородная жизнь, продуманная для постоянного проживания.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-products" id="products">
+        <div class="cl ferma-products__row">
+            <div class="ferma-products__intro">
+                <h2 class="h2">Лето внутри <span class="t-accent">круглый год</span></h2>
+                <p>Внутри контейнера создается контролируемая среда для растений. Освещение, температура и влажность поддерживаются независимо от внешнего сезона.</p>
+                <ul class="ferma-plus">
+                    <li><span aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' with { size: 32 } %}</span>Многоуровневое выращивание</li>
+                    <li><span aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' with { size: 32 } %}</span>Контролируемый микроклимат</li>
+                    <li><span aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' with { size: 32 } %}</span>Круглогодичный цикл</li>
+                    <li><span aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-circle-check.html.twig' with { size: 32 } %}</span>Минимальный путь от фермы до жителей</li>
+                </ul>
+            </div>
+            <div class="ferma-products__slider" data-ferma-products>
+                <div class="ferma-products__viewport">
+                    <div class="ferma-products__track">
+                        {% if ferma_products %}
+                            {% for product in ferma_products %}
+                                <article class="ferma-product">
+                                    {% if product.image %}
+                                        <img class="ferma-product__img" src="{{ product.image }}" alt="{{ product.title }}">
+                                    {% endif %}
+                                    <div class="ferma-product__body">
+                                        <h3 class="ferma-product__title">{{ product.title }}</h3>
+                                        {% if product.lead %}<p class="ferma-product__lead">{{ product.lead }}</p>{% endif %}
+                                        {% if product.plus %}
+                                            <ul class="ferma-product__list">
+                                                {% for line in product.plus %}
+                                                    <li><span aria-hidden="true">{% include '@bootstrap/includes/ferma-icon-check.html.twig' %}</span>{{ line }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="ferma-products__nav">
+                    <button type="button" class="ferma-arrow" data-ferma-products-prev aria-label="Назад">‹</button>
+                    <div class="ferma-dots" data-ferma-products-dots></div>
+                    <button type="button" class="ferma-arrow" data-ferma-products-next aria-label="Вперёд">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section ferma-approach" id="approach">
+        <div class="cl">
+            <div class="ferma-approach__head">
+                <h2 class="h2 h2--center">Не про технологию. <span class="t-accent">Про подход.</span></h2>
+                <p>Когда даже такие детали продуманы заранее, иначе воспринимается весь проект. Покупатель видит не набор участков, а единую систему: дом, природа, инфраструктура и повседневные сервисы.</p>
+            </div>
+            <div class="ferma-bento">
+                <div class="ferma-bento__photo ferma-bento__photo--1"><img src="{{ fm_img }}bento-1.png" alt=""></div>
+                <article class="ferma-bento__card ferma-bento__card--1">
+                    <h3>Самодостаточная среда</h3>
+                    <p>Своя инфраструктура внутри поселка делает загородную жизнь менее зависимой от города и повышает ощущаемую ценность каждого дома.</p>
+                </article>
+                <article class="ferma-bento__card ferma-bento__card--2">
+                    <h3>Удобно работать, приятно жить</h3>
+                    <p>В посёлке есть всё необходимое для комфортной работы из дома. Спокойная атмосфера и близость к природе помогают сосредоточиться, а современная инфраструктура позволяет оставаться на связи и решать рабочие задачи, не уезжая в город.</p>
+                </article>
+                <div class="ferma-bento__photo ferma-bento__photo--2"><img src="{{ fm_img }}bento-2.png" alt=""></div>
+                <div class="ferma-bento__photo ferma-bento__photo--3"><img src="{{ fm_img }}bento-3.png" alt=""></div>
+                <article class="ferma-bento__card ferma-bento__card--3">
+                    <h3>Надёжная инвестиция в будущее</h3>
+                    <p>Недвижимость в посёлке — это не только комфорт для жизни, но и перспективный актив. Продуманная инфраструктура, современная архитектура и развитие территории поддерживают привлекательность недвижимости и её потенциал роста в стоимости.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section cta" id="contacts">
+        <div class="cl">
+            <div class="cta-block ferma-cta">
+                <div class="cta-block__panel">
+                    <h2 class="cta__title">
+                        <span class="cta__title-row">Запишитесь на экскурсию в посёлок</span>
+                    </h2>
+                    <p class="cta__sub">Лучше один раз увидеть всё своими глазами. Прогуляйтесь по территории, познакомьтесь с домами и инфраструктурой, оцените атмосферу и задайте все интересующие вопросы.</p>
+                    <form class="cta__form lv2-cta-form" action="#" method="post" novalidate>
+                        <input type="hidden" name="source" value="Лендинг Свежая зелень — ферма">
+                        <div class="cta__fields">
+                            <div class="cta__field-wrap">
+                                <label class="cta__field">
+                                    <input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required>
+                                </label>
+                                <div class="online-notice"></div>
+                            </div>
+                            <div class="cta__field-wrap">
+                                <label class="cta__field">
+                                    <input type="tel" name="phone" class="phone-field-mask" placeholder="Ваш телефон" autocomplete="tel" required>
+                                </label>
+                                <div class="online-notice"></div>
+                            </div>
+                        </div>
+                        <div class="cta__actions">
+                            <button type="button" class="btn cta__btn" id="lv2-cta-send">записаться на экскурсию</button>
+                            <label class="cta__agree">
+                                <input type="checkbox" name="agree" required>
+                                <span class="cta__check" aria-hidden="true"></span>
+                                <span class="cta__agree-text">Согласен с условиями <a href="/policy/">политики конфиденциальности данных</a></span>
+                            </label>
+                            <div class="online-notice"></div>
+                            <div class="popup-success">
+                                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.5 12L10.5 18L20.5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Ваше сообщение успешно отправлено. Спасибо.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="cta-block__media" style="background-image:url('{{ fm_img }}cta-media.png')" role="img" aria-label=""></div>
+            </div>
+        </div>
+    </section>
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'Лендинг Свежая зелень — экскурсия'
+    } %}
+
+</main>

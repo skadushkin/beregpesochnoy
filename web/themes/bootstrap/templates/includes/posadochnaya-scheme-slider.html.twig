@@ -1,0 +1,27 @@
+{# Слайдер зон — Figma 7140:1985 #}
+{% set p = posadochnaya|default({}) %}
+{% set slider_display = p.slider_display|default('block_2') %}
+{% set slider_prefix = slider_prefix|default('pontonScheme') %}
+
+<section class="section ponton-scheme infra posadochnaya-scheme{% if scheme_class %} {{ scheme_class }}{% endif %}" id="scheme">
+    <div class="cl section__inner infra__head">
+        <h2 class="h2 h2--center{% if scheme_title_class %} {{ scheme_title_class }}{% endif %}">
+            {{ p.slider_title|default('Зоны парка') }}
+        </h2>
+        <div class="infra__pills-wrap">
+            <div class="infra__pills" id="{{ slider_prefix }}Pills" data-dynamic="1"></div>
+        </div>
+    </div>
+
+    <div class="infra-carousel" id="{{ slider_prefix }}Carousel" aria-live="polite">
+        <div class="infra-carousel__stage" id="{{ slider_prefix }}Stage">
+            {{ drupal_view('novyy_slayder1', slider_display) }}
+        </div>
+    </div>
+
+    <div class="cl slider-controls">
+        <button type="button" class="slider-arrow" id="{{ slider_prefix }}Prev" aria-label="Назад">‹</button>
+        <div class="dots" id="{{ slider_prefix }}Dots" data-dynamic="1"></div>
+        <button type="button" class="slider-arrow" id="{{ slider_prefix }}Next" aria-label="Вперёд">›</button>
+    </div>
+</section>

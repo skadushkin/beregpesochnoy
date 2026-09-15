@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Kudryashev Display';
+    src: url('KudryashevDisplay-Sans.eot');
+    src: local('Kudryashev Display Sans'), local('KudryashevDisplay-Sans'),
+        url('KudryashevDisplay-Sans.eot?#iefix') format('embedded-opentype'),
+        url('KudryashevDisplay-Sans.woff2') format('woff2'),
+        url('KudryashevDisplay-Sans.woff') format('woff'),
+        url('KudryashevDisplay-Sans.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kudryashev Headline';
+    src: url('KudryashevHeadline.eot');
+    src: local('Kudryashev Headline'), local('KudryashevHeadline'),
+        url('KudryashevHeadline.eot?#iefix') format('embedded-opentype'),
+        url('KudryashevHeadline.woff2') format('woff2'),
+        url('KudryashevHeadline.woff') format('woff'),
+        url('KudryashevHeadline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kudryashev Display';
+    src: url('KudryashevDisplay.eot');
+    src: local('Kudryashev Display'), local('KudryashevDisplay'),
+        url('KudryashevDisplay.eot?#iefix') format('embedded-opentype'),
+        url('KudryashevDisplay.woff2') format('woff2'),
+        url('KudryashevDisplay.woff') format('woff'),
+        url('KudryashevDisplay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kudryashev Headline';
+    src: url('KudryashevHeadline-Sans.eot');
+    src: local('Kudryashev Headline Sans'), local('KudryashevHeadline-Sans'),
+        url('KudryashevHeadline-Sans.eot?#iefix') format('embedded-opentype'),
+        url('KudryashevHeadline-Sans.woff2') format('woff2'),
+        url('KudryashevHeadline-Sans.woff') format('woff'),
+        url('KudryashevHeadline-Sans.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+

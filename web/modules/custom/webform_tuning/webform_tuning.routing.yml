@@ -1,0 +1,26 @@
+webform_tuning.callback_form_submit:
+  path: '/form-submit/get-callback'
+  defaults:
+    _controller: '\Drupal\webform_tuning\Controller\FormSubmitController::callbackFormSubmit'
+    _title: 'Callback Form Submit'
+  requirements:
+    _permission: 'access content'
+  methods: [POST]
+
+webform_tuning.common_form_submit:
+  path: '/form-submit/common-form'
+  defaults:
+    _controller: '\Drupal\webform_tuning\Controller\FormSubmitController::commonFormSubmit'
+    _title: 'Common Form Submit'
+  requirements:
+    _permission: 'access content'
+  methods: [POST]
+
+webform_tuning.quiz_form_submit:
+  path: '/form-submit/quiz'
+  defaults:
+    _controller: '\Drupal\webform_tuning\Controller\FormSubmitController::quizFormSubmit'
+    _title: 'Quiz Form Submit'
+  requirements:
+    _permission: 'access content'
+  methods: [POST]

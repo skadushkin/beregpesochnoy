@@ -1,0 +1,4 @@
+services:
+  webform_tuning.form_submit_controller:
+    class: Drupal\webform_tuning\Controller\FormSubmitController
+    arguments: []

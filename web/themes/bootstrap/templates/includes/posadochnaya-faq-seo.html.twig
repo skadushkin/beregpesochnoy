@@ -1,0 +1,26 @@
+{# FAQ в стандартном стиле сайта из field_faq #}
+{% if posadochnaya.faq is not empty %}
+<section class="seo-page-faq">
+    <div class="faq-container">
+        <div class="faq">
+            <div class="faq-top">
+                <h2>Частые<br>вопросы</h2>
+            </div>
+            <div class="faq-bot">
+                {% for item in posadochnaya.faq %}
+                <div class="faq-bot-item">
+                    <div>
+                        <div class="faq-item-left">{{ item.question }}</div>
+                        <div class="faq-right">
+                            <img class="faq-right-plus" src="/sites/default/files/img/plusfaq.svg" alt="">
+                            <img class="faq-right-minus" src="/sites/default/files/img/minusfaq.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="faq-answer">{{ item.answer|raw }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

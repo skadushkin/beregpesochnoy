@@ -1,0 +1,123 @@
+/**
+ * Lazy-loaded genplan on the front page.
+ */
+
+.front-genplan {
+  width: 100%;
+  margin-top: 48px;
+}
+
+.front-genplan__wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 680px;
+  background: linear-gradient(160deg, #3a3a3a 0%, #2e2e2e 45%, #252525 100%);
+}
+
+.lv2-genplan__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(50, 50, 50, 0.98) 0%, rgba(37, 37, 37, 0.98) 100%);
+}
+
+.lv2-genplan__loader[hidden] {
+  display: none !important;
+}
+
+.lv2-genplan__loader-inner {
+  text-align: center;
+  padding: 24px;
+}
+
+.lv2-genplan__spinner {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  border: 3px solid rgba(179, 206, 125, 0.15);
+  border-top-color: #b3ce7d;
+  border-right-color: #917357;
+  animation: lv2-genplan-spin 0.85s linear infinite;
+  box-shadow: 0 0 24px rgba(179, 206, 125, 0.12);
+}
+
+@keyframes lv2-genplan-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lv2-genplan__loader-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lv2-genplan__error-text {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+
+.lv2-genplan__retry {
+  appearance: none;
+  border: 1px solid #917357;
+  background: transparent;
+  color: #b3ce7d;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lv2-genplan__retry:hover {
+  background: #917357;
+  color: #fff;
+}
+
+.lv2-genplan__mount {
+  width: 100%;
+}
+
+.lv2-genplan__mount[hidden] {
+  display: none !important;
+}
+
+.lv2-genplan--loaded.front-genplan__wrap,
+#lv2Genplan.lv2-genplan--loaded {
+  min-height: 0;
+  background: #fff;
+}
+
+.front-genplan .genplan-embed {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+
+.front-genplan .genplan-embed .frame {
+  width: 100%;
+  max-width: 1146px;
+  margin: 0 auto 12px;
+}
+
+.front-genplan .genplan-embed #image-container {
+  max-width: 100%;
+  aspect-ratio: 1198 / 673;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .front-genplan__wrap {
+    min-height: 320px;
+  }
+}

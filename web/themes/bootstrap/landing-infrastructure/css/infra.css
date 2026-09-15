@@ -1,0 +1,141 @@
+/* Лендинг «Инфраструктура» — node 854. База: ponton, Figma infrastructure-lg 7140:1968 */
+
+body.page-node-854 {
+  --bg: #FEFAF4;
+  --bg-card: #F4EADA;
+  --bg-footer: #917357;
+  --accent: #917357;
+  --white: #fff;
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #3C3C3B;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.page-node-854 .ponton .h2,
+body.page-node-854 .ponton-hero__title,
+body.page-node-854 .ponton-hero__lead,
+body.page-node-854 .ponton-about__title,
+body.page-node-854 .ponton-about__text,
+body.page-node-854 .ponton-stat__v,
+body.page-node-854 .ponton-stat__l,
+body.page-node-854 .ponton-bento__card-title,
+body.page-node-854 .ponton-bento__card p,
+body.page-node-854 .ponton-lifestyle__tag,
+body.page-node-854 .ponton-lifestyle__h2,
+body.page-node-854 .ponton-catalog__h2 .t-white,
+body.page-node-854 .ponton-catalog__h2 .t-dark {
+  color: #3C3C3B;
+}
+
+body.page-node-854 .ponton-hero__bg::after {
+  background: linear-gradient(
+    180deg,
+    rgba(254, 250, 244, 0) 43%,
+    rgba(254, 250, 244, 0.5) 58%,
+    rgba(254, 250, 244, 0.7) 66%,
+    rgba(254, 250, 244, 0.85) 73%,
+    rgba(254, 250, 244, 0.93) 78%,
+    #FEFAF4 84%
+  );
+}
+
+body.page-node-854 .ponton-hero__lead {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+body.page-node-854 .ponton-hero__link {
+  color: #3C3C3B;
+}
+
+body.page-node-854 .ponton-hero__link:hover {
+  color: #917357;
+}
+
+body.page-node-854 .ponton-stat {
+  background: #F4EADA;
+}
+
+body.page-node-854 .ponton-bento__card {
+  background: #F4EADA;
+  border-color: rgba(60, 60, 59, 0.12);
+}
+
+body.page-node-854 .ponton-scheme .infra-pill {
+  background: #F4EADA;
+  color: #917357;
+}
+
+body.page-node-854 .ponton-scheme .infra-pill.is-active,
+body.page-node-854 .ponton-scheme .infra-pill:hover {
+  background: #917357;
+  color: #fff;
+}
+
+body.page-node-854 .ponton-scheme .infra-carousel__item[data-offset='-1']::after {
+  background: linear-gradient(to left, rgba(254, 250, 244, 1) 0%, rgba(254, 250, 244, 0) 76%);
+}
+
+body.page-node-854 .ponton-scheme .infra-carousel__item[data-offset='1']::after {
+  background: linear-gradient(to right, rgba(254, 250, 244, 1) 0%, rgba(254, 250, 244, 0) 76%);
+}
+
+body.page-node-854 .ponton-pill {
+  border-color: rgba(145, 115, 87, 0.45);
+  color: #917357;
+}
+
+body.page-node-854 .ponton-pill:hover {
+  border-color: #917357;
+  background: rgba(145, 115, 87, 0.08);
+}
+
+body.page-node-854 .ponton-pill.is-active {
+  background: #917357;
+  border-color: #917357;
+  color: #fff;
+}
+
+body.page-node-854 .ponton .dot {
+  background: rgba(145, 115, 87, 0.35);
+}
+
+body.page-node-854 .ponton .dot.is-active {
+  background: #917357;
+}
+
+body.page-node-854 .ponton .slider-arrow {
+  color: #917357;
+  border-color: rgba(145, 115, 87, 0.35);
+}
+
+body.page-node-854 .ponton .slider-arrow:hover {
+  background: rgba(145, 115, 87, 0.08);
+}
+
+body.page-node-854 .ponton .btn--gold {
+  background: #917357;
+  color: #fff;
+  border-color: #917357;
+}
+
+body.page-node-854 .ponton .btn--gold:hover {
+  background: transparent;
+  color: #917357;
+}
+
+body.page-node-854 .ponton-lifestyle__img {
+  object-fit: cover;
+}
+
+body.page-node-854 .section.ponton-lifestyle .ponton-lifestyle__canvas {
+  opacity: 1;
+}
+
+body.page-node-854 .lv2-catalog {
+  background: var(--bg);
+  color: #3C3C3B;
+}

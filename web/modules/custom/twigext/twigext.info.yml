@@ -1,0 +1,5 @@
+name: 'Twig ext module'
+type: module
+description: 'Provides custom Twig extensions for price calculations.'
+core_version_requirement: ^10
+package: Custom

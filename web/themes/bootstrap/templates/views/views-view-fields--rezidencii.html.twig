@@ -1,0 +1,41 @@
+<div class="rezident-item">
+    <div class="rezident-item-img">
+        <img src="{{ file_url(row._entity.field_image.entity.uri.value) }}" alt="">
+    </div>
+
+    <div class="rezident-item-uptext">
+        <div class="rezident-item-name">{{ row._entity.title.value }}</div>  {# Название объекта #}
+
+        <!--<div class="rezident-info">
+            <div>
+                {{ row._entity.field_total_area.value|number_format(0, '.', ' ') }} м&sup2;
+                <span>площадь дома</span>
+            </div> {# Общая площадь #}
+            <div>
+                {{ row._entity.field_general_area.value|number_format(0, '.', ' ') }} м&sup2;
+                <span>площадь участка</span>
+            </div> {# Общая площадь #}
+            <div>
+                {{ row._entity.field_storeys.value }}
+                <span>этажа</span>
+            </div> {# Общая площадь #}
+            <div>
+                {{ row._entity.field_rooms.value }}
+                <span>спален</span>
+            </div> {# Общая площадь #}
+            <div>
+                {{ row._entity.field_bathrooms.value }}
+                <span>санузла</span>
+            </div> {# Общая площадь #}
+
+
+
+        </div>-->
+        <div class="rezident-desc">
+            {{ row._entity.body.value }}
+        </div>
+        <a href="#" data-fancybox="" data-src="#mess" class="get-rezident">Получить презентацию</a>
+    </div>
+
+
+</div>

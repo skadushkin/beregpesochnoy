@@ -1,0 +1,67 @@
+
+{#<div class="news-nav-menu-mob">#}
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon1.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">НОВОСТИ</div>#}
+{#        </a>#}
+{#    </div>#}
+
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon1.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">СТАТЬИ</div>#}
+{#        </a>#}
+{#    </div>#}
+
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon2.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">ПОСМОТРЕТЬ ВСЕ</div>#}
+{#        </a>#}
+{#    </div>#}
+{#</div>#}
+
+
+
+{% block content %}
+{% if path('<current>') != '/kottedzhnyy-poselok-v-podmoskovye' %}
+<section class="bg1 {{ container }}">
+    <div class="first-container"{{ content_attributes }}>
+        <div class="invest-first">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="invest-first-title">
+                <h1>{{ title|raw }}</h1>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+{% endif %}
+    {{ page.content }}
+
+
+    {% if sidebar_first_exists %} 
+        <div{{ sidebar_first_attributes }}>
+            <aside class="section" role="complementary">
+                {{ page.sidebar_first }}
+            </aside>
+        </div>
+    {% endif %}
+    {% if sidebar_second_exists %}
+        <div{{ sidebar_second_attributes }}>
+            <aside class="section" role="complementary">
+                {{ page.sidebar_second }}
+            </aside>
+        </div>
+    {% endif %}
+{% endblock %}

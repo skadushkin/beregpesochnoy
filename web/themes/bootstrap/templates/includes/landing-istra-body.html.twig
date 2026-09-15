@@ -1,0 +1,195 @@
+{# SEO-лендинг «КП в Истре». Node 850. /kottedzhnyy-poselok-istra/ #}
+{% set pt_img = '/themes/bootstrap/landing-ponton/img/' %}
+{% set lv2_img = '/themes/bootstrap/landing-v2/img/' %}
+
+<main class="ponton istra landing">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="ponton-hero istra-hero" id="top">
+        <div class="ponton-hero__bg" aria-hidden="true">
+            <img src="{{ pt_img }}hero-house-401b81.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ponton-hero__content">
+            <div class="ponton-hero__main">
+                <div class="ponton-hero__copy">
+                    <h1 class="ponton-hero__title">Коттеджный поселок в Истре</h1>
+                    <div class="istra-hero__text">
+                        <p class="ponton-hero__lead">КП «Берег Песочной» — коттеджный поселок рядом с Истрой для тех, кто хочет жить за городом, но не терять доступ к школам, детским садам, медицине, магазинам и городской инфраструктуре. Поселок расположен в Истринском районе, примерно в 45&nbsp;км от МКАД, на Новорижском направлении.</p>
+                        <p>«Берег Песочной» сочетает приватность загородного поселка и удобство жизни рядом с городом. До Истры можно доехать примерно за 10&nbsp;минут, а внутри поселка предусмотрены закрытая охраняемая территория, ландшафтный парк, прогулочные зоны, река Песочная и городские коммуникации для постоянного проживания.</p>
+                    </div>
+                    <div class="ponton-hero__actions">
+                        <button type="button" class="btn btn--white open-lv2-tour-modal">Записаться на экскурсию</button>
+                        <a href="#catalog" class="ponton-hero__link">Посмотреть дома</a>
+                    </div>
+                </div>
+                <div class="ponton-hero__stats">
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">10 минут</strong>
+                        <span class="ponton-stat__l">до города Истра и повседневной инфраструктуры</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">45 км</strong>
+                        <span class="ponton-stat__l">от МКАД по Новорижскому направлению</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Для жизни</strong>
+                        <span class="ponton-stat__l">газ, вода, канализация, интернет и охрана</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Рядом природа</strong>
+                        <span class="ponton-stat__l">река Песочная, парк и Истринское водохранилище</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ ЗАГОРОДНАЯ ЖИЗНЬ + КАРТОЧКИ ═══ -->
+    <section class="section ponton-about istra-about" id="about">
+        <div class="cl section__inner ponton-about__inner">
+            <div class="ponton-about__head">
+                <h2 class="h2 ponton-about__title">Загородная жизнь рядом с городской инфраструктурой Истры</h2>
+                <div class="istra-prose">
+                    <p>Для многих покупателей дом за городом — это не только участок, тишина и свежий воздух. Важно, чтобы рядом оставалась привычная городская инфраструктура: школы, детские сады, поликлиники, магазины, спортивные секции, сервисы и места для повседневных дел. Поэтому коттеджный поселок рядом с Истрой становится удобным форматом для тех, кто хочет жить на природе, но не уезжать слишком далеко от города.</p>
+                    <p>КП «Берег Песочной» расположен так, чтобы совместить два сценария: спокойную жизнь в закрытом поселке и быстрый доступ к инфраструктуре Истры. До города можно доехать примерно за 10&nbsp;минут, поэтому поездки за продуктами, к врачу, в школу, на тренировки или по бытовым вопросам не превращаются в отдельное путешествие.</p>
+                    <p>Такой формат особенно важен для постоянного проживания. Если дом нужен не только для выходных, а для жизни круглый год, рядом должны быть не только лес и красивый участок, но и понятная повседневная логистика. В этом смысле близость Истры усиливает ценность поселка: жители получают загородную среду, но сохраняют доступ к городским возможностям.</p>
+                </div>
+            </div>
+
+            <div class="istra-features">
+                <article class="istra-features__card">
+                    <div class="istra-features__photo">
+                        <img src="{{ lv2_img }}family-townhouse.png" alt="Истра в 10 минутах от поселка">
+                    </div>
+                    <div class="istra-features__body">
+                        <h3 class="istra-features__title">Истра в 10 минутах</h3>
+                        <p>Школы, детские сады, поликлиники, магазины и сервисы рядом с поселком.</p>
+                    </div>
+                </article>
+                <article class="istra-features__card">
+                    <div class="istra-features__photo">
+                        <img src="{{ pt_img }}bento-comfort.png" alt="Поселок для жизни круглый год">
+                    </div>
+                    <div class="istra-features__body">
+                        <h3 class="istra-features__title">Поселок для жизни круглый год</h3>
+                        <p>Коммуникации, интернет, охрана и удобные дороги для постоянного проживания.</p>
+                    </div>
+                </article>
+                <article class="istra-features__card">
+                    <div class="istra-features__photo">
+                        <img src="{{ pt_img }}bento-activities.png" alt="Природа Истринского района">
+                    </div>
+                    <div class="istra-features__body">
+                        <h3 class="istra-features__title">Природа Истринского района</h3>
+                        <p>Река Песочная, зеленое окружение и Истринское водохранилище поблизости.</p>
+                    </div>
+                </article>
+                <article class="istra-features__card">
+                    <div class="istra-features__photo">
+                        <img src="{{ lv2_img }}private-house.png" alt="Закрытая территория поселка">
+                    </div>
+                    <div class="istra-features__body">
+                        <h3 class="istra-features__title">Закрытая территория</h3>
+                        <p>Приватная среда, контроль доступа, видеонаблюдение и спокойствие жителей.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ КАТАЛОГ ═══ -->
+    <section class="section lv2-catalog ponton-catalog istra-catalog" id="catalog">
+        <div class="cl section__inner">
+            <div class="ponton-catalog__head">
+                <h2 class="h2 h2--center ponton-catalog__h2">
+                    <span class="t-merit t-white">Дома и участки </span><br>
+                    <span class="t-dark">рядом с Истрой</span>
+                </h2>
+                <div class="ponton-scheme__pills ponton-catalog__pills">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke" class="ponton-pill is-active">Все</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="ponton-pill">Готовые дома</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ponton-pill">Cтроящиеся дома</a>
+                    <a href="/taunhausy" class="ponton-pill">Таунхаусы</a>
+                    <a href="/uchastok-s-podryadom-v-podmoskovye" class="ponton-pill">Дома с подрядом</a>
+                </div>
+            </div>
+            <div class="lv2-catalog__houses">
+                {{ drupal_view('gotovye_doma', 'block_6') }}
+            </div>
+            <div class="ponton-catalog__cta">
+                <a href="/kupit-dom-v-kottedzhnom-poselke" class="btn btn--white">Смотреть весь каталог <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ SEO-ТЕКСТЫ ═══ -->
+    <section class="section istra-text" id="why">
+        <div class="cl section__inner istra-text__inner">
+            <h2 class="h2 h2--center">Почему выбирают коттеджный поселок рядом с Истрой</h2>
+            <div class="istra-prose">
+                <p>Коттеджный поселок рядом с Истрой — это удобный вариант для тех, кто хочет переехать за город, но не готов отказываться от городской инфраструктуры. В отличие от более удаленных локаций, здесь можно жить в природном окружении и при этом быстро добираться до школ, детских садов, медицинских учреждений, магазинов, спортивных комплексов и других объектов, которые нужны в повседневной жизни.</p>
+                <p>Истра — один из важных городских центров северо-запада Подмосковья. Для жителей загородных поселков рядом с городом это означает понятную бытовую логистику: не нужно каждый раз ехать в Москву за базовыми услугами, а многие задачи можно решать поблизости. Такой фактор особенно важен для семей с детьми, людей, которые работают удаленно, и тех, кто планирует жить в доме постоянно, а не приезжать только на выходные.</p>
+                <p>КП «Берег Песочной» находится примерно в 10&nbsp;минутах от Истры и при этом сохраняет атмосферу загородного поселка: закрытая территория, природное окружение, прогулочные зоны, река Песочная, собственный парк и участки для индивидуальной жизни. Благодаря этому поселок подходит тем, кто ищет баланс между приватностью, экологией и доступностью городской инфраструктуры.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section istra-text istra-text--alt" id="living">
+        <div class="cl section__inner istra-text__inner">
+            <h2 class="h2 h2--center">КП «Берег Песочной»: поселок для постоянного проживания в Истринском районе</h2>
+            <div class="istra-prose">
+                <p>«Берег Песочной» создавался как поселок, в котором можно жить круглый год, а не только приезжать летом или на выходные. Для этого важны не только дома и участки, но и инженерная база: магистральный газ, центральное энергоснабжение, централизованная канализация, собственный водозаборный узел и оптоволоконный интернет. Эти параметры напрямую влияют на комфорт постоянного проживания за городом.</p>
+                <p>Внутренняя среда поселка тоже рассчитана на ежедневную жизнь. Территория закрыта и охраняется, действует видеонаблюдение и контроль доступа. Внутри и вокруг поселка создан ландшафтный парк площадью 8&nbsp;гектаров с прогулочными и велосипедными дорожками, зонами отдыха, прудом с фонтаном, садом камней и местами для семейного досуга. Это делает поселок не просто местом, где расположен дом, а полноценной загородной средой.</p>
+                <p>Дополнительное преимущество — природное окружение Истринского района. Вдоль южной границы поселка протекает река Песочная, а в нескольких минутах езды находится Истринское водохранилище. Для жителей это дает больше сценариев отдыха: прогулки, спорт, семейные выходные, выезды к воде и спокойную жизнь вдали от городской плотности, но рядом с инфраструктурой Истры.</p>
+            </div>
+            <div class="istra-text__cta">
+                <button type="button" class="btn btn--white open-lv2-tour-modal">Записаться на экскурсию <span class="btn-arrow">→</span></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section istra-faq" id="faq">
+        <div class="cl section__inner istra-faq__inner">
+            <h2 class="h2 h2--center">Частые вопросы</h2>
+            <div class="istra-faq__list">
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Где находится КП «Берег Песочной»?</summary>
+                    <div class="istra-faq__a"><p>КП «Берег Песочной» расположен в Истринском районе Московской области, на Новорижском направлении, примерно в 45&nbsp;км от МКАД. До города Истра можно доехать примерно за 10&nbsp;минут.</p></div>
+                </details>
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Почему удобно жить рядом с Истрой?</summary>
+                    <div class="istra-faq__a"><p>Истра дает доступ к городской инфраструктуре: школам, детским садам, поликлиникам, магазинам, спортивным объектам и сервисам. Это важно для тех, кто рассматривает дом за городом для постоянного проживания.</p></div>
+                </details>
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Какие объекты можно выбрать в поселке?</summary>
+                    <div class="istra-faq__a"><p>В КП «Берег Песочной» можно рассмотреть готовые дома, строящиеся дома и участки с подрядом. Актуальные варианты стоит смотреть в <a href="#catalog">каталоге объектов</a>.</p></div>
+                </details>
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Подходит ли поселок для жизни круглый год?</summary>
+                    <div class="istra-faq__a"><p>Да, поселок рассчитан на постоянное проживание. Предусмотрены магистральный газ, центральное энергоснабжение, централизованная канализация, собственный водозаборный узел, оптоволоконный интернет, охрана и видеонаблюдение.</p></div>
+                </details>
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Есть ли рядом природные локации?</summary>
+                    <div class="istra-faq__a"><p>Да, рядом с поселком протекает река Песочная, а в нескольких минутах езды находится Истринское водохранилище. В самом поселке есть собственный ландшафтный парк площадью 8&nbsp;гектаров.</p></div>
+                </details>
+                <details class="istra-faq__item">
+                    <summary class="istra-faq__q">Можно ли приехать на экскурсию?</summary>
+                    <div class="istra-faq__a"><p>Да, можно записаться на экскурсию, посмотреть поселок, доступные дома, участки, генплан, парк, дороги и окружение.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'Лендинг КП в Истре — экскурсия'
+    } %}
+
+</main>

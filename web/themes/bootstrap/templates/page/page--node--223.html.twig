@@ -1,0 +1,227 @@
+<div class="town-mob-menu-cont">
+    <div class="town-mob-menu-item">
+        <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="filter-option" data-value="2">
+            <div><img src="/sites/default/files/img/mob_menu1.svg" alt=""></div>
+            <div>ГОТОВЫЕ ДОМА</div>
+        </a>
+    </div>
+    <div class="town-mob-menu-item">
+        <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="filter-option" data-value="3">
+            <div><img src="/sites/default/files/img/mob_menu2.svg" alt=""></div>
+            <div>СТРОЯЩИЕСЯ ДОМА</div>
+        </a>
+    </div>
+    <div class="town-mob-menu-item">
+        <a href="/uchastok-s-podryadom-v-podmoskovye" class="filter-option" data-value="4">
+            <div><img src="/sites/default/files/img/mob_menu3.svg" alt=""></div>
+            <div>ДОМА
+                С ПОДРЯДОМ</div>
+        </a>
+    </div>
+    <div class="town-mob-menu-item">
+        <a href="/taunhausy">
+            <div><img src="/sites/default/files/img/mob_menu4.svg" alt=""></div>
+            <div>таунхаусы</div>
+        </a>
+    </div>
+    <div class="town-mob-menu-item">
+        <a href="/rezidents">
+            <div><img src="/sites/default/files/img/mob_menu5.svg" alt=""></div>
+            <div>резиденции</div>
+        </a>
+    </div>
+</div>
+<section>
+    <div class="townhouses-first-container container">
+        <div class="townhouses-first in-container">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="townhouses-first-top">
+                <div class="townhouses-first-title t1-desc t1-mob"><h1><span>Купить дом
+</span><br>в коттеджном<br>
+                        поселке</h1></div>
+                <div class="townhouses-first-top-desc regular-desc regular-mob">
+                    <div>Вы можете построить дом по готовому проекту из каталога или заказать индивидуальный в нашем архитектурном ателье. Все коттеджи строятся из железобетонных ребристых панелей по инновационной технологии БЭНПАН.</div>
+                    <div class="desktop-flex">
+                        <div class="townhouses-first-catalog-left-btn-desktop regular-desc btn-on-tab"><a href="#tour">записаться на экскурсию</a></div>
+                        <a href="/arhitekturnoe-atele">заказать индивидуальный проект</a>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+
+            <div class="townhouses-first-catalog pt-140">
+                <div class="townhouses-first-catalog-left">
+                    <!--noindex-->
+                    <div class="townhouses-first-catalog-filter" data-nosnippet>
+                        {{ page.content }}
+                        <div class="townhouses-first-catalog-left-nav" id="dynamic-filter">
+    {#                        <div class="active">ГОТОВЫЕ ДОМА</div>#}
+    {#                        <div>СТРОЯЩИЕСЯ ДОМА</div>#}
+    {#                        <div>ДОМА С ПОДРЯДОМ</div>#}
+                        </div>
+                    </div>
+                    <!--/noindex-->
+                        <div class="townhouses-first-catalog-left-nav townhouses-first-catalog-left-nav2">
+                            <div><a href="/uchastok-s-podryadom-v-podmoskovye">Участки с подрядом</a></div>
+                            <div><a href="/taunhausy">Таунхаусы</a></div>
+                            <div><a href="/arhitekturnoe-atele">По своему проекту</a></div>
+                            <div><a href="/rezidents">VIP-резиденции</a></div>
+    {#                        <div class="active">ГОТОВЫЕ ДОМА</div>#}
+    {#                        <div>СТРОЯЩИЕСЯ ДОМА</div>#}
+    {#                        <div>ДОМА С ПОДРЯДОМ</div>#}
+                        </div>
+                        <div class="townhouses-first-catalog-left-btn regular-desc"><a href="#tour">записаться на экскурсию</a></div>
+                    
+
+                    
+                </div>
+                <div class="townhouses-first-catalog-right" style="padding-bottom: 100px">
+
+
+                    {{ drupal_view('gotovye_doma', 'block_1') }}
+
+                    {% include '@bootstrap/includes/catalog-seo-tags.html.twig' %}
+
+
+                </div>
+            </div>
+
+{#            <div class="townhouses-first-catalog-more">#}
+{#                <a href="">загрузить еще</a>#}
+{#            </div>#}
+
+        </div>
+    </div>
+</section>
+
+
+
+<section class="bg2">
+
+    <div class="action-container">
+        <div class="container_w">
+            <div class="actions-items">
+
+                <div class="actions-item">
+                    <div class="actions-item-left">
+                        <img src="/sites/default/files/img/ipoteka.svg" class="ipoteka-icon">
+                        <a href="/kreditovanie"><img src="/sites/default/files/img/actions_2.png" alt="" class="actions-item-img"></a>
+                    </div>
+                    <div class="actions-item-right">
+                        <div class="action-item-right-title2">ИПОТЕКА ОТ <span>6%</span></div>
+                        <div class="action-item-right-desc">ПОМОЖЕМ ОФОРМИТЬ
+                            ИПОТЕКУ НА ЛУЧШИХ УСЛОВИЯХ</div>
+                        <a href="/kreditovanie" class="actions-item-link">УЗНАТЬ ПОДРОБНЕЕ</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    {{ drupal_view('zhizn_v_poselke', 'block_3') }}
+
+</section>
+
+{{ drupal_entity('block_content', '44') }}
+
+<script>
+    function init() {
+        const scrollContainer = document.querySelector('.shorts-block-items');
+        const scrollContent = document.querySelector('.short-block-items-container');
+        const dotsContainer = document.querySelector('.short-navigation-dots');
+
+        if (!scrollContainer) {
+            return;
+        }
+
+        const items = scrollContent.children;
+        const itemWidth = items[0].getBoundingClientRect().width;
+        const gap = 40; // Значение gap
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let currentX = 0;
+
+        function scrollBlockCreateDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < items.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => scrollBlockScrollToItem(i));
+                dotsContainer.appendChild(dot);
+            }
+            scrollBlockUpdateDotsPosition();
+        }
+
+        function scrollBlockUpdateDotsPosition() {
+            const dots = dotsContainer.children;
+            const activeIndex = Math.round(Math.abs(currentX) / (itemWidth + gap));
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            if (dots[activeIndex]) {
+                dots[activeIndex].classList.add('active');
+            }
+        }
+
+        function scrollBlockScrollToItem(index) {
+            currentX = -index * (itemWidth + gap);
+            scrollContent.style.transform = `translateX(${currentX}px)`;
+            scrollBlockUpdateDotsPosition();
+        }
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollContainer.classList.add('active');
+            startX = e.pageX;
+            scrollLeft = currentX;
+            scrollContent.style.transition = `0s`;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+            scrollContent.style.transition = `0.2s`;
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - startX;
+            currentX = scrollLeft + x;
+
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const contentRect = scrollContent.getBoundingClientRect();
+
+            if (currentX > 0) {
+                currentX = 0; // Не позволяем прокрутке идти дальше левой границы
+            }
+
+            if (currentX < containerRect.width - contentRect.width) {
+                currentX = containerRect.width - contentRect.width; // Не позволяем прокрутке идти дальше правой границы
+            }
+
+            scrollContent.style.transform = `translateX(${currentX}px)`;
+            scrollBlockUpdateDotsPosition();
+        });
+
+        scrollBlockCreateDots();
+        scrollBlockUpdateDotsPosition();
+    }
+
+    init();
+
+
+</script>

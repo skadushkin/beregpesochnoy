@@ -1,0 +1,37 @@
+{# Hero ponton — Figma 7140:1532 / 7140:1549 #}
+{% set p = posadochnaya|default({}) %}
+{% set pt_img = '/themes/bootstrap/landing-ponton/img/' %}
+{% set hero_image = p.hero_image|default(pt_img ~ 'hero-house-401b81.png') %}
+
+    <section class="ponton-hero" id="top">
+        <div class="cl posadochnaya-ponton__crumbs first-crumbs">
+            {{ page.breadcrumb }}
+        </div>
+        <div class="ponton-hero__bg" aria-hidden="true">
+        <img src="{{ hero_image }}" alt="" width="1920" height="686">
+    </div>
+    <div class="cl ponton-hero__content">
+        <div class="ponton-hero__main">
+            <div class="ponton-hero__copy">
+                <h1 class="ponton-hero__title">{{ p.title }}</h1>
+                {% if p.intro %}
+                    <div class="ponton-hero__lead">{{ p.intro|raw }}</div>
+                {% endif %}
+                <div class="ponton-hero__actions">
+                    <button type="button" class="btn btn--white open-lv2-tour-modal">Записаться на экскурсию</button>
+                    <a href="#catalog" class="ponton-hero__link">Посмотреть дома</a>
+                </div>
+            </div>
+            {% if p.stats is not empty %}
+            <div class="ponton-hero__stats">
+                {% for stat in p.stats %}
+                <article class="ponton-stat">
+                    {% if stat.value %}<strong class="ponton-stat__v">{{ stat.value }}</strong>{% endif %}
+                    {% if stat.label %}<span class="ponton-stat__l">{{ stat.label }}</span>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,6 @@
+services:
+  project_sheets_sync.commands:
+    class: Drupal\project_sheets_sync\Commands\ProjectSheetsSyncCommands
+    arguments: ['@project_sheets_sync.sync']
+    tags:
+      - { name: drush.command }

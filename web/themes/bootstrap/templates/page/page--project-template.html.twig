@@ -1,0 +1,647 @@
+{% if node.field_house_project.entity is not empty %}
+    {% set related_node = node.field_house_project.entity %}
+{% endif %}
+
+<section>
+    <div class="cart-first-container container">
+        <div class="cart-first in-container">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="cart-first-title t-50-400-60 t3-mob">
+                <h1>
+                    {% if node.field_h1_field.value is not empty %}
+                    {{ node.field_h1_field.value }}
+                    {% else %}
+                        {% if related_node.title.value is not empty %}
+                            {{ related_node.title.value }}, {{ node.title.value }}
+                        {% endif %}
+                    {% endif %}
+                </h1> {# Использование поля H1 заголовка #}
+            </div>
+
+            {{ page.content }}
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+    <div class="what-icons-container container">
+        <div class="what-icons in-container">
+            <div class="whywe">
+
+                <div class="whywe-title t-45-400-55 t1-mob">
+                    {% set storeys = node.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+                    <h2>Что входит<br><span>в стоимость <br class="cart-mob-br">предложения</span></h2>
+                </div>
+                <div class="whywe-items-container">
+                    <div class="what-icons-titles">
+                        <img src="/sites/default/files/img/cart-sec-left.svg" alt="">
+                    </div>
+                    <div class="what-icons-left">
+
+                        <div class="whywe-item">
+                            <div class="whywe-item-mob-title">дом</div>
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe1.svg" alt=""></div>
+                            <div class="whywe-item-text">ДОМ<br class="cart-mob-br2"> «ТЕПЛЫЙ КОНТУР»</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe2.svg" alt=""></div>
+                            <div class="whywe-item-text">ОКНА REHAU<br class="cart-mob-br2"> 70 СЕРИЯ</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe4.svg" alt=""></div>
+                            <div class="whywe-item-text">ДВЕРЬ<br class="cart-mob-br2"> С ТЕРМОРАЗРЫВОМ</div>
+                        </div>
+                                                {% if storeys > 1 %}
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe3.svg" alt=""></div>
+                            <div class="whywe-item-text">МЕТ. КАРКАС<br class="cart-mob-br2"> ЛЕСТНИЦЫ</div>
+                        </div>
+                        {% else %}
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"></div>
+                            <div class="whywe-item-text"></div>
+                        </div>
+                        {% endif %}
+
+                        <div class="whywe-item">
+                            <div class="whywe-item-mob-title">коммуникации</div>
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe6.svg" alt=""></div>
+                            <div class="whywe-item-text">ЗАВЕДЕНА<br class="cart-mob-br2"> КАНАЛИЗАЦИЯ</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe13.svg" alt=""></div>
+                            <div class="whywe-item-text">электричество<br>(10 квт)</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe12.svg" alt=""></div>
+                            <div class="whywe-item-text">ПОДВЕДЕН<br class="cart-mob-br2"> ВОДОПРОВОД</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe8.svg" alt=""></div>
+                            <div class="whywe-item-text">ГАЗ ПО ГРАНИЦЕ<br class="cart-mob-br2"> УЧАСТКА</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-mob-title">участок</div>
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe9.svg" alt=""></div>
+                            <div class="whywe-item-text">ЗАБОР<br class="cart-mob-br2"> ПО ПЕРИМЕТРУ<br><span>УЧАСТКА</span></div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe11.svg" alt=""></div>
+                            <div class="whywe-item-text">ОТМОСТКА<br>ИЗ БРУСЧАТКИ</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe5.svg" alt=""></div>
+                            <div class="whywe-item-text">ПОДГОТОВЛЕННОЕ<br>МАШИНО-МЕСТО</div>
+                        </div>
+                        <div class="whywe-item">
+                            <div class="whywe-item-img"><img src="/sites/default/files/img/whywe7.svg" alt=""></div>
+                            <div class="whywe-item-text">ОПТОВОЛОКОННЫЙ<br>КАБЕЛЬ ИНТЕРНЕТ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg1" style="padding-top: 100px" id="genplan">
+    <div class="container"  style="padding-bottom: 0">
+        <div class="what-icons in-container" >
+            <div class="whywe">
+
+                <div class="whywe-title t-45-400-55 t1-mob">
+                    {% set storeys = node.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+                    <h2>генплан<br>коттеджного поселка<br><span>берег песочной</span></h2>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        <div class="first-container genplan-page-wrap genplan-page-wrap--v2">
+            {{ attach_library('bootstrap/genplan_map_v2') }}
+            {% include '@bootstrap/includes/genplan-map.html.twig' with {
+                genplan_variant: 'v2',
+                genplan_current_nid: node.id
+            } %}
+        </div>
+</section>
+
+
+
+<section>
+    <div class="card-techno-container container">
+        <div class="card-techno in-container">
+            <div class="card-techno-title t-50-400-60 t1-mob"><h2>Мы строим по <br>технологии <span>Бэнпан</span></h2></div>
+            <div class="card-techno-undertitle t3-mob">Стеновые панели БЭНПАН Премиум</div>
+            <div class="card-techno-desc regular-mob">
+
+                <p>Железобетонная стеновая панель БЭНПАН Премиум имеет трехслойную конструкцию, состоящую из наружного слоя фибробетона класса В30 толщиной 50 мм, внутреннего теплоизоляционного слоя толщиной 170 мм и внутреннего слоя фибробетона класса В20 толщиной 50-140 мм (в ребре). Помимо пенополистирола возможна установка в качестве утеплителя экструзионного пенополистирола или PIR-панелей.</p>
+
+                <p>Размер и форма железобетонной стеновой панели БЭНПАН Премиум, а также наличие оконных и дверных проемов определяются проектом. Максимальная высота панели может достигать 3,05 метра, а длина — 7 метров</p>
+
+
+            </div>
+            <div class="card-techno-under">
+                <div class="card-techno-under-left">
+                    <a href="/sites/default/files/img/premium.png" data-fancybox><img src="/sites/default/files/img/premium.png"></a>
+                </div>
+                <div class="card-techno-under-right">
+                    <div class="card-techno-under-right-title t3-mob">Внешняя сторона панелей может быть<br> гладкой или с отделкой фасада:</div>
+                    <div class="card-techno-under-right-list">
+                        <div>
+                            <img src="/sites/default/files/img/dikiy.png">
+                            <div class="card-techno-under-right-list-title">дикий камень</div>
+                            <p>Цельнолитая панель с рельефом дикого камня – надежное решение для фасада которое придаст вашему дому неповторимый вид. </p>
+                        </div><div>
+                            <img src="/sites/default/files/img/klinker.png">
+                            <div class="card-techno-under-right-list-title">Клинкер</div>
+                            <p>Облицовка фасада клинкерной плиткой ― эффективное решение для отделки стеновых конструкций. Гарантирует надежность и уникальный вид дома.</p>
+                        </div><div>
+                            <img src="/sites/default/files/img/shtuk.png">
+                            <div class="card-techno-under-right-list-title">штукатурка</div>
+                            <p>Фасадная декоративная штукатурка Сeresit, гарантирует надежную стойкость покрытия в течении долгого времени и  придает поверхности изысканный и привлекательный вид.  </p>
+                        </div>
+                        <div>
+                            <img src="/sites/default/files/img/planken.png">
+                            <div class="card-techno-under-right-list-title">Планкен</div>
+                            <p>Планкен из лиственницы, создаст прекрасный внешний вид дома, а обработанная маслом поверхность обеспечит эффективную защиту древесины.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="slider2" class="profit-price-sertificate">
+                <div class="profit-price-sert t3-mob">
+                    Сертификаты на ЖБ панели:
+                </div>
+                <!-- <div class="profit-price-images">
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert1.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert2.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert3.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert4.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert5.svg" alt=""></div>
+                </div> -->
+                <div class="profit-price-images-container">
+                    <div class="profit-price-images">
+                        <div class="profit-price-img-block card-img-block">
+                            <a href="/sites/default/files/img/certs/1.jpg" data-fancybox="certs">
+                                <img src="/sites/default/files/img/technosert.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/2.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider1.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/3.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider2.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/4.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider3.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/5.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider4.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/6.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider5.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/7.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider-img.svg" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="dots-container">
+                    <span class="dot active" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot dop-dot-mob"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--
+<section>
+    <div class="build-steps-container container">
+        <div class="build-steps in-container">
+            <div class="t-50-400-60 t1-mob">
+                <h2>этапы<br class="cart-mob-br2"> строительства</h2>
+            </div>
+            <div class="build-steps-items">
+                <div class="build-steps-item">
+                    <div class="build-steps-item-img">
+                        <div><img src="/sites/default/files/img/build-step1.png" alt=""></div>
+                    </div>
+                    <div class="build-steps-item-text regular-mob">Для дома про проекту БП-197 на территории КП Берег Песочной подготовлена песчаная подушка и опалубка для заливки фундамента «монолитная плита».</div>
+                    <span class="build-steps-main-line"></span>
+                    <div class="build-steps-item-date">
+                        ноябрь<br>2023
+                        <span></span>
+                    </div>
+                </div>
+                <div class="build-steps-item">
+                    <div class="build-steps-item-img">
+                        <div><img src="/sites/default/files/img/build-step2.png" alt=""></div>
+                    </div>
+                    <div class="build-steps-item-text regular-mob">В дом заведены все коммуникации, сделана разводка электрических сетей, установлена инверторная система отопления и кондиционирования. Подключен газовый котел, смонтировано сантехническое оборудование.</div>
+                    <div class="build-steps-item-date">
+                        март<br>2024
+                        <span></span>
+                    </div>
+                </div>
+                <div class="build-steps-item">
+                    <div class="build-steps-item-img">
+                        <div><img src="/sites/default/files/img/build-step3.png" alt=""></div>
+                    </div>
+                    <div class="build-steps-item-text regular-mob">Завершается внутренняя отделка дома. Проект разработан в архитектурном бюро БЭНПАН. Внутренний интерьер в стиле Барнхаус. Мебель из бука по индивидуальному заказу.</div>
+                    <div class="build-steps-item-date">
+                        апрель<br>2024
+                        <span></span>
+                    </div>
+                </div>
+                <div class="build-steps-item">
+                    <div class="build-steps-item-img">
+                        <div><img src="/sites/default/files/img/build-step4.png" alt=""></div>
+                    </div>
+                    <div class="build-steps-item-text regular-mob">Завершается внутренняя отделка дома. Проект разработан в архитектурном бюро БЭНПАН. Внутренний интерьер в стиле Барнхаус. Мебель из бука по индивидуальному заказу.</div>
+                    <div class="build-steps-item-date">
+                        май<br>2024
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+<section>
+    <div class="cart-first-slider-container container">
+        <div class="cart-first-slider in-container">
+            <div class="t-50-400-60 t1-mob">
+                <h2>Доверьте отделку<br class="cart-mob-br2"> дома нам</h2>
+            </div>
+            <div class="cart-first-slider-cont">
+                <div class="cart-first-slider-cont-item visible">
+                    <div class="cart-first-slider-cont-item-top t3-mob">черновая отделка</div>
+                    <div class="cart-first-slider-cont-item-mid">
+                        <img src="/sites/default/files/img/cart2-slider1.png" alt="">
+                    </div>
+                    <div class="cart-first-slider-cont-item-bot regular-mob">Подготовка всех поверхностей в помещении для следующего финишного оформления</div>
+                </div>
+
+                <div class="cart-first-slider-cont-item active">
+                    <div class="cart-first-slider-cont-item-top t3-mob">дизайн интерьера</div>
+                    <div class="cart-first-slider-cont-item-mid">
+                        <img src="/sites/default/files/img/cart2-slider2.png" alt="">
+                    </div>
+                    <div class="cart-first-slider-cont-item-bot regular-mob">Индивидуальное проектирование, уникальные решения и профессиональное сопровождение на каждом этапе работ </div>
+                </div>
+
+                <div class="cart-first-slider-cont-item visible">
+                    <div class="cart-first-slider-cont-item-top t3-mob">white box</div>
+                    <div class="cart-first-slider-cont-item-mid">
+                        <img src="/sites/default/files/img/cart2-slider3.png" alt="">
+                    </div>
+                    <div class="cart-first-slider-cont-item-bot regular-mob">Устройство систем электроснабжения, водоснабжения, канализации, отопления, монтаж батарей, установка подоконников. Штукатурка стен с фасадной сеткой.</div>
+                </div>
+            </div>
+            <div class="cart-btns">
+                <div class="cart-back">
+                    <img src="/sites/default/files/img/catBtnNext.svg" alt="Next">
+                </div>
+                <div class="cart-next">
+                    <img src="/sites/default/files/img/catBtnNext.svg" alt="Next">
+                </div>
+            </div>
+            <div class="cart-first-slider-desc">
+                <div class="cart-first-slider-desc-left regular-mob">
+                    Архитектурное ателье Бэнпан предлагает профессиональные услуги по индивидуальному проектированию интерьеров частных малоэтажных домов и благоустройству придомовых территорий. Команда архитекторов и дизайнеров с большим опытом работы разработает уникальный проект интерьера, поможет приобрести и правильно расставить мебель в соответствии с вашими пожеланиями и учетом современных трендов в архитектуре и дизайне.
+                </div>
+                <div class="cart-first-slider-desc-right">
+                    <a href="/arhitekturnoe-atele">
+                        <div class="cart-first-slider-desc-right-btn">
+                            <div>УЗНАТЬ подробнее</div>
+                            <div><img src="/sites/default/files/img/cart-arrow.svg" alt=""></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="first-image">
+                <div class="first-image-img"><img src="/sites/default/files/img/firstIpoteka.png" alt=""></div>
+                <div class="first-image-icons">
+                    <div class="first-image-icon">
+                        <div class="first-image-icon-img">
+                            <img src="/sites/default/files/img/cart-top-icon1.svg" alt="">
+                        </div>
+                        <div class="first-image-icon-text">единый<br>архитектурный<br>стиль</div>
+                    </div>
+                    <div class="first-image-icon">
+                        <div class="first-image-icon-img">
+                            <img src="/sites/default/files/img/cart-top-icon2.svg" alt="">
+                        </div>
+                        <div class="first-image-icon-text">охраняемая<br>территория</div>
+                    </div>
+                    <div class="first-image-icon">
+                        <div class="first-image-icon-img">
+                            <img src="/sites/default/files/img/cart-top-icon3.svg" alt="">
+                        </div>
+                        <div class="first-image-icon-text">жизнь<br> в экологически<br>чистом районе</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!--<section>
+    <div class="credit-ipoteka-container container">
+        <div class="credit-ipoteka in-container">
+            <div class="credit-ipoteka-title t-50-400-60 t1-mob">
+                <h2>кредит и ипотека</h2>
+            </div>
+            <div class="credit-ipoteka-sec">
+                <div class="credit-ipoteka-sec-left regular-mob">Этот дом можно построить оформив кредит или ипотеку. БЭНПАН является аккредитованным партнером (подрядчиком) в ДОМ.РФ, Росбанк, Сбербанк, ВТБ, Альфа по всем программа на строительство ИЖС. Окажем помощь в получении кредита на строительство индивидуального жилого дома (ИЖС) на имеющемся в собственности заемщика участке или в приобретении участка и строительстве на нем загородного дома по технологии БЭНПАН.</div>
+                <div class="credit-ipoteka-sec-right">
+                    <div class="credit-ipoteka-sec-right-text">
+                        как правильно оформить ипотеку
+                    </div>
+                    <div class="credit-ipoteka-sec-right-video" style="background-image: url('/sites/default/files/img/k1.jpg'); background-size: cover">
+                        <a href="https://kinescope.io/embed/sPiFEJmWktZE1hohauHc5v" data-fancybox data-type="iframe" data-options='{"iframe" : {"css" : {"width" : "90%", "height" : "60%"}}}'><img src="/sites/default/files/img/ShortPlayIcon.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="how-take-icons">
+                <div class="how-take-icon">
+                    <div class="how-take-icon-img">
+                        <img src="/sites/default/files/img/boldhow1.svg" alt="">
+                    </div>
+                    <div class="how-take-icon-text">
+                        быстрое<br> принятие<br> решения
+                    </div>
+                </div>
+                <div class="how-take-icon">
+                    <div class="how-take-icon-img">
+                        <img src="/sites/default/files/img/boldhow2.svg" alt="">
+                    </div>
+                    <div class="how-take-icon-text">
+                        Льготные <br>условия
+                        
+                    </div>
+                </div>
+                <div class="how-take-icon">
+                    <div class="how-take-icon-img">
+                        <img src="/sites/default/files/img/boldhow3.svg" alt="">
+                    </div>
+                    <div class="how-take-icon-text">
+                        минимальный <br>пакет<br> документов
+                    </div>
+                </div>
+                <div class="how-take-icon">
+                    <div class="how-take-icon-img">
+                        <img src="/sites/default/files/img/boldhow4.svg" alt="">
+                    </div>
+                    <div class="how-take-icon-text">
+                        решение <br>сложных <br>ситуаций
+                    </div>
+                </div>
+                <div class="how-take-icon">
+                    <div class="how-take-icon-img">
+                        <img src="/sites/default/files/img/boldhow5.svg" alt="">
+                    </div>
+                    <div class="how-take-icon-text">
+                        предложим <br>индивидуальные <br>условия
+                    </div>
+                </div>
+            </div>
+            <div class="cart-first-slider-desc">
+                <div class="cart-first-slider-desc-left regular-mob">
+                    Дом в ипотеку — это выгодно и удобно, не надо копить всю сумму целиком, можно быстро построиться и жить в собственном доме заплатив небольшой первоначальный взнос, равномерно и предсказуемо оплачивать кредит необременительными суммами. Ипотека 2025: Как правильно взять ипотечный кредит на строительство частного дома (ИЖС), как использовать при покупке материнский капитал. На эти и другие вопросы отвечает в интервью специалист по сопровождению ипотечных сделок нашей компании.
+                </div>
+                <div class="cart-first-slider-desc-right">
+                    <a href="/kreditovanie">
+                        <div class="cart-first-slider-desc-right-btn">
+                            <div>УЗНАТЬ подробнее</div>
+                            <div><img src="/sites/default/files/img/cart-arrow.svg" alt=""></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div id="slider1" class="profit-price-sertificate">
+
+                 <div class="profit-price-images">
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert1.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert2.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert3.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert4.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert5.svg" alt=""></div>
+                </div> 
+                <div class="profit-price-images-container">
+                    <div class="profit-price-images">
+                        <div class="profit-price-img-block"><img src="/sites/default/files/img/sert1.svg" alt=""></div>
+                        <div class="profit-price-img-block"><img src="/sites/default/files/img/sert2.svg" alt=""></div>
+                        <div class="profit-price-img-block"><img src="/sites/default/files/img/sert3.svg" alt=""></div>
+                        <div class="profit-price-img-block"><img src="/sites/default/files/img/sert4.svg" alt=""></div>
+                        <div class="profit-price-img-block"><img src="/sites/default/files/img/sert5.svg" alt=""></div>
+                    </div>
+                </div>
+                <div class="dots-container">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <a href="/kreditovanie">
+                <div class="cart-first-slider-desc-right-btn cart-first-slider-desc-mob">
+                    <div>УЗНАТЬ подробнее</div>
+                    <div><img src="/sites/default/files/img/cart-arrow.svg" alt=""></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>-->
+
+<!-- <section>
+    <div class="what-doing-container container">
+        <div class="what-doing in-container">
+            <div class="what-doing-title">
+                <h2>ЧЕМ ЗАНЯТЬСЯ</h2>
+            </div>
+            <div class="info-slider2-container">
+                <div class="info-slider2">
+                    <div class="info-slider2-item">
+                        <img src="/sites/default/files/img/whatdoing1.png" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">гимнастическая площадка</div>
+                            <div class="info-slider2-item-desc-desc">Все для спорта и активного отдыха. Комплекс для занятия уличной гимнастикой (воркаут), волейбольная площадка, столы для настольного тенниса.</div>
+                        </div>
+                    </div>
+                    <div class="info-slider2-item active">
+                        <img src="/sites/default/files/img/whatdoing2.png" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">волейбол</div>
+                            <div class="info-slider2-item-desc-desc">В 45 км от МКАД по Новорижскому шоссе, на берегу реки Песочной в окружении смешанного леса. Все городские коммуникации подключены. </div>
+                        </div>
+                    </div>
+                    <div class="info-slider2-item">
+                        <img src="/sites/default/files/img/whatdoing3.png" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">настольный теннис</div>
+                            <div class="info-slider2-item-desc-desc">Непосредственная близасть к водоему и возможности для рыбалки и купания. Прекрасные виды на лес и водоем.</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="info-slider2-btns">
+                    <div class="prev-btn"><img src="/sites/default/files/img/catBtnNext.svg" alt="Previous"></div>
+                    <div class="next-btn"><img src="/sites/default/files/img/catBtnNext.svg" alt="Next"></div>
+                </div>
+                <div class="info-slider2-desc">
+                    <div class="info-slider2-desc-title">коммуникации</div>
+                    <div class="info-slider2-desc-desc">Централизованное энергоснабжение, магистральный газ, собственный водозаборный узел, централизованная канализация, оптоволоконный интернет</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section>
+    <div class="info-container what-doing2">
+        <div class="info">
+            <div class="t-50-400-60 t1-mob">
+                <h2>ЧЕМ ЗАНЯТЬСЯ</h2>
+            </div>
+            <div class="info-slider2-container">
+                <div class="info-slider2">
+                    <div class="info-slider2-item">
+                        <img src="/sites/default/files/img/whatdoing1.png" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">гимнастическая площадка</div>
+                            <div class="info-slider2-item-desc-desc">Все для спорта и активного отдыха. Комплекс для занятия уличной гимнастикой (воркаут), волейбольная площадка, столы для настольного тенниса. </div>
+                        </div>
+                    </div>
+                    <div class="info-slider2-item active">
+                        <img src="/sites/default/files/img/whatdoing2.jpg" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">волейбол</div>
+                            <div class="info-slider2-item-desc-desc">Наслаждайтесь игрой на большой игровой площадке </div>
+                        </div>
+                    </div>
+                    <div class="info-slider2-item">
+                        <img src="/sites/default/files/img/whatdoing3.jpg" alt="">
+                        <div class="info-slider2-item-desc">
+                            <div class="info-slider2-item-desc-title">настольный теннис</div>
+                            <div class="info-slider2-item-desc-desc"></div>
+                        </div>
+                    </div>
+                    <!-- Добавьте другие слайды здесь -->
+                </div>
+                <div class="info-slider2-btns">
+                    <div class="prev-btn"><img src="/sites/default/files/img/catBtnNext.svg" alt="Previous"></div>
+                    <div class="next-btn"><img src="/sites/default/files/img/catBtnNext.svg" alt="Next"></div>
+                </div>
+                <div class="info-slider2-desc">
+                    <div class="info-slider2-desc-title">коммуникации</div>
+                    <div class="info-slider2-desc-desc regular-mob">Централизованное энергоснабжение, магистральный газ, собственный водозаборный узел, централизованная канализация, оптоволоконный интернет</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ drupal_entity('block_content', '44') }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.cart-first-slider-cont');
+        const items = Array.from(slider.children);
+        const prevButton = document.querySelector('.cart-back');
+        const nextButton = document.querySelector('.cart-next');
+        let gap = 35; // Изначальный гап между слайдами
+        let currentIndex = 0;
+
+        // Функция для обновления гапа в зависимости от ширины экрана
+        const updateGap = () => {
+            gap = window.innerWidth < 600 ? 15 : 35;
+        };
+
+        // Функция для обновления слайдера
+        const updateSlider = () => {
+            if (window.innerWidth < 1200) {
+                const visibleSlideWidth = items.find(item => item.classList.contains('visible')).offsetWidth;
+                const offset = -(currentIndex * (visibleSlideWidth + gap));
+                slider.style.transform = `translateX(${offset}px)`;
+
+                items.forEach((item, index) => {
+                    item.classList.toggle('active', index === currentIndex);
+                    item.classList.toggle('visible', index !== currentIndex);
+                });
+            }
+        };
+
+        // Функция для инициализации слайдера
+        const initializeSliderX = () => {
+            if (window.innerWidth < 1200) {
+                currentIndex = items.findIndex(item => item.classList.contains('active'));
+                if (window.innerWidth < 1200) {
+                    currentIndex = 0;
+                }
+                updateGap(); // Обновляем гап перед обновлением слайдера
+                updateSlider(); // Инициализируем слайдер
+            }
+        };
+
+        // Обработчики событий для кнопок
+        const setupButtons = () => {
+            if (window.innerWidth < 1200) {
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+                    updateSlider();
+                });
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                    updateSlider();
+                });
+            }
+        };
+
+        // Инициализация слайдера после загрузки страницы
+        window.addEventListener('load', () => {
+            initializeSliderX();
+            setupButtons();
+        });
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 1200) {
+                updateGap(); // Обновляем гап при изменении размера окна
+                initializeSliderX();
+                setupButtons();
+            } else {
+                // Если ширина больше или равна 1200, убираем обработчики
+                prevButton.removeEventListener('click', setupButtons);
+                nextButton.removeEventListener('click', setupButtons);
+                slider.style.transform = ''; // Сброс смещения, если было
+            }
+        });
+    });
+
+</script>
+</script>

@@ -1,0 +1,39 @@
+<section class="before-blue">
+    <div class="catalog-container">
+        <div class="catalog">
+
+            <div class="catalog-title">
+                <h2>Дома <span>в коттеджном поселке</span></h2>
+            </div>
+            <p style="padding-top:32px">Все дома возводятся по индивидуальным проектам в рамках единой архитектурной концепции по технологии БЭНПАН.</p>
+
+            <div class="main-catalog-tabs">
+                <a href="#" class="tab-link" data-tab="1">Готовые дома</a>
+                <a href="#" class="tab-link" data-tab="2">Cтроящиеся дома</a>
+                <a href="#" class="tab-link" data-tab="4">Таунхаусы</a>
+                <a href="/uchastok-s-podryadom-v-podmoskovye">Дома с подрядом</a>
+                <a href="/arhitekturnoe-atele" class="arch-link">
+                    <svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 25V15.069L8.51183 10.7241V22.1034H4.71739V4.72414L16.164 11.3448V22.1034H12.3587V1H20V25" stroke="#765E50" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    Архитектурное ателье
+                </a>
+            </div>
+
+            <div class="catlog-items-ready new-main-catalog active" data-tab-content="1">
+                <div class="catalog-items-cont">
+                    <div class="catalog-items views-infinite-scroll-content-wrapper clearfix" data-drupal-views-infinite-scroll-content-wrapper>
+                        {% for row in rows %}
+                            {{ row.content }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            {{ drupal_view('gotovye_doma', 'block_3') }}
+            {{ drupal_view('gotovye_doma', 'block_5') }}
+            {{ drupal_view('gotovye_doma', 'block_4') }}
+
+        </div>
+    </div>
+</section>

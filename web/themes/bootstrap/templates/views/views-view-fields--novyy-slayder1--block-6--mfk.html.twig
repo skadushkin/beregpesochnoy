@@ -1,0 +1,19 @@
+{# MFK — flat carousel без категорий, все слайды в одной ленте (понтон 3-up) #}
+{% set slide_title = row._entity.title.value|default(fields.title.content|striptags|trim)|default('') %}
+{% set label = slide_title %}
+{% set image_url = '' %}
+{% if row._entity.field_image.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.entity.uri.value) %}
+{% elseif row._entity.field_image.0.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value) %}
+{% endif %}
+
+{% if image_url %}
+  <figure class="infra-carousel__item"
+    data-slide-id="{{ row._entity.id() }}"
+    data-category="mfk"
+    data-category-label=""
+    data-label="{{ label }}">
+    <img src="{{ image_url }}" alt="{{ label }}" loading="lazy">
+  </figure>
+{% endif %}

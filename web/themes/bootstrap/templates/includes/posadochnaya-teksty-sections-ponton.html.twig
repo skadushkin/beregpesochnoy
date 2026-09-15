@@ -1,0 +1,18 @@
+{# Текстовые секции после каталога — field_teksty #}
+{% set sections = posadochnaya.teksty|default([]) %}
+{% if sections is not empty %}
+  {% for section in sections %}
+    <section class="section posadochnaya-text posadochnaya-text--ponton{% if loop.index is even %} posadochnaya-text--alt{% endif %}" id="text-{{ loop.index }}">
+      <div class="cl section__inner posadochnaya-text__inner">
+        {% if section.title %}
+          <h2 class="posadochnaya-text__title">{{ section.title|raw }}</h2>
+        {% endif %}
+        {% if section.text %}
+          <div class="posadochnaya-text__prose">
+            {{ section.text|raw }}
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endfor %}
+{% endif %}

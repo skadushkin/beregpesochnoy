@@ -1,0 +1,47 @@
+{% set p = posadochnaya|default({}) %}
+
+<main class="posadochnaya-katalog">
+
+<section>
+    <div class="townhouses-first-container container">
+        <div class="townhouses-first in-container">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="townhouses-first-top">
+                <div class="townhouses-first-title t1-desc t1-mob">
+                    <h1>
+                        {% if p.subtitle %}
+                            <span>{{ p.title }}</span><br>{{ p.subtitle }}
+                        {% else %}
+                            {{ p.title }}
+                        {% endif %}
+                    </h1>
+                </div>
+                {% if p.intro %}
+                <div class="townhouses-first-top-desc regular-desc regular-mob seo-page-intro">
+                    {{ p.intro|raw }}
+                    <div class="desktop-flex">
+                        <div class="townhouses-first-catalog-left-btn-desktop regular-desc btn-on-tab">
+                            <a href="#tour">Записаться на экскурсию</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include '@bootstrap/includes/posadochnaya-about-bento-katalog.html.twig' %}
+
+{% include '@bootstrap/includes/posadochnaya-lifestyle-katalog.html.twig' %}
+
+{% include '@bootstrap/includes/posadochnaya-catalog-sidebar.html.twig' %}
+
+{% include '@bootstrap/includes/posadochnaya-teksty-sections-seo.html.twig' %}
+{% include '@bootstrap/includes/posadochnaya-faq-seo.html.twig' %}
+
+{{ drupal_entity('block_content', '44') }}
+
+</main>

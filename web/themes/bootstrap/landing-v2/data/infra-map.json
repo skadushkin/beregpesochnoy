@@ -1,0 +1,124 @@
+{
+  "center": [55.9194, 36.8686],
+  "zoom": 14,
+  "categories": [
+    {
+      "id": "school",
+      "label": "Школы",
+      "icon": "/themes/bootstrap/landing-v2/img/infra-map/icon-school.svg",
+      "color": "#5B8DEF"
+    },
+    {
+      "id": "kindergarten",
+      "label": "Детские сады",
+      "icon": "/themes/bootstrap/landing-v2/img/infra-map/icon-kindergarten.svg",
+      "color": "#E8A0BF"
+    },
+    {
+      "id": "medicine",
+      "label": "Медицина",
+      "icon": "/themes/bootstrap/landing-v2/img/infra-map/icon-medicine.svg",
+      "color": "#E28787"
+    },
+    {
+      "id": "shop",
+      "label": "Магазины",
+      "icon": "/themes/bootstrap/landing-v2/img/infra-map/icon-shop.svg",
+      "color": "#C4A574"
+    },
+    {
+      "id": "sport",
+      "label": "Спорт",
+      "icon": "/themes/bootstrap/landing-v2/img/genplan-v2/infra-activity.svg",
+      "color": "#7BB3E0"
+    },
+    {
+      "id": "park",
+      "label": "Парки",
+      "icon": "/themes/bootstrap/landing-v2/img/genplan-v2/infra-park.svg",
+      "color": "#8FBF6A"
+    },
+    {
+      "id": "kids",
+      "label": "Детские площадки",
+      "icon": "/themes/bootstrap/landing-v2/img/genplan-v2/infra-kids.svg",
+      "color": "#F0C14A"
+    },
+    {
+      "id": "water",
+      "label": "Вода",
+      "icon": "/themes/bootstrap/landing-v2/img/genplan-v2/infra-water.svg",
+      "color": "#5BA8C9"
+    },
+    {
+      "id": "parking",
+      "label": "Парковка",
+      "icon": "/themes/bootstrap/landing-v2/img/genplan-v2/infra-parking.svg",
+      "color": "#9A8A78"
+    },
+    {
+      "id": "transport",
+      "label": "Транспорт",
+      "icon": "/themes/bootstrap/landing-v2/img/infra-map/icon-transport.svg",
+      "color": "#6E7C8A"
+    }
+  ],
+  "points": [
+    {
+      "id": "village",
+      "category": "park",
+      "title": "КП «Берег Песочной»",
+      "coords": [55.959175, 36.947689],
+      "pinned": true
+    },
+    {
+      "id": "istra-center",
+      "category": "park",
+      "title": "Истра, центр",
+      "coords": [55.9142, 36.8613],
+      "pinned": false
+    },
+    {
+      "id": "istra-station",
+      "category": "transport",
+      "title": "Станция Истра",
+      "coords": [55.9097, 36.8694],
+      "pinned": false
+    },
+    {
+      "id": "istra-hospital",
+      "category": "medicine",
+      "title": "Истринская ЦРБ",
+      "coords": [55.9058, 36.8519],
+      "pinned": false
+    },
+    {
+      "id": "istra-school",
+      "category": "school",
+      "title": "Школа №2, Истра",
+      "coords": [55.9174, 36.8681],
+      "pinned": false
+    },
+    {
+      "id": "istra-sad",
+      "category": "kindergarten",
+      "title": "Детский сад, Истра",
+      "coords": [55.9161, 36.8724],
+      "pinned": false
+    },
+    {
+      "id": "istra-shop",
+      "category": "shop",
+      "title": "Магазины на Ленина",
+      "coords": [55.9152, 36.8598],
+      "pinned": false
+    },
+    {
+      "id": "new-jerusalem",
+      "category": "park",
+      "title": "Новоиерусалимский монастырь",
+      "coords": [55.9219, 36.8422],
+      "pinned": false
+    }
+  ]
+}

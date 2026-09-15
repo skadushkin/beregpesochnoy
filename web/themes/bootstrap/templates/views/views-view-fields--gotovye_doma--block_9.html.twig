@@ -1,0 +1,123 @@
+{# views-view-fields--gotovye_doma--block_8.html.twig #}
+  {% if row._entity.field_house_project.entity is not empty %}
+            {% set related_node = row._entity.field_house_project.entity %}
+            {% if row._entity.field_house_price.value is not empty %}
+                {% set price = row._entity.field_house_price.value %}
+            {% elseif row._entity.field_house_price2.value is not empty %}
+                {% set price = row._entity.field_house_price2.value %}
+            {% elseif related_node.field_project_price.value is not empty %}
+                {% set price = related_node.field_project_price.value %}
+            {% elseif row._entity.field_lot_price.value is not empty and  row._entity.field_lot_price.value > 0 %}
+                {% set price = row._entity.field_lot_price.value %}
+            {% elseif row._entity.field_lot_price2.value is not empty %}
+                {% set price = row._entity.field_lot_price2.value %}
+                {#        {{ row._entity.field_lot_price.value|number_format(0, ',', ' ') }}#}
+            {% endif %}
+            {% endif %}
+           
+           
+{% if block_type == 1 %}
+  {# Первый тип: изображение слева, gold-block справа #}
+  <div class="new-towns-block">
+    <div style="background-image:{% if row._entity.field_plan_images.value is not empty %}
+  {% set first_image = row._entity.field_plan_images[0] %}
+  {# Выберите нужный стиль из админки: /admin/config/media/image-styles #}
+  {% set image_style_name = 'wide' %}
+  {% set styled_image = first_image.entity.uri.value %}
+  url({{ file_url(styled_image|image_style(image_style_name)) }})
+{% endif %}; background-size:cover"></div>
+    <div class="gold-block">
+      <div class="new-town-name">{{ fields.title.content }}</div>
+      <div class="new-town-info">
+        {{ row._entity.field_house_area.value }}м&sup2;<br>
+        {% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+  {{ storeys }}
+  {% if storeys == 1 %}
+    этаж
+  {% elseif storeys in [2, 3, 4] %}
+    этажа
+  {% else %}
+    этажей
+  {% endif %}<br>
+       {{ row._entity.field_total_area.value }} соток
+      </div>
+      <div class="new-town-price">{% if catalogHasPrice(price) %}
+                            {{ price|number_format(0, ',', ' ') }}  р
+                        {% else %}
+                            По запросу
+                        {% endif %}</div>
+      <div class="new-town-price-ipoteka">{{ fields.field_mortgage.content }}</div>
+      <a href="{{ fields.view_node.content }}" class="view-town-link">Смотреть таунхаусы</a>
+    </div>
+  </div>
+{% elseif block_type == 2 %}
+  {# Второй тип: black-block слева, изображение справа #}
+  <div class="new-towns-block">
+    <div class="black-block">
+      <div class="new-town-name">{{ fields.title.content }}</div>
+      <div class="new-town-info">
+        {{ row._entity.field_house_area.value }}м&sup2;<br>
+        {% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+  {{ storeys }}
+  {% if storeys == 1 %}
+    этаж
+  {% elseif storeys in [2, 3, 4] %}
+    этажа
+  {% else %}
+    этажей
+  {% endif %}<br>
+       {{ row._entity.field_total_area.value }} соток
+      </div>
+      <div class="new-town-price">{% if catalogHasPrice(price) %}
+                            {{ price|number_format(0, ',', ' ') }}  р
+                        {% else %}
+                            По запросу
+                        {% endif %}</div>
+      <div class="new-town-price-ipoteka">{{ fields.field_mortgage.content }}</div>
+      <a href="{{ fields.view_node.content }}" class="view-town-link">Смотреть таунхаусы</a>
+    </div>
+    <div style="background-image:{% if row._entity.field_plan_images.value is not empty %}
+  {% set first_image = row._entity.field_plan_images[0] %}
+  {# Выберите нужный стиль из админки: /admin/config/media/image-styles #}
+  {% set image_style_name = '565_x_318_px' %}
+  {% set styled_image = first_image.entity.uri.value %}
+  url({{ file_url(row._entity.field_mainproject_image.entity.uri.value|image_style('565_x_318_px')) }})
+{% endif %}; background-size:cover"></div>
+  </div>
+{% else %}
+  {# Третий тип: изображение слева, brown-block справа #}
+  <div class="new-towns-block">
+    
+   <div style="background-image:{% if row._entity.field_plan_images.value is not empty %}
+  {% set first_image = row._entity.field_plan_images[0] %}
+  {# Выберите нужный стиль из админки: /admin/config/media/image-styles #}
+  {% set image_style_name = 'wide' %}
+  {% set styled_image = first_image.entity.uri.value %}
+  url({{ file_url(styled_image|image_style(image_style_name)) }})
+{% endif %}; background-size:cover"></div>
+
+    <div class="brown-block">
+      <div class="new-town-name">{{ fields.title.content }}</div>
+      <div class="new-town-info">
+       {{ row._entity.field_house_area.value }}м&sup2;<br>
+        {% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+  {{ storeys }}
+  {% if storeys == 1 %}
+    этаж
+  {% elseif storeys in [2, 3, 4] %}
+    этажа
+  {% else %}
+    этажей
+  {% endif %}<br>
+       {{ row._entity.field_total_area.value }} соток
+      </div>
+      <div class="new-town-price">{% if catalogHasPrice(price) %}
+                            {{ price|number_format(0, ',', ' ') }}  р
+                        {% else %}
+                            По запросу
+                        {% endif %}</div>
+      <div class="new-town-price-ipoteka">{{ fields.field_mortgage.content }}</div>
+      <a href="{{ fields.view_node.content }}" class="view-town-link">Смотреть таунхаусы</a>
+    </div>
+  </div>
+{% endif %}

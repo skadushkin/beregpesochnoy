@@ -1,0 +1,7 @@
+name: 'Webform Tuning'
+type: module
+description: 'Provides custom form submission controllers.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:webform

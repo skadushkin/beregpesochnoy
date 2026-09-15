@@ -1,0 +1,43 @@
+{% import _self as menus %}
+
+{# Вызываем макрос для отображения полного дерева меню #}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% for item in items %}
+      {%
+        set item_classes = [
+        'header-menu-item',
+        item.is_expanded ? 'menu-item--expanded',
+        item.is_collapsed ? 'menu-item--collapsed',
+        item.in_active_trail ? 'active',
+        item.below ? 'has-submenu',
+      ]
+      %}
+      <div{{ item.attributes.addClass(item_classes) }}>
+        {%
+          set link_classes = [
+          'header-menu-link',
+          item.in_active_trail ? 'active',
+          item.below ? 'has-submenu-link',
+        ]
+        %}
+        {% if item.below %}
+          <a href="{{ item.url }}" class="{{ link_classes|join(' ') }}">
+            {{ item.title|raw }}
+            <img src="/sites/default/files/img/menu_arrow.svg" alt="">
+          </a>
+          <div class="submenu">
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          </div>
+        {% else %}
+          <a href="{{ item.url }}" class="{{ link_classes|join(' ') }}">
+            {{ item.title|raw }}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

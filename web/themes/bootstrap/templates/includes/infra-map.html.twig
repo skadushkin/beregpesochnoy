@@ -1,0 +1,56 @@
+{# Карта инфраструктуры — Яндекс.Карта, Figma 7909:1981 / 7909:2208 / 7910:4781 #}
+{% set can_edit = infra_map_can_edit|default(false) %}
+<div class="infra-map" id="infraMap" data-can-edit="{{ can_edit ? '1' : '0' }}">
+  <div class="infra-map__filters genplan-filters-v2">
+    <div class="infra-map__filters-inner genplan-filters-v2__inner">
+      <button type="button" class="infra-map__all genplan-filters-v2__all is-active" data-infra-all>Все объекты</button>
+      <div class="infra-map__cats" data-infra-cats></div>
+      <div class="infrastructure-toggle">
+        <label class="switch">
+          <input type="checkbox" id="infra-map-toggle" checked aria-label="Показать инфраструктуру">
+          <span class="sliderg"></span>
+        </label>
+        <label class="toggle-label" for="infra-map-toggle">Показать инфраструктуру</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="infra-map__stage" data-infra-stage>
+    <div class="infra-map__canvas" id="infra-map-canvas" role="application" aria-label="Карта инфраструктуры"></div>
+    <button type="button" class="infra-map__fs" data-infra-fs aria-label="Раскрыть карту на весь экран" title="На весь экран">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M4 28L12.6667 19.3333" stroke="#917357" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.333 12.6667L28 4" stroke="#917357" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 4H28V12" stroke="#917357" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 20V28H12" stroke="#917357" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <aside class="infra-map__legend" aria-label="Обозначения">
+      <h3 class="infra-map__legend-title">Инфраструктура</h3>
+      <div class="infra-map__legend-list" data-infra-legend></div>
+    </aside>
+    {% if can_edit %}
+      <div class="infra-map__editor">
+        <label class="infra-map__edit-toggle">
+          <input type="checkbox" data-infra-edit>
+          Режим редактирования
+        </label>
+        <label class="infra-map__edit-cat">
+          Категория / иконка
+          <select data-infra-edit-cat></select>
+        </label>
+        <label class="infra-map__edit-title">
+          Название точки
+          <input type="text" data-infra-edit-title placeholder="Например: Школа №2" maxlength="120">
+        </label>
+        <p class="infra-map__edit-hint">Клик по карте ставит точку выбранной категории. Клик по точке — правка. Список ниже тоже можно выбрать.</p>
+        <div class="infra-map__edit-list" data-infra-list></div>
+        <div class="infra-map__edit-actions">
+          <button type="button" class="infra-map__delete" data-infra-delete hidden>Удалить точку</button>
+          <button type="button" class="infra-map__save" data-infra-save>Сохранить JSON</button>
+        </div>
+        <span class="infra-map__status" data-infra-status></span>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,72 @@
+/* Лендинг «Парк с прудом» — node 853. База: ponton, Figma park-lg 7140:1532 */
+
+body.page-node-853 {
+  --bg: #648D37;
+  --bg-card: rgba(255, 255, 255, 0.2);
+  --bg-footer: #4F7029;
+  --accent: #648D37;
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--white);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.page-node-853 .ponton-hero__lead {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* Figma 7140:1549 — зелёный градиент hero вместо синего ponton */
+body.page-node-853 .ponton-hero__bg::after,
+body.page-node-type-posadochnaya-ponton .ponton-hero__bg::after {
+  height: 57%;
+  background: linear-gradient(
+    180deg,
+    rgba(100, 141, 55, 0) 43%,
+    rgba(100, 141, 55, 0.5) 64%,
+    rgba(100, 141, 55, 0.7) 75%,
+    rgba(100, 141, 55, 0.85) 84%,
+    rgba(100, 141, 55, 0.93) 92%,
+    #648D37 100%
+  );
+}
+
+body.page-node-853 .ponton-bento__card,
+body.page-node-type-posadochnaya-ponton .ponton-bento__card {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+body.page-node-853 .ponton-bento__card-title,
+body.page-node-853 .ponton-bento__card p,
+body.page-node-type-posadochnaya-ponton .ponton-bento__card-title,
+body.page-node-type-posadochnaya-ponton .ponton-bento__card p {
+  color: #fff;
+}
+
+body.page-node-853 .ponton-catalog__h2 .t-white,
+body.page-node-853 .ponton-catalog__h2 .t-dark {
+  color: var(--white);
+}
+
+body.page-node-853 .ponton-catalog__h2 .t-merit {
+  font-family: var(--f-merit);
+}
+
+body.page-node-853 .ponton-lifestyle__img {
+  object-fit: cover;
+}
+
+body.page-node-853 .section.ponton-lifestyle .ponton-lifestyle__canvas {
+  opacity: 1;
+}
+
+body.page-node-853 .ponton .btn--white {
+  color: #648D37;
+}
+
+body.page-node-853 .ponton .btn--white:hover {
+  color: var(--white);
+}

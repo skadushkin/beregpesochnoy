@@ -1,0 +1,31 @@
+<section class="bg1">
+    <div class="first-container">
+        <div class="container_w">
+            <div class="actions-items">
+                {% if rows %}
+                    {{ rows }}
+                {% elseif empty %}
+                    <div class="view-empty">
+                        {{ empty }}
+                    </div>
+                {% endif %}
+            </div>
+            {% if pager %}
+                {{ pager }}
+            {% endif %}
+            {% if attachment_after %}
+                <div class="attachment attachment-after">
+                    {{ attachment_after }}
+                </div>
+            {% endif %}
+            {% if more %}
+                {{ more }}
+            {% endif %}
+{#            <div class="catalog-items-showmore items-showmore-ipoteka">#}
+{#                <span class="showmore-btn">загрузить еще</span>#}
+{#            </div>#}
+
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,9 @@
+name: 'Yandex Export'
+type: module
+description: 'Модуль для экспорта данных в XML'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - drupal:node
+  - drupal:field
+  - drupal:file

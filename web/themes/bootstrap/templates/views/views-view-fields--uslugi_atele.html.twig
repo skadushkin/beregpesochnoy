@@ -1,0 +1,24 @@
+<article class="atelier-three__item">
+    <div class="atelier-three__item-image">
+        <img class="atelier-three__item-image-elem" src="/sites/default/files/img/atelier-serv{{ fields.nid.content|striptags|trim }}.svg" alt="">
+    </div>
+    <div class="atelier-three__item-content">
+        <h3 class="atelier-three__item-title t3-mob">{{ fields.field_html_zagolovok.content|raw }}</h3>
+        <p class="atelier-three__item-text regular-desc regular-mob">{{ fields.field_desc.content|striptags|trim }}</p>
+        <div class="services_modal {% if fields.nid.content|striptags|trim > 714 %}
+         right{% endif %}">
+            <div class="services_modal__container">
+                <h4 class="services_modal__title">ЭТАПЫ РЕАЛИЗАЦИИ ПРОЕКТА</h4>
+                {{ fields.body.content|raw }}
+                <a href="" data-fancybox="" data-src="#mess" class="services_modal__btn">заказать</a>
+                <div class="services_modal__close">
+                    <img class="services_modal__close-img" src="/sites/default/files/img/atelier-modal-close.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="" class="atelier-three__item-btn">
+        <span class="atelier-three__item-btn-text">подробнее</span>
+        <img class="atelier-three__item-btn-arrow" src="/sites/default/files/img/cart-arrow.svg" alt="">
+    </a>
+</article>

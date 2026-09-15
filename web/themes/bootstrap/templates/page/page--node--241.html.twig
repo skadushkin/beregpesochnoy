@@ -1,0 +1,137 @@
+<section>
+    <div class="invest-first-container">
+        <div class="invest-first">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="invest-first-title">
+                <h1><span><b>ВЫГОДНЫЕ</b> ИНВЕСТИЦИИ</span><br> В СТРОИТЕЛЬСТВО<br> ДОМА</h1>
+            </div>
+            <div class="invest-first-desc">
+                Вы можете выгодно инвестировать в строительство домов в коттеджном поселке «Берег Песочной». Спрос на загородную недвижимость кратно растет, а выгодное расположение поселка и развитая инфраструктура делает локацию еще более привлекательным вложением. Для инвесторов, рассматривающих вложение средств в загородную недвижимость бизнес-класса, коттеджный поселок «Берег Песочной» предлагает привлекательные варианты инвестирования.
+            </div>
+
+            <div class="invest-first-img">
+
+                <div class="invest-first-img-icon">
+                    <span>доходность от</span>
+                    25%
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{{ page.content }}
+
+<script>
+    const sliderContent = document.querySelector('.slider-content');
+    const sliderItems = document.querySelectorAll('.whattake-item');
+    const sliderDots = document.querySelectorAll('.slider-nav-dot');
+    const gap = 15; // Гап между слайдами
+    const slider = document.querySelector('.sliderr');
+
+    function updateSlider(index) {
+        let offset = 0;
+        for (let i = 0; i < index; i++) {
+            offset += sliderItems[i].offsetWidth + gap;
+        }
+        sliderContent.style.transform = `translateX(-${offset}px)`;
+        document.querySelector('.slider-nav-dot.active').classList.remove('active');
+        sliderDots[index].classList.add('active');
+    }
+
+    function handleResize() {
+        if (window.innerWidth < 840) {
+            slider.classList.remove('hidden1'); // Показываем слайдер
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => updateSlider(index));
+            });
+        } else {
+            slider.classList.add('hidden1'); // Скрываем слайдер
+            sliderContent.style.transform = 'translateX(0)'; // Сбрасываем позицию слайдера
+            sliderDots.forEach((dot) => {
+                dot.removeEventListener('click', () => updateSlider(dot.dataset.slide));
+            });
+        }
+    }
+
+    // Инициализация при загрузке страницы
+    handleResize();
+
+    // Добавляем обработчик для изменения размера окна
+    window.addEventListener('resize', handleResize);
+</script>
+
+<script>
+
+    document.querySelectorAll('.catlog-items-ready').forEach(catalogReady => {
+        const itemsContainer = catalogReady.querySelector('.catalog-items');
+        const items = catalogReady.querySelectorAll('.catlog-item');
+        const prevBtn = catalogReady.querySelector('.catalog-top-block-btns .prev');
+        const nextBtn = catalogReady.querySelector('.catalog-top-block-btns .next');
+
+        let index = 0;
+
+        // Определяем ширину одного элемента и общее количество элементов
+        const itemWidth = items[0].clientWidth + 20; // Учтите отступы, если они есть
+        const totalItems = items.length;
+
+        // Устанавливаем начальное положение
+        itemsContainer.style.transform = `translateX(0px)`;
+
+        // Рассчитываем максимальное значение для translateX
+        const maxTranslateX = (totalItems - 1) * itemWidth;
+
+        // Обновляем кнопки
+        function updateButtons() {
+            // Кнопка "назад" отключается, если индекс равен 0
+            if (index <= 0) {
+                prevBtn.disabled = true;
+                prevBtn.classList.remove('active-btn-catalog');
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.classList.add('active-btn-catalog');
+            }
+
+            // Кнопка "вперед" отключается, если индекс равен максимальному значению
+            if (index >= totalItems - 1) {
+                nextBtn.disabled = true;
+                nextBtn.classList.remove('active-btn-catalog');
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.classList.add('active-btn-catalog');
+            }
+        }
+
+        // Перемещение вперед
+        function moveToNextSlide() {
+            if (index < totalItems - 1) {
+                index++;
+                const newTranslateX = -index * itemWidth;
+                // Убедитесь, что translateX не выходит за пределы
+                itemsContainer.style.transform = `translateX(${Math.max(newTranslateX, -maxTranslateX)}px)`;
+                updateButtons();
+            }
+        }
+
+        // Перемещение назад
+        function moveToPrevSlide() {
+            if (index > 0) {
+                index--;
+                const newTranslateX = -index * itemWidth;
+                // Убедитесь, что translateX не выходит за пределы
+                itemsContainer.style.transform = `translateX(${Math.max(newTranslateX, -maxTranslateX)}px)`;
+                updateButtons();
+            }
+        }
+
+        nextBtn.addEventListener('click', moveToNextSlide);
+        prevBtn.addEventListener('click', moveToPrevSlide);
+
+        // Обновляем состояние кнопок при начальной загрузке
+        updateButtons();
+    });
+</script>

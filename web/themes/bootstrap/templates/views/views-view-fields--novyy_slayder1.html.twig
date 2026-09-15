@@ -1,0 +1,23 @@
+{# Слайд infra-carousel — novyy_slayder1, field_image + field_kategoriya #}
+{% set category_term = row._entity.field_kategoriya.entity %}
+{% set category_id = category_term ? category_term.id() : '' %}
+{% set category_label = category_term ? category_term.label() : '' %}
+{% set slide_title = row._entity.title.value|default(fields.title.content|striptags|trim)|default('') %}
+{% set category_key = category_id ? category_id : ('slide-' ~ row._entity.id()) %}
+{% set label = category_label|default(slide_title) %}
+{% set image_url = '' %}
+{% if row._entity.field_image.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.entity.uri.value) %}
+{% elseif row._entity.field_image.0.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value) %}
+{% endif %}
+
+{% if image_url %}
+  <figure class="infra-carousel__item"
+    data-slide-id="{{ row._entity.id() }}"
+    data-category="{{ category_key }}"
+    data-category-label="{{ category_label }}"
+    data-label="{{ label }}">
+    <img src="{{ image_url }}" alt="{{ label }}" loading="lazy">
+  </figure>
+{% endif %}

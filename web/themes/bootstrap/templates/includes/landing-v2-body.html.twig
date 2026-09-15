@@ -1,0 +1,399 @@
+{# Лендинг Берег Песочной v2 (Figma). Node 838. Шапка и футер — стандартные темы. #}
+{% set lv2_img = '/themes/bootstrap/landing-v2/img/' %}
+{% set lv2_vid = '/themes/bootstrap/landing-v2/video/' %}
+
+    <main class="landing">
+
+        <!-- ═══ HERO — Figma 6873:1563 (Frame 1281) ═══ -->
+        <section class="hero" id="top">
+            <div class="hero__bg" aria-hidden="true"></div>
+
+            <!-- Заголовок + статы поверх фото (Figma y373) -->
+            <div class="cl hero__intro">
+                <p class="hero__tagline">
+                    <span class="t-white">Жилой комплекс </span><span class="t-accent">Берег Песочной</span><br>
+                    <span class="t-accent">в экологически чистом </span><span class="t-white">районе Истры</span>
+                </p>
+                <div class="hero__eco-row">
+                    <h1 class="hero__h1">
+                        <span class="t-white">Идеальная </span><br>
+                        <span class="t-accent">экосреда</span><br>
+                        <span class="t-accent">для жизни</span>
+                    </h1>
+                    <div class="hero__side">
+                        <div class="hero__glass">
+                            <div class="hero__stats">
+                                <div class="h-stat"><div class="h-stat__v">8 га</div><div class="h-stat__l">лесопарковой<br>зоны</div></div>
+                                <div class="h-stat"><div class="h-stat__v">24/7</div><div class="h-stat__l">круглосуточная охрана</div></div>
+                                <div class="h-stat"><div class="h-stat__v">5 мин</div><div class="h-stat__l">истринское<br>водохранилище</div></div>
+                            </div>
+                            <a href="/jk-bereg-pesochnoy.pdf" class="btn btn--fill btn--wide" download>Скачать презентацию <span class="btn-arrow" aria-hidden="true">→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ О ПОСЕЛКЕ — карта + текст (Figma Frame 1267) ═══ -->
+        <section class="section hero-map" id="settlement">
+            <div class="cl">
+                <div class="hero__map-row">
+                    <div class="hero__map">
+                        <img src="{{ lv2_img }}hero-pattern2.svg" alt="Карта поселка" class="hero__map-img">
+                    </div>
+                    <div class="hero__about">
+                        <p>Коттеджный поселок «Берег Песочной» расположен в одном из самых красивых и экологически чистых районов Подмосковья — в Истринском районе, всего в 45 километрах от Москвы. Жизнь в «Берег Песочной» прекрасно подходит для того, чтобы уйти от городской суеты ради чистой природы и здорового образа жизни.</p>
+                        <p>Поселок создан в форме загородного жилого квартала. Земля, на которой он расположен, относится к категории земель населенных пунктов. У каждого дома есть свой почтовый адрес, а жители поселка могут воспользоваться правом прописки. Площадь поселка — 28 гектаров.</p>
+                        <button type="button" class="btn btn--fill open-lv2-tour-modal">записаться на экскурсию <span class="btn-arrow" aria-hidden="true">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ ИНФРАСТРУКТУРА — слайдер 3 кадра на всю ширину (Figma 6870:9769) ═══ -->
+        <section class="section infra" id="infra">
+            <div class="cl section__inner infra__head">
+                <h2 class="h2 h2--center">
+                    <span class="t-merit">Благоустроенная территория</span><br>
+                    <span class="t-merit">для жизни </span><span class="t-accent">на берегу реки Песочная</span>
+                </h2>
+                <div class="infra__pills-wrap">
+                    <div class="infra__pills" id="infraPills" data-dynamic="1"></div>
+                </div>
+            </div>
+
+            <div class="infra-carousel" id="infraCarousel" aria-live="polite">
+                <div class="infra-carousel__stage" id="infraStage">
+                    {{ drupal_view('novyy_slayder1', 'block_1') }}
+                </div>
+            </div>
+
+            <div class="cl slider-controls">
+                <button type="button" class="slider-arrow" id="infraPrev" aria-label="Назад">‹</button>
+                <div class="dots" id="infraDots" data-dynamic="1"></div>
+                <button type="button" class="slider-arrow" id="infraNext" aria-label="Вперёд">›</button>
+            </div>
+        </section>
+
+
+        <!-- ═══ ЭКОЛОГИЯ / ОЗЕРО — Figma 6871:9952 ═══ -->
+        <section class="section ecology">
+            <div class="ecology__bg" aria-hidden="true"></div>
+            <div class="ecology__grad" aria-hidden="true"></div>
+            <div class="ecology__content">
+                <h2 class="ecology__title">Роскошь — выбрать для жизни <span class="t-accent">экологию и комфорт</span></h2>
+                <a href="https://kinescope.io/embed/b2ZqkZLrmBbMK8QywgXtzh" class="ecology__play" data-fancybox data-type="iframe" aria-label="Смотреть видео">
+                    <span class="ecology__play-mid" aria-hidden="true"></span>
+                    <svg class="ecology__play-icon" width="32" height="36" viewBox="0 0 32 36" fill="none" aria-hidden="true">
+                        <path d="M4 2L28 18L4 34V2Z" fill="#fff"/>
+                    </svg>
+                </a>
+                <div class="ecology__stats">
+                    <div class="eco-bubble">
+                        <span class="eco-bubble__n">4 000</span>
+                        <span class="eco-bubble__t">посаженных<br>деревьев</span>
+                    </div>
+                    <div class="eco-bubble">
+                        <span class="eco-bubble__n">60 <small>га</small></span>
+                        <span class="eco-bubble__t">площадь<br>озера</span>
+                    </div>
+                    <div class="eco-bubble eco-bubble--icon">
+                        <svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6870_9426)">
+<path d="M37.1072 24.69C36.7772 25.22 33.8672 29.95 33.8672 31.78C33.8672 33.78 35.4972 35.41 37.4972 35.41C39.4972 35.41 41.1272 33.78 41.1272 31.78C41.1272 29.95 38.2172 25.23 37.8872 24.69C37.7172 24.42 37.2672 24.42 37.0972 24.69H37.1072ZM37.5072 34.48C36.0172 34.48 34.8072 33.27 34.8072 31.78C34.8072 30.63 36.4972 27.53 37.5072 25.84C38.5172 27.53 40.2072 30.63 40.2072 31.78C40.2072 33.27 38.9972 34.48 37.5072 34.48Z" fill="white"/>
+<path d="M40.34 12.67H15.73V11.62C15.79 11.59 15.86 11.57 15.92 11.53C16.29 11.27 16.51 10.84 16.51 10.39V3.4H27.97C28.74 3.4 29.37 2.77 29.37 2V1.4C29.37 0.63 28.74 0 27.97 0H4.11C3.34 0 2.71 0.63 2.71 1.4V8.43C2.71 9.02 3.08 9.52 3.59 9.73V12.72C2.9 12.89 2.39 13.51 2.39 14.25V38.33H0.47C0.21 38.33 0 38.54 0 38.8C0 39.06 0.21 39.27 0.47 39.27H19C19.26 39.27 19.47 39.06 19.47 38.8C19.47 38.54 19.26 38.33 19 38.33H17.07V24.31C17.07 21.5 19.35 19.22 22.16 19.22H33.11V20.43C33.11 21.13 33.68 21.7 34.38 21.7H40.61C41.31 21.7 41.88 21.13 41.88 20.43V19.18C42.58 19.02 43.1 18.39 43.1 17.65V15.45C43.1 13.92 41.86 12.68 40.33 12.68L40.34 12.67ZM4.54 12.67V9.83H7.11C8.51 9.83 9.89 10.06 11.22 10.52L14.66 11.71C14.66 11.71 14.75 11.72 14.8 11.73V12.67H4.53H4.54ZM3.65 1.4C3.65 1.15 3.86 0.94 4.11 0.94H27.97C28.22 0.94 28.43 1.15 28.43 1.4V2C28.43 2.25 28.22 2.46 27.97 2.46H13.52C13.26 2.46 13.05 2.67 13.05 2.93C13.05 3.19 13.26 3.4 13.52 3.4H15.57V10.39C15.57 10.54 15.5 10.68 15.38 10.76C15.26 10.85 15.11 10.87 14.96 10.82L11.52 9.63C10.1 9.14 8.61 8.89 7.1 8.89H4.11C3.86 8.89 3.65 8.68 3.65 8.43V1.4ZM40.95 20.42C40.95 20.6 40.8 20.75 40.62 20.75H34.39C34.21 20.75 34.06 20.6 34.06 20.42V19.21H40.96V20.42H40.95ZM42.17 17.64C42.17 17.99 41.88 18.28 41.53 18.28H22.16C18.84 18.28 16.13 20.98 16.13 24.31V38.33H3.33V14.25C3.33 13.9 3.62 13.61 3.97 13.61H40.34C41.35 13.61 42.17 14.43 42.17 15.44V17.64Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_6870_9426">
+<rect width="43.1" height="39.26" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+                        <span class="eco-bubble__t">артезианская<br>вода</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ СЕМЬЯ — мозаика Figma 6870:9914 (1146×1089) ═══ -->
+        <section class="section family" id="about">
+            <div class="cl family__cl">
+                <div class="family__canvas">
+                    <h2 class="h2 h2--center family__h2">
+                        <span class="t-merit t-white">Место,<br>где вся </span>
+                        <span class="t-accent">семья собирается вместе</span>
+                    </h2>
+                    <a href="#catalog" class="btn btn--fill family__cta">выбрать дом <span class="btn-arrow">→</span></a>
+
+                    <div class="family__slider" id="familySlider">
+                        <div class="family__viewport">
+                            <div class="family__stack" id="familyTrack">
+                        <article class="family__item">
+                            <video class="family__img family__img--vip" poster="{{ lv2_img }}vip-41c417.png" data-src="{{ lv2_vid }}family-vip.mp4" muted loop playsinline preload="none" aria-label="VIP резиденции"></video>
+                            <p class="family__tag family__tag--vip">частные вип резиденции</p>
+                            <div class="family__bubble family__bubble--vip">
+                                <p>Эксклюзивное предложение для ценителей природы и городского комфорта.</p>
+                            </div>
+                        </article>
+                        <article class="family__item family__item--decorative">
+                            <video class="family__img family__img--top" poster="{{ lv2_img }}family-img31.png" data-src="{{ lv2_vid }}family-top.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                        </article>
+                        <article class="family__item family__item--decorative">
+                            <video class="family__img family__img--mid" poster="{{ lv2_img }}family-img30-24cea3.png" data-src="{{ lv2_vid }}family-mid.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                        </article>
+                        <article class="family__item">
+                            <video class="family__img family__img--town" poster="{{ lv2_img }}family-townhouse.png" data-src="{{ lv2_vid }}family-town.mp4" muted loop playsinline preload="none" aria-label="Таунхаусы"></video>
+                            <p class="family__tag family__tag--town">таунхаусы</p>
+                            <div class="family__bubble family__bubble--town">
+                                <p>Все преимущества квартиры и частного дома на берегу реки Песочная</p>
+                            </div>
+                        </article>
+                        <article class="family__item">
+                            <video class="family__img family__img--house" poster="{{ lv2_img }}private-house.png" data-src="{{ lv2_vid }}family-house.mp4" muted loop playsinline preload="none" aria-label="Частные дома"></video>
+                            <p class="family__tag family__tag--house">частные дома</p>
+                            <div class="family__bubble family__bubble--house">
+                                <p>Любые конфигурации и дизайн на ваш вкус. Жизнь за городом с городским комфортом.</p>
+                            </div>
+                        </article>
+                            </div>
+                        </div>
+                        <div class="family__controls slider-controls" id="familyControls">
+                            <button type="button" class="slider-arrow" id="familyPrev" aria-label="Предыдущий слайд">‹</button>
+                            <div class="dots" id="familyDots" data-dynamic="1"></div>
+                            <button type="button" class="slider-arrow" id="familyNext" aria-label="Следующий слайд">›</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ ГАЛЕРЕЯ «01 /» ═══ -->
+        <section class="section gallery-block" id="gallery">
+            <div class="cl section__inner">
+                <h2 class="h2 h2--center">
+                    <span class="t-merit">Все для жизни </span><span class="t-accent">на природе </span><br>
+                    <span class="t-merit">с городским комфортом</span>
+                </h2>
+                <div class="gallery-block__stage-wrap">
+                    <div class="gallery-block__caption" id="galleryCaption" aria-live="polite">
+                        <p class="gallery-block__num">
+                            <span class="gallery-block__num-val" id="galleryNumVal">01</span><span class="gallery-block__slash">/</span>
+                        </p>
+                        <p class="gallery-block__note" id="galleryNote"></p>
+                    </div>
+                    <!-- Карусель: 5 видимых кадров, центральный крупнее (Figma Group 1275) -->
+                    <div class="gallery-carousel" id="galleryCarousel">
+                        <div class="gallery-carousel__stage" id="galleryStage">
+                            {{ drupal_view('novyy_slayder1', 'block_3') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls slider-controls--gallery">
+                    <button type="button" class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Назад">
+                        <svg class="gallery-arrow__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M15.5 5.5 8.5 13l7 7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="dots" id="galleryDots" data-dynamic="1"></div>
+                    <button type="button" class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Вперёд">
+                        <svg class="gallery-arrow__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M15.5 5.5 8.5 13l7 7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ ПРИВАТНАЯ ТЕРРИТОРИЯ + МАРШРУТ ═══ -->
+        <section class="section private" id="genplan">
+            <div class="cl section__inner private__text-block">
+                <h2 class="h2 h2--center">
+                    <span class="t-accent">Приватная территория</span><br>
+                    <span class="t-merit t-white">граничащая с лесом</span>
+                </h2>
+                <p class="private__lead">Откройте дверь и окунитесь в мир природы – наблюдайте за дикой флорой и фауной, слушайте пение птиц, наслаждайтесь ароматами леса. Прекрасные виды на лес и водоем создают особую атмосферу и дарят эстетическое удовольствие. Дом, органично вписанный в природный ландшафт вашего участка станет настоящим оазисом спокойствия и гармонии.</p>
+            </div>
+            <div class="private__visual">
+                <div class="private__map-wrap">
+                    <img src="{{ lv2_img }}private-territory.png" alt="Приватная территория на карте" class="private__map-img" width="1920" height="700">
+                    <div class="private__map-grad" aria-hidden="true"></div>
+                </div>
+                <div class="cl private__route-wrap">
+                    <div class="route-card">
+                        <div class="route-card__head">
+                            <div class="route-card__time" aria-label="10 минут от МКАД на машине">
+                                <span class="route-card__time-bg" aria-hidden="true"></span>
+                                <span class="route-card__min"><em>45</em>мин</span>
+                                <span class="route-card__lbl">от мкад<br>на машине</span>
+                            </div>
+                            <a href="https://yandex.ru/maps/213/moscow/?ll=37.093746%2C55.877213&mode=routes&rtext=55.818974%2C37.390776~55.959175%2C36.947689&rtn=2&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D32660614542&z=10.71" class="btn btn--white route-card__btn" target="_blank">построить маршрут <span class="btn-arrow">→</span></a>
+                        </div>
+                        <div class="route-card__body">
+                            <div class="route-card__cols">
+                                <div class="route-card__col">
+                                    <span class="route-card__type">АВТОБУС</span>
+                                    <p>От ст.м. Тушинская рейсовым автобусом №372 или на маршрутном такси. Время в пути 1 час 20 мин до ст. Истра</p>
+                                </div>
+                                <div class="route-card__col route-card__col--wide">
+                                    <span class="route-card__type">ЖЕЛЕЗНАЯ ДОРОГА</span>
+                                    <p>Добраться можно по МЦД-1 до железнодорожной станции г. Истра. Далее от станции регулярно курсирует маршрутный автобус №30 до остановки «Духанино / Поворот на Духанино», расположенной в непосредственной близости от поселка.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ ФОРМАТЫ ЖИЛЬЯ ═══ -->
+        <section class="section formats" id="formats">
+            <div class="cl section__inner">
+                <h2 class="h2 h2--center formats__h2">
+                    <span class="t-merit">Ваша личная территория: </span><span class="t-accent">выберите свой формат</span>
+                </h2>
+                <div class="formats__grid">
+                    <article class="format-card">
+                        <a href="/taunhausy" class="format-card__link">
+                            <div class="format-card__frame">
+                                <div class="format-card__bg" aria-hidden="true"></div>
+                                <img class="format-card__img format-card__img--town" src="{{ lv2_img }}townhouse-card.png" alt="">
+                                {# badge % временно скрыт #}
+                                <span class="format-card__btn">Таунхаусы <span class="btn-arrow">→</span></span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="format-card">
+                        <a href="/kupit-dom-v-kottedzhnom-poselke" class="format-card__link">
+                            <div class="format-card__frame">
+                                <div class="format-card__bg" aria-hidden="true"></div>
+                                <img class="format-card__img format-card__img--house" src="{{ lv2_img }}house-1-card.png" alt="">
+                                <span class="format-card__btn">Частные дома <span class="btn-arrow">→</span></span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="format-card">
+                        <a href="/rezidents" class="format-card__link">
+                            <div class="format-card__frame">
+                                <div class="format-card__bg" aria-hidden="true"></div>
+                                <img class="format-card__img format-card__img--vip" src="{{ lv2_img }}residence-a0d3a5.png" alt="">
+                                <span class="format-card__btn">VIP резиденции <span class="btn-arrow">→</span></span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ АТЕЛЬЕ — Figma 6872:10586 ═══ -->
+        <section class="section atelier">
+            <div class="cl atelier__cl">
+                <div class="atelier__block">
+                     <a href="/arhitekturnoe-atele" class="atelier__photo-link"><img src="{{ lv2_img }}atelier-new.png" alt="Интерьер загородного дома" class="atelier__photo" width="297" height="476"></a>
+                    <p class="atelier__label">Архитектурное ателье</p>
+                    <div class="atelier__card">
+                        <h3 class="atelier__title"><span class="t-merit">Внутренняя отделка</span><br><span class="t-accent">и создание интерьера</span></h3>
+                        <p>Команда архитекторов и дизайнеров разработает уникальный проект внутренней отделки дома и создаст уютный интерьер с учетом ваших пожеланий и современных трендов в загородной архитектуре. Архитектурное ателье готово помочь в реализации мечты.</p>
+                        <a href="/arhitekturnoe-atele" class="btn btn--outline">узнать подробности <span class="btn-arrow">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ КАТАЛОГ — Figma 6872:10549 + переключатель 7559:1999/2002 ═══ -->
+        <section class="section lv2-catalog" id="catalog">
+            <div class="cl section__inner">
+                <div class="lv2-catalog__head">
+                    <h2 class="h2 lv2-catalog__h2"><span class="t-merit t-dark">Идеальный дом </span><br><span class="t-accent">для вас и вашей семьи</span></h2>
+                    <nav class="lv2-catalog__pills" aria-label="Тип дома" data-lv2-catalog-tabs>
+                        <button type="button" class="lv2-pill" data-tab="all" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke">Все</button>
+                        <button type="button" class="lv2-pill" data-tab="1" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=2">Готовые дома</button>
+                        <button type="button" class="lv2-pill is-active" data-tab="2" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=3" aria-selected="true">Строящиеся дома</button>
+                        <button type="button" class="lv2-pill" data-tab="4" data-catalog-href="/taunhausy">Таунхаусы</button>
+                        {# Дома с подрядом временно скрыты
+                        <button type="button" class="lv2-pill" data-tab="3" data-catalog-href="/uchastok-s-podryadom-v-podmoskovye">Дома с подрядом</button>
+                        #}
+                    </nav>
+                </div>
+                <div class="lv2-catalog__houses" data-lv2-catalog-panels>
+                    {# 1=готовые(block_6), 2=строящиеся(block_3), 4=таунхаусы(block_4), 3=подряд(block_5) #}
+                    <div class="lv2-catalog__panel" data-tab-panel="1" hidden>
+                        {{ drupal_view('gotovye_doma', 'block_6') }}
+                    </div>
+                    <div class="lv2-catalog__panel is-active" data-tab-panel="2">
+                        {{ drupal_view('gotovye_doma', 'block_3') }}
+                    </div>
+                    <div class="lv2-catalog__panel" data-tab-panel="4" hidden>
+                        {{ drupal_view('gotovye_doma', 'block_4') }}
+                    </div>
+                    {# подряд (block_5) временно скрыт
+                    <div class="lv2-catalog__panel" data-tab-panel="3" hidden>
+                        {{ drupal_view('gotovye_doma', 'block_5') }}
+                    </div>
+                    #}
+                </div>
+                <div class="lv2-catalog__cta">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="btn btn--fill" data-lv2-catalog-more>Смотреть весь каталог <span class="btn-arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══ ФОРМА ═══ -->
+        <section class="section cta" id="contacts">
+            <div class="cl">
+                <div class="cta-block">
+                    <div class="cta-block__media" style="background-image:url('{{ lv2_img }}form-bg-57e3d6.png')" role="img" aria-label=""></div>
+                    <div class="cta-block__panel">
+                        <h2 class="cta__title">
+                            <span class="cta__title-row">Время выбирать</span><br>
+                            <span class="cta__title-row cta__title-row--lg">стиль жизни</span>
+                        </h2>
+                        <p class="cta__sub">Расскажем как выгодно оформить ипотеку, проконсультируем по строительству и другим вопросам</p>
+                        <form class="cta__form lv2-cta-form" action="#" method="post" novalidate>
+                            <input type="hidden" name="source" value="Лендинг Берег Песочной v2">
+                            <div class="cta__fields">
+                                <div class="cta__field-wrap">
+                                    <label class="cta__field">
+                                        <input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required>
+                                    </label>
+                                    <div class="online-notice"></div>
+                                </div>
+                                <div class="cta__field-wrap">
+                                    <label class="cta__field">
+                                        <input type="tel" name="phone" class="phone-field-mask" placeholder="Ваш телефон" autocomplete="tel" required>
+                                    </label>
+                                    <div class="online-notice"></div>
+                                </div>
+                            </div>
+                            <div class="cta__actions">
+                                <button type="button" class="btn cta__btn" id="lv2-cta-send">Отправить</button>
+                                <label class="cta__agree">
+                                    <input type="checkbox" name="agree" required>
+                                    <span class="cta__check" aria-hidden="true"></span>
+                                    <span class="cta__agree-text">Согласен с условиями <a href="/policy/">политики конфиденциальности данных</a></span>
+                                </label>
+                                <div class="online-notice"></div>
+                                <div class="popup-success">
+                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.5 12L10.5 18L20.5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Ваше сообщение успешно отправлено. Спасибо.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+            tour_modal_label: 'Берег Песочной',
+            tour_modal_source: 'Лендинг Берег Песочной v2 — экскурсия'
+        } %}
+
+    </main>

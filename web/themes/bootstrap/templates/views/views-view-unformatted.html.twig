@@ -1,0 +1,83 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{# 
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %} #}
+
+
+
+<section class="bg1">
+    <div class="first-container">
+    <div class="container_w">
+    <div class="first-container blog-container">
+
+        <div class="container_w2">
+        <div class="mobiles-blog-cats">
+            {{ drupal_menu('kategorii-bloga') }}
+            </div>
+
+            {% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}
+
+{#            <div class="catalog-items-showmore items-showmore-ipoteka">#}
+{#                <span class="showmore-btn">загрузить еще</span>#}
+{#            </div>#}
+
+        </div>
+        <div class="blog_sidebar">
+        <div class="blog-search">
+        <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8" class="search-form search-block-form form-row">
+        <button type="submit" class="blog-search-btn"><svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="8.48719" cy="8.48719" r="7.73719" stroke="#917357" stroke-width="1.5"/>
+<line x1="12.7516" y1="15.0477" x2="18.8857" y2="22.9477" stroke="#917357" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+</button>
+        <input placeholder="ПОИСК" title="Введите ключевые слова для поиска." data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" class="form-search form-control">
+        </form>
+        </div>
+        {{ drupal_menu('kategorii-bloga') }}
+        {{ drupal_view('blog', 'block_1') }}
+
+        {{ drupal_view('populyarnye_proekty', 'block_1') }}
+
+        {{ drupal_view('bootstrap_subtheme_search_form_narrow', 'block_1') }}
+        </div>
+    </div>
+    </div>
+    </div>
+</section>

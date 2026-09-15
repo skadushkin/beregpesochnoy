@@ -1,0 +1,5 @@
+services:
+  custom_export.service:
+    class: 'Drupal\custom_export\Service\CustomExportService'
+    arguments: ['@database', '@file_system']
+    public: true

@@ -1,0 +1,72 @@
+{#
+  Десктопное боковое меню: тот же drill-down 2-го уровня, что и мобильное.
+#}
+{% import _self as menus %}
+<div class="tap-menu-mobile__stack" data-tap-menu-stack>
+  {{ menus.menu_links(items, attributes, 0) }}
+</div>
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <div class="tap-menu-mobile__level tap-menu-mobile__level--root is-active" data-tap-menu-level="root">
+        {% for item in items %}
+          {% set panel_id = 'tap-menu-desk-panel-' ~ loop.index %}
+          <div class="tap-menu-top-item{{ item.below ? ' has-children' : '' }}{{ item.in_active_trail ? ' is-active' : '' }}">
+            {% if item.below %}
+              <button
+                type="button"
+                class="tap-menu-top-item__btn"
+                data-tap-menu-open="{{ panel_id }}"
+                aria-expanded="false"
+                aria-controls="{{ panel_id }}"
+              >
+                <span class="tap-menu-top-item__label">{{ item.title }}</span>
+                <span class="tap-menu-top-item__arrow" aria-hidden="true">→</span>
+              </button>
+            {% else %}
+              {{ link(item.title, item.url, {
+                'class': [
+                  'nav-link',
+                  item.in_active_trail ? 'active',
+                  'nav-link-' ~ item.url.toString()|clean_class,
+                ]
+              }) }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% for item in items %}
+        {% if item.below %}
+          {% set panel_id = 'tap-menu-desk-panel-' ~ loop.index %}
+          <div
+            class="tap-menu-mobile__level tap-menu-mobile__level--sub"
+            id="{{ panel_id }}"
+            data-tap-menu-level="sub"
+            hidden
+          >
+            <button type="button" class="tap-menu-mobile__back" data-tap-menu-back>
+              <span class="tap-menu-mobile__back-arrow" aria-hidden="true">←</span>
+              <span class="tap-menu-mobile__back-label">{{ item.title }}</span>
+            </button>
+            <div class="tap-menu-mobile__sublist">
+              {% for child in item.below %}
+                <div class="tap-menu-sub-item{{ child.in_active_trail ? ' is-active' : '' }}">
+                  {{ link(child.title, child.url, {
+                    'class': [
+                      'tap-menu-sub-item__link',
+                      child.in_active_trail ? 'active',
+                      'nav-link-' ~ child.url.toString()|clean_class,
+                    ]
+                  }) }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endmacro %}

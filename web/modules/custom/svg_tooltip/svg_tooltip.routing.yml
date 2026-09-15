@@ -1,0 +1,15 @@
+svg_tooltip.node_info:
+  path: '/node-info/{nid}'
+  defaults:
+    _controller: 'Drupal\svg_tooltip\Controller\NodeInfoController::getNodeInfo'
+    _format: 'json'
+  requirements:
+    _permission: 'access content'
+
+svg_tooltip.house_projects:
+  path: '/genplan/house-projects'
+  defaults:
+    _controller: 'Drupal\svg_tooltip\Controller\HouseProjectsController::list'
+    _format: 'json'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,5 @@
+services:
+  yandex_export.service:
+    class: 'Drupal\yandex_export\Service\YandexExportService'
+    arguments: ['@database', '@file_system']
+    public: true

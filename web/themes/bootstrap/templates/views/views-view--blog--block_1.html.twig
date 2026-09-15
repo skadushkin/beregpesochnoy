@@ -1,0 +1,10 @@
+<div class="popular-blog">
+<div class="blogs-cats-title">популярные статьи</div>
+{% if rows %}
+                    {{ rows }}
+                {% elseif empty %}
+                    <div class="view-empty">
+                        {{ empty }}
+                    </div>
+                {% endif %}
+                </div>

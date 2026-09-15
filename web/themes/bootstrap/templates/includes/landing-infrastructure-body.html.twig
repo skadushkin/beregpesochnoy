@@ -1,0 +1,137 @@
+{# Инфраструктура — Figma infrastructure-lg 7140:1968. Node 854. #}
+{% set inf_img = '/themes/bootstrap/landing-infrastructure/img/' %}
+
+<main class="ponton infrastructure landing">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="ponton-hero" id="top">
+        <div class="ponton-hero__bg" aria-hidden="true">
+            <img src="{{ inf_img }}hero-infra-122032.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ponton-hero__content">
+            <div class="ponton-hero__main">
+                <div class="ponton-hero__copy">
+                    <h1 class="ponton-hero__title">Инфраструктура<br>КП «Берег Песочной»</h1>
+                    <p class="ponton-hero__lead">КП «Берег Песочной» — это не только дома и участки, но и продуманная инфраструктура для жизни за городом: коммуникации, охрана, парк, досуговые зоны и сервисы для повседневного комфорта.</p>
+                    <div class="ponton-hero__actions">
+                        <button type="button" class="btn btn--gold open-lv2-tour-modal">Записаться на экскурсию</button>
+                        {# <a href="#scheme" class="ponton-hero__link">Посмотреть схему</a> #}
+                    </div>
+                </div>
+                <div class="ponton-hero__stats">
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">ИЖС</strong>
+                        <span class="ponton-stat__l">индивидуальное жилищное строительство</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Газ</strong>
+                        <span class="ponton-stat__l">магистральный газ в поселке</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">360°</strong>
+                        <span class="ponton-stat__l">охрана и видеонаблюдение</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Для семьи</strong>
+                        <span class="ponton-stat__l">досуговый центр и детские площадки</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ ОБ ИНФРАСТРУКТУРЕ + BENTO ═══ -->
+    <section class="section ponton-about" id="about">
+        <div class="cl section__inner ponton-about__inner">
+            <div class="ponton-about__head">
+                <h2 class="h2 ponton-about__title">Жизнь на природе с городским комфортом</h2>
+                <p class="ponton-about__text">Инфраструктура «Берега Песочной» создана для постоянного проживания: закрытая охраняемая территория, городские коммуникации, собственный парк, досуговый центр и сервисы, которые помогают жить за городом без потери привычного уровня комфорта.</p>
+            </div>
+            <div class="ponton-bento">
+                <article class="ponton-bento__card ponton-bento__card--comfort">
+                    <h3 class="ponton-bento__card-title">ИЖС</h3>
+                    <p>Поселок создан для индивидуального жилого строительства с единой архитектурной концепцией и понятным статусом земли.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--1">
+                    <img src="{{ inf_img }}infrastucture_block_03.png" alt="ИЖС в КП «Берег Песочной»">
+                </div>
+                <div class="ponton-bento__photo ponton-bento__photo--cafe">
+                    <img src="{{ inf_img }}infrastucture_block_02.png" alt="Коммуникации в поселке">
+                </div>
+                <article class="ponton-bento__card ponton-bento__card--cafe">
+                    <h3 class="ponton-bento__card-title">Все коммуникации</h3>
+                    <p>Магистральный газ, центральное энергоснабжение, канализация, водоснабжение и оптоволоконный интернет.</p>
+                </article>
+                <article class="ponton-bento__card ponton-bento__card--activity">
+                    <h3 class="ponton-bento__card-title">Досуговый центр</h3>
+                    <p>Досуговый центр, детские площадки и зоны семейного отдыха на территории поселка.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--3">
+                    <img src="{{ inf_img }}infrastucture_block_01.png" alt="Досуговый центр">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ СХЕМА ИНФРАСТРУКТУРЫ — слайдер ═══ -->
+    <section class="section ponton-scheme infra" id="scheme">
+        <div class="cl section__inner infra__head">
+            <h2 class="h2 h2--center">Все для жизни на природе<br>с городским комфортом</h2>
+            <div class="infra__pills-wrap">
+                <div class="infra__pills" id="pontonSchemePills" data-dynamic="1"></div>
+            </div>
+        </div>
+
+        <div class="infra-carousel" id="pontonSchemeCarousel" aria-live="polite">
+            <div class="infra-carousel__stage" id="pontonSchemeStage">
+                {{ drupal_view('novyy_slayder1', 'block_5') }}
+            </div>
+        </div>
+
+        <div class="cl slider-controls">
+            <button type="button" class="slider-arrow" id="pontonSchemePrev" aria-label="Назад">‹</button>
+            <div class="dots" id="pontonSchemeDots" data-dynamic="1"></div>
+            <button type="button" class="slider-arrow" id="pontonSchemeNext" aria-label="Вперёд">›</button>
+        </div>
+    </section>
+
+
+    <!-- ═══ МОЗАИКА (block_content 53) ═══ -->
+    {{ drupal_entity('block_content', '53') }}
+
+
+    <!-- ═══ КАТАЛОГ ═══ -->
+    <section class="section lv2-catalog ponton-catalog" id="catalog">
+        <div class="cl section__inner">
+            <div class="ponton-catalog__head">
+                <h2 class="h2 h2--center ponton-catalog__h2">
+                    <span class="t-merit t-white">Идеальный дом </span><br>
+                    <span class="t-dark">для вас и вашей семьи</span>
+                </h2>
+                <div class="ponton-scheme__pills ponton-catalog__pills">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke" class="ponton-pill is-active">Все</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="ponton-pill">Готовые дома</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ponton-pill">Cтроящиеся дома</a>
+                    <a href="/taunhausy" class="ponton-pill">Таунхаусы</a>
+                    <a href="/uchastok-s-podryadom-v-podmoskovye" class="ponton-pill">Дома с подрядом</a>
+                </div>
+            </div>
+            <div class="lv2-catalog__houses">
+                {{ drupal_view('gotovye_doma', 'block_6') }}
+            </div>
+            <div class="ponton-catalog__cta">
+                <a href="/kupit-dom-v-kottedzhnom-poselke" class="btn btn--gold">Смотреть весь каталог <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'Лендинг Инфраструктура — экскурсия'
+    } %}
+
+</main>

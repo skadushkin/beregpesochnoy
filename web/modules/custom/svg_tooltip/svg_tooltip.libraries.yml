@@ -1,0 +1,11 @@
+svg_tooltip_lib:
+  version: 1.28
+  css:
+    theme:
+      css/svg-tooltip.css: {}
+  js:
+    js/svg-tooltip.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.once

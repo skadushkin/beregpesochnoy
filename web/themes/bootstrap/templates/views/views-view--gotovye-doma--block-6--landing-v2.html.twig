@@ -1,0 +1,6 @@
+{# node/838 — без обёрток старого каталога #}
+{% if rows %}
+  {{ rows }}
+{% elseif empty %}
+  <div class="lv2-catalog__empty">{{ empty }}</div>
+{% endif %}

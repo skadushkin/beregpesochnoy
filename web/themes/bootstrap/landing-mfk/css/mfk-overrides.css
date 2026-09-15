@@ -1,0 +1,239 @@
+/**
+ * /mfk — лендинг МФК + стандартная шапка/футер темы.
+ * Цвета: --bg #FEFAF4, --accent #917357
+ */
+
+html:has(body.path-mfk),
+html:has(body.page-view-mfk) {
+  overflow-x: clip;
+}
+
+body.path-mfk,
+body.page-view-mfk {
+  position: relative;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.path-mfk #page-wrapper,
+body.path-mfk #page,
+body.path-mfk #main-wrapper,
+body.path-mfk #main,
+body.path-mfk #main > .row,
+body.path-mfk main[role="main"],
+body.path-mfk .landing,
+body.page-view-mfk #page-wrapper,
+body.page-view-mfk #page,
+body.page-view-mfk #main-wrapper,
+body.page-view-mfk #main,
+body.page-view-mfk #main > .row,
+body.page-view-mfk main[role="main"],
+body.page-view-mfk .landing {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.path-mfk #main.container,
+body.page-view-mfk #main.container {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.path-mfk .breadcrumb,
+body.path-mfk .page-title,
+body.path-mfk .block-page-title-block,
+body.page-view-mfk .breadcrumb,
+body.page-view-mfk .page-title,
+body.page-view-mfk .block-page-title-block {
+  display: none !important;
+}
+
+body.path-mfk #header-main-sec.inner-header,
+body.page-view-mfk #header-main-sec.inner-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: transparent !important;
+  background-image: none !important;
+  pointer-events: none;
+}
+
+body.path-mfk #header-main-sec .ipoteka-header,
+body.path-mfk #header-main-sec .header,
+body.page-view-mfk #header-main-sec .ipoteka-header,
+body.page-view-mfk #header-main-sec .header {
+  background: transparent !important;
+  background-image: none !important;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+body.path-mfk #header-main-sec .header-menu,
+body.page-view-mfk #header-main-sec .header-menu {
+  width: 1150px;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 30px 0;
+  box-sizing: border-box;
+  background: transparent !important;
+}
+
+body.path-mfk .tap-menu-container,
+body.page-view-mfk .tap-menu-container {
+  z-index: 10100 !important;
+}
+
+body.path-mfk #header-main-sec .header-menu-items,
+body.path-mfk #header-main-sec .header-menu-item,
+body.path-mfk #header-main-sec .header-menu-item a,
+body.path-mfk #header-main-sec .header-menu-link,
+body.page-view-mfk #header-main-sec .header-menu-items,
+body.page-view-mfk #header-main-sec .header-menu-item,
+body.page-view-mfk #header-main-sec .header-menu-item a,
+body.page-view-mfk #header-main-sec .header-menu-link {
+  color: #fff !important;
+}
+
+body.path-mfk #header-main-sec .header-menu-item a:hover,
+body.path-mfk #header-main-sec .header-menu-link:hover,
+body.page-view-mfk #header-main-sec .header-menu-item a:hover,
+body.page-view-mfk #header-main-sec .header-menu-link:hover {
+  color: #C4A882 !important;
+}
+
+body.path-mfk #header-main-sec .header-menu-tel,
+body.page-view-mfk #header-main-sec .header-menu-tel {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+body.path-mfk #header-main-sec .ipoteka-header .header-menu-item:last-child img,
+body.path-mfk #header-main-sec .ipoteka-header .header-menu-item:first-child img,
+body.page-view-mfk #header-main-sec .ipoteka-header .header-menu-item:last-child img,
+body.page-view-mfk #header-main-sec .ipoteka-header .header-menu-item:first-child img {
+  filter: none !important;
+}
+
+body.path-mfk .lv2-catalog__houses .view,
+body.path-mfk .lv2-catalog__houses .view-content,
+body.page-view-mfk .lv2-catalog__houses .view,
+body.page-view-mfk .lv2-catalog__houses .view-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.path-mfk .lv2-catalog .before-blue,
+body.path-mfk .lv2-catalog .catalog-container,
+body.page-view-mfk .lv2-catalog .before-blue,
+body.page-view-mfk .lv2-catalog .catalog-container {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+body.path-mfk .lv2-catalog .catalog-container > .catalog,
+body.page-view-mfk .lv2-catalog .catalog-container > .catalog {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: transparent !important;
+}
+
+body.path-mfk .lv2-catalog .catalog-title,
+body.path-mfk .lv2-catalog .main-catalog-tabs,
+body.path-mfk .lv2-catalog > .before-blue > p,
+body.page-view-mfk .lv2-catalog .catalog-title,
+body.page-view-mfk .lv2-catalog .main-catalog-tabs,
+body.page-view-mfk .lv2-catalog > .before-blue > p {
+  display: none !important;
+}
+
+body.path-mfk .catlog-item,
+body.page-view-mfk .catlog-item {
+  width: 100% !important;
+}
+
+body.path-mfk .site-theme-footer .footer-container,
+body.page-view-mfk .site-theme-footer .footer-container {
+  background: #3C3C3B !important;
+  background-image: none !important;
+}
+
+body.path-mfk .site-theme-footer .footer-container > .footer,
+body.page-view-mfk .site-theme-footer .footer-container > .footer {
+  width: 1150px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap;
+  background: transparent !important;
+  margin-top: 0 !important;
+}
+
+body.path-mfk .mfk-bento-wrap .pager,
+body.path-mfk .mfk-bento-wrap .view-header,
+body.path-mfk .mfk-bento-wrap .view-footer,
+body.page-view-mfk .mfk-bento-wrap .pager,
+body.page-view-mfk .mfk-bento-wrap .view-header,
+body.page-view-mfk .mfk-bento-wrap .view-footer {
+  display: none;
+}
+
+/* Мобилка: шапка + футер (nowrap только для десктопа) */
+@media (max-width: 1023px) {
+  body.path-mfk #header-main-sec.inner-header,
+  body.page-view-mfk #header-main-sec.inner-header {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  body.path-mfk #header-main-sec .header-menu,
+  body.page-view-mfk #header-main-sec .header-menu {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    margin: 0;
+    padding: 20px 24px;
+    background: transparent !important;
+    box-sizing: border-box;
+  }
+
+  body.path-mfk #header-main-sec .header-menu-items,
+  body.path-mfk #header-main-sec .header-menu-item,
+  body.path-mfk #header-main-sec .header-menu-item a,
+  body.path-mfk #header-main-sec .header-menu-link,
+  body.page-view-mfk #header-main-sec .header-menu-items,
+  body.page-view-mfk #header-main-sec .header-menu-item,
+  body.page-view-mfk #header-main-sec .header-menu-item a,
+  body.page-view-mfk #header-main-sec .header-menu-link {
+    color: #fff !important;
+  }
+
+  body.path-mfk #header-main-sec .header-menu-tel,
+  body.page-view-mfk #header-main-sec .header-menu-tel {
+    border-color: #fff !important;
+    color: #fff !important;
+  }
+
+  body.path-mfk .site-theme-footer .footer-container > .footer,
+  body.page-view-mfk .site-theme-footer .footer-container > .footer {
+    flex-wrap: wrap;
+  }
+}

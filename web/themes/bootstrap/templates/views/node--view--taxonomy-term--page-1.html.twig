@@ -1,0 +1,19 @@
+<div class="news-left-item blog-item">
+ {% set image = node.field_image.entity.uri.value %}
+ 
+        <div class="news-left-item-img">
+           <a href="{{ file_url(image) }}" data-fancybox style="width:100%"><img src="{{ file_url(image) }}" alt="{{ image.alt }}" /></a>
+
+        </div>
+        <div class="news-left-item-time-mob t2-mob">4 МИН ПРОЧТЕНИЯ  </div>
+        <div class="news-left-item-date news-date">{{ node.field_news_date.value }}</div>
+        <div class="news-left-item-title">{{ node.title.value }}</div>
+        <div class="news-left-item-btn">
+
+            <div class="news-left-item-btn-text t2-desc"><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">подробнее</a></div>
+            <div class="news-left-item-btn-icon">
+                <a href="{{ path('entity.node.canonical', {'node': node.id}) }}"><img src="/sites/default/files/img/newsarrow.svg" alt=""></a>
+            </div>
+        </div>
+
+</div>

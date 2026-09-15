@@ -1,0 +1,8 @@
+name: 'SVG Tooltip'
+type: module
+description: 'Добавляет всплывающие подсказки для SVG-элементов с информацией о ноде.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:block

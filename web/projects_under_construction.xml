@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><yml_catalog date="2026-08-26 17:01">
+                  <shop>
+                  <name>Коттеджный поселок "Берег Песочной"</name>
+                  <company>Коттеджный поселок "Берег Песочной"</company>
+                  <url>https://beregpesochnoy.ru/</url>
+                  <currencies>
+                    <currency id="RUR" rate="1"/>
+                  </currencies>
+                  <categories>
+                    <category id="1">Дома с подрядом</category>
+                  </categories>
+                  <offers><offer id="627" available="true">
+        <name>Дом ПБ-217.1 площадью 206.70 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no131</url><price>28295000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/1_1_0.jpg</picture><picture>http://default/sites/default/files/projects/images/2_1_0.jpg</picture><picture>http://default/sites/default/files/projects/images/3_0_0.jpg</picture><description><![CDATA[]]></description></offer><offer id="632" available="true">
+        <name>Дом ПБ-134 площадью 132.40 м² на участке 6.05</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no12-0</url><price>23340000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/pb-134-1_0.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-134-2_0.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-134-5_0.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-134-3_0.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-134-4_0.jpg</picture><description><![CDATA[]]></description></offer><offer id="641" available="true">
+        <name>Дом ПБ-155 площадью 156.30 м² на участке 5.80</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no40</url><price>20700000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/bp-155.jpg</picture><picture>http://default/sites/default/files/projects/images/bp-155-2.jpg</picture><picture>http://default/sites/default/files/projects/images/bp-155-1.jpg</picture><description><![CDATA[]]></description></offer><offer id="694" available="true">
+        <name>Дом БП-137 площадью 161.50 м² на участке 5.45</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no1b</url><price>22295000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/137-2.jpg</picture><picture>http://default/sites/default/files/projects/images/137-2-1.jpg</picture><description><![CDATA[]]></description></offer><offer id="697" available="true">
+        <name>Дом БП-115/2 площадью 128.10 м² на участке 5.02</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no3b</url><price>19249000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/bp115-2.jpg</picture><picture>http://default/sites/default/files/projects/images/bp115-2-1.jpg</picture><picture>http://default/sites/default/files/projects/images/bp115-2-2.jpg</picture><description><![CDATA[]]></description></offer><offer id="699" available="true">
+        <name>Дом ПБ-175 площадью 175.90 м² на участке 8.58</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no4b</url><price>27796000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/1_5.jpg</picture><picture>http://default/sites/default/files/projects/images/2_5.jpg</picture><picture>http://default/sites/default/files/projects/images/3_2.jpg</picture><picture>http://default/sites/default/files/projects/images/4.jpg</picture><picture>http://default/sites/default/files/projects/images/5.jpg</picture><description><![CDATA[]]></description></offer><offer id="701" available="true">
+        <name>Дом БП-152/1 площадью 155.60 м² на участке 5.16</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no5b</url><price>22912000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/bp152-1.jpg</picture><picture>http://default/sites/default/files/projects/images/bp152-1-1.jpg</picture><picture>http://default/sites/default/files/projects/images/bp152-1-2.jpg</picture><description><![CDATA[]]></description></offer><offer id="709" available="true">
+        <name>Дом ПБ-176 площадью 155.50 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no10b</url><price>27580000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/176-3.jpg</picture><picture>http://default/sites/default/files/projects/images/176-1.jpg</picture><picture>http://default/sites/default/files/projects/images/176.jpg</picture><description><![CDATA[]]></description></offer><offer id="711" available="true">
+        <name>Дом ПБ-168 площадью 168.00 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no11b</url><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/168.jpg</picture><picture>http://default/sites/default/files/projects/images/168-1.jpg</picture><picture>http://default/sites/default/files/projects/images/168-2.jpg</picture><description><![CDATA[]]></description></offer><offer id="745" available="true">
+        <name>Дом БП-136/2 площадью 151.90 м² на участке 6.75</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no124</url><price>21875000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/136-2-1.jpg</picture><picture>http://default/sites/default/files/projects/images/136-2-2.jpg</picture><picture>http://default/sites/default/files/projects/images/136-2-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="750" available="true">
+        <name>Дом ПБ-154 площадью 157.30 м² на участке 6.05</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no164</url><price>23430000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/pb154.jpg</picture><picture>http://default/sites/default/files/projects/images/pb154-1.jpg</picture><picture>http://default/sites/default/files/projects/images/pb154-2.jpg</picture><description><![CDATA[]]></description></offer><offer id="752" available="true">
+        <name>Дом ПБ-138 площадью 145.00 м² на участке 5.00</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no41</url><price>21870000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/pb-138.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-138-1.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-138-2.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-138_0.jpg</picture><description><![CDATA[]]></description></offer><offer id="756" available="true">
+        <name>Дом Б-1 площадью 158.30 м² на участке 5.00</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no25-0</url><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/b1-1.jpg</picture><picture>http://default/sites/default/files/projects/images/b1-2.jpg</picture><picture>http://default/sites/default/files/projects/images/b1-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="758" available="true">
+        <name>Дом Б-2 площадью 171.70 м² на участке 5.20</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no43</url><price>21693000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/b2-1.jpg</picture><picture>http://default/sites/default/files/projects/images/b2-2.jpg</picture><picture>http://default/sites/default/files/projects/images/b2-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="761" available="true">
+        <name>Дом Б-3 площадью 182.10 м² на участке 5.00</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no27</url><price>24210000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/b3%20%281%29_0.jpg</picture><picture>http://default/sites/default/files/projects/images/b3-1%20%281%29.jpg</picture><picture>http://default/sites/default/files/projects/images/b3-2%20%281%29.jpg</picture><description><![CDATA[]]></description></offer><offer id="763" available="true">
+        <name>Дом ПБ-171 площадью 161.00 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no38-0</url><price>25848000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/171.jpg</picture><picture>http://default/sites/default/files/projects/images/171-1.jpg</picture><picture>http://default/sites/default/files/projects/images/171-2.jpg</picture><description><![CDATA[]]></description></offer><offer id="939" available="true">
+        <name>Дом Б-6 площадью 191.90 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no138</url><price>25848000</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/b6-1.jpg</picture><picture>http://default/sites/default/files/projects/images/b6-2.jpg</picture><picture>http://default/sites/default/files/projects/images/b6-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="940" available="true">
+        <name>Дом Б-4 площадью 161.70 м² на участке 7.28</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no139</url><price>24420900</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/B4-1.jpg</picture><picture>http://default/sites/default/files/projects/images/B4-2.jpg</picture><picture>http://default/sites/default/files/projects/images/B4-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="941" available="true">
+        <name>Дом Б-5 площадью 169.20 м² на участке 7.29</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no140</url><price>24145200</price><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/b5-1.jpg</picture><picture>http://default/sites/default/files/projects/images/b5-2.jpg</picture><picture>http://default/sites/default/files/projects/images/b5-3.jpg</picture><description><![CDATA[]]></description></offer><offer id="942" available="true">
+        <name>Дом ПБ-160 площадью 158.50 м² на участке 5.45</name>
+        <vendor>Коттеджный поселок «Берег Песочной»</vendor>
+        <url>https://beregpesochnoy.ru/construction/lot-no142-0</url><categoryId>1</categoryId><picture>http://default/sites/default/files/projects/images/pb-176-1.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-176-2.jpg</picture><picture>http://default/sites/default/files/projects/images/pb-176-3.jpg</picture><description><![CDATA[]]></description></offer></offers></shop></yml_catalog>

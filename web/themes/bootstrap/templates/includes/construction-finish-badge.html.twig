@@ -1,0 +1,34 @@
+{# Плашка срока сдачи из field_okonchanie_stroitelstva. Без кастомных Twig-функций. Figma 7783:2012 / 7788:2063 #}
+{% set finish_value = entity.field_okonchanie_stroitelstva.value|default('') %}
+{% set finish_label = '' %}
+{% if finish_value %}
+  {% if finish_value matches '/^\\d{4}-\\d{2}/' %}
+    {% set finish_year = finish_value|slice(0, 4) %}
+    {% set finish_month = finish_value|slice(5, 2) %}
+    {% set finish_roman = {
+      '01': 'I', '02': 'I', '03': 'I',
+      '04': 'II', '05': 'II', '06': 'II',
+      '07': 'III', '08': 'III', '09': 'III',
+      '10': 'IV', '11': 'IV', '12': 'IV'
+    } %}
+    {% if finish_roman[finish_month] is defined %}
+      {% set finish_label = finish_roman[finish_month] ~ ' КВАРТАЛ ' ~ finish_year ~ ' ГОДА' %}
+    {% endif %}
+  {% else %}
+    {% set finish_label = finish_value %}
+  {% endif %}
+{% endif %}
+{% if finish_label %}
+  <div class="construction-finish-badge">
+    <span class="construction-finish-badge__icon" aria-hidden="true">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13.5L16 4.5L27 13.5V27H5V13.5Z" stroke="#765E50" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M11.5 17.5L15 21L21.5 13" stroke="#765E50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="construction-finish-badge__text">
+      <span class="construction-finish-badge__label">Окончание строительства:</span>
+      <span class="construction-finish-badge__value">{{ finish_label }}</span>
+    </span>
+  </div>
+{% endif %}

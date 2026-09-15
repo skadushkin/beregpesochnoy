@@ -1,0 +1,159 @@
+/**
+ * node/980 — лендинг УК / сервис (Figma uk-lg 7554:1786).
+ * Цвета: --bg #FEFAF4, --accent #917357, --btn-gold #765E50
+ */
+
+html:has(body.page-node-980) {
+  overflow-x: clip;
+}
+
+body.page-node-980 {
+  position: relative;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.page-node-980 #page-wrapper,
+body.page-node-980 #page,
+body.page-node-980 #main-wrapper,
+body.page-node-980 #main,
+body.page-node-980 #main > .row,
+body.page-node-980 main[role="main"],
+body.page-node-980 .landing {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body.page-node-980 #main.container {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.page-node-980 article.node,
+body.page-node-980 .breadcrumb,
+body.page-node-980 .region-highlighted,
+body.page-node-980 .page-title,
+body.page-node-980 .block-page-title-block {
+  display: none !important;
+}
+
+/* Шапка поверх hero */
+body.page-node-980 #header-main-sec.inner-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: transparent !important;
+  background-image: none !important;
+  pointer-events: none;
+}
+
+body.page-node-980 #header-main-sec .ipoteka-header,
+body.page-node-980 #header-main-sec .header {
+  background: transparent !important;
+  background-image: none !important;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+body.page-node-980 #header-main-sec .header-menu {
+  width: 1150px;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 30px 0;
+  box-sizing: border-box;
+  background: transparent !important;
+}
+
+body.page-node-980 .tap-menu-container {
+  z-index: 10100 !important;
+}
+
+body.page-node-980 #header-main-sec .header-menu-items,
+body.page-node-980 #header-main-sec .header-menu-item,
+body.page-node-980 #header-main-sec .header-menu-item a,
+body.page-node-980 #header-main-sec .header-menu-link {
+  color: #fff !important;
+}
+
+body.page-node-980 #header-main-sec .header-menu-item a:hover,
+body.page-node-980 #header-main-sec .header-menu-link:hover {
+  color: #C4A882 !important;
+}
+
+body.page-node-980 #header-main-sec .header-menu-tel {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+body.page-node-980 #header-main-sec .ipoteka-header .header-menu-item:last-child img,
+body.page-node-980 #header-main-sec .ipoteka-header .header-menu-item:first-child img {
+  filter: none !important;
+}
+
+/* Футер */
+body.page-node-980 .site-theme-footer .footer-container {
+  background: #3C3C3B !important;
+  background-image: none !important;
+}
+
+body.page-node-980 .footer-container {
+  background: #3C3C3B !important;
+}
+
+body.page-node-980 .site-theme-footer .footer-container > .footer {
+  width: 1150px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap;
+  background: transparent !important;
+  margin-top: 0 !important;
+}
+
+/* Сброс синего ponton на светлой странице */
+body.page-node-980 .ponton,
+body.page-node-980 .section {
+  color: #3C3C3B;
+}
+
+body.page-node-980 .bg6 {
+  margin-top: 96px !important;
+}
+
+@media (max-width: 1023px) {
+  body.page-node-980 .bg6 {
+    margin-top: 64px !important;
+  }
+
+  body.page-node-980 #header-main-sec.inner-header {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  body.page-node-980 #header-main-sec .header-menu {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    margin: 0;
+    padding: 20px 24px;
+    background: transparent !important;
+    box-sizing: border-box;
+  }
+
+  body.page-node-980 .site-theme-footer .footer-container > .footer {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,49 @@
+
+<div class="catalog-items-cont">
+    {# Без infinite-scroll wrapper: у view pager type=some, AJAX-pager нет. #}
+    <div class="catalog-items clearfix">
+        {% for row in rows %}
+{#            {{ dump(row) }}#}
+            {{ row.content }}
+
+{#        <div class="catlog-item">#}
+{#            <div class="catalog-item-img">#}
+{#                <img src="/sites/default/files/img/dom.png" alt="">#}
+{#            </div>#}
+{#            <div class="catalog-item-uptext">#}
+{#                <div class="catalog-item-name">Дом БП-115, Участок №40</div>#}
+{#                <div class="catalog-item-dots">#}
+{#                    <div>114,5 м2</div>#}
+{#                    {% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+
+<div>
+  {{ storeys }}
+  {% if storeys == 1 %}
+    этаж
+  {% elseif storeys in [2, 3, 4] %}
+    этажа
+  {% else %}
+    этажей
+  {% endif %}
+</div>
+
+
+#}
+{#                    <div>5,74 соток</div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="catalog-item-bot">#}
+{#                <div class="catalog-item-bot-cont">#}
+{#                    <div class="catalog-item-price">#}
+{#                        <div>11 300 000 ₽</div>#}
+{#                        <div>в ипотеку <span>от 48 529 р / мес</span></div>#}
+{#                    </div>#}
+{#                    <div class="catalog-item-button">#}
+{#                        <a href=""><img src="/sites/default/files/img/catArrow.svg" alt=""></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        {% endfor %}
+    </div>
+</div>

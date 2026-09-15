@@ -1,0 +1,87 @@
+<div class="catlog-item"><a href="{{ path('entity.node.canonical', {'node': row._entity.nid.value}) }}" target="_blank">
+    <div class="catalog-item-img">
+        {# <a href="{{ path('entity.node.canonical', {'node': row._entity.nid.value}) }}" target="_blank"> #}
+        {% if row._entity.field_house_project.entity is not empty %}
+            {% set related_node = row._entity.field_house_project.entity %}
+            {% if row._entity.field_house_price.value is not empty %}
+                {% set price = row._entity.field_house_price.value %}
+            {% elseif row._entity.field_house_price2.value is not empty %}
+                {% set price = row._entity.field_house_price2.value %}
+            {% elseif related_node.field_project_price.value is not empty %}
+                {% set price = related_node.field_project_price.value %}
+            {% elseif row._entity.field_lot_price.value is not empty and  row._entity.field_lot_price.value > 0 %}
+                {% set price = row._entity.field_lot_price.value %}
+            {% elseif row._entity.field_lot_price2.value is not empty %}
+                {% set price = row._entity.field_lot_price2.value %}
+                {#        {{ row._entity.field_lot_price.value|number_format(0, ',', ' ') }}#}
+            {% endif %}
+        {% endif %}
+        {# Выводим первое изображение из поля field-house-photo #}
+        {% if row._entity.field_house_photo.value is not empty %}
+                
+                {% set image = row._entity.field_house_photo.entity.uri.value %}
+                <img src="{{ file_url(image|image_style('565_x_318_px')) }}" alt="{{ row._entity.title.value }}">
+        {% else %}
+            {# Проверяем, есть ли поле связи #}
+            {% if related_node.field_project_images.entity is not empty %}
+                {# Получаем изображение из поля изображения связанного материала #}
+                {% set image = related_node.field_project_images.entity.uri.value %}
+
+                {# Рендерим изображение через Twig Tweak #}
+                <img src="{{ file_url(image|image_style('565_x_318_px')) }}" alt="{{ related_node.title.value }}">
+            {% else %}
+                <img src="/sites/default/files/default-image.jpg" alt="No image">
+            {% endif %}
+        {% endif %}
+        {# </a> #}
+    </div>
+
+    <div class="catalog-item-uptext">
+        <div class="catalog-item-name">{{ row._entity.title.value }} {{ related_node.title.value }}</div>  {# Название объекта #}
+
+        <div class="catalog-item-dots">
+            <div>
+  {{ (row._entity.field_total_area.value ?: related_node.field_total_area.value) | default('Нет данных') }} м&sup2;
+</div> {# Общая площадь #}
+            {% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+
+<div>
+  {{ storeys }}
+  {% if storeys == 1 %}
+    этаж
+  {% elseif storeys in [2, 3, 4] %}
+    этажа
+  {% else %}
+    этажей
+  {% endif %}
+</div>
+
+
+{# Этажи можно вывести аналогично, если есть поле с этажностью #}
+            <div>{{ row._entity.field_lot_area.value }} соток</div>  {# Площадь участка #}
+        </div>
+    </div>
+
+    <div class="catalog-item-bot">
+        <div class="catalog-item-bot-cont">
+            <div class="catalog-item-price">
+                <div>
+                        {% if catalogHasPrice(price) %}
+                            {{ price|number_format(0, ',', ' ') }}  р
+                        {% else %}
+                            По запросу
+                        {% endif %}
+                    </div>
+                    {% if catalogHasPrice(price) %}
+                        <div>в ипотеку <span>от {{ customPrice(price)|number_format(0, ',', ' ') }} р / мес</span></div>
+                    {% endif %}  {# Месячная выплата (пример) #}
+            </div>
+
+            <div class="catalog-item-button">
+                {# <a href="{{ path('entity.node.canonical', {'node': row._entity.nid.value}) }}"> #}
+                    <span><img src="/sites/default/files/img/catArrow.svg" alt=""></span>
+                {# </a> #}
+            </div>
+        </div>
+    </div></a>
+</div>

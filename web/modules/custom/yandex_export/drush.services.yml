@@ -1,0 +1,6 @@
+services:
+  yandex_export.commands:
+    class: Drupal\yandex_export\Commands\YandexExportCommand
+    arguments: ['@yandex_export.service']
+    tags:
+      - { name: drush.command }

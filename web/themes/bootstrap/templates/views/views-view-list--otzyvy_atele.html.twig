@@ -1,0 +1,38 @@
+{% set index = 0 %}
+{% set open_article = false %}
+{% set open_div = false %}
+
+{% for row in rows %}
+    {% if index % 5 == 0 %}
+        {% if open_article %}
+            {% if open_div %}
+                </div>
+                {% set open_div = false %}
+            {% endif %}
+            </article>
+        {% endif %}
+<article class="reviews-slider__item">
+    {% set open_article = true %}
+    {% endif %}
+
+    {% if index % 2 == 0 %}
+    {% if open_div %}
+        </div>
+    {% endif %}
+    <div class="reviews-slider__item-row">
+        {% set open_div = true %}
+        {% endif %}
+
+        <article class="reviews-slider__item-review {{ ['one', 'two', 'three', 'four', 'five'][index % 5] }} reviews-slider__item_mob">
+            {{ row.content }}
+        </article>
+
+        {% set index = index + 1 %}
+        {% endfor %}
+
+        {% if open_div %}
+    </div>
+    {% endif %}
+    {% if open_article %}
+</article>
+{% endif %}

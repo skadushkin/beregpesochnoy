@@ -1,0 +1,19 @@
+{# SEO-теги под каталогом (node/223). Figma 7120:1532 #}
+{% set catalog_seo_tags = [
+  { label: 'купить готовый дом с участком', url: '/gotovye-doma/' },
+  { label: 'купить дом на Новой Риге', url: '/kupit-dom-novaya-riga/' },
+  { label: 'Коттеджный поселок на Новой Риге', url: '/kottedzhnyy-poselok-novaya-riga/' },
+  { label: 'коттеджный поселок Истра', url: '/kottedzhnyy-poselok-istra/' },
+  { label: 'коттеджный поселок для постоянного проживания', url: '/dlya-postoyannogo-prozhivaniya/' },
+  { label: 'Дома под подряд', url: '/doma-pod-podryad/' },
+  { label: 'строящиеся дома в коттеджном поселке', url: '/stroyashchiesya-doma/' },
+  { label: 'Коттеджный поселок у воды', url: '/kottedzhnyy-poselok-u-vody/' },
+  { label: 'купить дом у реки', url: '/kupit-dom-u-reki/' },
+] %}
+
+<nav class="catalog-seo-tags" aria-label="Популярные запросы">
+  <span class="catalog-seo-tags__label">Тэги:</span>
+  {% for tag in catalog_seo_tags %}
+    <a href="{{ tag.url }}" class="catalog-seo-tags__link">{{ tag.label }}</a>
+  {% endfor %}
+</nav>

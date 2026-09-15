@@ -1,0 +1,812 @@
+/* Генплан: карточка участка с подрядом + попап выбора проекта (Figma 7629:1940 / 7629:2218) */
+
+.genplan-embed--v2 #tooltip.tooltip--lot .tooltip-img--lot {
+  width: 100%;
+  height: 200px;
+  background:
+    linear-gradient(135deg, rgba(246, 209, 0, 0.55) 0%, rgba(244, 234, 218, 0.95) 55%, #fefaf4 100%);
+}
+
+.genplan-embed--v2 #tooltip .tooltip-badge-lot {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  margin: 0;
+  padding: 4px 16px;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 29px;
+  text-transform: uppercase;
+  background: #f6d100;
+  color: #3c3c3b;
+  z-index: 2;
+}
+
+.genplan-embed--v2 #tooltip.tooltip--lot .tooltip-footer {
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.genplan-embed--v2 #tooltip.tooltip--lot .tooltip-content {
+  overflow: auto;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-actions--lot {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-fav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #765e50;
+  border-radius: 54px;
+  background: #fefaf4;
+  color: #765e50;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-fav svg {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-fav.is-active {
+  background: #f4eada;
+  color: #e53935;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-fav.is-active svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-fav:hover {
+  background: #f4eada;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-footer .tooltip-actions {
+  flex-shrink: 0;
+}
+
+.genplan-embed--v2 #tooltip.tooltip--lot .tooltip-more-link {
+  display: none !important;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-choose-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 24px;
+  border: 1px solid #765e50;
+  border-radius: 54px;
+  background: #fefaf4;
+  color: #765e50;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-choose-project:hover {
+  background: #f4eada;
+  color: #5f4a3f;
+}
+
+.genplan-embed--v2 #tooltip.tooltip--lot .tooltip-viewing-link {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 24px;
+  white-space: nowrap;
+}
+
+/* Classic fallback */
+#tooltip .tooltip-choose-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 1px solid #765e50;
+  border-radius: 40px;
+  background: #fefaf4;
+  color: #765e50;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ── Попап выбора проекта — Figma 7629:2218 / 7629:2282 / 7629:2313 ── */
+body.gp-project-modal-open {
+  overflow: hidden;
+}
+
+.gp-project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.gp-project-modal[hidden] {
+  display: none !important;
+}
+
+.gp-project-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(37, 37, 37, 0.72);
+}
+
+.gp-project-modal__shell {
+  position: relative;
+  z-index: 1;
+  width: min(1360px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  max-height: calc(100vh - 48px);
+}
+
+.gp-project-modal__close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fffbf3;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.gp-project-modal__close svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.gp-project-modal__dialog {
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  background: #fefaf4;
+  overflow: hidden;
+}
+
+.gp-project-modal__head {
+  padding: 48px 48px 0;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.gp-project-modal__title {
+  margin: 0;
+  font-family: Merriweather, serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  text-align: center;
+  color: #3c3c3b;
+}
+
+.gp-project-modal__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gp-project-modal__pills[hidden] {
+  display: none !important;
+}
+
+.gp-project-modal__pill {
+  appearance: none;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 99px;
+  background: #f4eada;
+  color: #917357;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.gp-project-modal__pill.is-active {
+  background: #917357;
+  color: #fff;
+}
+
+.gp-project-modal__body {
+  padding: 48px 48px 48px;
+  overflow: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.gp-project-modal__catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.gp-project-modal__loading,
+.gp-project-modal__empty {
+  font-family: "Cera Pro", sans-serif;
+  font-size: 16px;
+  color: #765e50;
+  padding: 24px 0;
+}
+
+.gp-project-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1148px;
+}
+
+.gp-project-modal__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 43px;
+  border: none;
+  border-radius: 54px;
+  background: #765e50;
+  color: #fff;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gp-project-modal__more:hover {
+  background: #5f4a3f;
+}
+
+.gp-project-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.gp-project-card__media {
+  display: block;
+  line-height: 0;
+  background: #f4eada;
+}
+
+.gp-project-card__media img,
+.gp-project-card__media--empty {
+  width: 100%;
+  height: 345px;
+  object-fit: cover;
+  display: block;
+}
+
+.gp-project-card__body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: end;
+  gap: 24px 16px;
+  padding: 24px;
+  background: #fff;
+  flex: 1 1 auto;
+}
+
+.gp-project-card__head {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.gp-project-card__names {
+  min-width: 0;
+}
+
+.gp-project-card__lot {
+  margin: 0 0 4px;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #917357;
+}
+
+.gp-project-card__title {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 29px;
+  color: #3c3c3b;
+}
+
+.gp-project-card__title--lg {
+  font-family: Merriweather, serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 29px;
+}
+
+.gp-project-card__meta {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  text-align: right;
+  color: #3c3c3b;
+  white-space: nowrap;
+}
+
+.gp-project-card__price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.gp-project-card__price {
+  margin: 0;
+  font-family: Merriweather, serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 29px;
+  color: #3c3c3b;
+  text-transform: uppercase;
+}
+
+.gp-project-card__price--plain {
+  text-transform: none;
+}
+
+.gp-project-card__mortgage {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  color: #917357;
+}
+
+.gp-project-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 16px 32px;
+  border: 1px solid #765e50;
+  border-radius: 54px;
+  background: transparent;
+  color: #765e50 !important;
+  text-decoration: none !important;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: end;
+}
+
+.gp-project-card__btn:hover {
+  background: #f4eada;
+}
+
+.gp-project-card--atelier .gp-project-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.gp-project-card__lead {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  color: #917357;
+}
+
+.gp-project-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: #765e50 !important;
+  text-decoration: none !important;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1023px) {
+  .gp-project-modal {
+    padding: 12px 0 0;
+  }
+
+  .gp-project-modal__shell {
+    width: 100%;
+    max-height: none;
+    min-height: 100%;
+  }
+
+  .gp-project-modal__close {
+    margin-right: 16px;
+  }
+
+  .gp-project-modal__dialog {
+    min-height: calc(100vh - 40px);
+  }
+
+  .gp-project-modal__head {
+    padding: 32px 16px 0;
+    gap: 24px;
+  }
+
+  .gp-project-modal__title {
+    font-size: 28px;
+  }
+
+  .gp-project-modal__pills {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 4px;
+  }
+
+  .gp-project-modal__pill {
+    padding: 12px 24px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .gp-project-modal__body {
+    padding: 24px 16px 32px;
+  }
+
+  .gp-project-modal__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gp-project-card__media img,
+  .gp-project-card__media--empty {
+    height: 220px;
+  }
+
+  .gp-project-card__body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gp-project-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .gp-project-card__meta {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .gp-project-card__price {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .gp-project-card__btn {
+    justify-self: start;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gp-project-modal__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gp-project-modal--form .gp-project-modal__dialog {
+  justify-content: center;
+}
+
+.gp-project-modal--form .gp-project-modal__head,
+.gp-project-modal--form .gp-project-modal__body {
+  flex: 0 0 auto;
+}
+
+.gp-project-modal--form .gp-project-modal__body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.gp-project-modal__form {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: 8px 0 16px;
+}
+
+.gp-project-modal__form[hidden],
+.gp-project-modal__catalog[hidden],
+.gp-project-modal__grid[hidden],
+.gp-project-modal__empty[hidden],
+.gp-project-modal__loading[hidden],
+.gp-project-modal__more[hidden] {
+  display: none !important;
+}
+
+.gp-project-modal__back {
+  align-self: center;
+  border: none;
+  background: none;
+  padding: 0;
+  color: #765e50;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gp-project-modal__picked {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #3c3c3b;
+  text-align: center;
+}
+
+.gp-project-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gp-project-modal__field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  border: 1px solid #ad9170;
+  border-radius: 8px;
+  background: #fff;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 16px;
+  color: #3c3c3b;
+}
+
+.gp-project-modal__agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3c3c3b;
+}
+
+.gp-project-modal__agree a {
+  color: #765e50;
+}
+
+.gp-project-modal__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 54px;
+  background: #765e50;
+  color: #fff;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gp-project-modal__submit:hover {
+  background: #5f4a3f;
+}
+
+.gp-project-modal__form .popup-success {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: #3c3c3b;
+  font-family: "Cera Pro", sans-serif;
+}
+
+.gp-project-modal__form .online-notice {
+  visibility: hidden;
+  min-height: 16px;
+  font-size: 13px;
+  color: #c45c4a;
+}
+
+.genplan-embed--v2 #tooltip .construction-finish-badge {
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin: 12px 0 0;
+}
+
+.gp-project-card__media {
+  position: relative;
+}
+
+.gp-project-card__fav,
+.gp-project-card__unfav {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fefaf4;
+  color: #765e50;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gp-project-card__fav:hover,
+.gp-project-card__unfav:hover {
+  background: #f4eada;
+}
+
+.gp-project-card__fav.is-active,
+.gp-project-card__unfav.is-active {
+  color: #e53935;
+}
+
+.gp-project-card__fav.is-active svg path,
+.gp-project-card__unfav.is-active svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.gp-project-card__fav svg,
+.gp-project-card__unfav svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.header-menu-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-fav {
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.header-fav svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.header-fav.is-filled {
+  color: #e53935;
+}
+
+.header-fav.is-filled svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.header-fav__count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: #765e50;
+  color: #fffbf3;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+
+.inner-header .header-fav__count {
+  background: #765e50;
+  color: #fffbf3;
+}

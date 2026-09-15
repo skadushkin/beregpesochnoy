@@ -1,0 +1,186 @@
+/* Каталог посадочных — layout как node/223 (sidebar + grid) */
+
+.posadochnaya-catalog-sidebar {
+  padding: 48px 0 80px;
+}
+
+.posadochnaya-catalog-sidebar__head {
+  max-width: 920px;
+  margin-bottom: 32px;
+}
+
+.posadochnaya-catalog-sidebar__title {
+  margin: 0 0 16px;
+  font-family: "Kudryashev Headline", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.15;
+  color: #3C3C3B;
+  text-transform: uppercase;
+}
+
+.posadochnaya-catalog-sidebar__lead {
+  font-size: 16px;
+  line-height: 24px;
+  color: #3C3C3B;
+}
+
+.posadochnaya-catalog-sidebar__lead p {
+  margin: 0 0 12px;
+}
+
+.posadochnaya-catalog-sidebar__lead p:last-child {
+  margin-bottom: 0;
+}
+
+.posadochnaya-catalog-sidebar__filters-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.posadochnaya-catalog-sidebar .townhouses-first-catalog {
+  align-items: flex-start;
+}
+
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  width: auto;
+  display: block;
+  padding-bottom: 0;
+}
+
+/* Вкладки каталога — вертикально, как фильтр на 223 */
+.posadochnaya-catalog-sidebar__tabs.main-catalog-tabs {
+  display: block;
+  margin-bottom: auto;
+}
+
+.posadochnaya-catalog-sidebar__tabs.main-catalog-tabs > div {
+  padding: 0;
+  border-bottom: 1px solid #AAAAAA;
+}
+
+.posadochnaya-catalog-sidebar__tabs.main-catalog-tabs > div:first-child {
+  border-top: 1px solid #AAAAAA;
+}
+
+.posadochnaya-catalog-sidebar__tabs .tab-link {
+  display: block;
+  padding: 23px 15px;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.015em;
+  text-align: left;
+  color: #3C3C3B;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.posadochnaya-catalog-sidebar__tabs > div:has(.tab-link.active) {
+  background: #917357;
+  border-bottom-color: #917357;
+}
+
+.posadochnaya-catalog-sidebar__tabs > div:first-child:has(.tab-link.active) {
+  border-top-color: #917357;
+}
+
+.posadochnaya-catalog-sidebar__tabs .tab-link.active {
+  color: #fff;
+}
+
+/* Grid 2 колонки: только .catalog-items, не .view (иначе tab-блок = одна ячейка grid) */
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .views-element-container,
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .views-infinite-scroll-content-wrapper,
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .view,
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .view-content,
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catlog-items-ready,
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catalog-items-cont {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100%;
+  flex-wrap: unset !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+}
+
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catalog-items-cont {
+  overflow: visible;
+}
+
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catalog-items {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+  flex-wrap: unset !important;
+  justify-content: unset !important;
+}
+
+.posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catlog-item {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+  box-sizing: border-box;
+}
+
+.posadochnaya-catalog-sidebar .catlog-items-ready:not(.active) {
+  display: none;
+}
+
+/* Ponton-посадочная: светлый блок каталога на зелёном фоне */
+body.page-node-type-posadochnaya-ponton .posadochnaya-catalog-sidebar {
+  background: #FEFAF4;
+  color: #3C3C3B;
+}
+
+body.page-node-type-posadochnaya-ponton .posadochnaya-catalog-sidebar .townhouses-first-catalog-left-nav2 a {
+  color: #3C3C3B;
+}
+
+@media (max-width: 991px) {
+  .posadochnaya-catalog-sidebar .townhouses-first-catalog {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .posadochnaya-catalog-sidebar .townhouses-first-catalog-left {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .posadochnaya-catalog-sidebar .townhouses-first-catalog-left-btn {
+    position: static;
+    height: auto;
+    margin-top: 24px;
+  }
+
+  .posadochnaya-catalog-sidebar .townhouses-first-catalog-left-btn a {
+    position: static;
+    transform: none;
+    display: block;
+  }
+}
+
+@media (max-width: 710px) {
+  .posadochnaya-catalog-sidebar .townhouses-first-catalog-right .catalog-items {
+    grid-template-columns: 1fr;
+  }
+}

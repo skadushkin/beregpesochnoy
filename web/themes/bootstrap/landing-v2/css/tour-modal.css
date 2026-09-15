@@ -1,0 +1,187 @@
+/* Попап «Записаться на экскурсию» — лендинги 838 / 840 */
+body.lv2-modal-open {
+  overflow: hidden;
+}
+
+.bp-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10200;
+  padding: 24px;
+}
+
+.bp-modal.is-active {
+  display: flex;
+}
+
+.bp-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.bp-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #f7f3ea;
+  border-radius: 28px;
+  padding: 40px;
+  z-index: 2;
+  animation: lv2ModalShow 0.3s ease;
+  color: #263025;
+}
+
+@keyframes lv2ModalShow {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bp-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  color: #777;
+}
+
+.bp-modal__label {
+  color: var(--accent, #B3CE7D);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.bp-modal__title {
+  font-family: var(--f-merit, Merriweather, serif);
+  font-size: clamp(28px, 5vw, 34px);
+  line-height: 1.15;
+  margin-bottom: 15px;
+  color: #263025;
+}
+
+.bp-modal__text {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.bp-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bp-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bp-modal__form input[type="text"],
+.bp-modal__form input[type="tel"] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #d8d8d8;
+  font-size: 16px;
+  font-family: var(--f-body, 'Cera Pro', sans-serif);
+  color: #263025;
+  background: #fff;
+}
+
+.bp-modal__form input:focus {
+  outline: none;
+  border-color: var(--accent, #B3CE7D);
+}
+
+.bp-modal__agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.bp-modal__agree input {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.bp-modal__agree a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.bp-submit {
+  background: #263025;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 18px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: var(--f-body, 'Cera Pro', sans-serif);
+  transition: background 0.3s;
+}
+
+.bp-submit:hover {
+  background: #5c7741;
+}
+
+.bp-modal__form .online-notice {
+  width: 100%;
+  min-height: 18px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 18px;
+  color: #a33;
+  visibility: hidden;
+}
+
+.bp-modal__form .popup-success {
+  display: none;
+  width: 100%;
+  color: #263025;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.bp-modal__form .popup-success svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .bp-modal {
+    padding: 16px;
+  }
+
+  .bp-modal__content {
+    padding: 30px 25px;
+  }
+}

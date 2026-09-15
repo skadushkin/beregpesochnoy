@@ -1,0 +1,66 @@
+{# node/838 — карточка каталога, Figma product-card #}
+{% set related_node = row._entity.field_house_project.entity ?? null %}
+{% set price = null %}
+{% if row._entity.field_house_price.value is not empty %}
+  {% set price = row._entity.field_house_price.value %}
+{% elseif row._entity.field_house_price2.value is not empty %}
+  {% set price = row._entity.field_house_price2.value %}
+{% elseif related_node and related_node.field_project_price.value is not empty %}
+  {% set price = related_node.field_project_price.value %}
+{% elseif row._entity.field_lot_price.value is not empty and row._entity.field_lot_price.value > 0 %}
+  {% set price = row._entity.field_lot_price.value %}
+{% elseif row._entity.field_lot_price2.value is not empty %}
+  {% set price = row._entity.field_lot_price2.value %}
+{% endif %}
+
+{% set area = row._entity.field_house_area.value ?? related_node.field_total_area.value ?? null %}
+{% set storeys = row._entity.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+{% set lot_area = row._entity.field_lot_area.value ?? null %}
+{% set node_url = path('entity.node.canonical', {'node': row._entity.nid.value}) %}
+
+{% set card_title = row._entity.title.value %}
+{% if related_node and related_node.title.value %}
+  {% set card_title = card_title ~ ', ' ~ related_node.title.value %}
+{% endif %}
+
+{% set image_alt = card_title %}
+{% set image_src = null %}
+{% if row._entity.field_mainproject_image.value is not empty %}
+  {% set image_src = file_url(row._entity.field_mainproject_image.entity.uri.value|image_style('565_x_318_px')) %}
+{% elseif related_node and related_node.field_project_images.entity is not empty %}
+  {% set image_src = file_url(related_node.field_project_images.entity.uri.value|image_style('565_x_318_px')) %}
+{% else %}
+  {% set image_src = '/sites/default/files/default-image.jpg' %}
+{% endif %}
+
+<article class="product-card">
+  <a href="{{ node_url }}">
+    <img src="{{ image_src }}" alt="{{ image_alt }}" width="565" height="260" loading="lazy">
+  </a>
+  <div class="product-card__foot">
+    <div>
+      <h3><a href="{{ node_url }}">{{ card_title }}</a></h3>
+      <p class="product-card__meta">
+        {% if area %}{{ area|number_format(1, ',', ' ') }} м²{% endif %}
+        {% if storeys %}
+          {% if area %}&nbsp;{% endif %}
+          {{ storeys }}
+          {% if storeys == 1 %}этаж{% elseif storeys in [2, 3, 4] %}этажа{% else %}этажей{% endif %}
+        {% endif %}
+        {% if lot_area %}
+          {% if area or storeys %}&nbsp;{% endif %}
+          {{ lot_area|number_format(2, ',', ' ') }} соток
+        {% endif %}
+      </p>
+    </div>
+    <div class="product-card__price">
+      {% if catalogHasPrice(price) %}
+        <strong>{{ price|number_format(0, ',', ' ') }} ₽</strong>
+        <span>В ипотеку от <em>{{ customPrice(price)|number_format(0, ',', ' ') }} ₽</em> / мес</span>
+      {% else %}
+        <strong>По запросу</strong>
+      {% endif %}
+    </div>
+    <a href="{{ node_url }}" class="product-card__go" aria-label="Подробнее">→</a>
+  </div>
+</article>

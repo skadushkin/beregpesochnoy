@@ -1,0 +1,22 @@
+{# Посадочная posadochnaya_ponton — Figma park-lg 7140:1532 #}
+{% set p = posadochnaya|default({}) %}
+
+<main class="ponton park posadochnaya-ponton landing">
+
+    {% include '@bootstrap/includes/posadochnaya-hero-ponton.html.twig' %}
+    {% include '@bootstrap/includes/posadochnaya-about-bento-ponton.html.twig' %}
+    {% include '@bootstrap/includes/posadochnaya-lifestyle-ponton.html.twig' %}
+
+    {% include '@bootstrap/includes/posadochnaya-catalog-sidebar.html.twig' %}
+
+    {% include '@bootstrap/includes/posadochnaya-teksty-sections-ponton.html.twig' %}
+    {% include '@bootstrap/includes/posadochnaya-faq-ponton.html.twig' with { faq_class: 'posadochnaya-faq' } %}
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: p.tour_source|default('Посадочная страница — экскурсия')
+    } %}
+
+</main>

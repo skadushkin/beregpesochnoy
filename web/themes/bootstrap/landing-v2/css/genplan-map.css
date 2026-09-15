@@ -1,0 +1,688 @@
+/* Genplan map — scoped styles extracted from main.css */
+.genplan-embed {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.genplan-embed .hidden {
+  display: none !important;
+}
+
+.genplan-embed #tooltip {
+    max-width: 215px;
+    position: absolute;
+    background: #FFF;
+    color: #3C3C3B;
+    padding: 5px;
+    border-radius: 9px;
+    font-size: 14px;
+    /* pointer-events: none; */
+    /* white-space: nowrap; */
+    z-index: 1000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.genplan-embed .tooltip-title {
+    font-family: Cera Pro;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 29px;
+    letter-spacing: -1.5%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #3C3C3B;
+}
+
+/* .hidden {
+    display: none;
+} */
+.genplan-embed #tooltip img {
+    max-width: 100%;
+}
+
+.genplan-embed .tooltip-underc {
+    margin-left: -5px;
+
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0%;
+    color: #FFF;
+    background: #486B98;
+    display: inline-block;
+    padding: 10px;
+
+    margin-top: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+
+}
+
+.genplan-embed .plan-icons {
+    position: absolute;
+    width: 40px;
+}
+
+.genplan-embed #plan-football {
+    top: 80px;
+    left: 247px;
+}
+
+.genplan-embed #plan-tennis {
+    top: 90px;
+    left: 180px;
+}
+
+.genplan-embed #plan-mangal {
+    top: 130px;
+    left: 690px;
+}
+
+.genplan-embed #plan-parking {
+    top: 165px;
+    left: 125px;
+}
+
+.genplan-embed #plan-kids {
+    top: 131px;
+    left: 275px;
+    z-index: 22;
+}
+
+.genplan-embed #plan-voley {
+    top: 75px;
+    left: 310px;
+}
+
+.genplan-embed #plan-game {
+    top: 131px;
+    left: 410px;
+}
+
+.genplan-embed #plan-workout {
+    top: 90px;
+    left: 365px;
+}
+
+.genplan-embed #plan-rezident {
+    top: 250px;
+    left: 930px;
+    z-index: 2;
+}
+
+.genplan-embed #image-container {
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 1198 / 673;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+}
+
+.genplan-embed #panzoom {
+    width: 100%;
+    height: 100%;
+    /*min-width: 1920px;  Минимальный размер 
+min-height: 1080px;*/
+    position: absolute;
+    cursor: grab;
+    transform-origin: 0 0;
+    /* Масштабирование от верхнего левого угла */
+}
+
+.genplan-embed #main-image {
+    width: 100%;
+    height: auto;
+    /*width: 1920px;
+    height: 1080px;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+}
+
+.genplan-embed #overlay-image {
+    position: absolute;
+    width: 916px;
+    height: 523px;
+    top: 149px;
+    left: 108px;
+    transform-origin: 0 0;
+    user-select: none;
+    pointer-events: auto;
+}
+
+.genplan-embed #overlay-image2 {
+    position: absolute;
+    /*width: 916px;
+    height: 523px;
+    top: 149px;
+    left: 108px;*/
+    transform-origin: 0 0;
+    user-select: none;
+    pointer-events: auto;
+}
+
+/* Стили для кнопок */
+.genplan-embed .zoom-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.genplan-embed .zoom-btn {
+    border-radius: 100%;
+    fill: white;
+    stroke-width: 1px;
+    stroke: #917357;
+    width: 63px;
+    height: 63px;
+    border: 1px solid #917357;
+    /* width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.genplan-embed .zoom-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Overlay sizing is handled by genplan-map.js (updateOverlaySize) */
+
+@media (max-width: 768px) {
+  .genplan-embed .frame {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .genplan-embed .house-categories {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .genplan-embed .category-item {
+    padding: 4px 6px;
+  }
+
+  .genplan-embed .category-indicator {
+    width: 18px;
+    height: 18px;
+  }
+
+  .genplan-embed .category-label {
+    font-size: 11px;
+    line-height: 14px;
+    margin-left: 4px;
+  }
+
+  .genplan-embed .infrastructure-toggle {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .genplan-embed .zoom-controls {
+    bottom: 12px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .genplan-embed .zoom-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.genplan-embed .map-legends {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1150px;
+}
+
+.genplan-embed .map-legend {
+    border: 1px solid #917357;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-radius: 50px;
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.genplan-embed .genplan-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 40px;
+}
+
+.genplan-embed .genplan-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.genplan-embed #tooltip.animate-tooltip {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.genplan-embed #tooltip.visible.animate-tooltip {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.genplan-embed .tooltip-more-link {
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 29px;
+    letter-spacing: -1.5%;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-offset: 0%;
+    text-decoration-thickness: 0%;
+    color: #AD9170;
+}
+
+.genplan-embed .tooltip-text {
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -1.5%;
+    color: #AD9170;
+
+}
+
+.genplan-embed .tooltip-price {
+    font-family: Cera Pro;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -1.5%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #AD9170;
+}
+
+.genplan-embed #infra-image {
+    position: absolute;
+    width: 1180px;
+    left: 10px;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.genplan-embed .frame {
+    display: flex;
+    width: 100%;
+    max-width: 1146px;
+    margin: 0 auto 12px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.genplan-embed .frame .div {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.genplan-embed .frame .div-2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.genplan-embed .frame .ellipse {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient(0deg,
+            rgba(226, 135, 135, 0.4) 0%,
+            rgba(226, 135, 135, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+.genplan-embed .frame .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: var(--regular-text-desktop-font-family);
+    font-weight: var(--regular-text-desktop-font-weight);
+    color: #000000;
+    font-size: var(--regular-text-desktop-font-size);
+    letter-spacing: var(--regular-text-desktop-letter-spacing);
+    line-height: var(--regular-text-desktop-line-height);
+    white-space: nowrap;
+    font-style: var(--regular-text-desktop-font-style);
+}
+
+.genplan-embed .frame .ellipse-2 {
+    background: linear-gradient(0deg,
+            rgba(159, 211, 36, 0.4) 0%,
+            rgba(159, 211, 36, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+}
+
+.genplan-embed .frame .ellipse-3 {
+    background: linear-gradient(0deg,
+            rgba(36, 137, 211, 0.25) 0%,
+            rgba(36, 137, 211, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+}
+
+.genplan-embed .frame .ellipse-4 {
+    background: linear-gradient(0deg,
+            rgba(173, 145, 112, 0.4) 0%,
+            rgba(173, 145, 112, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+}
+
+.genplan-embed .frame .ellipse-5 {
+    background: linear-gradient(0deg,
+            rgba(246, 209, 0, 0.25) 0%,
+            rgba(246, 209, 0, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+}
+
+.genplan-embed .frame .switcher {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    background-color: #ad9170;
+    border-radius: 10px;
+}
+
+.genplan-embed .category-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    /* padding: 6px 8px; */
+    cursor: pointer;
+    border: 1px solid transparent;
+    /* background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid;
+    border-color: #f0f0f0; */
+}
+
+.genplan-embed:not(.genplan-embed--v2) .category-item.inactive {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid;
+    border-color: #f0f0f0;
+}
+
+.genplan-embed .category-item .text {
+    font-family: var(--small-text-desktop-font-family);
+    font-weight: var(--small-text-desktop-font-weight);
+    color: #000000;
+    font-size: var(--small-text-desktop-font-size);
+    letter-spacing: var(--small-text-desktop-letter-spacing);
+    line-height: var(--small-text-desktop-line-height);
+    font-style: var(--small-text-desktop-font-style);
+}
+
+.genplan-embed .house-categories {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.genplan-embed .ready {
+    background: linear-gradient(0deg,
+            rgba(159, 211, 36, 0.4) 0%,
+            rgba(159, 211, 36, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+.genplan-embed .sold {
+    background: linear-gradient(0deg,
+            rgba(226, 135, 135, 0.4) 0%,
+            rgba(226, 135, 135, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+.genplan-embed .under-construction {
+    background: linear-gradient(0deg,
+            rgba(36, 137, 211, 0.25) 0%,
+            rgba(36, 137, 211, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+.genplan-embed .townhouse {
+    background: linear-gradient(0deg,
+            rgba(173, 145, 112, 0.4) 0%,
+            rgba(173, 145, 112, 0.4) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+.genplan-embed .land-with-contract {
+    background: linear-gradient(0deg,
+            rgba(246, 209, 0, 0.25) 0%,
+            rgba(246, 209, 0, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%);
+}
+
+/* Toggle switch & infrastructure toggle */
+
+.genplan-embed .infrastructure-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--regular-text-desktop-font-family);
+    font-weight: var(--regular-text-desktop-font-weight);
+    color: #000000;
+    font-size: var(--regular-text-desktop-font-size);
+    line-height: var(--regular-text-desktop-line-height);
+}
+
+.genplan-embed .switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+
+.genplan-embed .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.genplan-embed .sliderg {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ad9170;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.genplan-embed .sliderg:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.genplan-embed input:checked + .sliderg {
+    background-color: #9fd324;
+}
+
+.genplan-embed input:checked + .sliderg:before {
+    transform: translateX(16px);
+}
+
+.genplan-embed .toggle-label {
+    margin-left: 8px;
+    font-family: var(--regular-text-desktop-font-family);
+    font-weight: var(--regular-text-desktop-font-weight);
+    color: #000000;
+    font-size: var(--regular-text-desktop-font-size);
+    line-height: var(--regular-text-desktop-line-height);
+}
+
+/* Category indicator */
+
+.genplan-embed .category-indicator {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.genplan-embed .category-label {
+    font-family: var(--small-text-desktop-font-family);
+    font-weight: var(--small-text-desktop-font-weight);
+    font-size: var(--small-text-desktop-font-size);
+    line-height: var(--small-text-desktop-line-height);
+    color: #000;
+    margin-left: 6px;
+}
+
+.genplan-embed .features-under-img222 {
+    height: 580px;
+}
+
+.genplan-embed .features-under-img222 .swiper-container-project {
+    height: 100%;
+    /* или фиксированная высота */
+    /* min-height: 580px; */
+}
+
+.genplan-embed .features-under-img222 .swiper-slide {
+    height: auto;
+
+}
+
+.genplan-embed .swiper-container-thumbs-main img {
+    width: 100%;
+    height: auto;
+}
+
+.genplan-embed .swiper-container-thumbs-main {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+}
+
+.genplan-embed .dop-features-container {
+    margin-top: -285px;
+}
+
+.genplan-embed .swiper-container-thumbs.swiper-container-thumbs-main .swiper-wrapper {
+    justify-content: center;
+}
+
+.genplan-embed .online-notice {
+    text-align: center;
+    padding-top: 3px;
+    color: #FF4A4A;
+
+    font-family: Cera Pro;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: center;
+
+}
+
+.genplan-embed .error-field {
+    border-bottom: 1px solid #FF4A4A !important;
+    color: #FF4A4A !important;
+}
+
+.genplan-embed .infra-tooltip img {
+    max-width: 600px;
+}

@@ -1,0 +1,12 @@
+<div class="cameras-item">
+    <div class="cameras-item-title">
+        {{ fields.title.content }}
+    </div>
+    <a href="#" class="camera-img">
+        {{ fields.field_image.content }}
+    </a>
+    <a href="{{ fields.field_link.content|striptags|raw }}" data-fancybox data-type="iframe" class="camera-icon">
+        <img src="/sites/default/files/img/camera_icon.svg">
+    </a>
+
+</div>

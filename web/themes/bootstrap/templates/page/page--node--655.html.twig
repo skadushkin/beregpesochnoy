@@ -1,0 +1,227 @@
+<section>
+    <div class="techno-first-container">
+        <div class="techno-first">
+            <div class="first-crumbs">
+                {{ page.breadcrumb }}
+            </div>
+            <div class="techno-first-title">
+                <h1>Технология <br class="title-br"> строительства<br>домов в поселке<br><span>берег песочной</span></h1>
+            </div>
+            <div class="techno-first-desc">
+                БЭНПАН™ - инновационная технология проектирования и производства железобетонных 
+                конструкций для малоэтажного строительства. 
+                Продукция БЭНПАН™ внесена в Московский территориальный строительный каталог
+(МТСК) и <a href="https://stroimprosto.mos.ru/mtsk/search?q=%D0%B1%D1%8D%D0%BD%D0%BF%D0%B0%D0%BD" target="_blank">отмечена</a> как инновационная
+            </div>
+            <div class="techno-first-video">
+                <div class="techno-first-video-play" style="background-image:url('/sites/default/files/img/tehnologia_video_img.png');background-position:center;background-size:cover;">
+                    <a href="https://kinescope.io/08K9foVeVJ8LcxdX8FNEjm" data-fancybox="" data-type="iframe"><img src="/sites/default/files/img/ShortPlayIcon.svg" alt=""></a>
+                </div>
+            </div>
+            <div class="techno-first-icons">
+                <div class="techno-first-icon">
+                    <div class="techno-first-icon-img"><img src="/sites/default/files/img/technoicon1.svg" alt=""></div>
+                    <div class="techno-first-icon-text">низкие расходы<br>на содержание<br>дома</div>
+                </div>
+                <div class="techno-first-icon">
+                    <div class="techno-first-icon-img"><img src="/sites/default/files/img/technoicon2.svg" alt=""></div>
+                    <div class="techno-first-icon-text">высокая скорость<br> строительства</div>
+                </div>
+                <div class="techno-first-icon">
+                    <div class="techno-first-icon-img"><img src="/sites/default/files/img/technoicon3.svg" alt=""></div>
+                    <div class="techno-first-icon-text">срок службы<br> жб панелей</div>
+                </div>
+            </div>
+            <div class="techno-first-undervideo">Лаборатория БЭНПАН™ проводит испытания продукции собственного производства на соответствие государственным стандартам (ГОСТ) и нормативным требованиям, предъявляемым к таким изделиям. Вся продукция соответствует ГОСТ 18979-2014 «Плиты железобетонные для стен зданий. Технические условия».</div>
+
+            <div id="slider1" class="profit-price-sertificate">
+                <div class="profit-price-sert">
+                    Сертификаты соответствия установленным требованиям
+                </div>
+                <div class="profit-price-sert-mob">
+                    Сертификаты на ЖБ панели:
+                </div>
+                <!-- <div class="profit-price-images">
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert1.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert2.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert3.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert4.svg" alt=""></div>
+                    <div class="profit-price-img-block"><img src="/sites/default/files/img/sert5.svg" alt=""></div>
+                </div> -->
+                <div class="profit-price-images-container">
+                    <div class="profit-price-images">
+                        <div class="profit-price-img-block card-img-block">
+                            <a href="/sites/default/files/img/certs/1.jpg" data-fancybox="certs">
+                                <img src="/sites/default/files/img/technosert.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/2.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider1.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/3.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider2.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/4.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider3.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/5.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider4.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/6.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider5.png" alt=""></a></div>
+                        <div class="profit-price-img-block card-img-block"><a href="/sites/default/files/img/certs/7.jpg" data-fancybox="certs"><img src="/sites/default/files/img/cart-slider-img.svg" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="dots-container">
+                    <span class="dot active" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                    <span class="dot" ></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{ page.content }}
+
+<script>
+    // «загрузить еще» обрабатывается в bootstrap/js/main.js
+    const sliderContent = document.querySelector('.video-catalog-items');
+    const sliderItems = document.querySelectorAll('.video-catalog-item');
+    const sliderDots = document.querySelectorAll('.slider-nav-dot');
+    const gap = 20; // Гап между слайдами
+    const slider = document.querySelector('.sliderr');
+
+    function updateSlider(index) {
+        let offset = 0;
+        for (let i = 0; i < index; i++) {
+            offset += sliderItems[i].offsetWidth + gap;
+        }
+        sliderContent.style.transform = `translateX(-${offset}px)`;
+        document.querySelector('.slider-nav-dot.active').classList.remove('active');
+        sliderDots[index].classList.add('active');
+    }
+
+    function handleResize() {
+        if (window.innerWidth < 600) {
+            slider.classList.remove('hidden'); // Показываем слайдер
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => updateSlider(index));
+            });
+        } else {
+            slider.classList.add('hidden'); // Скрываем слайдер
+            sliderContent.style.transform = 'translateX(0)'; // Сбрасываем позицию слайдера
+            sliderDots.forEach((dot) => {
+                dot.removeEventListener('click', () => updateSlider(dot.dataset.slide));
+            });
+        }
+    }
+
+    // Инициализация при загрузке страницы
+    handleResize();
+
+    // Добавляем обработчик для изменения размера окна
+    window.addEventListener('resize', handleResize);
+</script>
+
+<script>
+    const sliderContent2 = document.querySelector('.rewiews-items');
+    const sliderItems2 = document.querySelectorAll('.rewiews-item');
+    const sliderDots2 = document.querySelectorAll('.slider2-nav-dot');
+    const gap2 = 20; // Гап между слайдами
+    const slider2 = document.querySelector('.sliderr2');
+
+    function updateSlider2(index) {
+        let offset = 0;
+        for (let i = 0; i < index; i++) {
+            offset += sliderItems2[i].offsetWidth + gap2;
+        }
+        sliderContent2.style.transform = `translateX(-${offset}px)`;
+        document.querySelector('.slider2-nav-dot.active').classList.remove('active');
+        sliderDots2[index].classList.add('active');
+    }
+
+    function handleResize2() {
+        if (window.innerWidth < 840) {
+            slider2.classList.remove('hidden'); // Показываем слайдер
+            sliderDots2.forEach((dot2, index) => {
+                dot2.addEventListener('click', () => updateSlider2(index));
+            });
+        } else {
+            slider2.classList.add('hidden'); // Скрываем слайдер
+            sliderContent2.style.transform = 'translateX(0)'; // Сбрасываем позицию слайдера
+            sliderDots2.forEach((dot2) => {
+                dot2.removeEventListener('click', () => updateSlider2(dot2.dataset.slide));
+            });
+        }
+    }
+
+    // Инициализация при загрузке страницы
+    handleResize2();
+
+    // Добавляем обработчик для изменения размера окна
+    window.addEventListener('resize', handleResize2);
+</script>
+
+<script>
+
+    document.querySelectorAll('.catlog-items-ready').forEach(catalogReady => {
+        const itemsContainer = catalogReady.querySelector('.catalog-items');
+        const items = catalogReady.querySelectorAll('.catlog-item');
+        const prevBtn = catalogReady.querySelector('.catalog-top-block-btns .prev');
+        const nextBtn = catalogReady.querySelector('.catalog-top-block-btns .next');
+
+        let index = 0;
+
+        // Определяем ширину одного элемента и общее количество элементов
+        const itemWidth = items[0].clientWidth + 20; // Учтите отступы, если они есть
+        const totalItems = items.length;
+
+        // Устанавливаем начальное положение
+        itemsContainer.style.transform = `translateX(0px)`;
+
+        // Рассчитываем максимальное значение для translateX
+        const maxTranslateX = (totalItems - 1) * itemWidth;
+
+        // Обновляем кнопки
+        function updateButtons() {
+            // Кнопка "назад" отключается, если индекс равен 0
+            if (index <= 0) {
+                prevBtn.disabled = true;
+                prevBtn.classList.remove('active-btn-catalog');
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.classList.add('active-btn-catalog');
+            }
+
+            // Кнопка "вперед" отключается, если индекс равен максимальному значению
+            if (index >= totalItems - 1) {
+                nextBtn.disabled = true;
+                nextBtn.classList.remove('active-btn-catalog');
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.classList.add('active-btn-catalog');
+            }
+        }
+
+        // Перемещение вперед
+        function moveToNextSlide() {
+            if (index < totalItems - 1) {
+                index++;
+                const newTranslateX = -index * itemWidth;
+                // Убедитесь, что translateX не выходит за пределы
+                itemsContainer.style.transform = `translateX(${Math.max(newTranslateX, -maxTranslateX)}px)`;
+                updateButtons();
+            }
+        }
+
+        // Перемещение назад
+        function moveToPrevSlide() {
+            if (index > 0) {
+                index--;
+                const newTranslateX = -index * itemWidth;
+                // Убедитесь, что translateX не выходит за пределы
+                itemsContainer.style.transform = `translateX(${Math.max(newTranslateX, -maxTranslateX)}px)`;
+                updateButtons();
+            }
+        }
+
+        nextBtn.addEventListener('click', moveToNextSlide);
+        prevBtn.addEventListener('click', moveToPrevSlide);
+
+        // Обновляем состояние кнопок при начальной загрузке
+        updateButtons();
+    });
+</script>

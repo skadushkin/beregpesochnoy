@@ -1,0 +1,25 @@
+<?php
+/**
+* Реализация hook_update_N().
+*/
+/**
+ * Implements hook_update_N().
+ */
+function mymodule_update_9001() {
+    $field_storage = \Drupal\field\Entity\FieldStorageConfig::load('node.field_lot_price');
+    if ($field_storage) {
+        // Установите новое значение Precision и Scale.
+        $field_storage->setSetting('precision', 15); // Измените на нужное значение.
+        $field_storage->setSetting('scale', 2); // Измените на нужное значение.
+        $field_storage->save();
+
+        // Очистите кеш после изменений.
+        \Drupal::service('cache.factory')->get('discovery')->deleteAll();
+
+        // Сообщите об успешной операции.
+        return 'Field storage updated successfully.';
+    }
+    else {
+        throw new \Exception('Field storage configuration not found.');
+    }
+}

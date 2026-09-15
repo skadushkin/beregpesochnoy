@@ -1,0 +1,1090 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - path_info.args: Array of URL arguments un aliassed.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'node--type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+  ]
+%}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+      />
+      <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      />
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+  
+{#    <a href="#main-content" class="visually-hidden-focusable">#}
+{#      {{ 'Skip to main content'|t }}#}
+{#    </a>#}
+
+
+<div class="tap-menu-container hidden">
+  <div class="tap-menu-close">
+    <img class="menu_close_desc" src="/sites/default/files/img/menu_close.svg" alt="">
+    <img class="menu_close_mob" src="/sites/default/files/img/menu_close_mob.svg" alt="">
+  </div>
+  <div class="tap-menu">
+    <div class="tap-menu-top">
+      <div class="tap-menu-mobile">
+        {{ drupal_menu('mobilnoe-menyu') }}
+      </div>
+      <div class="tap-menu-desctop">{{ drupal_menu('bokovoe-menyu-1') }}</div>
+      
+{#      {% block your_custom_menu %}#}
+{#        {{ drupal_block('bokovoe-menyu-1') }}#}
+{#      {% endblock %}#}
+      
+    </div>
+    <div class="tap-menu-bot">
+      <div class="tap-menu-bot-left">
+        {{ drupal_menu('bokovoe-menyu-2') }}
+      </div>
+      <div class="tap-menu-bot-right">
+{#        <div class="tap-menu-bot-right-item">#}
+{#          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/jvp.svg" alt=""></div>#}
+{#          <div class="tap-menu-bot-right-item-text"><a href="">ЖИЗНЬ В ПОСЕЛКЕ</a></div>#}
+{#        </div>#}
+        <div class="tap-menu-bot-right-item">
+          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/sp.svg" alt=""></div>
+          <div class="tap-menu-bot-right-item-text"><a href="http://kp.beregpesochnoy.ru/kp-bereg-pesochnoy.pdf">СКАЧАТЬ <br>ПРЕЗЕНТАЦИЮ</a></div>
+        </div>
+        <div class="tap-menu-bot-right-item">
+          <div class="tap-menu-bot-right-item-icon"><img src="/sites/default/files/img/zne.svg" alt=""></div>
+          <div class="tap-menu-bot-right-item-text"><a href="/#tour">ЗАПИСАТЬСЯ <br>НА ЭКСКУРСИЮ</a></div>
+        </div>
+        <div class="tap-menu-bot-right-item">
+          <div class="menu-bot-right-item-facebook">
+            <a href="https://vk.com/public162705893" rel="nofollow"><img src="/sites/default/files/img/vk_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-inst">
+            <a href="https://dzen.ru/id/5ea953e601d7556f42e9ae56" rel="nofollow"><img src="/sites/default/files/img/dz_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-inst">
+            <a href="https://rutube.ru/channel/32737290" rel="nofollow"><img src="/sites/default/files/img/rut_beige.svg" alt=""></a>
+          </div>
+          <div class="menu-bot-right-item-youtube">
+            <a href="https://www.youtube.com/channel/UCoR2ocQa-6VOpIKoffoHQ1g" rel="nofollow"><img src="/sites/default/files/img/menu_yt.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if path('<current>') == '/index3' %}
+  <section id="header-main-sec">
+    <div class="video-background">
+       
+    </div>
+    <div class="header no-select">
+
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="logo-desc" src="/sites/default/files/img/logo.svg" alt="">
+          <img class="logo-mob" src="/sites/default/files/img/logo_mob.svg" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+
+      </div>
+      <div class="header-main">
+        <div class="header-main-title">
+          <h1>БЕРЕГ ПЕСОЧНОЙ</h1>
+        </div>
+        <div class="header-main-undertitle">
+          <h2>Коттеджный поселок бизнес класса на берегу реки Песочной <br>в экологически чистом Истринском районе Подмосковья</h2>
+        </div>
+        <div class="header-main-features">
+          <div class="main-features-icon">
+            <img src="/sites/default/files/img/45geo.svg" alt="">
+          </div>
+          <div class="main-features-text">45 км от МКАД<br>по новорижскому шоссе</div>
+        </div>
+      </div>
+      <div class="header-slider-container">
+        <div class="header-slider-window">
+          <div class="header-slider">
+            <div class="header-slider-left">
+              <div class="header-slider-prev-title">КАТАЛОГ ДОМОВ</div>
+              <div class="header-slider-prev">
+                                <span id="images-container">
+                                  {{ drupal_view('main_slider', 'block_1') }}
+{#                                    <img id="img3" src="/sites/default/files/img/dom.png" alt="КАТАЛОГ ДОМОВ" class="slider-image">#}
+{#                                    <img id="img8" src="/sites/default/files/img/dom.png" alt="КА3" class="slider-image">#}
+{#                                    <img id="img2" src="/sites/default/files/img/dom.png" alt="ФРУКТОВЫЕ САДЫ" class="slider-image">#}
+{#                                    <img id="img1" src="/sites/default/files/img/dom.png" alt="РЫБАЛКА" class="slider-image active">#}
+{#                                    <img id="img4" src="/sites/default/files/img/dom.png" alt="СПОРТИВНЫЕ ПЛОЩАДКИ" class="slider-image active">#}
+{#                                    <img id="img5" src="/sites/default/files/img/dom.png" alt="КРУГЛОСУТОЧНАЯ ОХРАНА" class="slider-image">#}
+{#                                    <img id="img6" src="/sites/default/files/img/dom.png" alt="КА" class="slider-image">#}
+{#                                    <img id="img7" src="/sites/default/files/img/dom.png" alt="КА2" class="slider-image">#}
+                                </span>
+                                <span id="images-container-mobile">
+                                  {{ drupal_view('main_slider', 'block_2') }}
+{#                                    <img id="img3" src="/sites/default/files/img/dom.png" alt="КАТАЛОГ ДОМОВ" class="slider-image">#}
+{#                                    <img id="img8" src="/sites/default/files/img/dom.png" alt="КА3" class="slider-image">#}
+{#                                    <img id="img2" src="/sites/default/files/img/dom.png" alt="ФРУКТОВЫЕ САДЫ" class="slider-image">#}
+{#                                    <img id="img1" src="/sites/default/files/img/dom.png" alt="РЫБАЛКА" class="slider-image active">#}
+{#                                    <img id="img4" src="/sites/default/files/img/dom.png" alt="СПОРТИВНЫЕ ПЛОЩАДКИ" class="slider-image active">#}
+{#                                    <img id="img5" src="/sites/default/files/img/dom.png" alt="КРУГЛОСУТОЧНАЯ ОХРАНА" class="slider-image">#}
+{#                                    <img id="img6" src="/sites/default/files/img/dom.png" alt="КА" class="slider-image">#}
+{#                                    <img id="img7" src="/sites/default/files/img/dom.png" alt="КА2" class="slider-image">#}
+                                </span>
+              </div>
+            </div>
+            <div class="header-slider-right">
+              <div class="header-slider-circ">
+              </div>
+              <div class="header-slider-right-top">
+                <img src="/sites/default/files/img/topline.svg" alt="">
+                <!--                 <div class="header-slider-dot-elem" id="sliderPos3">
+        <div class="slider-dot-elem-text">ФРУКТОВЫЕ САДЫ</div>
+        <div><span></span></div>
+    </div>
+    <div class="header-slider-dot-elem" id="sliderPos4">
+        <div class="slider-dot-elem-text">РЫБАЛКА</div>
+        <div><span></span></div>
+    </div> -->
+              </div>
+              <div class="header-slider-right-mid">
+                <div id="arrowUp">
+                  <svg width="23" height="12" viewBox="0 0 23 12" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.0820312 11.6274L11.0968 0.612549L22.1027 11.6274H0.0820312Z" fill="#F1F3EA" />
+                  </svg>
+                </div>
+                <div class="mid-circ">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.0951 25.7376C21.8626 25.7376 24.9168 22.6834 24.9168 18.9159C24.9168 15.1484 21.8626 12.0942 18.0951 12.0942C14.3276 12.0942 11.2734 15.1484 11.2734 18.9159C11.2734 22.6834 14.3276 25.7376 18.0951 25.7376Z" fill="white" />
+                    <path opacity="0.68" d="M18.0936 31.236C24.8978 31.236 30.4137 25.7201 30.4137 18.9158C30.4137 12.1116 24.8978 6.5957 18.0936 6.5957C11.2894 6.5957 5.77344 12.1116 5.77344 18.9158C5.77344 25.7201 11.2894 31.236 18.0936 31.236Z" stroke="white" stroke-miterlimit="10" />
+                    <path opacity="0.38" d="M18.0954 36.7793C27.9512 36.7793 35.9409 28.7896 35.9409 18.9338C35.9409 9.07804 27.9512 1.08838 18.0954 1.08838C8.23967 1.08838 0.25 9.07804 0.25 18.9338C0.25 28.7896 8.23967 36.7793 18.0954 36.7793Z" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                  </svg>
+                </div>
+                <div id="arrowDown">
+                  <svg width="23" height="12" viewBox="0 0 23 12" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.1027 0.615723L11.0968 11.6216L0.0820312 0.615723H22.1027Z" fill="#F1F3EA" />
+                  </svg>
+                </div>
+              </div>
+              <div class="header-slider-right-bot">
+                <img src="/sites/default/files/img/botline.svg" alt="">
+                <!-- <div class="header-slider-dot-elem" id="sliderPos1">
+        <div class="slider-dot-elem-text">СПОРТИВНЫЕ ПЛОЩАДКИ</div>
+        <div><span></span></div>
+    </div>
+    <div class="header-slider-dot-elem" id="sliderPos2">
+        <div class="slider-dot-elem-text">КРУГЛОСУТОЧНАЯ ОХРАНА</div>
+        <div><span></span></div>
+    </div> -->
+              </div>
+            </div>
+            <div class="header-slider-dots-mob-cont">
+              <div class="header-slider-dots-mob">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-under">
+        <div class="header-under-item">
+          <div class="under-item-btn"><a href="https://player.vimeo.com/video/1055644436" data-fancybox="" data-type="iframe">
+              <img src="/sites/default/files/img/short.svg" alt="">
+            </a></div>
+          <div class="under-item-btn"><a href="tel:+74951865103">
+              <img src="/sites/default/files/img/phone.svg" alt="">
+            </a></div>
+        </div>
+{#        <div class="header-under-item special">#}
+{#          <a href="/kreditovanie">#}
+{#            <div class="header-under-ipoteka-img">#}
+{#              <img src="/sites/default/files/img/ipoteka.png" alt="">#}
+{#            </div>#}
+{#            <div class="header-under-ipoteka-text">ипотека от 6%</div>#}
+{#            <div class="header-under-ipoteka-bg"></div>#}
+{#            <div class="header-under-ipoteka-price">#}
+{#              <img src="/sites/default/files/img/price.svg" alt="">#}
+{#              <div>цены от завода<br>без посредников</div>#}
+{#            </div>#}
+{#          </a>#}
+{#        </div>#}
+      </div>
+
+    </div>
+  </section>
+
+{% elseif path('<current>') == '/index2' %}
+  <section id="header-main-sec" class="header-main-sec-v2">
+    <div class="img-background">
+       
+    </div>
+    <div class="img-overlay">
+      <div class="overlay-image-wrapper">
+    <img class="overlay-image" src="/sites/default/files/img/textura.png" alt="Наложение">
+  </div>
+       
+    </div>
+    <div class="header no-select">
+
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="logo-desc" src="/sites/default/files/img/logo.svg" alt="">
+          <img class="logo-mob" src="/sites/default/files/img/logo_mob.svg" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+
+      </div>
+      <div class="header-main header-main-v2">
+        <div class="header-main-title">
+          <h1>БЕРЕГ ПЕСОЧНОЙ</h1>
+        </div>
+        <div class="header-main-undertitle">
+          <h2>Коттеджный поселок бизнес класса на берегу реки Песочной <br>в экологически чистом Истринском районе Подмосковья</h2>
+        </div>
+        <div class="header-main-features">
+          <a class="footer-right-btn" href="" data-fancybox="" data-src="#mess">Записаться на просмотр&nbsp;</a>
+        </div>
+      </div>
+      
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!--<div class="header-under">
+        <div class="header-under-item">
+          <div class="under-item-btn"><a href="https://player.vimeo.com/video/1055644436" data-fancybox="" data-type="iframe">
+              <img src="/sites/default/files/img/short.svg" alt="">
+            </a></div>
+          <div class="under-item-btn"><a href="tel:+74951865103">
+              <img src="/sites/default/files/img/phone.svg" alt="">
+            </a></div>
+        </div>
+
+      </div>-->
+
+    </div>
+  </section>
+
+  <section class="bg2">
+     <div class="first-container">
+        <div class="container_w">
+          <div class="video-block-main">
+          <div style="width: 100%; height: 100%"><iframe src="https://kinescope.io/embed/wjY1uRps2Z8CBNZJtB52ix" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe></div>
+            <img src="/sites/default/files/img/logo2.svg" alt="">
+
+            {# <h3>Готовые дома с участками</h3> #}
+          </div>
+        </div>
+      </div>
+    
+  </section>
+
+
+
+<section class="bg2">
+    <div class="container">
+        <div class="invest-first">
+            <div class="invest-first-title" style="padding-bottom: 48px">
+                <h2>Жизнь за городом <span>с городским комфортом</span></h2>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="bg2">
+    <div class="container">
+        <div class="container_w">
+            <div class="main-items">
+                <div class="main-item">
+                    <a href="/sites/default/files/img/main-img1.png" data-fancybox><img class="ipoteka-logo" src="/sites/default/files/img/main-img1.png" alt=""></a>
+                    <div class="main-item-title">Дышать свежим воздухом рядом с водоемом и лесом</div>
+                    <div>Уйти от городской суеты и наслаждаться загородной жизнью в окружении примыкающего к поселку леса, переходящего в парковую территорию, где высажено более 4000 деревьев.</div>
+
+                </div>
+                <div class="main-item">
+                    <a href="/sites/default/files/img/main-img1.png" data-fancybox><img class="ipoteka-logo" src="/sites/default/files/img/main-img2.png" alt=""></a>
+                    <div class="main-item-title">Проводить больше времени у воды</div>
+                    <div>Река Песочная протекающая около поселка — чистая, с пологими берегами и песчано-галечным дном,
+отличное место для занятий водными видами спорта или отдыха с удочкой.</div>
+
+                </div>
+                
+
+
+            </div>
+
+            <div class="main-items2">
+                <div class="main-item">
+                    <a href="/sites/default/files/img/fontan.jpg" data-fancybox><img class="ipoteka-logo" src="/sites/default/files/img/fontan.jpg" alt=""></a>
+                    <div class="main-item-title">Жить с городским комфортом</div>
+                    <div>
+В “Берег Песочной” есть все коммуникации для комфортного проживания в загородном доме. Жителям доступна инфраструктура города Истра расположенного в 10 минутах езды от поселка.</div>
+
+                </div>
+                <div class="main-item">
+                    <a href="/sites/default/files/img/detskie.jpg" data-fancybox><img class="ipoteka-logo" src="/sites/default/files/img/detskie.jpg" alt=""></a>
+                    <div class="main-item-title">Растить детей в окружении природы</div>
+                    <div>На территории жилого комплекса есть детские площадки, скоро появится игровая комната, в 10
+минутах от поселка находятся поликлиника, детские сады и школы.</div>
+
+                </div>
+
+                <div class="main-item">
+                    <a href="/sites/default/files/img/ploshadka.jpg" data-fancybox><img class="ipoteka-logo" src="/sites/default/files/img/ploshadka.jpg" alt=""></a>
+                    <div class="main-item-title">Заботиться о здоровье и быть в форме</div>
+                    <div>Площадки для активного отдыха и занятий спортом - открытый теннисный корт, футбольная и волейбольная площадки, гимнастические тренажеры (воркаут), позволят всегда быть в форме.</div>
+
+                </div>
+                
+
+
+            </div>
+
+            <div class="main-items2 main-items3">
+                <div class="main-item">
+                    <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_5661_451)">
+<path d="M62.9204 39.3593C63.0523 39.3588 63.1832 39.3348 63.3066 39.2871C63.3136 39.2871 63.3211 39.2836 63.3277 39.2806H63.3272C63.4536 39.2289 63.5694 39.1532 63.6672 39.0579L63.6773 39.0513V39.0478C63.7781 38.9485 63.8578 38.8296 63.9125 38.6992L63.916 38.6882C63.9662 38.5653 63.9928 38.4334 63.9948 38.3005V38.2804C63.9938 38.151 63.9692 38.0231 63.9225 37.9022C63.919 37.8927 63.9175 37.8841 63.914 37.8756C63.8629 37.7482 63.7871 37.6318 63.6913 37.5335L63.6848 37.5235L57.3567 31.0955C57.1535 30.8893 56.8766 30.7734 56.5872 30.7739H46.8126C46.2172 30.7739 45.7342 31.257 45.7342 31.8524C45.7342 32.4483 46.2172 32.9313 46.8126 32.9313H56.1409L60.3447 37.2019H46.813C46.2176 37.2019 45.7345 37.685 45.7345 38.2804C45.7345 38.8763 46.2176 39.3593 46.813 39.3593H59.3971V58.5872H44.2962V29.1045L46.0644 29.8785H46.0648C46.2008 29.9382 46.3478 29.9693 46.4962 29.9688C47.0921 29.9688 47.5747 29.4863 47.5747 28.8904V23.3096C47.5747 22.8807 47.3203 22.493 46.9276 22.3214L33.0787 16.2617V13.9037H42.3552C42.9506 13.9037 43.4336 13.4212 43.4336 12.8253V4.32576C43.4336 3.72986 42.9506 3.24683 42.3552 3.24683H32.0002C31.4043 3.24683 30.9217 3.72986 30.9217 4.32576V16.2628L17.0703 22.3216C16.677 22.4932 16.4232 22.8809 16.4227 23.3098V28.8876C16.4227 29.4835 16.9057 29.9665 17.5016 29.9665C17.6501 29.9665 17.7971 29.9354 17.933 29.8758L19.7031 29.1018V58.5845H4.60223L4.60273 39.3604H17.1868C17.7822 39.3604 18.2652 38.8774 18.2652 38.2815C18.2652 37.6861 17.7822 37.203 17.1868 37.203H3.65507L7.85892 32.9324H17.1872C17.7826 32.9324 18.2656 32.4494 18.2656 31.8535C18.2656 31.2581 17.7826 30.775 17.1872 30.775H7.40757C7.11815 30.7745 6.84126 30.8904 6.63811 31.0966L0.30999 37.5246L0.30347 37.5346C0.208166 37.6329 0.132429 37.7488 0.0807572 37.8762C0.0807572 37.8857 0.0757411 37.8943 0.0722301 37.9033C0.0255816 38.0242 0.00100287 38.1521 0 38.2815V38.2996C0.00200639 38.4325 0.0285917 38.5639 0.0787508 38.6873V38.6983V38.6978C0.132924 38.8287 0.213182 38.9471 0.313495 39.0469V39.0505L0.323527 39.057C0.421839 39.1523 0.537213 39.2275 0.664106 39.2797C0.670627 39.2797 0.677649 39.2832 0.685173 39.2862H0.684671C0.810572 39.3354 0.944494 39.3604 1.07943 39.3604H2.44583V58.6321C1.47573 58.7866 0.649641 59.4211 0.250803 60.3195C-0.147971 61.2174 -0.0651983 62.2556 0.470999 63.0793C1.00721 63.9024 1.92356 64.398 2.90628 64.3965H61.0948C62.0774 64.398 62.9939 63.9024 63.5301 63.0793C64.0663 62.2556 64.1491 61.2173 63.7503 60.3195C63.3515 59.4211 62.5254 58.7865 61.5553 58.6321V39.3604L62.9204 39.3593ZM33.0781 5.40414H41.2757V11.7464H33.0781V5.40414ZM18.582 24.0145L32.0008 18.1463L45.4195 24.017V27.2407L32.4322 21.5566L32.4177 21.5521C32.371 21.5335 32.3229 21.5185 32.2742 21.5064C32.2526 21.5009 32.2311 21.4929 32.2095 21.4884C32.1689 21.4808 32.1283 21.4763 32.0871 21.4738C32.057 21.4738 32.0274 21.4668 31.9973 21.4668C31.9672 21.4668 31.9376 21.4718 31.9075 21.4748C31.8664 21.4763 31.8253 21.4808 31.7852 21.4884C31.7631 21.4929 31.7415 21.5014 31.7189 21.5069C31.6713 21.519 31.6246 21.534 31.5795 21.5521L31.5645 21.5566L18.5797 27.2371L18.582 24.0145ZM21.8609 28.1577L32.0003 23.7226L42.1396 28.1577V58.5868H37.7205V50.7925C37.7205 48.749 36.6305 46.8605 34.8604 45.8387C33.0908 44.8165 30.9098 44.8165 29.1402 45.8387C27.3701 46.8605 26.2801 48.749 26.2801 50.7925V58.5868H21.8611L21.8609 28.1577ZM35.5635 58.5868H28.4373L28.4378 50.7925C28.4378 49.5194 29.1165 48.3432 30.219 47.7067C31.3215 47.0702 32.6798 47.0702 33.7823 47.7067C34.8848 48.3432 35.5635 49.5194 35.5635 50.7925L35.5635 58.5868ZM61.8424 61.4915C61.8424 61.9048 61.5078 62.2394 61.0945 62.2404H2.90596C2.50167 62.2279 2.18015 61.8963 2.18015 61.492C2.18015 61.0877 2.50167 60.7567 2.90596 60.7441H61.0945C61.5073 60.7446 61.8419 61.0792 61.8424 61.4915Z" fill="#917357"/>
+<path d="M56.2213 54.0095C56.8167 54.0095 57.2997 53.5264 57.2997 52.9306V42.1226C57.2997 41.5272 56.8167 41.0442 56.2213 41.0442H47.4769C46.881 41.0442 46.3984 41.5272 46.3984 42.1226V52.9306C46.3984 53.5264 46.881 54.0095 47.4769 54.0095H56.2213ZM48.5554 48.6063H50.7704V51.8521H48.5554V48.6063ZM52.9273 51.8521L52.9278 48.6063H55.1424V51.8521H52.9273ZM55.1419 46.4489H52.9278V43.2015H55.1424L55.1419 46.4489ZM50.7704 43.2015V46.4489H48.5554V43.2015H50.7704Z" fill="#917357"/>
+<path d="M7.78156 41.0452C7.18616 41.0452 6.70312 41.5282 6.70312 42.1236V52.9315C6.70312 53.5274 7.18616 54.0105 7.78156 54.0105H16.526C17.1218 54.0105 17.6044 53.5274 17.6044 52.9315V42.1236C17.6044 41.5282 17.1218 41.0452 16.526 41.0452H7.78156ZM15.4474 46.4499H13.2324V43.2026H15.4469L15.4474 46.4499ZM11.075 43.2026V46.4499H8.86045V43.2026H11.075ZM8.86045 48.6073H11.075V51.8531H8.86045V48.6073ZM13.2324 51.8531V48.6073H15.4469V51.8531H13.2324Z" fill="#917357"/>
+<path d="M32.0024 40.8735C34.0068 40.8735 35.9289 40.0775 37.3464 38.66C38.7634 37.2425 39.5594 35.3203 39.5594 33.316C39.5589 31.3116 38.7624 29.3895 37.3449 27.9725C35.9274 26.5555 34.0047 25.7595 32.0004 25.76C29.996 25.7605 28.0739 26.5575 26.6574 27.9751C25.2404 29.3931 24.4449 31.3152 24.4453 33.3196C24.4483 35.323 25.2454 37.2431 26.6624 38.6591C28.0789 40.075 29.9995 40.8716 32.0024 40.8736V40.8735ZM32.0024 27.9183C33.4345 27.9183 34.8079 28.4871 35.82 29.4998C36.8328 30.512 37.402 31.8854 37.402 33.3174C37.402 34.7494 36.8337 36.1229 35.8211 37.1355C34.8088 38.1482 33.436 38.717 32.0038 38.7175C30.5718 38.718 29.1984 38.1497 28.1857 37.1374C27.1725 36.1252 26.6032 34.7518 26.6027 33.3198C26.6037 31.8883 27.173 30.5149 28.1852 29.5022C29.1974 28.4895 30.5703 27.9197 32.0024 27.9182V27.9183Z" fill="#917357"/>
+<path d="M30.3674 36.0246C30.6538 36.0246 30.9282 35.9107 31.1303 35.7081L32.76 34.0784V34.0789C32.8603 33.9776 32.9401 33.8577 32.9942 33.7258L32.9992 33.7092C33.0489 33.5849 33.0755 33.4524 33.076 33.3185V29.6002C33.076 29.0048 32.5935 28.5217 31.9976 28.5217C31.4017 28.5217 30.9191 29.0048 30.9191 29.6002V32.8691L29.605 34.1818C29.2965 34.4903 29.2042 34.9542 29.3713 35.357C29.5378 35.7603 29.931 36.0232 30.3674 36.0232L30.3674 36.0246Z" fill="#917357"/>
+</g>
+<defs>
+<clipPath id="clip0_5661_451">
+<rect width="64" height="64" fill="white" transform="translate(0 0.246826)"/>
+</clipPath>
+</defs>
+</svg>
+
+                    <div class="main-item-title">Медицинские учреждения в 10 минутах езды на автомобиле</div>
+                    {# <div>В здании будет открыт многофункциональный культурно-бытовой комплекс</div> #}
+
+                </div>
+                <div class="main-item">
+                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M33.6982 11.5572C31.9297 11.5572 30.4332 12.9537 30.4332 14.7526V15.156C30.4332 16.9549 31.9297 18.3514 33.6982 18.3514H34.1151C35.8836 18.3514 37.3801 16.9549 37.3801 15.156V14.7526C37.3801 12.9537 35.8836 11.5572 34.1151 11.5572H33.6982ZM32.6554 14.7526C32.6554 14.2492 33.0876 13.7794 33.6982 13.7794H34.1151C34.7256 13.7794 35.1578 14.2492 35.1578 14.7526V15.156C35.1578 15.6593 34.7256 16.1292 34.1151 16.1292H33.6982C33.0876 16.1292 32.6554 15.6593 32.6554 15.156V14.7526Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4152 15.0534C22.8015 15.0534 22.3041 15.5509 22.3041 16.1645V20.3331C22.3041 20.9467 22.8015 21.4442 23.4152 21.4442H26.6113C27.2249 21.4442 27.7224 20.9467 27.7224 20.3331V16.1645C27.7224 15.5509 27.2249 15.0534 26.6113 15.0534H23.4152ZM24.5263 19.222V17.2756H25.5001V19.222H24.5263Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M41.202 15.0534C40.5884 15.0534 40.0909 15.5509 40.0909 16.1645V20.3331C40.0909 20.9467 40.5884 21.4442 41.202 21.4442H44.3981C45.0117 21.4442 45.5092 20.9467 45.5092 20.3331V16.1645C45.5092 15.5509 45.0117 15.0534 44.3981 15.0534H41.202ZM42.3131 19.222V17.2756H43.287V19.222H42.3131Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4152 23.0544C22.8015 23.0544 22.3041 23.5518 22.3041 24.1655V29.4098C22.3041 30.0235 22.8015 30.5209 23.4152 30.5209H26.6113C27.2249 30.5209 27.7224 30.0235 27.7224 29.4098V24.1655C27.7224 23.5518 27.2249 23.0544 26.6113 23.0544H23.4152ZM24.5263 28.2987V25.2766H25.5001V28.2987H24.5263Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M41.202 23.0544C40.5884 23.0544 40.0909 23.5518 40.0909 24.1655V29.4098C40.0909 30.0235 40.5884 30.5209 41.202 30.5209H44.3981C45.0117 30.5209 45.5092 30.0235 45.5092 29.4098V24.1655C45.5092 23.5518 45.0117 23.0544 44.3981 23.0544H41.202ZM42.3131 28.2987V25.2766H43.287V28.2987H42.3131Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.971 1.13574C23.5993 1.13574 23.2522 1.32164 23.0462 1.63107L16.3761 11.6491C16.1491 11.9901 16.1281 12.4283 16.3215 12.7895C16.5149 13.1506 16.8913 13.376 17.301 13.376H18.6911V32.1983H17.301C16.6873 32.1983 16.1899 32.6958 16.1899 33.3094C16.1899 33.9231 16.6873 34.4206 17.301 34.4206H50.5818C51.1954 34.4206 51.6929 33.9231 51.6929 33.3094C51.6929 32.6958 51.1954 32.1983 50.5818 32.1983H49.1916V13.376H50.5818C50.9914 13.376 51.3678 13.1506 51.5612 12.7895C51.7547 12.4283 51.7337 11.9901 51.5066 11.6491L44.8366 1.63107C44.6306 1.32164 44.2834 1.13574 43.9117 1.13574H23.971ZM20.9134 32.1983V13.376H28.4004C28.6744 13.376 28.9388 13.2747 29.1427 13.0916L33.9414 8.78278L38.74 13.0916C38.9439 13.2747 39.2083 13.376 39.4824 13.376H46.9694V32.1983H38.7002V25.9136C38.7002 23.2978 36.5193 21.239 33.9066 21.239C31.2939 21.239 29.1131 23.2978 29.1131 25.9136V32.1983H20.9134ZM39.908 11.1538H48.5071L43.3166 3.35796H24.5661L19.3756 11.1538H27.9747L33.199 6.46274C33.6213 6.08358 34.2614 6.08358 34.6837 6.46274L39.908 11.1538ZM36.4779 25.9136V32.1983H31.3353V25.9136C31.3353 24.5933 32.4519 23.4612 33.9066 23.4612C35.3614 23.4612 36.4779 24.5933 36.4779 25.9136Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.3987 56.224C9.63043 57.6821 10.9348 58.7267 12.4098 58.7267C12.5684 58.7267 12.721 58.7148 12.8792 58.6855L16.6462 58.1247C17.3688 58.0184 18.0129 57.6694 18.4856 57.1374C21.6208 58.047 29.595 60.2853 32.0245 60.2853C32.1585 60.2853 32.2805 60.2791 32.3723 60.2614C33.525 60.09 38.2978 57.6462 49.2628 51.8612C52.1884 50.3203 54.9495 48.8685 56.6684 47.9947C57.6621 47.4869 58.3202 46.5366 58.424 45.4503C58.5278 44.3761 58.0643 43.3372 57.1927 42.6759C56.2297 41.9441 54.1451 40.7928 50.9754 41.2651L40.1474 42.8863C38.6758 41.6449 36.87 41.1401 34.8541 41.4413L28.5759 42.3798C28.0517 42.4625 27.5275 42.3028 27.1435 41.9429C25.7477 40.65 22.9012 38.5545 19.567 39.0502L16.7572 39.4684L16.7133 39.1934C16.4569 37.5821 14.8965 36.4782 13.2388 36.7261L9.46625 37.2869C8.6619 37.4052 7.95482 37.8243 7.4731 38.4617C6.99137 39.0992 6.79622 39.8786 6.91824 40.6577L9.3987 56.224ZM42.3694 45.8213C42.228 45.5372 42.079 45.266 41.9228 45.008L51.347 43.597C53.6145 43.2606 55.0346 44.0338 55.6868 44.5296C56.0035 44.7656 56.0099 45.1024 55.9976 45.2321C55.9857 45.368 55.9185 45.7102 55.5405 45.8992C53.8033 46.7787 51.0363 48.2368 48.1043 49.7834C42.1676 52.9179 33.1892 57.6462 32.0127 57.9237C30.977 58.0385 24.6651 56.4608 19.2109 54.8831C19.2062 54.842 19.2007 54.8009 19.1942 54.7597L17.1286 41.7989L19.9263 41.3817C22.2239 41.0391 24.3757 42.6569 25.4484 43.6485C26.3872 44.5223 27.6546 44.9118 28.9348 44.7171L35.213 43.7786C37.3282 43.4657 38.9919 44.493 40.1624 46.8484C40.2657 47.0613 40.199 47.2441 40.1501 47.3326C40.1071 47.4096 39.9851 47.5867 39.7232 47.6279L25.4603 49.7588C24.7957 49.8593 24.3387 50.4613 24.4424 51.1049C24.5338 51.6892 25.0516 52.1083 25.643 52.1083C25.7038 52.1083 25.7651 52.1025 25.845 52.0906L40.108 49.9597C41.065 49.818 41.8694 49.2572 42.3205 48.4307C42.7657 47.6101 42.784 46.6597 42.3694 45.8213ZM13.6045 39.0633C13.6351 39.0575 13.6652 39.0575 13.6958 39.0575C13.9884 39.0575 14.2566 39.27 14.2932 39.5591L16.7741 55.1254C16.8107 55.3321 16.7192 55.4857 16.6644 55.5623C16.6096 55.6389 16.4816 55.7686 16.2681 55.7982L12.5011 56.359C12.178 56.4064 11.8553 56.182 11.8064 55.8633L9.32553 40.2969C9.28895 40.0902 9.38037 39.9366 9.43522 39.8601C9.49007 39.7835 9.61804 39.6538 9.83148 39.6241L13.6045 39.0633Z" fill="#917357"/>
+</svg>
+
+                    <div class="main-item-title">Рядом детские сады, школы и досуговые центры</div>
+                    {# <div>В доме есть вода и электричество</div> #}
+
+                </div>
+
+                <div class="main-item">
+                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.3246 21.2254C41.8516 21.026 41.3117 21.026 40.8387 21.3584C40.4335 21.6908 40.2309 22.2226 40.3657 22.7543C40.9061 24.7483 40.9734 26.2768 40.9061 27.4065C37.4615 24.2828 32.8684 18.1684 35.9756 10.0602C36.1782 9.52847 35.9756 8.93044 35.5704 8.53174C35.0974 8.19934 34.4222 8.13304 33.9492 8.46544C33.5441 8.73108 25.7763 14.1811 23.5479 25.28C23.4805 24.3496 23.4805 23.4191 23.5479 22.555C23.6153 22.0233 23.3453 21.4915 22.8723 21.2259C22.3993 20.9603 21.7915 21.0266 21.3863 21.2922C16.2532 25.0807 14.0917 31.7268 16.0507 37.7745C18.4822 44.9523 25.8448 48.1423 33.2741 48.1423C35.0979 48.1423 36.8539 47.9429 38.6097 47.6105C40.5682 47.2118 42.7973 46.6138 44.7562 45.0849C47.7282 42.8253 49.6867 39.4355 50.2271 35.7138C50.9701 29.7326 47.8634 23.8843 42.3246 21.2254ZM47.5255 35.3815C47.1204 38.3721 45.4991 41.0972 43.1355 42.9581C41.5821 44.1541 39.6909 44.6196 38.0698 44.952C30.3026 46.5472 21.1841 44.354 18.7526 36.91C17.4691 32.9221 18.3474 28.6688 20.9142 25.4788C21.0494 26.5422 21.252 27.5389 21.5898 28.5362C21.995 29.7322 22.5354 30.8625 23.211 31.9256C23.2783 31.9919 23.2783 32.0586 23.3462 32.1249C25.2374 34.9825 28.142 37.1758 31.5864 38.2393C32.3294 38.4387 33.0723 38.04 33.275 37.3752C33.4776 36.6441 33.0724 35.913 32.3968 35.7137C29.6953 34.9163 27.3985 33.188 25.7777 30.9285C25.9129 22.5545 29.6279 16.7723 32.532 13.5822C31.5864 22.6872 38.6785 29.0011 41.11 30.862C41.4478 31.1277 41.853 31.1944 42.2582 31.1277C42.6634 31.0614 43.0012 30.7953 43.1364 30.3966C43.2716 30.1309 44.0146 28.4026 43.7442 25.2126C46.5126 27.7383 48.0659 31.5267 47.5255 35.3815Z" fill="#917357"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.209 50.0132C26.0269 50.0132 26.6899 50.6644 26.6899 51.4677V53.3378H32.1906V51.4677C32.1906 50.6644 32.8536 50.0132 33.6716 50.0132C34.4895 50.0132 35.1525 50.6644 35.1525 51.4677V53.3378H40.6532V51.4677C40.6532 50.6644 41.3162 50.0132 42.1341 50.0132C42.9521 50.0132 43.6151 50.6644 43.6151 51.4677V54.7923C43.6151 55.5956 42.9521 56.2468 42.1341 56.2468H25.209C24.3911 56.2468 23.728 55.5956 23.728 54.7923V51.4677C23.728 50.6644 24.3911 50.0132 25.209 50.0132Z" fill="#917357"/>
+</svg>
+
+                    <div class="main-item-title">В поселке есть все коммуникации для комфортной жизни</div>
+                    {# <div>Охрана, КПП, освещение улиц</div> #}
+
+                </div>
+                
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="bg2">
+    <div class="container">
+        <div class="invest-first">
+            
+            <div class="invest-first-title">
+                <h2>Живописная природа <span>для отдыха всей семьей</span></h2>
+            </div>
+
+            <div style="padding-top:48px">За ландшафтом заботливо ухаживают садовники, чтобы прогулки были не только приятными, но и полезными для здоровья. Здесь можно гулять с детьми, устраивать семейные пикники и просто наслаждаться тишиной на скамейке в тени деревьев.</div>
+        </div>
+
+        
+    </div>
+    <div class="container" style="padding-top:48px">
+    <div class="cart-first in-container">
+    <div class="cart-first-slider2  cart-first-slider-main2">
+          <div class="cart-first-slider-main">
+              <div class="swiper swiper-container-project">
+                  {# <img src="/sites/default/files/img/logo2.svg" alt="" class="slider-logo"> #}
+                  {# <div class="slider-title">Готовые дома с участками</div> #}
+                  <a class="slider-link" href="" data-fancybox="" data-src="#mess">запишитесь на просмотр</a>
+
+                  <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto1.jpg" data-fancybox><img src="/sites/default/files/img/bereg-foto1.jpg" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto2.jpg" data-fancybox><img src="/sites/default/files/img/bereg-foto2.jpg" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto3.jpg" data-fancybox><img src="/sites/default/files/img/bereg-foto3.jpg" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto4.jpg" data-fancybox><img src="/sites/default/files/img/bereg-foto4.jpg" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/bereg-foto5.jpg" data-fancybox><img src="/sites/default/files/img/bereg-foto5.jpg" /></a>
+                      </div>
+                      
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/slider2.png" data-fancybox><img src="/sites/default/files/img/slider2.png" /></a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="/sites/default/files/img/slider3.png" data-fancybox><img src="/sites/default/files/img/slider3.png" /></a>
+                      </div>
+                  </div>
+                  <div class="cart-first-slider-main-back swiper-button-prev">
+                      <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+                  </div>
+                  <div class="cart-first-slider-main-next swiper-button-next">
+                      <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+                  </div>
+              </div>
+          </div>
+
+          <div class="cart-first-slider-nav">
+              <div class="swiper swiper-container-thumbs">
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper">
+                      
+               
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto1.jpg" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto2.jpg" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto3.jpg" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto4.jpg" />
+                    </div>
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/bereg-foto5.jpg" />
+                    </div>
+                    
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/slider2.png" />
+                    </div>
+                    
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                      <img src="/sites/default/files/img/slider3.png" />
+                    </div>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% else %}
+
+  <section class="ipoteka techno inner-header" id="header-main-sec">
+    <div class="header ipoteka-header no-select">
+      <div class="header-menu">
+        <div class="header-menu-logo"><a href="/">
+          <img class="ipoteka-logo logo-desc" src="/sites/default/files/img/logo_mob.svg" alt="">
+            <img class="logo-mob" src="/sites/default/files/img/logo_mob.svg" alt=""></a>
+        </div>
+        {{ page.primary_menu }}
+      </div>
+    </div>
+  </section>
+
+{% endif %}
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+
+    <!-- ФУТЕР -->
+    <section>
+      <div class="footer-container">
+        <div class="footer">
+          <div class="footer-col">
+            <a href="/"><img src="/sites/default/files/img/logo_mob.svg" alt=""></a>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">О ПОСЕЛКЕ</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_first }}
+            </div>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">Информация</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_second }}
+            </div>
+          </div>
+          <div class="footer-col" onclick="toggleVisibility(this)">
+            <div class="footer-col-title">Покупка</div>
+            <div class="footer-col-icon">
+              <img class="footer-col-plus" src="/sites/default/files/img/plus.svg" alt="">
+              <img class="footer-col-minus" src="/sites/default/files/img/minus.svg" alt="">
+            </div>
+            <div class="footer-col-items">
+              {{ page.footer_third }}
+            </div>
+          </div>
+          <div class="footer-col">
+            {{ page.footer_fourth }}
+
+            
+          </div>
+        </div>
+        <div class="footer-underlink">
+          © 2025 все права защищены | <a href="/policy/">Политика конфиденциальности</a>
+          <a href="#" data-fancybox="" data-src="#online2" id="form-chat1"></a>
+        </div>
+      </div>
+    </section>
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+      <div class="shadow">
+        <div class="popup popup-mess new-popup" id="online2">
+          
+          <div class="row consult1">
+              <div class="col-12 col-sm-7" style="background: #00000099;">
+                  <div class="yana-popup pr-30">
+                      <div class="banner3-title">
+                          Получите консультацию специалиста
+                      </div>
+                      <a href="tel:+74951182688" class="banner-tel">+7 (495) 118-26-88</a>
+                      <span class="banner-span">Пн-Пт с 9:00 до 18:00</span>
+
+                      <a href="https://wa.me/+79261470015" class="btn-transparent-wa"><span>Пишите в мессенджер</span></a>
+
+                      <div class="yana-popup-mob">
+                      <img src="/sites/default/files/kastoom_design/yana_mob.png" class="yana_mob">
+                          <div>
+                              <p>Яна Зиновьева</p>
+                              <span>Старший специалист</span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-12 col-sm-5 popup-dark-bg-block">
+                  <div class="">
+                      <div class="banner1-form-title">
+                          Заполните форму и мы вам перезвоним
+                      </div>
+                      
+
+                      <form class="banner-form1">
+                          <label>
+                              <input type="text" class="phone-field-mask popup-phone1" placeholder="Ваш номер телефона">
+                          </label>
+                          <div class="online-notice"></div>
+                          <label>
+                              <button class="btn-orange-arrow" style="width:100%" id="yana-send"><span>Получить консультацию</span></button>
+                          </label>
+                          <label class="policy-label">
+                              <input type="checkbox" class="popup-consent"> Cогласен с условиями <a href="#">политики конфиденциальности данных</a>
+                          </label>
+                          <div class="online-notice"></div>
+                          <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                          <div class="form-message" style="margin-top: 10px;"></div>
+                      </form>
+                  </div>
+              </div>
+
+
+            </div>
+            
+          </div>
+        </div>
+        <div class="popup popup-mess" id="online">
+          <input type="hidden" id="house" />
+          <div class="popup-close"></div>
+          <a class="popup-title">Заказать звонок</a>
+          <div class="popup-body">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="email" placeholder="Ваш E-mail" />
+              <div class="online-notice"></div>
+            </div>
+            <input type="hidden" name="source" id="form-source"/>
+            <div class="form-confirmation">
+              <label><input type="checkbox">  Даю согласие на <a href="/policy/." target="_blank">обработку персональных данных</a></label>
+              <div class="online-notice"></div>
+            </div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+            </div>
+            <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+            
+          </div>
+        </div>
+          <div class="popup popup-mess " id="mess">
+              <input type="hidden" id="house" />
+              <div class="popup-close"></div>
+              <a class="popup-title">Напишите нам</a>
+              <div class="popup-body">
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="email" placeholder="Ваш E-mail" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <textarea name="mess" placeholder="Ваше сообщение"></textarea>
+                  </div>
+                  <input type="hidden" name="source" id="form-source"/>
+                  <div class="form-confirmation">
+                      <label><input type="checkbox">  Даю согласие на <a href="/policy/." target="_blank">обработку персональных данных</a></label>
+                  </div>
+                  <div class="form-group popup-button">
+                      <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+                  </div>
+                  <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                  
+              </div>
+          </div>
+
+          <div class="popup popup-mess " id="tour2">
+              <input type="hidden" id="house" />
+              <div class="popup-close"></div>
+              <a class="popup-title">Оставьте заявку</a>
+              <div class="popup-body">
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="name" placeholder="Ваше имя *" />
+                      <div class="online-notice"></div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="phone" placeholder="+7 (___)_______" />
+                      <div class="online-notice"></div>
+                  </div>
+                  
+                  <input type="hidden" name="source" id="form-source"/>
+                  <div class="form-confirmation">
+                      <label><input type="checkbox">  Даю согласие на <a href="/policy/." target="_blank">обработку персональных данных</a></label>
+                  </div>
+                  <div class="form-group popup-button">
+                      <div class="catalog-more text-center"><div><a href="" class="popup-btn" onclick="yaCounter26420151.reachGoal('callback-send-request-from-form'); return true;">Отправить заявку</a></div></div>
+                  </div>
+                  <div class="popup-success">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 12L10.5 18L20.5 6" stroke="#F4EADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Ваше сообщение успешно отправлено. Спасибо.
+                  </div>
+                  
+              </div>
+          </div>
+        <div class="popup popup-mess " id="success">
+          <div class="popup-close"></div>
+          <div class="popup-title">Заявка отправлена</div>
+          <div class="popup-body">
+            <div class="popup-body-description">Спасибо, ваша заявка отправлена. Наши менеджеры свяжутся в вами в ближайшее время.</div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="popup" id="error">
+          <div class="popup-close"></div>
+          <div class="popup-title">Заявка не отправлена</div>
+          <div class="popup-body">
+            <div class="popup-body-description">Произошла техническая ошибка. Попробуйте отправить заявку позже или обратитесь в администрацию сайта</div>
+            <div class="form-group popup-button">
+              <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="popup" id="info" >
+          <div class="popup-close"></div>
+          <div class="popup-title">Информация</div>
+          <div class="popup-body">
+            <div class="popup-body-description" style="width: 420px;">
+              Уважаемые посетители <strong>2,3,8,10</strong> мая просмотр поселка осуществляется по предварительной записи.<br>
+              Записаться можно по телефону <a class="callibri_phone" href="tel:+74958774458" style="color: #809b50;">+7 (495) 877-44-58</a>.<br>
+              <strong>4,5,6,7</strong> мая показы осуществляются без предварительной записи с 10-00 до 19-00 часов.<br>
+              <strong>1 и 9 мая</strong>, выходные дни.
+            </div>
+            <!--            <div class="form-group popup-button">-->
+            <!--                <div class="catalog-more text-center"><div><a href="#">Закрыть</a></div></div>-->
+            <!--            </div>-->
+          </div>
+        </div>
+      </div>
+
+      <!-- Yandex.Metrika counter --> <script > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(30520457, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/30520457" style="position:absolute; left:-9999px;" alt="Яндекс" /></div></noscript> <!-- /Yandex.Metrika counter -->
+<!-- calltouch -->
+<script>
+(function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)},m=typeof Array.prototype.find === 'function',n=m?"init-min.js":"init.js";s.async=true;s.src="https://mod.calltouch.ru/"+n+"?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})(window,document,"ct","9spnkrv9");
+</script>
+<!-- calltouch -->
+{# {% if 'administrator' in user.roles %} #}
+    <script>
+      GPTConfig = {
+          user: 'beregpesochnoy-site',
+          source: 'beregpesochnoy',
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+          GPT.Hello.config.show = true;
+
+          GPT.Chat.reaction = {
+              waiting: {src: '/waiting-alex.mp4'},
+              welcome: {src: '/hello-alex.mp4'},
+              calling: {src: '/calling-friend-alex.mp4'},
+              talking: {src: '/talking-alex.mp4'},
+              typing: {src: '/typing-alex.mp4'},
+          };
+          GPT.Chat.config.hello = '<p>Здравствуйте, меня зовут София, я являюсь виртуальныи помощником на сайте "Берег песочной".</p><p>Вы можете задавать мне вопросы голосовыми или текстовыми запросами.</p>';
+          GPT.Hello.config.assistent = '/waiting-alex.mp4';
+
+          GPT.Language.setList({
+              hello_title: 'Чем я могу помочь?',
+              hello_description: 'Задавайте мне вопросы голосовой командой или текстом в окне чата, или воспользуйтесь туром-инструкцией по сайту. Также на некоторых страницах я буду показывать вам подсказки.',
+              hello_btn_title: 'Чат с Тамарой',
+
+          });
+
+          GPT.Action.add('bpsview', function () {
+              const chatLink = document.getElementById('form-chat1');
+              console.log(chatLink);
+              if (chatLink) {
+                  chatLink.click();
+              }
+          }); 
+          GPT.Action.add('bpsmanager', function () {
+              const chatLink = document.getElementById('form-chat1');
+              console.log(chatLink);
+              if (chatLink) {
+                  chatLink.click();
+              }
+              // showPopup('#client-block-2852');
+          }); 
+          GPT.Action.add('bpsnoanswer', function () {
+              const chatLink = document.getElementById('form-chat1');
+              console.log(chatLink);
+              if (chatLink) {
+                  chatLink.click();
+              }
+              // showPopup('#client-block-2852');
+          }); 
+
+          GPT.Initialize.load();
+
+          GPT.Callbacks.add('Chat.addComment.response.error', '', function () {
+              GPT.Chat.commentsWrap.remove();
+              GPT.Chat.form.remove();
+              GPT.Chat.chat.html(`
+                    <form id="example" action="" method="POST">
+                      <div class="form_container">
+                          <p class="title">Оставьте контакты и мы соединим вас с менеджером</p>
+                          <input type="text" name="name" placeholder="Ваше имя">
+                          <input type="text" name="phone" placeholder="Ваш телефон">
+                          <input type="email" name="email" placeholder="Ваше e-mail">
+                          <textarea name="comment" placeholder="Какой у вас вопрос?"></textarea>
+                          <button type="submit">Отправить</button>
+                          <p class="areement">Нажимая кнопку "Отправить", вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+                      </div>
+                    </form>
+                `);
+              const gptWindow = document.querySelector('#gpt_window');
+              gptWindow.classList.add('gpt_form');
+
+              const form = document.getElementById('example');
+
+              form.addEventListener('submit', function (event) {
+                  event.preventDefault();
+
+                  const formData = new FormData(form);
+
+                  fetch('/send.php', {
+                      method: 'POST',
+                      body: formData
+                  })
+                      .then(response => response.json())
+                      .then(data => {
+                          if (data.success) {
+                              form.innerHTML = successMarkup();
+                          } else {
+                              form.innerHTML = successMarkup();
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error:', error);
+                          form.innerHTML = successMarkup();
+                      });
+              });
+
+              const successMarkup = () => {
+                  return `
+          <div class="form-success">
+            <div class="form-success__image">
+              <img src="https://beregpesochnoy.ru/sites/default/files/assets/img/form-success.png" alt="">
+            </div>
+            <div class="form-success__title">Cпасибо! С вами скоро свяжутся!</div>
+          </div>
+        `
+              }
+          });
+      });
+      function openVrTour (src = 'https://beregpesochnoy.ru/?vrtour=1') {
+          GPT.Hello.close();
+          GPT.Chat.close();
+
+          const path = window.location.pathname;
+          let trimmedInput = path.replace(/^\/|\/$/g, '');
+          let formattedInput = trimmedInput.replace(/\//g, '-');
+          let url = new URL(window.location.href);
+          let params = new URLSearchParams(url.search);
+          let configNum = params.get('vrtour')
+          if(configNum != null && configNum != '1') formattedInput += '-'+configNum;
+          let configName = `config-${formattedInput}.json`;
+          if(configName.search('config-.json') == 0) configName = 'config.json';
+          if(configName.search(`config--${configNum}.json`) == 0) configName = `config-${configNum}.json`;
+
+          const localStep = localStorage.getItem(`vr-tour-config-${configName.replace('.json', '')}`);
+          if(!localStep) {
+              localStorage.setItem(`vr-tour-config-${configName.replace('.json', '')}`, 0);
+          }
+
+          const currentUrl = window.location.pathname;
+          const isHomePage = currentUrl === '/' || currentUrl === '/index.html';
+          if(!isHomePage && src == "https://test.benpan.store/?vrtour=1") {
+              window.location.href = '/?vrtour=1';
+          } else if(window.location.href !== src) {
+              window.location.href = src;
+          } else {
+              vrTour.start(localStep ? localStep : 0);
+          }
+
+          // const body = document.querySelector('body');
+          // const iframeWrapper = document.createElement('div');
+          // iframeWrapper.classList.add('iframe-wrapper');
+          // const iframe = document.createElement('iframe');
+          // iframe.src = src;
+          // iframeWrapper.append(iframe);
+          // const iframeClose = document.createElement('div');
+          // iframeClose.classList.add('iframe-close');
+          // iframeClose.addEventListener('click', () => {
+          //   body.removeChild(iframeWrapper);
+          //   body.classList.remove('iframe-offset');
+          // })
+          // iframeWrapper.append(iframeClose);
+          // body.append(iframeWrapper);
+          // body.classList.add('iframe-offset');
+
+          // const localStorageInterval = setInterval(() => {
+          //   const leftPosition = localStorage.getItem('vr-tour-popup-left');
+          //   if(leftPosition) {
+          //     iframe.style.left = -leftPosition + 'px';
+          //   }
+          // }, 100)
+      }
+
+      const maxIterations = 200;
+      let iterations = 0;
+      const interval = setInterval(() => {
+          const openVrTourLink = document.querySelector('#gpt_push .new_tour');
+          if(openVrTourLink) {
+              openVrTourLink.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  // openVrTour(openVrTourLink.getAttribute('href') + '&iframe=1');
+                  openVrTour(openVrTourLink.getAttribute('href'));
+              });
+              clearInterval(interval);
+          }
+          iterations++;
+          if(iterations >= maxIterations) {
+              clearInterval(interval);
+          }
+      }, 100);
+  </script>
+  {# <script src="https://myf-assistant.benpan.ru/data"></script> #}
+  <script src="/gpt.js"></script>
+
+  <script src="https://beregpesochnoy.ru/sites/default/files/assets/js/vrTour.js"></script>
+  <link rel="stylesheet" href="https://beregpesochnoy.ru/sites/default/files/assets/css/vrTour.css">
+  <script>
+      const path = window.location.pathname;
+      let trimmedInput = path.replace(/^\/|\/$/g, '');
+      let formattedInput = trimmedInput.replace(/\//g, '-');
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+      let configNum = params.get('vrtour')
+      if(configNum != null && configNum != '1') formattedInput += '-'+configNum;
+      let configName = `config-${formattedInput}.json`;
+      if(configName.search('config-.json') == 0) configName = 'config.json';
+      if(configName.search(`config--${configNum}.json`) == 0) configName = `config-${configNum}.json`;
+
+      const localStep = localStorage.getItem(`vr-tour-config-${configName.replace('.json', '')}`);
+      if(!localStep) {
+          localStorage.setItem(`vr-tour-config-${configName.replace('.json', '')}`, 0);
+      }
+
+      const SITE_TEMPLATE_PATH = "https://beregpesochnoy.ru/sites/default/files/assets/js/vrtour/";
+      fetch(`${SITE_TEMPLATE_PATH}${configName}`)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              initVrTour(data);
+          })
+          .catch(error => {
+              console.error('There has been a problem with your fetch operation:', error);
+          });
+
+      const initVrTour = (config) => {
+          const vrTour = new VrTour(config.steps, config.options, configName);
+          window.vrTour = vrTour;
+
+          let url = new URL(window.location.href);
+          let params = new URLSearchParams(url.search);
+          let configNum = params.get('vrtour')
+          if(configNum != null){
+              const backLocation = params.get('origin');
+              if(backLocation != null){
+                  vrTour.setOrigin(backLocation);
+              }
+              let iframe = params.get('iframe');
+              if(iframe) {
+                  const body = document.querySelector('body');
+                  body.classList.add('iframe-mode');
+                  vrTour.iframeMode = true;
+              };
+              let step = params.get('step');
+              if(step) {
+                  step = parseInt(step);
+              } else if(localStep){
+                  step = parseInt(localStep);
+              }
+              vrTour.start(step ? step : 0);
+          }
+
+          // const haveCookie = () => {
+          //   const name = 'vrtour=';
+          //   const decodedCookie = decodeURIComponent(document.cookie);
+          //   const ca = decodedCookie.split(';');
+          //   for(let i = 0; i < ca.length; i++) {
+          //     let c = ca[i];
+          //     while (c.charAt(0) == ' ') {
+          //       c = c.substring(1);
+          //     }
+          //     if (c.indexOf(name) == 0) {
+          //       return true;
+          //     }
+          //   }
+          //   document.cookie = "vrtour=true; path=/; max-age=" + 60*60*24*9999;
+          //   return false;
+          // }
+
+          // if(!haveCookie()){
+          //   vrTour.start();
+          // }
+      }
+  </script>
+{# {% endif %} #}
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3620103", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3620103;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+  </body>
+</html>

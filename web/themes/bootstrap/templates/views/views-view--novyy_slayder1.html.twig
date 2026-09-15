@@ -1,0 +1,6 @@
+{# Без лишних обёрток — слайды сразу в .infra-carousel__stage #}
+{% if rows %}
+  {{ rows }}
+{% elseif empty %}
+  {{ empty }}
+{% endif %}

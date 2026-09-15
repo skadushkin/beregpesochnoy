@@ -1,0 +1,51 @@
+{# About + Bento — Figma 7140:1676 / Frame 1260 #}
+{% set p = posadochnaya|default({}) %}
+{% set bento_slots = {
+  'comfort': 'ponton-bento__card--comfort',
+  'photo_1': 'ponton-bento__photo--1',
+  'photo_cafe': 'ponton-bento__photo--cafe',
+  'cafe': 'ponton-bento__card--cafe',
+  'activity': 'ponton-bento__card--activity',
+  'photo_3': 'ponton-bento__photo--3'
+} %}
+
+{% if p.about_title or p.about_text or p.bento is not empty %}
+<section class="section ponton-about posadochnaya-about" id="about">
+    <div class="cl section__inner ponton-about__inner">
+        {% if p.about_title or p.about_text %}
+        <div class="ponton-about__head">
+            {% if p.about_title %}
+                <h2 class="h2 ponton-about__title">{{ p.about_title }}</h2>
+            {% endif %}
+            {% if p.about_text %}
+                <div class="ponton-about__text">{{ p.about_text|raw }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if p.bento is not empty %}
+        <div class="ponton-bento">
+            {% for item in p.bento %}
+                {% set slot_class = bento_slots[item.slot]|default('ponton-bento__card--comfort') %}
+                {% if item.is_photo or item.slot starts with 'photo_' %}
+                    <div class="ponton-bento__photo {{ slot_class }}">
+                        {% if item.image %}
+                            <img src="{{ item.image }}" alt="{{ item.title|striptags }}">
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <article class="ponton-bento__card {{ slot_class }}">
+                        {% if item.title %}
+                            <h3 class="ponton-bento__card-title">{{ item.title }}</h3>
+                        {% endif %}
+                        {% if item.text %}
+                            {{ item.text|raw }}
+                        {% endif %}
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endif %}

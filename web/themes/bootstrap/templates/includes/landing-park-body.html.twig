@@ -1,0 +1,156 @@
+{# Парк с прудом — Figma park-lg 7140:1532. Node 853. #}
+{% set pk_img = '/themes/bootstrap/landing-park/img/' %}
+
+<main class="ponton park landing">
+
+    <!-- ═══ HERO — Figma Frame 1281 ═══ -->
+    <section class="ponton-hero" id="top">
+        <div class="ponton-hero__bg" aria-hidden="true">
+            <img src="{{ pk_img }}hero-park-31a4fe.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ponton-hero__content">
+            <div class="ponton-hero__main">
+                <div class="ponton-hero__copy">
+                    <h1 class="ponton-hero__title">Парк с прудом для жителей поселка</h1>
+                    <p class="ponton-hero__lead">Собственный ландшафтный парк площадью 8&nbsp;гектаров: прогулочные и велосипедные дорожки, зоны отдыха, пруд с фонтаном, детские площадки и пространства для семейного досуга без выезда из поселка.</p>
+                    <div class="ponton-hero__actions">
+                        <button type="button" class="btn btn--white open-lv2-tour-modal">Записаться на экскурсию</button>
+                        <a href="#scheme" class="ponton-hero__link">Посмотреть схему</a>
+                    </div>
+                </div>
+                <div class="ponton-hero__stats">
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">8 га</strong>
+                        <span class="ponton-stat__l">ландшафтного парка на территории поселка</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">10 зон</strong>
+                        <span class="ponton-stat__l">отдых, спорт, детские площадки, прогулки</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Пруд</strong>
+                        <span class="ponton-stat__l">вид на воду, лес и парк</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Для семьи</strong>
+                        <span class="ponton-stat__l">спокойный формат рядом с домом</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ О ПАРКЕ + BENTO — Figma Frame 1260 ═══ -->
+    <section class="section ponton-about" id="about">
+        <div class="cl section__inner ponton-about__inner">
+            <div class="ponton-about__head">
+                <h2 class="h2 ponton-about__title">Собственный парк с прудом без выезда из поселка</h2>
+                <p class="ponton-about__text">Ландшафтный парк усиливает главное преимущество «Берега Песочной» — жизнь рядом с природой. Это не просто зелёная зона у дома, а полноценное пространство для прогулок, встреч, отдыха с семьёй и активного досуга без выезда из поселка.</p>
+            </div>
+            <div class="ponton-bento">
+                <article class="ponton-bento__card ponton-bento__card--comfort">
+                    <h3 class="ponton-bento__card-title">Зона спокойного отдыха</h3>
+                    <p>Каштановые, липовые и кленовые аллеи, фруктовый сад с яблонями и вишней, прогулочная зона, пруд и живой уголок.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--1">
+                    <img src="{{ pk_img }}park_block_03.png" alt="Зона спокойного отдыха в парке">
+                </div>
+                <div class="ponton-bento__photo ponton-bento__photo--cafe">
+                    <img src="{{ pk_img }}park_block_02.png" alt="Детские площадки и досуговый центр">
+                </div>
+                <article class="ponton-bento__card ponton-bento__card--cafe">
+                    <h3 class="ponton-bento__card-title">Детские площадки и досуговый центр</h3>
+                    <p>Игровые площадки, зоны для семейного отдыха и досуговый центр создают безопасную среду для детей и родителей.</p>
+                </article>
+                <article class="ponton-bento__card ponton-bento__card--activity">
+                    <h3 class="ponton-bento__card-title">Спортплощадка и зона активного отдыха</h3>
+                    <p>Спортивные площадки, велодорожки и зоны активного отдыха помогают проводить больше времени на свежем воздухе.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--3">
+                    <img src="{{ pk_img }}park_block_01.png" alt="Спортплощадка и зона активного отдыха">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ ЗОНЫ ПАРКА — слайдер ═══ -->
+    <section class="section ponton-scheme infra" id="scheme">
+        <div class="cl section__inner infra__head">
+            <h2 class="h2 h2--center">Зоны парка</h2>
+            <div class="infra__pills-wrap">
+                <div class="infra__pills" id="pontonSchemePills" data-dynamic="1"></div>
+            </div>
+        </div>
+
+        <div class="infra-carousel" id="pontonSchemeCarousel" aria-live="polite">
+            <div class="infra-carousel__stage" id="pontonSchemeStage">
+                {{ drupal_view('novyy_slayder1', 'block_4') }}
+            </div>
+        </div>
+
+        <div class="cl slider-controls">
+            <button type="button" class="slider-arrow" id="pontonSchemePrev" aria-label="Назад">‹</button>
+            <div class="dots" id="pontonSchemeDots" data-dynamic="1"></div>
+            <button type="button" class="slider-arrow" id="pontonSchemeNext" aria-label="Вперёд">›</button>
+        </div>
+    </section>
+
+
+    <!-- ═══ МОЗАИКА — Figma lifestyle ═══ -->
+    <section class="section ponton-lifestyle" id="lifestyle">
+        <div class="cl ponton-lifestyle__cl">
+            <div class="ponton-lifestyle__canvas">
+                <img class="ponton-lifestyle__img ponton-lifestyle__img--vip" src="{{ pk_img }}lifestyle-architecture-354303.png" alt="Малые архитектурные формы">
+                <img class="ponton-lifestyle__img ponton-lifestyle__img--morning" src="{{ pk_img }}lifestyle-pond-7d2f61.png" alt="Собственный пруд в парке">
+                <img class="ponton-lifestyle__img ponton-lifestyle__img--evening" src="{{ pk_img }}lifestyle-trees-2044b4.png" alt="30 видов деревьев">
+                <img class="ponton-lifestyle__img ponton-lifestyle__img--family" src="{{ pk_img }}lifestyle-house-e7d13b.png" alt="Пляжная зона">
+                <img class="ponton-lifestyle__img ponton-lifestyle__img--route" src="{{ pk_img }}lifestyle-route.png" alt="Прогулочный маршрут">
+
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--morning">Собственный пруд в парке</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--family">Малые архитектурные формы</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--lounge">30 видов деревьев</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--route">Прогулочный маршрут</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--evening">Пляжная зона</p>
+
+                <h2 class="h2 h2--center ponton-lifestyle__h2">В нашем парке есть все</h2>
+                <button type="button" class="btn btn--white ponton-lifestyle__cta open-lv2-tour-modal">Записаться на экскурсию <span class="btn-arrow">→</span></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ КАТАЛОГ ═══ -->
+    <section class="section lv2-catalog ponton-catalog" id="catalog">
+        <div class="cl section__inner">
+            <div class="ponton-catalog__head">
+                <h2 class="h2 h2--center ponton-catalog__h2">
+                    <span class="t-merit t-white">Идеальный дом </span><br>
+                    <span class="t-dark">для вас и вашей семьи</span>
+                </h2>
+                <div class="ponton-scheme__pills ponton-catalog__pills">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke" class="ponton-pill is-active">Все</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="ponton-pill">Готовые дома</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ponton-pill">Cтроящиеся дома</a>
+                    <a href="/taunhausy" class="ponton-pill">Таунхаусы</a>
+                    <a href="/uchastok-s-podryadom-v-podmoskovye" class="ponton-pill">Дома с подрядом</a>
+                </div>
+            </div>
+            <div class="lv2-catalog__houses">
+                {{ drupal_view('gotovye_doma', 'block_6') }}
+            </div>
+            <div class="ponton-catalog__cta">
+                <a href="/kupit-dom-v-kottedzhnom-poselke" class="btn btn--white">Смотреть весь каталог <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '44') }}
+
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+        tour_modal_label: 'Берег Песочной',
+        tour_modal_source: 'Лендинг Парк — экскурсия'
+    } %}
+
+</main>

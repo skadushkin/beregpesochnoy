@@ -1,0 +1,19 @@
+{# Текстовые секции после каталога из field_teksty #}
+{% if posadochnaya.teksty is not empty %}
+  {% for section in posadochnaya.teksty %}
+    <section class="{{ section_class|default('seo-page-section') }}{% if loop.index is even and section_alt_class is defined %} {{ section_alt_class }}{% elseif loop.index is even %} seo-page-section--alt{% endif %}">
+      <div class="{{ container_class|default('container') }}">
+        <div class="{{ inner_class|default('in-container') }}">
+          {% if section.title %}
+            <h2 class="{{ title_class|default('seo-page-section__title') }}">{{ section.title }}</h2>
+          {% endif %}
+          {% if section.text %}
+            <div class="{{ text_class|default('regular-desc seo-page-section__text') }}">
+              {{ section.text|raw }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endif %}

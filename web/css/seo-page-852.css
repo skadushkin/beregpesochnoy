@@ -1,0 +1,71 @@
+/* SEO-страница 852 — /kupit-dom-novaya-riga/ */
+
+body.page-node-852 article,
+body.page-node-852 .breadcrumb + .region-highlighted {
+  display: none;
+}
+
+.seo-page-852-intro p {
+  margin-bottom: 20px;
+}
+
+.seo-page-852-intro p:last-of-type {
+  margin-bottom: 0;
+}
+
+.seo-page-852-catalog {
+  padding-top: 24px;
+}
+
+.seo-page-852-catalog .before-blue::after {
+  display: none;
+}
+
+.seo-page-852-section {
+  padding: 72px 0;
+}
+
+.seo-page-852-section--alt {
+  background: #FEFAF4;
+}
+
+.seo-page-852-section__title {
+  font-family: "Kudryashev Headline", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.15;
+  color: #3C3C3B;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  max-width: 920px;
+}
+
+.seo-page-852-section__text p {
+  margin-bottom: 20px;
+  max-width: 920px;
+}
+
+.seo-page-852-section__text p:last-child {
+  margin-bottom: 0;
+}
+
+.seo-page-852-faq .faq-container {
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+
+body.page-node-852 .gallery-block {
+  margin-top: 48px;
+  padding-top: 124px;
+}
+
+@media (max-width: 991px) {
+  .seo-page-852-section {
+    padding: 48px 0;
+  }
+
+  .seo-page-852-faq .faq-container {
+    padding-top: 80px;
+    padding-bottom: 48px;
+  }
+}

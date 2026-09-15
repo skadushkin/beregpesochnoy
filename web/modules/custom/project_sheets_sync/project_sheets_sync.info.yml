@@ -1,0 +1,8 @@
+name: 'Project Sheets Sync'
+type: module
+description: 'Обновление проектов (цены, площадь, номер лота) из Google Таблицы по Id ноды.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:field

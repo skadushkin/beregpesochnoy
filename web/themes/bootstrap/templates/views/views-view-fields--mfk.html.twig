@@ -1,0 +1,31 @@
+{# MFK bento — field_image (poster) + field_video. Текст всегда в боковой карточке. #}
+{% set poster_url = '' %}
+{% if row._entity.field_image is not empty and row._entity.field_image.entity %}
+  {% set poster_url = file_url(row._entity.field_image.entity.uri.value) %}
+{% elseif fields.field_image.content %}
+  {% set poster_url = fields.field_image.content|striptags|trim %}
+{% endif %}
+
+{% set video_url = '' %}
+{% if row._entity.field_video is not empty %}
+  {% if row._entity.field_video.entity and row._entity.field_video.entity.uri.value %}
+    {% set video_url = file_url(row._entity.field_video.entity.uri.value) %}
+  {% elseif row._entity.field_video.0.entity and row._entity.field_video.0.entity.uri.value %}
+    {% set video_url = file_url(row._entity.field_video.0.entity.uri.value) %}
+  {% endif %}
+{% endif %}
+
+<article class="mfk-bento__card">
+  <h3 class="mfk-bento__card-title">{{ fields.title.content }}</h3>
+  <div class="mfk-bento__card-text">{{ fields.body.content }}</div>
+</article>
+
+<div class="mfk-bento__media{% if video_url %} mfk-bento__media--video mfk-item--has-video{% endif %}">
+  {% if video_url %}
+    <video class="mfk-bento__video mfk-img__video"{% if poster_url %} poster="{{ poster_url }}"{% endif %} src="{{ video_url }}" muted loop playsinline preload="auto"></video>
+  {% elseif poster_url %}
+    <img class="mfk-bento__img" src="{{ poster_url }}" alt="">
+  {% else %}
+    {{ fields.field_image.content }}
+  {% endif %}
+</div>

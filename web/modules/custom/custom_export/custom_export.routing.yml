@@ -1,0 +1,7 @@
+custom_export.admin:
+  path: '/admin/config/custom-export'
+  defaults:
+    _controller: 'Drupal\custom_export\Controller\CustomExportController::exportPage'
+    _title: 'Экспорт в XML'
+  requirements:
+    _permission: 'administer site configuration'

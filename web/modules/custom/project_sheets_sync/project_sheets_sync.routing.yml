@@ -1,0 +1,7 @@
+project_sheets_sync.settings:
+  path: '/admin/config/project-sheets-sync'
+  defaults:
+    _form: '\Drupal\project_sheets_sync\Form\SyncForm'
+    _title: 'Синхронизация проектов из Google Sheets'
+  requirements:
+    _permission: 'administer site configuration'

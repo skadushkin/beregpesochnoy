@@ -1,0 +1,6 @@
+services:
+  twigext.twig_extension:
+    class: Drupal\twigext\Twig\Extension\CustomTwigExtension
+    arguments: [] # Если ваш класс зависит от других сервисов, перечислите их здесь.
+    tags:
+      - { name: twig.extension }

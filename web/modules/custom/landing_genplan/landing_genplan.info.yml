@@ -1,0 +1,5 @@
+name: 'Landing Genplan embed'
+type: module
+description: 'Lazy-load embed endpoint for interactive genplan on landing v2.'
+core_version_requirement: ^10
+package: Custom

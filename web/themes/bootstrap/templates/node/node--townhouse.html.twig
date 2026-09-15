@@ -1,0 +1,204 @@
+{% if node.field_house_project.entity is not empty %}
+    {% set related_node = node.field_house_project.entity %}
+{% endif %}
+
+<div class="cart-first-slider2">
+    <div class="cart-first-slider-main">
+{#        <div class="cart-first-slider-main-desc">ДОМ СТРОИТСЯ</div>#}
+        <div class="cart-first-slider-main-360">
+            {% if related_node.field_ssylka_na_360.value is not empty %}<a href="{{ related_node.field_ssylka_na_360.value }}" data-fancybox="" data-type="iframe"><img src="/sites/default/files/img/360.svg" alt=""></a>{% endif %}
+            {% if node.field_ssylka_na_360.value is not empty %}<a href="{{ node.field_ssylka_na_360.value }}" data-fancybox="" data-type="iframe"><img src="/sites/default/files/img/360.svg" alt=""></a>{% endif %}
+        </div>
+        <div class="swiper swiper-container-project">
+
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!--
+                    {% if row._entity.field_house_photo.value is not empty %}
+                            <div class="swiper-slide">
+                                <img src="{{ file_url(row._entity.field_house_photo.entity.uri.value) }}" alt="">
+                            </div>
+                    {% else %}
+                        {# Проверяем, есть ли поле связи #}
+                        {% if node.field_project_images.entity is not empty %}
+                            {# Получаем изображение из поля изображения связанного материала #}
+                            {% set image = node.field_project_images.entity.uri.value %}
+
+                            {# Рендерим изображение через Twig Tweak #}
+                            <div class="swiper-slide">
+                                <img src="{{ file_url(image) }}" alt="{{ node.title.value }}">
+                            </div>
+                        {% else %}
+                            <div class="swiper-slide">
+                                <img src="/sites/default/files/default-image.jpg" alt="No image">
+                            </div>
+                        {% endif %}
+                    {% endif %}-->
+                    {% if node.field_kod_video_html is not empty %}
+                        <div class="swiper-slide" style="height: 100%; max-height:540px">
+                        <div style="height: 100%; max-height:540px">
+                        {{ node.field_kod_video_html.value|raw }}
+                        </div>
+                        </div>
+                {% endif %}
+                {% if related_node.field_kod_video_html is not empty %}
+                        <div class="swiper-slide" style="height: 100%; max-height:540px">
+                        <div style="height: 100%; max-height:540px">
+                        {{ related_node.field_kod_video_html.value|raw }}
+                        </div>
+                        </div>
+                {% endif %}
+                {% for image in node.field_project_images %}
+                    <div class="swiper-slide">
+                        <a href="{{ file_url(image.entity.uri.value) }}" data-fancybox><img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.alt }}" /></a>
+                    </div>
+                {% endfor %}
+                {% for image in node.field_plan_images %}
+                    <div class="swiper-slide">
+                        <a href="{{ file_url(image.entity.uri.value) }}" data-fancybox><img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.alt }}" /></a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="cart-first-slider-main-back swiper-button-prev">
+                <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+            </div>
+            <div class="cart-first-slider-main-next swiper-button-next">
+                <img src="/sites/default/files/img/cart-first-arrow.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-first-slider-nav">
+        <div class="swiper swiper-container-thumbs">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+            {% if node.field_kod_video_html is not empty %}
+                        <div class="cart-first-slider-nav-item active swiper-slide" style="height:0px; display:none;">
+                            
+                        </div>
+                {% endif %}
+                {% if related_node.field_kod_video_html is not empty %}
+                        <div class="cart-first-slider-nav-item active swiper-slide" style="height:0px; display:none;">
+                            
+                        </div>
+                {% endif %}
+                {% for image in node.field_project_images %}
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                        <img src="{{ image.entity.uri.value | image_style('large') }}" alt="{{ image.alt }}" />
+                    </div>
+                {% endfor %}
+                {% for image in node.field_plan_images %}
+                    <div class="cart-first-slider-nav-item active swiper-slide">
+                        <img src="{{ image.entity.uri.value | image_style('large') }}" alt="{{ image.alt }}" />
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="cart-first-second-info">
+    <div class="cart-first-second-info-left">
+        <div class="cart-first-second-info-left-item">
+            <div class="second-info-left-item-dot">
+                            <span>
+                                <img src="/sites/default/files/img/cart-line.svg" alt="">
+                            </span>
+            </div>
+            <div class="second-info-left-item-main">
+                <div class="second-info-left-item-main-title">
+                    {% if node.field_house_price.value is not empty %}
+                        {{ node.field_house_price.value|number_format(0, ',', ' ') }} ₽
+                    {% elseif node.field_house_price2.value is not empty %}
+                        {{ node.field_house_price2.value|number_format(0, ',', ' ') }} ₽
+                    {% elseif related_node.field_project_price.value is not empty %}
+                        {{ related_node.field_project_price.value|number_format(0, ',', ' ') }} ₽
+                    {% elseif node.field_lot_price.value is not empty %}
+                        {{ node.field_lot_price.value|number_format(0, ',', ' ') }} ₽
+                    {% elseif node.field_lot_price2.value is not empty %}
+                        {{ node.field_lot_price2.value|number_format(0, ',', ' ') }} ₽
+                    {% else %}
+                        {{ 'Цена по запросу' }} {# В случае если все поля пустые #}
+                    {% endif %}
+                    {#                                {{ node.field_discount_price.value is not empty ? node.field_discount_price.value|number_format(0, ',', ' ') ~ ' ₽' : node.field_lot_price.value|number_format(0, ',', ' ') ~ ' ₽' }}#}
+                </div>
+                <div>на этапе фундамента</div>
+            </div>
+        </div>
+
+        {# Другие блоки с информацией могут быть добавлены аналогично #}
+
+        <div class="cart-first-second-info-left-item">
+            {# <a href="/kreditovanie"><div class="cart-first-second-info-left-item-btn">рассчитать в ипотеку</div></a> #}
+            <a href="#genplan"><div class="cart-first-second-info-left-item-btn">участок на карте</div></a>
+        </div>
+    </div>
+
+    <div class="cart-first-second-info-right">
+        <div class="cart-first-second-info-right-icons">
+            <div class="second-info-right-icons-item" onclick="location.href='#genplan';" style="cursor: pointer;">
+                <div class="second-info-right-icons-item-img">
+                    <img src="/sites/default/files/img/cart-icon1.svg" alt="">
+                </div>
+                <div class="second-info-right-icons-item-text">{{ node.field_total_area.value }} соток участок</div>
+            </div>
+            <div class="second-info-right-icons-item">
+                <div class="second-info-right-icons-item-img">
+                    <img src="/sites/default/files/img/cart-icon2.svg" alt="">
+                </div>
+                <div class="second-info-right-icons-item-text">{{ node.field_house_area.value }} кв. м.</div>
+            </div>
+            <div class="second-info-right-icons-item">
+                <div class="second-info-right-icons-item-img">
+                    <img src="/sites/default/files/img/cart-icon3.svg" alt="">
+                </div>
+                <div class="second-info-right-icons-item-text">
+                    {% set storeys = node.field_storeys.value ?? related_node.field_storeys.value ?? 0 %}
+                        {{ storeys }}
+                        {% if storeys == 1 %}
+                            этаж
+                        {% elseif storeys in [2, 3, 4] %}
+                            этажа
+                        {% else %}
+                            этажей
+                        {% endif %}
+                    </div>
+            </div>
+            <div class="second-info-right-icons-item">
+                <div class="second-info-right-icons-item-img">
+                    <img src="/sites/default/files/img/cart-icon4.svg" alt="">
+                </div>
+                <div class="second-info-right-icons-item-text">{{ node.field_rooms.value }}{{ related_node.field_rooms.value }} спальни</div>
+            </div>
+            <div class="second-info-right-icons-item">
+                <div class="second-info-right-icons-item-img">
+                    <img src="/sites/default/files/img/cart-icon5.svg" alt="">
+                </div>
+                <div class="second-info-right-icons-item-text">{{ node.field_bathrooms.value }}{{ related_node.field_bathrooms.value }} санузла</div>
+            </div>
+        </div>
+
+        <div class="cart-first-second-info-right-main">
+            <div class="cart-first-second-info-right-main-title t3-mob">{{ node.title.value }}</div>
+            <div class="cart-first-second-info-right-main-desc">{{ node.body.value|raw }}</div> {# Описание дома #}
+            <div class="cart-first-second-info-right-main-btn">
+                <a href="#tour" class="nohover">
+                    <div class="cart-first-second-info-right-main-btn-cont">
+                        <div>записаться на просмотр</div>
+                        <div><img src="/sites/default/files/img/cart-arrow.svg" alt=""></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-first-second-info-right-btn-mob">
+        <a href="#tour" class="nohover">
+            <div class="cart-first-second-info-right-main-btn-cont">
+                <div>записаться на просмотр</div>
+                <div><img src="/sites/default/files/img/cart-arrow.svg" alt=""></div>
+            </div>
+        </a>
+    </div>
+</div>

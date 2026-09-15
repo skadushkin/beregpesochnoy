@@ -1,0 +1,4 @@
+spreadsheet_id: '1uCAsnr1vSA9zi0L72_yNHJ64_oMij2qPZU6YDahg8oA'
+# Лучше переопределить ключ в settings.php: $config['project_sheets_sync.settings']['api_key'] = '...';
+api_key: ""
+range: 'A5:Z200'

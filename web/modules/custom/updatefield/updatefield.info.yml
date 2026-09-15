@@ -1,0 +1,7 @@
+name: 'Update Field'
+type: module
+description: 'A custom module for updating fields.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:field

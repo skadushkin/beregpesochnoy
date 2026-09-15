@@ -1,0 +1,17 @@
+{# Слайд gallery-carousel — novyy_slayder1 block_3, field_image + body как подпись #}
+{% set caption = '' %}
+{% if row._entity.body is not empty %}
+  {% set caption = row._entity.body.0.value|default('')|striptags|trim %}
+{% endif %}
+{% set image_url = '' %}
+{% if row._entity.field_image.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.entity.uri.value) %}
+{% elseif row._entity.field_image.0.entity.uri.value is defined %}
+  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value) %}
+{% endif %}
+
+{% if image_url %}
+  <figure class="gallery-carousel__item" data-caption="{{ caption|e('html_attr') }}">
+    <img src="{{ image_url }}" alt="" loading="lazy">
+  </figure>
+{% endif %}

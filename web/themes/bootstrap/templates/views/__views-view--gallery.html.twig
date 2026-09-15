@@ -1,0 +1,31 @@
+<section class="bg1">
+    <div class="first-container">
+        <div class="container_w">
+            <ul class="gallery-filter">
+                <li><a href="#" class="active">ПОСМОТРЕТЬ ВСЕ</a></li>
+                <li><a href="#">коттеджи</a></li>
+                <li><a href="#">инфраструктура</a></li>
+                <li><a href="#">отделка</a></li>
+            </ul>
+
+            <div class="gallery-items">
+                {{ rows }}
+
+
+
+            </div>
+
+            <div class="catalog-items-showmore items-showmore-ipoteka">
+                {% if pager %}
+                    {{ pager }}
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+

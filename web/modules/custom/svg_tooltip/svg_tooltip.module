@@ -1,0 +1,10 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function svg_tooltip_preprocess_html(&$variables) {
+  $variables['#attached']['library'][] = 'svg_tooltip/svg_tooltip_lib';
+}

@@ -1,0 +1,6 @@
+{# node/838 — сетка каталога для табов (block_3/4/5/6) #}
+<div class="lv2-catalog__grid">
+  {% for row in rows|slice(0, 4) %}
+    {{ row.content }}
+  {% endfor %}
+</div>

@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Bootstrap's override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+<div class="header-menu-items">
+    {{ include('bootstrap:menu_main', {
+        items: items
+    })
+    }}
+
+    <div class="header-menu-item header-menu-actions">
+      <div class="header-menu-tel"><a href="tel:{{ site_phone_tel|default('+74951865088') }}">{{ site_phone_display|default('+7 (495) 186-50-88') }}</a></div>
+      <button type="button" class="header-fav" data-gp-open-favorites aria-label="Избранное">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 20.25S4.5 15.4 2.4 11.55C.85 8.85 1.55 4.9 5.05 3.65 7.5 2.75 9.7 3.6 12 6.7c2.3-3.1 4.5-3.95 6.95-3.05 3.5 1.25 4.2 5.2 2.65 7.9C19.5 15.4 12 20.25 12 20.25z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="header-fav__count" hidden></span>
+      </button>
+    </div>
+  <div class="header-menu-item" id="menu-open">
+{#    <div class="no-ivent">МЕНЮ</div>#}
+    <img src="/sites/default/files/img/menu.svg" alt="Открыть меню">
+  </div>
+</div>

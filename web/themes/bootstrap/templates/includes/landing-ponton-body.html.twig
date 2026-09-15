@@ -1,0 +1,158 @@
+{# Понтонный пляж — Figma ponton-lg 6934:9267. Node 840. #}
+{% set pt_img = '/themes/bootstrap/landing-ponton/img/' %}
+{% set pt_vid = '/themes/bootstrap/landing-ponton/video/' %}
+{% set lv2_vid = '/themes/bootstrap/landing-v2/video/' %}
+
+<main class="ponton landing">
+
+    <!-- ═══ HERO — Figma Frame 1281 ═══ -->
+    <section class="ponton-hero" id="top">
+        <div class="ponton-hero__bg" aria-hidden="true">
+            <img src="{{ pt_img }}hero-house-401b81.png" alt="" width="1920" height="686">
+        </div>
+        <div class="cl ponton-hero__content">
+            <div class="ponton-hero__main">
+                <div class="ponton-hero__copy">
+                    <h1 class="ponton-hero__title">Понтонный пляж для жителей поселка</h1>
+                    <p class="ponton-hero__lead">Пространство отдыха на воде: шезлонги, кафе-бар, прокат лодок, прозрачные купольные лаунж-зоны и удобный выход к прогулочной набережной.</p>
+                    <div class="ponton-hero__actions">
+                        <button type="button" class="btn btn--white open-lv2-tour-modal">Записаться на экскурсию</button>
+                        <a href="#scheme" class="ponton-hero__link">Посмотреть схему</a>
+                    </div>
+                </div>
+                <div class="ponton-hero__stats">
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">≈ 50 м</strong>
+                        <span class="ponton-stat__l">протяженность основной платформы</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">4 зоны</strong>
+                        <span class="ponton-stat__l">отдых, кафе, прокат, прогулки</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">360°</strong>
+                        <span class="ponton-stat__l">вид на воду, лес и парк</span>
+                    </article>
+                    <article class="ponton-stat">
+                        <strong class="ponton-stat__v">Для семьи</strong>
+                        <span class="ponton-stat__l">спокойный формат рядом с домом</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ О ПЛЯЖНОМ КЛУБЕ + BENTO — Figma Frame 1260 (6934:9189) ═══ -->
+    <section class="section ponton-about" id="about">
+        <div class="cl section__inner ponton-about__inner">
+            <div class="ponton-about__head">
+                <h2 class="h2 ponton-about__title">Собственный пляжный клуб без выезда из поселка</h2>
+                <p class="ponton-about__text">Понтонный пляж усиливает главное преимущество «Берега Песочной» — жизнь рядом с водой. Это не просто настил у берега, а полноценная точка притяжения для прогулок, встреч, летнего отдыха и семейных выходных.</p>
+            </div>
+            <div class="ponton-bento">
+                <article class="ponton-bento__card ponton-bento__card--comfort">
+                    <h3 class="ponton-bento__card-title">Комфортный отдых</h3>
+                    <p>Каштановые, липовые и кленовые аллеи, фруктовый сад с яблонями и вишней, прогулочная зона, пруд и живой уголок.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--1">
+                    <img src="{{ pt_img }}bento-comfort.png" alt="Комфортный отдых на понтоне">
+                </div>
+                <div class="ponton-bento__photo ponton-bento__photo--cafe">
+                    <img src="{{ pt_img }}bento-cafe.png" alt="Кафе и бар на воде">
+                </div>
+                <article class="ponton-bento__card ponton-bento__card--cafe">
+                    <h3 class="ponton-bento__card-title">Кафе и бар на воде</h3>
+                    <p>Отдохните после рабочего дня с чашкой ароматного травяного чая в кафе над гладью озера, насладитесь закатом солнца.</p>
+                </article>
+                <article class="ponton-bento__card ponton-bento__card--activity">
+                    <h3 class="ponton-bento__card-title">Активности у воды</h3>
+                    <p>Причал для лодок и катамаранов. Совершайте водные прогулки, проводите больше времени на свежем воздухе.</p>
+                </article>
+                <div class="ponton-bento__photo ponton-bento__photo--3">
+                    <img src="{{ pt_img }}bento-activities.png" alt="Активности у воды">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ СХЕМА ПОНТОНА — слайдер как infra на 838 (Figma 6934:9288) ═══ -->
+    <section class="section ponton-scheme infra" id="scheme">
+        <div class="cl section__inner infra__head">
+            <h2 class="h2 h2--center">Схема понтонного пляжа</h2>
+            <div class="infra__pills-wrap">
+                <div class="infra__pills" id="pontonSchemePills" data-dynamic="1"></div>
+            </div>
+        </div>
+
+        <div class="infra-carousel" id="pontonSchemeCarousel" aria-live="polite">
+            <div class="infra-carousel__stage" id="pontonSchemeStage">
+                {{ drupal_view('novyy_slayder1', 'block_2') }}
+            </div>
+        </div>
+
+        <div class="cl slider-controls">
+            <button type="button" class="slider-arrow" id="pontonSchemePrev" aria-label="Назад">‹</button>
+            <div class="dots" id="pontonSchemeDots" data-dynamic="1"></div>
+            <button type="button" class="slider-arrow" id="pontonSchemeNext" aria-label="Вперёд">›</button>
+        </div>
+    </section>
+
+
+    <!-- ═══ КАК ПОЛЬЗОВАТЬСЯ ПЛЯЖЕМ — мозаика как family на 838 (Figma 6934:9355) ═══ -->
+    <section class="section ponton-lifestyle" id="lifestyle">
+        <div class="cl ponton-lifestyle__cl">
+            <div class="ponton-lifestyle__canvas">
+                <video class="ponton-lifestyle__img ponton-lifestyle__img--vip" poster="{{ pt_img }}lifestyle-vip.png" data-src="{{ lv2_vid }}6-1-01.mp4" muted loop playsinline preload="none" aria-label="Вечер на террасе"></video>
+                <video class="ponton-lifestyle__img ponton-lifestyle__img--morning" poster="{{ pt_img }}lifestyle-morning.png" data-src="{{ lv2_vid }}family-top.mp4" muted loop playsinline preload="none" aria-label="Утро у воды"></video>
+                <video class="ponton-lifestyle__img ponton-lifestyle__img--evening" poster="{{ pt_img }}lifestyle-evening-water-24cea3.png" data-src="{{ lv2_vid }}1-01.mp4" muted loop playsinline preload="none" aria-label="Вечер у воды"></video>
+                <video class="ponton-lifestyle__img ponton-lifestyle__img--family" poster="{{ pt_img }}lifestyle-family.png" data-src="{{ lv2_vid }}family-house.mp4" muted loop playsinline preload="none" aria-label="День с семьей"></video>
+                <video class="ponton-lifestyle__img ponton-lifestyle__img--route" poster="{{ pt_img }}lifestyle-route.png" data-src="{{ lv2_vid }}family-town.mp4" muted loop playsinline preload="none" aria-label="Прогулочный маршрут"></video>
+
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--morning">Утро у воды</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--family">День с семьей</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--lounge">Вечер на террасе</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--route">Прогулочный маршрут</p>
+                <p class="ponton-lifestyle__tag ponton-lifestyle__tag--evening">Частные дома</p>
+
+                <h2 class="h2 h2--center ponton-lifestyle__h2">Как жители будут пользоваться пляжем</h2>
+                <button type="button" class="btn btn--white ponton-lifestyle__cta open-lv2-tour-modal">Записаться на экскурсию <span class="btn-arrow">→</span></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ КАТАЛОГ — Figma Frame 1279 ═══ -->
+    <section class="section lv2-catalog ponton-catalog" id="catalog">
+        <div class="cl section__inner">
+            <div class="ponton-catalog__head">
+                <h2 class="h2 h2--center ponton-catalog__h2">
+                    <span class="t-merit t-white">Идеальный дом </span><br>
+                    <span class="t-dark">для вас и вашей семьи</span>
+                </h2>
+                <div class="ponton-scheme__pills ponton-catalog__pills">
+                    <a href="/kupit-dom-v-kottedzhnom-poselke" class="ponton-pill is-active">Все</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=2" class="ponton-pill">Готовые дома</a>
+                    <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ponton-pill">Cтроящиеся дома</a>
+                    <a href="/taunhausy" class="ponton-pill">Таунхаусы</a>
+                    <a href="/uchastok-s-podryadom-v-podmoskovye" class="ponton-pill">Дома с подрядом</a>
+                </div>
+            </div>
+            <div class="lv2-catalog__houses">
+                {{ drupal_view('gotovye_doma', 'block_6') }}
+            </div>
+            <div class="ponton-catalog__cta">
+                <a href="/kupit-dom-v-kottedzhnom-poselke" class="btn btn--white">Смотреть весь каталог <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+    
+{{ drupal_entity('block_content', '44') }}
+
+{% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+    tour_modal_label: 'Берег Песочной',
+    tour_modal_source: 'Лендинг Понтон — экскурсия'
+} %}
+
+</main>

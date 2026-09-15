@@ -1,0 +1,789 @@
+/**
+ * Genplan v2 — full-width map (Figma 3081:60, 7484:3258, 7484:3098)
+ * SVG overlay домов не меняется — только UI-оболочка.
+ */
+
+/**
+ * Genplan v2 — full-width map (Figma 3081:60, 7484:3258, 7484:3098)
+ * SVG overlay домов не меняется — только UI-оболочка.
+ */
+
+/* 100vw шире видимой области при постоянном scrollbar (Windows) → гориз. прокрутка */
+html:has(.genplan-page-wrap--v2) {
+  overflow-x: clip;
+}
+
+body:has(.genplan-page-wrap--v2) {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body:has(.genplan-page-wrap--v2) #page-wrapper,
+body:has(.genplan-page-wrap--v2) #page,
+body:has(.genplan-page-wrap--v2) #main-wrapper,
+body:has(.genplan-page-wrap--v2) #main,
+body:has(.genplan-page-wrap--v2) #main > .row,
+body:has(.genplan-page-wrap--v2) main[role="main"] {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.genplan-embed--v2 {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+.genplan-page-wrap--v2 {
+  padding: 0;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body:has(.genplan-page-wrap--v2) .genplan-page-wrap--v2.first-container,
+.genplan-page-wrap--v2.first-container {
+  max-width: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* Фильтры на карточке дома — карта в соседней секции */
+.genplan-embed--v2.genplan-embed--filters-only {
+  overflow: visible;
+}
+
+.genplan-embed--v2.genplan-embed--filters-only .genplan-filters-v2 {
+  margin-bottom: 24px;
+}
+
+/* ── Фильтры сверху ── */
+.genplan-embed--v2 .genplan-filters-v2 {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 32px;
+}
+
+.genplan-embed--v2 .genplan-filters-v2__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  min-width: 0;
+}
+
+.genplan-embed--v2 .genplan-filters-v2__all {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 12px 20px;
+  border-radius: 41px;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #765e50;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+
+.genplan-embed.genplan-embed--v2 .house-categories {
+  display: contents;
+}
+
+.genplan-embed--v2 .category-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 41px;
+  border: 0;
+  background: #ded3c6;
+  transition: background .2s, color .2s;
+  cursor: pointer;
+}
+
+/* Пастельный фон сразу, Figma 7736:1981 */
+.genplan-embed--v2 .category-item:has(.sold) {
+  background: #f4cfcf;
+}
+
+.genplan-embed--v2 .category-item:has(.ready) {
+  background: #99f5f5;
+}
+
+.genplan-embed--v2 .category-item:has(.under-construction) {
+  background: #c8e1f4;
+}
+
+.genplan-embed--v2 .category-item:has(.land-with-contract) {
+  background: #fcf3bf;
+}
+
+.genplan-embed--v2 .category-item:has(.townhouse) {
+  background: #ded3c6;
+}
+
+/* .inactive = выбранная категория, Figma 7484:2646 */
+.genplan-embed--v2 .category-item.inactive {
+  background: #917357;
+}
+
+.genplan-embed--v2 .category-item.inactive .category-label {
+  color: #fffbf3;
+}
+
+.genplan-embed--v2 .category-indicator {
+  display: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-image: none;
+}
+
+.genplan-embed--v2 .category-item.inactive .category-indicator {
+  display: block;
+}
+
+.genplan-embed--v2 .category-indicator.sold {
+  background: #f4cfcf;
+}
+
+.genplan-embed--v2 .category-indicator.ready {
+  background: #99f5f5;
+}
+
+.genplan-embed--v2 .category-indicator.under-construction {
+  background: #c8e1f4;
+}
+
+.genplan-embed--v2 .category-indicator.land-with-contract {
+  background: #fcf3bf;
+}
+
+.genplan-embed--v2 .category-indicator.townhouse {
+  background: #ded3c6;
+}
+
+.genplan-embed--v2 .category-label {
+  margin-left: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  color: #765e50;
+  white-space: nowrap;
+}
+
+.genplan-embed--v2 .infrastructure-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  width: auto !important;
+  flex: 0 0 auto;
+}
+
+.genplan-embed--v2 .infrastructure-toggle .toggle-label {
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  color: #765e50;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 0;
+}
+
+.genplan-embed--v2 .switch {
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.genplan-embed--v2 .sliderg {
+  background-color: #d8c7b4;
+}
+
+.genplan-embed--v2 .sliderg:before {
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fffbf3;
+}
+
+.genplan-embed--v2 input:checked + .sliderg {
+  background-color: #917357;
+}
+
+.genplan-embed--v2 input:checked + .sliderg:before {
+  transform: translateX(20px);
+}
+
+/* ── Карта ── */
+.genplan-embed--v2 #image-container {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+  touch-action: pan-y pinch-zoom;
+  position: relative;
+}
+
+.genplan-embed--v2 #panzoom {
+  touch-action: pan-y pinch-zoom;
+}
+
+.genplan-embed--v2 #main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.genplan-embed--v2 .zoom-controls {
+  top: 24px;
+  right: 24px;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.genplan-embed--v2 .zoom-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(145, 115, 87, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Панель инфраструктуры слева снизу ── */
+.genplan-embed--v2 .genplan-infra-panel {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 25;
+  max-width: min(calc(100% - 48px), 720px);
+  padding: 40px;
+  background: #3c3c3b;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.genplan-embed--v2 .genplan-infra-panel[hidden] {
+  display: none !important;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__close svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__title {
+  margin: 0 0 40px;
+  font-family: Merriweather, serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fffbf3;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 129px;
+  text-align: center;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.genplan-embed--v2 .genplan-infra-panel__label {
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fffbf3;
+  white-space: pre-line;
+}
+
+/* ── Информер о доме (Figma 7484:3098) ── */
+.genplan-embed--v2 #tooltip {
+  width: 360px;
+  max-width: 100%;
+  padding: 0 !important;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+  border: none;
+  z-index: 1200;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.genplan-embed--v2 #tooltip.visible {
+  pointer-events: auto;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-media {
+  position: relative;
+  line-height: 0;
+  background: #fff;
+  flex: 0 0 auto;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-img-link {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-img-link:hover img {
+  opacity: 0.92;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-img {
+  margin: 0;
+  padding: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-img img,
+.genplan-embed--v2 #tooltip .tooltip-img--empty {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: #f4eada;
+  transition: opacity .2s;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-underc {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  margin: 0;
+  padding: 4px 16px;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 29px;
+  text-transform: uppercase;
+  background: #486b98;
+  color: #fff;
+  z-index: 2;
+}
+
+.genplan-embed--v2 #tooltip.visible {
+  pointer-events: auto;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-close {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 48px !important;
+  height: 48px !important;
+  padding: 0 !important;
+  margin: 0;
+  border: 1px solid #917357;
+  border-radius: 32px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: none;
+  z-index: 3;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-close svg {
+  display: block;
+  width: 16px;
+  height: 17px;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 24px 24px;
+  background: #fff;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-head {
+  display: block;
+  margin-bottom: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-title {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: none;
+  color: #3c3c3b;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-text,
+.genplan-embed--v2 #tooltip .tooltip-kn {
+  display: none !important;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-price {
+  margin: 0;
+  font-family: Merriweather, serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #3c3c3b;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-mortgage {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  color: #917357;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-specs-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 17px;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-spec {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  min-width: 0;
+  text-align: center;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-spec-icon {
+  display: block;
+  width: auto;
+  height: 40px;
+  max-width: 55px;
+  object-fit: contain;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-spec-label {
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #3c3c3b;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-spec-divider {
+  width: 1px;
+  align-self: stretch;
+  min-height: 48px;
+  background: rgba(173, 145, 112, 0.39);
+}
+
+.genplan-embed--v2 #tooltip .tooltip-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-description {
+  display: none !important;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-actions__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-more {
+  padding: 0;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-viewing-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border-radius: 54px;
+  background: #765e50;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-actions__row .tooltip-more-link,
+.genplan-embed--v2 #tooltip .tooltip-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #765e50 !important;
+  text-decoration: none !important;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: auto;
+}
+
+.genplan-embed--v2 #tooltip .tooltip-more-link svg {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .genplan-embed--v2 .genplan-infra-panel {
+    padding: 24px;
+  }
+
+  .genplan-embed--v2 .genplan-infra-panel__title {
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+
+  .genplan-embed--v2 .genplan-infra-panel__row {
+    gap: 20px;
+  }
+
+  .genplan-embed--v2 .genplan-infra-panel__item {
+    width: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .genplan-embed--v2 .genplan-filters-v2 {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    padding: 0;
+    overflow: visible;
+    gap: 16px;
+  }
+
+  .genplan-embed--v2 .genplan-filters-v2__inner {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    padding: 0 12px;
+    scrollbar-width: thin;
+  }
+
+  .genplan-embed--v2 .category-label,
+  .genplan-embed--v2 .infrastructure-toggle .toggle-label,
+  .genplan-embed--v2 .genplan-filters-v2__all {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .genplan-embed--v2 .category-item {
+    width: auto !important;
+    flex: 0 0 auto;
+    padding: 8px 10px;
+  }
+
+  .genplan-embed--v2 .genplan-filters-v2__all {
+    flex: 0 0 auto;
+  }
+
+  .genplan-embed--v2 .infrastructure-toggle {
+    order: 2;
+    flex: 0 0 auto;
+    width: auto !important;
+    align-self: center;
+    padding: 0 12px;
+  }
+
+  .genplan-embed--v2 #image-container {
+    aspect-ratio: 4 / 3;
+  }
+
+  .genplan-embed--v2 .genplan-infra-panel {
+    display: none !important;
+  }
+
+  .genplan-embed--v2 .zoom-controls {
+    top: 12px;
+    right: 12px;
+  }
+
+  .genplan-embed--v2 .zoom-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .genplan-embed--v2 #tooltip {
+    width: 100%;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-img img,
+  .genplan-embed--v2 #tooltip .tooltip-img--empty {
+    height: 160px;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-content {
+    gap: 24px;
+    padding: 16px 16px 24px;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-specs-row {
+    flex-wrap: wrap;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-spec {
+    flex: 1 1 calc(33.333% - 12px);
+    min-width: 88px;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-actions__row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .genplan-embed--v2 #tooltip .tooltip-viewing-link {
+    width: auto;
+    flex: 0 1 auto;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+}

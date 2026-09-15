@@ -1,0 +1,34 @@
+{#{{ dump(breadcrumb) }}#}
+{#<nav role="navigation" aria-label="breadcrumb" style="{{breadcrumb_divider}}">#}
+{#  <ol class="breadcrumb">#}
+{#  {% for item in breadcrumb %}#}
+{#    {% if item.url %}#}
+{#      <li class="breadcrumb-item">#}
+{#        <a href="{{ item.url }}">{{ item.text }}</a>#}
+{#      </li>#}
+{#    {% else %}#}
+{#      <li class="breadcrumb-item active">#}
+{#        {{ item.text }}#}
+{#      </li>#}
+{#    {% endif %}#}
+{#  {% endfor %}#}
+{#  </ol>#}
+{#</nav>#}
+{% for item in breadcrumb %}
+<div class="first-crumbs-item">
+    {% if item.url %}
+        {% if item.url == '/' %}
+            <a href="{{ item.url }}">Главная</a>
+        {% else %}
+            <a href="{{ item.url }}">{{ item.text }}</a>
+        {% endif %}
+
+    {% else %}
+            {{ item.text }}
+    {% endif %}
+</div>
+    {% if loop.last %}
+    {% else %}
+        <div class="first-crumbs-item">/</div>
+    {% endif %}
+{% endfor %}

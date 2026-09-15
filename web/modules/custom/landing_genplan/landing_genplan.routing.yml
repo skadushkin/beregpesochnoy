@@ -1,0 +1,23 @@
+landing_genplan.embed:
+  path: '/genplan/embed'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\GenplanEmbedController::embed'
+  requirements:
+    _permission: 'access content'
+
+landing_infra_map.data:
+  path: '/infra-map/data'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\InfraMapController::data'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+
+landing_infra_map.save:
+  path: '/infra-map/save'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\InfraMapController::save'
+  methods: [POST]
+  requirements:
+    _permission: 'administer nodes'
+    _csrf_request_header_token: 'TRUE'

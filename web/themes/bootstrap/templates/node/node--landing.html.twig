@@ -1,0 +1,66 @@
+
+{#<div class="news-nav-menu-mob">#}
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon1.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">НОВОСТИ</div>#}
+{#        </a>#}
+{#    </div>#}
+
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon1.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">СТАТЬИ</div>#}
+{#        </a>#}
+{#    </div>#}
+
+{#    <div class="news-nav-menu-mob-item">#}
+{#        <a href="">#}
+{#            <div class="news-nav-menu-mob-item-icon">#}
+{#                <img src="/sites/default/files/img/news-icon2.svg" alt="">#}
+{#            </div>#}
+{#            <div class="news-nav-menu-mob-item-text">ПОСМОТРЕТЬ ВСЕ</div>#}
+{#        </a>#}
+{#    </div>#}
+{#</div>#}
+
+
+
+{% block content %}
+
+    
+    <section class="bg2">
+        <div class="container">
+            <div class="container_w2">
+                <div class="article-page">
+                    {{ page.content }}{{ content }}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    {{ drupal_entity('block_content', '21') }}
+    {{ drupal_entity('block_content', '45') }}
+    {{ drupal_entity('block_content', '14') }}
+
+    {% if sidebar_first_exists %}
+        <div{{ sidebar_first_attributes }}>
+            <aside class="section" role="complementary">
+                {{ page.sidebar_first }}
+            </aside>
+        </div>
+    {% endif %}
+    {% if sidebar_second_exists %}
+        <div{{ sidebar_second_attributes }}>
+            <aside class="section" role="complementary">
+                {{ page.sidebar_second }}
+            </aside>
+        </div>
+    {% endif %}
+{% endblock %}

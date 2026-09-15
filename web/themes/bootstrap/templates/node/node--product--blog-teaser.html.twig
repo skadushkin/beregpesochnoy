@@ -1,0 +1,21 @@
+
+<div class="blog-project-node">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-6">
+      <div class="blog-project-body">
+        <div class="blog-dop-title">{{ label }}</div>
+        {{ content.body }}
+        
+        <div class="product-item-data-price" itemprop="price" style="margin-top: 15px">
+          от <span>{{ content.field_price }}</span>
+        </div>
+        
+        <br>
+        <a href="{{ url }}" class="button style-1 ta-c-100">Подробнее</a>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6">
+      {{ content.field_main_image }}
+    </div>
+  </div>
+</div>
