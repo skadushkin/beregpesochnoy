@@ -27,9 +27,9 @@
 {% if genplan_legend_part in ['all', 'infra'] %}
 <div class="infrastructure-toggle">
   <label class="switch">
-    <input type="checkbox" aria-label="Показать инфраструктуру" id="infra-toggle" />
+    <input type="checkbox" aria-label="Инфраструктура" id="infra-toggle" />
     <span class="sliderg"></span>
   </label>
-  <label class="toggle-label" for="infra-toggle">{% if genplan_variant|default('classic') == 'v2' %}Показать инфраструктуру{% else %}Инфраструктура{% endif %}</label>
+  <label class="toggle-label" for="infra-toggle">Инфраструктура</label>
 </div>
 {% endif %}
