@@ -1,16 +1,45 @@
 /**
- * Lazy-loaded genplan on the front page.
+ * Lazy-loaded genplan on the front page (референс aibereg.ilikelp.ru).
  */
+
+.front-genplan-section {
+  padding-top: 72px;
+  padding-bottom: 0;
+}
+
+.front-genplan-section__head {
+  display: grid;
+  gap: 20px;
+  max-width: 920px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.front-genplan-section__eyebrow {
+  margin: 0;
+  color: #b3ce7d;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.front-genplan-section__lead {
+  margin: 0 auto;
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.55;
+}
 
 .front-genplan {
   width: 100%;
-  margin-top: 48px;
+  margin-top: 0;
 }
 
 .front-genplan__wrap {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: none;
   margin: 0 auto;
   min-height: 680px;
   background: linear-gradient(160deg, #3a3a3a 0%, #2e2e2e 45%, #252525 100%);
@@ -99,24 +128,39 @@
 }
 
 .front-genplan .genplan-embed {
-  max-width: 1200px;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 20px 16px 0;
+  padding: 0;
+}
+
+.front-genplan .genplan-embed .genplan-filters-v2 {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .front-genplan .genplan-embed .frame {
   width: 100%;
-  max-width: 1146px;
+  max-width: none;
   margin: 0 auto 12px;
 }
 
 .front-genplan .genplan-embed #image-container {
   max-width: 100%;
-  aspect-ratio: 1198 / 673;
+  aspect-ratio: 1920 / 1080;
   height: auto;
 }
 
 @media (max-width: 768px) {
+  .front-genplan-section {
+    padding-top: 48px;
+  }
+
+  .front-genplan-section__lead {
+    font-size: 14px;
+  }
+
   .front-genplan__wrap {
     min-height: 320px;
   }

@@ -506,7 +506,7 @@ function bootstrap_page_attachments_alter(&$page) {
       ];
     }
   }
-  if (\Drupal::service('path.matcher')->isFrontPage() && !bootstrap_is_node_page(838)) {
+  if (\Drupal::service('path.matcher')->isFrontPage() && bootstrap_is_landing_v2_page()) {
     $page['#attached']['library'][] = 'bootstrap/genplan_lazy';
   }
   $current_path = \Drupal::service('path.current')->getPath();
