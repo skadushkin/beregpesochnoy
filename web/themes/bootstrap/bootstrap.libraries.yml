@@ -565,7 +565,7 @@ genplan_map:
     - svg_tooltip/svg_tooltip_lib
 
 genplan_map_v2:
-  version: 1.0.27
+  version: 1.0.28
   css:
     theme:
       landing-v2/css/genplan-map.css: {}
@@ -579,7 +579,7 @@ genplan_map_v2:
     - svg_tooltip/svg_tooltip_lib
 
 genplan_lazy:
-  version: 1.0.3
+  version: 1.0.4
   css:
     theme:
       landing-v2/css/genplan-lazy.css: {}
@@ -611,7 +611,7 @@ infra_carousel:
 
 # Лендинг v2 (node 838)
 landing_v2:
-  version: 1.0.45
+  version: 1.0.46
   css:
     theme:
       landing-v2/css/fonts.css: {}
@@ -623,6 +623,7 @@ landing_v2:
   dependencies:
     - core/drupal
     - core/once
+    - bootstrap/genplan_lazy
 
 # Понтонный пляж (node 840)
 landing_ponton:

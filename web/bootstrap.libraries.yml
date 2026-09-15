@@ -579,7 +579,7 @@ genplan_map_v2:
     - svg_tooltip/svg_tooltip_lib
 
 genplan_lazy:
-  version: 1.0.3
+  version: 1.0.4
   css:
     theme:
       landing-v2/css/genplan-lazy.css: {}
