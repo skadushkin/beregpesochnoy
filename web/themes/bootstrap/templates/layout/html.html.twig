@@ -38,10 +38,10 @@
   <head>
     <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
-    {% if not is_lighthouse and 'page-node-838' not in attributes.class %}
+    {% if not is_lighthouse %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-      
+      {% if 'page-node-838' not in attributes.class %}
       <link
               rel="stylesheet"
               href="/themes/bootstrap/css/fancybox.css"
@@ -52,17 +52,7 @@
       />
       <script src="/themes/bootstrap/js/fancybox.js"></script>
       <script src="/themes/bootstrap/js/swiper.js"></script>
-      {# <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-      <link
-              rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
-      />
-      <link
-              rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-      />
-
-      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> #}
+      {% endif %}
       {% endif %}
   </head>
   <body{{ attributes.addClass(body_classes) }}>
