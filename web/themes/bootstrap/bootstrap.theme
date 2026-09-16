@@ -110,6 +110,12 @@ function bootstrap_preprocess_html(&$variables) {
   if (bootstrap_is_poselok_host()) {
     $variables['attributes']['class'][] = 'poselok-host';
   }
+  $variables['is_dev2_site'] = bootstrap_is_test2_site();
+  $variables['is_dev2_inner'] = bootstrap_is_dev2_inner_page();
+  if ($variables['is_dev2_inner']) {
+    $variables['attributes']['class'][] = 'is-dev2-inner';
+    $variables['#attached']['library'][] = 'bootstrap/landing_dev2_chrome';
+  }
   if (!empty($variables['disable_calltouch'])) {
     $variables['attributes']['class'][] = 'poselok-blog';
   }
@@ -530,30 +536,49 @@ function bootstrap_page_attachments_alter(&$page) {
  * Isolates the test2 homepage from the old theme stylesheets.
  */
 function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void {
-  if (!bootstrap_is_node_page(838)) {
+  if (bootstrap_is_node_page(838)) {
+    $keep = [
+      'landing-dev2',
+      'landing-v2/css/fonts',
+      'landing-v2/css/tour-modal',
+      'CeraPro',
+      'Merriweather',
+      'genplan-map',
+      'genplan-lazy',
+      'infra-map',
+    ];
+    foreach (array_keys($css) as $path) {
+      $normalized = str_replace('\\', '/', (string) $path);
+      if (!str_contains($normalized, 'themes/bootstrap/')) {
+        continue;
+      }
+      foreach ($keep as $needle) {
+        if (str_contains($normalized, $needle)) {
+          continue 2;
+        }
+      }
+      unset($css[$path]);
+    }
     return;
   }
-  $keep = [
-    'landing-dev2',
-    'landing-v2/css/fonts',
-    'landing-v2/css/tour-modal',
-    'CeraPro',
+  if (!bootstrap_is_dev2_inner_page()) {
+    return;
+  }
+  $drop = [
+    '/css/ipoteka.css',
+    '/css/invest.css',
+    '/css/techno.css',
+    '/css/style.css',
     'Merriweather',
-    'genplan-map',
-    'genplan-lazy',
-    'infra-map',
   ];
   foreach (array_keys($css) as $path) {
     $normalized = str_replace('\\', '/', (string) $path);
-    if (!str_contains($normalized, 'themes/bootstrap/')) {
-      continue;
-    }
-    foreach ($keep as $needle) {
+    foreach ($drop as $needle) {
       if (str_contains($normalized, $needle)) {
+        unset($css[$path]);
         continue 2;
       }
     }
-    unset($css[$path]);
   }
 }
 
@@ -836,6 +861,34 @@ function bootstrap_is_karta_page(): bool {
 function bootstrap_is_poselok_host(): bool {
   $host = strtolower(\Drupal::request()->getHost());
   return str_starts_with($host, 'poselok.');
+}
+
+/**
+ * Тестовый контур test2.beregpesochnoy.ru (ветка dev2).
+ */
+function bootstrap_is_test2_site(): bool {
+  return strtolower(\Drupal::request()->getHost()) === 'test2.beregpesochnoy.ru';
+}
+
+/**
+ * Внутренние страницы test2 без отдельного лендинг-хрома.
+ */
+function bootstrap_is_dev2_inner_page(): bool {
+  if (!bootstrap_is_test2_site() || bootstrap_is_node_page(838)) {
+    return FALSE;
+  }
+  $landing_nids = [
+    840, 850, 851, 875, 954, 955, 956, 968, 969, 978, 980, 853, 854, 1024,
+  ];
+  $node = bootstrap_get_route_node();
+  if ($node instanceof NodeInterface && in_array((int) $node->id(), $landing_nids, TRUE)) {
+    return FALSE;
+  }
+  $alias = (string) \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+  if (str_starts_with($alias, '/mfk') || str_starts_with($alias, '/ferma')) {
+    return FALSE;
+  }
+  return TRUE;
 }
 
 /**

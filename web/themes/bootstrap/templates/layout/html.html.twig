@@ -34,6 +34,7 @@
 %}
 {% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
 {% set is_dev2_front = 'page-node-838' in attributes.class|join(' ') %}
+{% set is_dev2_inner = is_dev2_inner|default(false) %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
@@ -42,7 +43,7 @@
     {% if not is_lighthouse %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-      {% if 'page-node-838' not in attributes.class|join(' ') %}
+      {% if 'page-node-838' not in attributes.class|join(' ') and not is_dev2_inner %}
       <link
               rel="stylesheet"
               href="/themes/bootstrap/css/fancybox.css"
@@ -63,7 +64,9 @@
 {#    </a>#}
 
 
-{% if not is_dev2_front %}
+{% if is_dev2_inner %}
+{% include '@bootstrap/includes/ri-chrome-header.html.twig' %}
+{% elseif not is_dev2_front %}
 <div class="tap-menu-container hidden">
   <div class="tap-menu-close">
     <img class="menu_close_desc" src="/sites/default/files/img/menu_close.svg" alt="">
@@ -470,7 +473,9 @@
     {{ page_bottom }}
 
     <!-- ФУТЕР -->
-    {% if not is_dev2_front %}
+    {% if is_dev2_inner %}
+    {% include '@bootstrap/includes/ri-chrome-footer.html.twig' %}
+    {% elseif not is_dev2_front %}
     <section class="site-theme-footer">
       <div class="footer-container">
         <div class="footer">
@@ -521,6 +526,12 @@
     </section>
     {% endif %}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    {% if is_dev2_inner %}
+      <link rel="stylesheet" href="/themes/bootstrap/css/fancybox.css">
+      <link rel="stylesheet" href="/themes/bootstrap/css/swiper.css">
+      <script src="/themes/bootstrap/js/fancybox.js" defer></script>
+      <script src="/themes/bootstrap/js/swiper.js" defer></script>
+    {% endif %}
 
 {% if not is_dev2_front %}
       <div class="shadow">
@@ -734,7 +745,7 @@
 </script>
 <!-- calltouch -->
 {% endif %}
-{% if not is_dev2_front %}
+{% if not is_dev2_front and not is_dev2_inner %}
 {# {% if 'administrator' in user.roles %} #}
  <script>
               GPTConfig = {
