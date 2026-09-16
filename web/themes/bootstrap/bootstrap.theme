@@ -536,7 +536,7 @@ function bootstrap_page_attachments_alter(&$page) {
  * Isolates the test2 homepage from the old theme stylesheets.
  */
 function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void {
-  if (bootstrap_is_node_page(838)) {
+  if (bootstrap_is_test2_site() && bootstrap_is_node_page(838)) {
     $keep = [
       'landing-dev2',
       'landing-v2/css/fonts',
