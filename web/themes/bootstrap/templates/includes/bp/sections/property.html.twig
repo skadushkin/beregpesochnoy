@@ -1,0 +1,25 @@
+{% set u = bereg.urls|default({}) %}
+
+<section class="bp-catalog" id="catalog">
+  <div class="bp-wrap">
+    <div class="bp-catalog__head">
+      <div>
+        <p class="bp-eyebrow">Недвижимость</p>
+        <h2>Выберите формат жизни</h2>
+      </div>
+      <nav class="bp-pills" data-lv2-catalog-tabs aria-label="Тип дома">
+        <button type="button" data-tab="1" data-catalog-href="{{ u.houses_ready|default('/kupit-dom-v-kottedzhnom-poselke?type=2') }}">Готовые дома</button>
+        <button type="button" class="is-active" data-tab="2" data-catalog-href="{{ u.houses_build|default('/kupit-dom-v-kottedzhnom-poselke?type=3') }}" aria-selected="true">Строящиеся дома</button>
+        <button type="button" data-tab="4" data-catalog-href="{{ u.townhouses|default('/taunhausy') }}">Таунхаусы</button>
+      </nav>
+    </div>
+    <div class="bp-catalog__grid" data-lv2-catalog-panels>
+      <div class="bp-catalog__panel" data-tab-panel="1" hidden>{{ drupal_view('gotovye_doma', 'block_6') }}</div>
+      <div class="bp-catalog__panel is-active" data-tab-panel="2">{{ drupal_view('gotovye_doma', 'block_3') }}</div>
+      <div class="bp-catalog__panel" data-tab-panel="4" hidden>{{ drupal_view('gotovye_doma', 'block_4') }}</div>
+    </div>
+    <div class="bp-center">
+      <a href="{{ u.houses_build|default('/kupit-dom-v-kottedzhnom-poselke?type=3') }}" class="bp-btn bp-btn--primary" data-lv2-catalog-more>Смотреть все объекты</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{% set slides = bereg.gallery|default([]) %}
+
+<section class="bp-gallery" id="gallery">
+  <div class="bp-wrap">
+    <p class="bp-eyebrow">Галерея</p>
+    <h2>«Берег Песочной» в деталях</h2>
+    <div class="bp-gallery__filters" data-bp-gallery-filters>
+      <button type="button" class="is-active" data-cat="all">Все</button>
+      <button type="button" data-cat="architecture">Архитектура</button>
+      <button type="button" data-cat="territory">Территория</button>
+      <button type="button" data-cat="water">Вода</button>
+      <button type="button" data-cat="houses">Дома</button>
+      <button type="button" data-cat="infra">Инфраструктура</button>
+    </div>
+  </div>
+  <div class="bp-gallery__stage" data-bp-gallery>
+    <button type="button" class="bp-gallery__nav bp-gallery__nav--prev" data-dir="-1" aria-label="Назад">←</button>
+    <figure class="bp-gallery__frame">
+      {% for slide in slides %}
+        <button type="button" class="bp-gallery__slide{% if loop.first %} is-active{% endif %}" data-cat="{{ slide.cat }}" data-src="{{ slide.src }}" data-caption="{{ slide.caption }}">
+          <img src="{{ slide.src }}" alt="{{ slide.alt }}" {% if not loop.first %}loading="lazy"{% endif %}>
+        </button>
+      {% endfor %}
+    </figure>
+    <button type="button" class="bp-gallery__nav bp-gallery__nav--next" data-dir="1" aria-label="Вперёд">→</button>
+    <p class="bp-gallery__counter" data-bp-gallery-counter>01 / {{ slides|length|default(0) }}</p>
+  </div>
+</section>
+
+<div class="bp-lightbox" id="bpLightbox" hidden>
+  <button type="button" class="bp-lightbox__close" data-bp-lightbox-close aria-label="Закрыть">×</button>
+  <img src="" alt="">
+  <p></p>
+</div>

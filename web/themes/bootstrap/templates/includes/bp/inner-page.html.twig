@@ -1,0 +1,88 @@
+{# Marketing inner pages on test2. #}
+{% set b = bereg|default({}) %}
+{% set page_id = bereg_page_id|default('about') %}
+
+<div class="landing-dev2-root is-inner">
+  {% include '@bootstrap/includes/bp/header.html.twig' with { bp_transparent: false, bereg: b } %}
+
+  <main>
+    {% if page_id == 'about' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">О проекте</p>
+          <h1>Жилой комплекс «Берег Песочной»</h1>
+          <p class="bp-lead">Современный загородный поселок у реки Песочная: дома, парк, охрана и доступ к воде.</p>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/about.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/infrastructure.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/concierge.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/viewing-cta.html.twig' %}
+    {% elseif page_id == 'masterplan' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Генплан</p>
+          <h1>Выберите дом на генплане</h1>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/masterplan.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/property.html.twig' %}
+    {% elseif page_id == 'waterfront' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Жизнь у воды</p>
+          <h1>Свой доступ к воде</h1>
+          <p class="bp-lead">Река Песочная, понтонный пляж, причал и прокат лодок — без выезда из поселка.</p>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/waterfront.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/gallery.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/viewing-cta.html.twig' %}
+    {% elseif page_id == 'location' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Расположение</p>
+          <h1>Истринский район, Новая Рига</h1>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/location.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/final-cta.html.twig' with { form_source: 'TEST2 /location' } %}
+    {% elseif page_id == 'construction' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Ход строительства</p>
+          <h1>Как развивается проект</h1>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/construction.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/lead-mid.html.twig' with { form_source: 'TEST2 /construction' } %}
+    {% elseif page_id == 'service' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Сервис</p>
+          <h1>Забота о доме и территории</h1>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/concierge.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/faq.html.twig' %}
+      {% include '@bootstrap/includes/bp/sections/final-cta.html.twig' with { form_source: 'TEST2 /service' } %}
+    {% elseif page_id == 'contacts' %}
+      <section class="bp-page-hero">
+        <div class="bp-wrap">
+          <p class="bp-eyebrow">Контакты</p>
+          <h1>Отдел продаж</h1>
+        </div>
+      </section>
+      {% include '@bootstrap/includes/bp/sections/final-cta.html.twig' with { form_source: 'TEST2 /contacts' } %}
+      {% include '@bootstrap/includes/bp/sections/location.html.twig' %}
+    {% else %}
+      {% include '@bootstrap/includes/bp/sections/about.html.twig' %}
+    {% endif %}
+  </main>
+
+  {% include '@bootstrap/includes/bp/footer.html.twig' %}
+  {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+    tour_modal_label: 'Берег Песочной',
+    tour_modal_source: 'TEST2 страница ' ~ page_id
+  } %}
+</div>

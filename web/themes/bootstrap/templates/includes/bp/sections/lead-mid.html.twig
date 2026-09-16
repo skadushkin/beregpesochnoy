@@ -1,0 +1,11 @@
+<section class="bp-lead" id="selection">
+  <div class="bp-wrap bp-lead__inner">
+    {% include '@bootstrap/includes/bp/lead-form.html.twig' with {
+      form_source: form_source|default('TEST2 — получить подборку'),
+      form_title: 'Получите актуальные предложения',
+      form_lead: 'Оставьте контакты — пришлем подборку доступных домов и таунхаусов.',
+      form_cta: 'Получить подборку',
+      form_with_type: true
+    } %}
+  </div>
+</section>

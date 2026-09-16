@@ -111,7 +111,14 @@ function bootstrap_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'poselok-host';
   }
   $variables['is_dev2_site'] = bootstrap_is_test2_site();
+  $variables['is_dev2_landing'] = bootstrap_is_dev2_landing_page();
   $variables['is_dev2_inner'] = bootstrap_is_dev2_inner_page();
+  $variables['bereg'] = bootstrap_bereg_site_data();
+  $variables['#cache']['contexts'][] = 'url.site';
+  $variables['#cache']['contexts'][] = 'url.path';
+  if ($variables['is_dev2_landing']) {
+    $variables['attributes']['class'][] = 'is-dev2-landing';
+  }
   if ($variables['is_dev2_inner']) {
     $variables['attributes']['class'][] = 'is-dev2-inner';
     $variables['#attached']['library'][] = 'bootstrap/landing_dev2_chrome';
@@ -536,7 +543,7 @@ function bootstrap_page_attachments_alter(&$page) {
  * Isolates the test2 homepage from the old theme stylesheets.
  */
 function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void {
-  if (bootstrap_is_test2_site() && bootstrap_is_node_page(838)) {
+  if (bootstrap_is_dev2_landing_page()) {
     $keep = [
       'landing-dev2',
       'landing-v2/css/fonts',
@@ -867,10 +874,37 @@ function bootstrap_is_test2_site(): bool {
 }
 
 /**
+ * Главная и маркетинговые страницы test2 в новой теме.
+ */
+function bootstrap_is_dev2_landing_page(): bool {
+  if (!bootstrap_is_test2_site()) {
+    return FALSE;
+  }
+  if (bootstrap_is_node_page(838)) {
+    return TRUE;
+  }
+  $route = (string) \Drupal::routeMatch()->getRouteName();
+  return str_starts_with($route, 'landing_genplan.page_');
+}
+
+/**
+ * Confirmed content for the test2 marketing site.
+ */
+function bootstrap_bereg_site_data(): array {
+  static $data;
+  if ($data !== NULL) {
+    return $data;
+  }
+  $path = \Drupal::service('extension.list.theme')->getPath('bootstrap') . '/landing-dev2/data/site.php';
+  $data = is_file($path) ? require $path : [];
+  return is_array($data) ? $data : [];
+}
+
+/**
  * Внутренние страницы test2 без отдельного лендинг-хрома.
  */
 function bootstrap_is_dev2_inner_page(): bool {
-  if (!bootstrap_is_test2_site() || bootstrap_is_node_page(838)) {
+  if (!bootstrap_is_test2_site() || bootstrap_is_dev2_landing_page()) {
     return FALSE;
   }
   $landing_nids = [
@@ -1634,13 +1668,20 @@ function bootstrap_preprocess_page(&$variables) {
   $variables['sidebar_second_exists'] = !empty($variables['page']['sidebar_second']);
   $variables['bootstrap_is_landing_v2_front'] = \Drupal::service('path.matcher')->isFrontPage()
     && bootstrap_is_node_page(838);
+  $variables['is_dev2_landing'] = bootstrap_is_dev2_landing_page();
+  $variables['bereg'] = bootstrap_bereg_site_data();
+  $route_name = (string) \Drupal::routeMatch()->getRouteName();
+  $variables['bereg_page_id'] = NULL;
+  if (str_starts_with($route_name, 'landing_genplan.page_')) {
+    $variables['bereg_page_id'] = substr($route_name, strlen('landing_genplan.page_'));
+  }
 
   $ferma_alias = \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
   if ($ferma_alias === '/ferma' || str_starts_with((string) $ferma_alias, '/ferma/')) {
     $variables['ferma_products'] = bootstrap_ferma_slider_items('ferma_product');
     $variables['ferma_photos'] = bootstrap_ferma_slider_items('ferma_photo');
   }
-  if (bootstrap_is_karta_page() || bootstrap_is_node_page(838)) {
+  if (bootstrap_is_karta_page() || bootstrap_is_dev2_landing_page()) {
     $can_edit = \Drupal::currentUser()->hasPermission('administer nodes');
     $variables['infra_map_can_edit'] = $can_edit;
     $variables['#cache']['contexts'][] = 'user.permissions';
@@ -2350,7 +2391,10 @@ function bootstrap_theme_suggestions_page_alter(array &$suggestions, array $vari
     $suggestions[] = 'page__karta';
   }
 
-
+  $route_name = (string) \Drupal::routeMatch()->getRouteName();
+  if (str_starts_with($route_name, 'landing_genplan.page_')) {
+    $suggestions[] = 'page__landing_genplan';
+  }
 }
 
 /**

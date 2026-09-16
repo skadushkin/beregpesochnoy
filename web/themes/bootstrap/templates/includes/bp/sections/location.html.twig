@@ -1,0 +1,26 @@
+{% set b = bereg|default({}) %}
+{% set f = b.facts|default({}) %}
+
+<section class="bp-location" id="location">
+  <div class="bp-wrap">
+    <p class="bp-eyebrow">Расположение</p>
+    <h2>Природа рядом. Город — в привычной доступности.</h2>
+    <p class="bp-lead">Истринский район, Новорижское направление. Поселок стоит у реки Песочная, до города Истра — около 10 минут. До МКАД — 45 км.</p>
+  </div>
+  <div class="bp-location__map">
+    <iframe title="Карта проезда к «Берегу Песочной»" src="{{ b.map_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+  <div class="bp-wrap bp-location__card">
+    <div class="bp-location__dark">
+      <p class="bp-location__time"><strong>{{ f.mkad_time|default('45 мин') }}</strong> до МКАД на машине</p>
+      <ul>
+        <li><span>Авто</span> Новорижское шоссе, {{ f.mkad|default('45 км') }} от МКАД</li>
+        <li><span>Истра</span> {{ f.istra_time|default('≈ 10 мин') }} до городской инфраструктуры</li>
+        <li><span>Водохранилище</span> {{ f.reservoir_time|default('5 мин') }} до Истринского водохранилища</li>
+        <li><span>Автобус</span> от м. Тушинская, автобус №372 или маршрутка до станции Истра</li>
+        <li><span>МЦД-1</span> до ж/д станции Истра, далее автобус №30 до остановки «Духанино / Поворот на Духанино»</li>
+      </ul>
+      <a class="bp-btn bp-btn--ghost" href="{{ b.route_url }}" target="_blank" rel="noopener">Построить маршрут</a>
+    </div>
+  </div>
+</section>

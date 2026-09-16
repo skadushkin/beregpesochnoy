@@ -1,0 +1,18 @@
+{% set items = bereg.faq|default([]) %}
+
+<section class="bp-faq" id="faq">
+  <div class="bp-wrap bp-faq__grid">
+    <div>
+      <p class="bp-eyebrow">FAQ</p>
+      <h2>Часто задаваемые вопросы</h2>
+    </div>
+    <div class="bp-faq__list">
+      {% for item in items %}
+        <details class="bp-acc"{% if loop.first %} open{% endif %}>
+          <summary>{{ item.q }}</summary>
+          <div><p>{{ item.a }}</p></div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

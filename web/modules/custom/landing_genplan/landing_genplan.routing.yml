@@ -21,3 +21,73 @@ landing_infra_map.save:
   requirements:
     _permission: 'administer nodes'
     _csrf_request_header_token: 'TRUE'
+
+landing_genplan.houses:
+  path: '/houses'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::houses'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_about:
+  path: '/about'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: about
+    _title: 'О проекте — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_masterplan:
+  path: '/masterplan'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: masterplan
+    _title: 'Генплан — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_waterfront:
+  path: '/waterfront'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: waterfront
+    _title: 'Жизнь у воды — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_location:
+  path: '/location'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: location
+    _title: 'Расположение — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_construction:
+  path: '/construction'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: construction
+    _title: 'Ход строительства — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_service:
+  path: '/service'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: service
+    _title: 'Сервис — Берег Песочной'
+  requirements:
+    _permission: 'access content'
+
+landing_genplan.page_contacts:
+  path: '/contacts'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\SitePageController::view'
+    page_id: contacts
+    _title: 'Контакты — Берег Песочной'
+  requirements:
+    _permission: 'access content'

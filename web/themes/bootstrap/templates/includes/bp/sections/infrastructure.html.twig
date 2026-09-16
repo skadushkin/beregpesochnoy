@@ -1,0 +1,19 @@
+{% set bento = bereg.bento|default([]) %}
+
+<section class="bp-infra" id="infra">
+  <div class="bp-wrap">
+    <p class="bp-eyebrow">Инфраструктура</p>
+    <h2>Всё необходимое для жизни — внутри и рядом</h2>
+    <div class="bp-bento">
+      {% for card in bento %}
+        <article class="bp-bento__card bp-bento__card--{{ card.size|default('std') }}">
+          <img src="{{ card.img }}" alt="{{ card.title }}" loading="lazy">
+          <div>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.label }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

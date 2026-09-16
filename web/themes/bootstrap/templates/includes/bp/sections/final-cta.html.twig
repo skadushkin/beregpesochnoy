@@ -1,0 +1,23 @@
+{% set photos = bereg.photos|default([]) %}
+{% set b = bereg|default({}) %}
+
+<section class="bp-final" id="contacts">
+  <div class="bp-final__media" style="background-image:url('{{ photos[2]|default(photos[0]) }}')"></div>
+  <div class="bp-wrap bp-final__grid">
+    <div>
+      <p class="bp-eyebrow">Отдел продаж</p>
+      <h2>Запишитесь на просмотр</h2>
+      <p>Расскажем о проекте, покажем доступные дома и поможем подобрать подходящий вариант.</p>
+      <a class="bp-final__phone" href="tel:{{ b.phone_tel|default('+74951865088') }}">{{ b.phone_display|default('+7 (495) 186-50-88') }}</a>
+      <p>{{ b.address_line|default('Лесная улица, 1') }}<br>{{ b.address_place|default('') }}<br>{{ b.address_region|default('') }}</p>
+      <a class="bp-btn bp-btn--ghost" href="{{ b.route_url }}" target="_blank" rel="noopener">Построить маршрут</a>
+    </div>
+    {% include '@bootstrap/includes/bp/lead-form.html.twig' with {
+      form_source: form_source|default('TEST2 — запись на просмотр'),
+      form_title: 'Оставьте контакты',
+      form_lead: '',
+      form_cta: 'Записаться на просмотр',
+      form_with_type: true
+    } %}
+  </div>
+</section>

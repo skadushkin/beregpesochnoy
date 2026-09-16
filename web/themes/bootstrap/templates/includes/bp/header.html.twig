@@ -1,0 +1,77 @@
+{# Shared header + mega-menu + sticky mobile CTA. #}
+{% set b = bereg|default({}) %}
+{% set u = b.urls|default({}) %}
+{% set transparent = bp_transparent|default(false) %}
+{% set home_prefix = transparent ? '' : '/' %}
+
+<header class="bp-header{% if not transparent %} is-solid{% endif %}" id="bpHeader">
+  <div class="bp-wrap bp-header__inner">
+    <a class="bp-header__logo" href="{{ u.home|default('/') }}" aria-label="{{ b.name|default('Берег Песочной') }}">
+      <img src="/sites/default/files/img/logo_mob2.svg" alt="{{ b.name|default('Берег Песочной') }}" width="200" height="50">
+    </a>
+    <nav class="bp-header__nav" aria-label="Навигация по посёлку">
+      <a href="{{ u.houses|default('/kupit-dom-v-kottedzhnom-poselke') }}">Проекты / Дома</a>
+      <a href="{{ transparent ? '#genplan' : u.masterplan|default('/masterplan') }}">Генплан</a>
+      <a href="{{ u.infrastructure|default('/infrastruktura') }}">Инфраструктура</a>
+      <a href="{{ transparent ? '#water' : u.waterfront|default('/waterfront') }}">У воды</a>
+      <a href="{{ transparent ? '#location' : u.location|default('/location') }}">Расположение</a>
+      <a href="{{ transparent ? '#gallery' : u.gallery|default('/gallery') }}">Галерея</a>
+      <a href="{{ transparent ? '#build' : u.construction|default('/construction') }}">Ход строительства</a>
+    </nav>
+    <div class="bp-header__right">
+      <a class="bp-phone" href="tel:{{ b.phone_tel|default('+74951865088') }}">{{ b.phone_display|default('+7 (495) 186-50-88') }}</a>
+      <button type="button" class="bp-btn bp-btn--primary bp-btn--sm open-lv2-tour-modal">Записаться на просмотр</button>
+      <button type="button" class="bp-menu-btn" id="bpMenuBtn" aria-expanded="false" aria-controls="bpMega">Меню</button>
+    </div>
+  </div>
+</header>
+
+<div class="bp-mega" id="bpMega" hidden>
+  <div class="bp-mega__shade" data-bp-mega-close></div>
+  <div class="bp-mega__panel" role="dialog" aria-label="Меню сайта">
+    <div class="bp-wrap bp-mega__grid">
+      <div>
+        <p class="bp-mega__col-title">О проекте</p>
+        <a href="{{ u.about|default('/about') }}">О поселке</a>
+        <a href="{{ home_prefix }}#infra">Преимущества</a>
+        <a href="{{ u.waterfront|default('/waterfront') }}">Жизнь у воды</a>
+        <a href="{{ u.infrastructure|default('/infrastruktura') }}">Инфраструктура</a>
+        <a href="{{ u.location|default('/location') }}">Расположение</a>
+        <a href="{{ u.construction|default('/construction') }}">Ход строительства</a>
+        <a href="{{ u.gallery|default('/gallery') }}">Галерея</a>
+        <a href="{{ home_prefix }}#faq">FAQ</a>
+      </div>
+      <div>
+        <p class="bp-mega__col-title">Недвижимость</p>
+        <a href="{{ u.houses|default('/kupit-dom-v-kottedzhnom-poselke') }}">Все объекты</a>
+        <a href="{{ u.houses_ready|default('/kupit-dom-v-kottedzhnom-poselke?type=2') }}">Готовые дома</a>
+        <a href="{{ u.houses_build|default('/kupit-dom-v-kottedzhnom-poselke?type=3') }}">Строящиеся дома</a>
+        <a href="{{ u.townhouses|default('/taunhausy') }}">Таунхаусы</a>
+        <a href="{{ u.masterplan|default('/masterplan') }}">Генплан</a>
+      </div>
+      <div>
+        <p class="bp-mega__col-title">Сервис</p>
+        <a href="{{ u.service|default('/service') }}">Сервис для жителей</a>
+        <a href="{{ u.uk|default('/node/980') }}">Управляющая компания</a>
+        <a href="{{ home_prefix }}#service">Безопасность</a>
+        <a href="{{ u.service|default('/service') }}">Обслуживание</a>
+      </div>
+      <div>
+        <p class="bp-mega__col-title">Контакты</p>
+        <a href="tel:{{ b.phone_tel|default('+74951865088') }}">{{ b.phone_display|default('+7 (495) 186-50-88') }}</a>
+        <a href="{{ b.whatsapp|default('https://wa.me/79255543212') }}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="{{ u.contacts|default('/contacts') }}">Отдел продаж</a>
+      </div>
+      <aside class="bp-mega__cta">
+        <p>Подберем дом под ваши критерии</p>
+        <button type="button" class="bp-btn bp-btn--primary open-lv2-tour-modal" data-bp-mega-close>Получить подборку</button>
+      </aside>
+    </div>
+    <button type="button" class="bp-mega__close" data-bp-mega-close aria-label="Закрыть меню">×</button>
+  </div>
+</div>
+
+<div class="bp-sticky" id="bpSticky">
+  <a class="bp-sticky__phone" href="tel:{{ b.phone_tel|default('+74951865088') }}">{{ b.phone_display|default('+7 (495) 186-50-88') }}</a>
+  <button type="button" class="bp-btn bp-btn--primary open-lv2-tour-modal">Записаться</button>
+</div>

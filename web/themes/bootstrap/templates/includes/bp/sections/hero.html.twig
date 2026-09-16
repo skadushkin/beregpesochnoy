@@ -1,0 +1,27 @@
+{% set b = bereg|default({}) %}
+{% set u = b.urls|default({}) %}
+{% set f = b.facts|default({}) %}
+{% set hero = b.hero|default({}) %}
+
+<section class="bp-hero" id="top">
+  <img class="bp-hero__photo" src="{{ hero.image }}" alt="{{ hero.image_alt }}" width="1920" height="1080" fetchpriority="high">
+  <div class="bp-hero__shade"></div>
+  <div class="bp-wrap bp-hero__copy">
+    <div class="bp-hero__tags">
+      <span>Загородная жизнь у воды</span>
+      <span>{{ f.mkad_time|default('45 мин') }} от МКАД</span>
+    </div>
+    <h1>«Берег Песочной» — современная жизнь у воды</h1>
+    <p class="bp-hero__lead">Коттеджный поселок в Истринском районе: готовые и строящиеся дома, таунхаусы, ландшафтный парк и собственный доступ к воде.</p>
+    <div class="bp-hero__actions">
+      <a class="bp-btn bp-btn--primary" href="#catalog">Выбрать дом</a>
+      <button type="button" class="bp-btn bp-btn--ghost open-lv2-tour-modal">Записаться на просмотр</button>
+    </div>
+    <ul class="bp-hero__stats">
+      <li><strong>{{ f.park_ha|default('8 га') }}</strong><span>ландшафтного парка</span></li>
+      <li><strong>{{ f.village_ha|default('28 га') }}</strong><span>территория поселка</span></li>
+      <li><strong>{{ f.security|default('24/7') }}</strong><span>охрана территории</span></li>
+      <li><strong>{{ f.istra_time|default('≈ 10 мин') }}</strong><span>до города Истра</span></li>
+    </ul>
+  </div>
+</section>

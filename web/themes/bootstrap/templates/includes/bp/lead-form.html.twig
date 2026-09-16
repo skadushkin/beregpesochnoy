@@ -1,0 +1,41 @@
+{% set b = bereg|default({}) %}
+{% set source = form_source|default('TEST2 — форма') %}
+{% set title = form_title|default('Запишитесь на просмотр') %}
+{% set lead = form_lead|default('Расскажем о проекте, покажем доступные дома и поможем подобрать подходящий вариант.') %}
+{% set cta = form_cta|default('Записаться на просмотр') %}
+{% set with_type = form_with_type|default(false) %}
+
+<form class="bp-form lv2-cta-form" action="#" method="post" novalidate>
+  <h3>{{ title }}</h3>
+  {% if lead %}<p>{{ lead }}</p>{% endif %}
+  <input type="hidden" name="source" value="{{ source }}">
+  <label>
+    <span class="visually-hidden">Имя</span>
+    <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
+  </label>
+  <div class="online-notice"></div>
+  <label>
+    <span class="visually-hidden">Телефон</span>
+    <input type="tel" name="phone" class="phone-field-mask" placeholder="Телефон" autocomplete="tel" required>
+  </label>
+  <div class="online-notice"></div>
+  {% if with_type %}
+    <label>
+      <span class="visually-hidden">Тип недвижимости</span>
+      <select name="object_type">
+        <option value="">Какой объект интересует?</option>
+        <option>Готовый дом</option>
+        <option>Строящийся дом</option>
+        <option>Таунхаус</option>
+        <option>Пока не определился</option>
+      </select>
+    </label>
+  {% endif %}
+  <label class="bp-form__agree">
+    <input type="checkbox" name="agree" required>
+    <span>Я согласен с <a href="{{ b.policy|default('/policy/') }}">политикой обработки персональных данных</a></span>
+  </label>
+  <div class="online-notice"></div>
+  <button type="button" class="bp-btn bp-btn--primary bp-lead-send">{{ cta }}</button>
+  <div class="popup-success">Заявка отправлена. Спасибо.</div>
+</form>

@@ -1,0 +1,22 @@
+<section class="bp-plan" id="genplan">
+  <div class="bp-wrap bp-plan__head">
+    <div>
+      <p class="bp-eyebrow">Генплан</p>
+      <h2>Выберите свой дом на генплане</h2>
+    </div>
+    <div class="bp-plan__tools">
+      <p>Наведите на объект, чтобы увидеть тип и статус. Нажмите — откроется карточка дома.</p>
+      <button type="button" class="bp-btn bp-btn--line" data-bp-genplan-fs>⛶ На весь экран</button>
+    </div>
+  </div>
+  {{ attach_library('bootstrap/genplan_lazy') }}
+  <div class="front-genplan__wrap lv2-genplan bp-plan__embed" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
+    <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
+      <div class="lv2-genplan__loader-inner">
+        <div class="lv2-genplan__spinner" aria-hidden="true"></div>
+        <p class="lv2-genplan__loader-text">Загружаем интерактивный генплан…</p>
+      </div>
+    </div>
+    <div class="lv2-genplan__mount" hidden></div>
+  </div>
+</section>

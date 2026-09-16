@@ -1,0 +1,16 @@
+{% set u = bereg.urls|default({}) %}
+
+<section class="bp-build" id="build">
+  <div class="bp-wrap">
+    <div class="bp-catalog__head">
+      <div>
+        <p class="bp-eyebrow">Ход строительства</p>
+        <h2>Посмотрите, как развивается проект</h2>
+      </div>
+      <a class="bp-btn bp-btn--line" href="{{ u.news|default('/news') }}">Смотреть весь ход строительства</a>
+    </div>
+    <div class="bp-build__feed">
+      {{ drupal_view('blog', 'block_1') }}
+    </div>
+  </div>
+</section>

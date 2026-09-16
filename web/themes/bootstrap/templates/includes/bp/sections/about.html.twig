@@ -1,0 +1,18 @@
+{% set b = bereg|default({}) %}
+{% set photos = b.photos|default([]) %}
+
+<section class="bp-about" id="about">
+  <div class="bp-wrap bp-about__grid">
+    <div class="bp-about__copy">
+      <p class="bp-eyebrow">О проекте</p>
+      <h2>Современный формат загородной жизни</h2>
+      <p>«Берег Песочной» — коттеджный поселок в Истринском районе, на землях населенных пунктов. У каждого дома есть почтовый адрес, жители могут оформить прописку.</p>
+      <p>Поселок создан для постоянного проживания: охраняемая территория, коммуникации, парк и выход к воде. Это не дачный формат, а повседневная жизнь рядом с природой.</p>
+      <p>Главное ощущение места — вода, воздух и свой дом. Сначала выбираете образ жизни, затем конкретный объект на генплане.</p>
+      <a class="bp-btn bp-btn--line" href="{{ b.pdf|default('/jk-bereg-pesochnoy.pdf') }}" download>Смотреть презентацию</a>
+    </div>
+    <figure class="bp-about__media">
+      <img src="{{ photos[1]|default(photos[0]) }}" alt="Дома и территория ЖК «Берег Песочной»" width="960" height="720" loading="lazy">
+    </figure>
+  </div>
+</section>

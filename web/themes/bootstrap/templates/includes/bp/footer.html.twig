@@ -1,0 +1,48 @@
+{% set b = bereg|default({}) %}
+{% set u = b.urls|default({}) %}
+
+<footer class="bp-footer">
+  <div class="bp-wrap bp-footer__grid">
+    <div class="bp-footer__brand">
+      <a href="{{ u.home|default('/') }}">
+        <img src="/sites/default/files/img/logo-footer2.svg" alt="{{ b.name|default('Берег Песочной') }}" width="140" height="40">
+      </a>
+      <p>Современный загородный поселок у реки Песочная в Истринском районе. Дома для жизни круглый год, парк и собственный доступ к воде.</p>
+    </div>
+    <div>
+      <p>Проект</p>
+      <a href="{{ u.about|default('/about') }}">О проекте</a>
+      <a href="{{ u.infrastructure|default('/infrastruktura') }}">Инфраструктура</a>
+      <a href="{{ u.waterfront|default('/waterfront') }}">У воды</a>
+      <a href="{{ u.masterplan|default('/masterplan') }}">Генплан</a>
+      <a href="{{ u.gallery|default('/gallery') }}">Галерея</a>
+      <a href="{{ u.location|default('/location') }}">Расположение</a>
+    </div>
+    <div>
+      <p>Недвижимость</p>
+      <a href="{{ u.houses_ready|default('/kupit-dom-v-kottedzhnom-poselke?type=2') }}">Готовые дома</a>
+      <a href="{{ u.houses_build|default('/kupit-dom-v-kottedzhnom-poselke?type=3') }}">Строящиеся</a>
+      <a href="{{ u.townhouses|default('/taunhausy') }}">Таунхаусы</a>
+      <a href="{{ u.houses|default('/kupit-dom-v-kottedzhnom-poselke') }}">Все объекты</a>
+    </div>
+    <div>
+      <p>Покупателям</p>
+      <a href="{{ u.construction|default('/construction') }}">Ход строительства</a>
+      <a href="/#faq">FAQ</a>
+      <a href="{{ u.service|default('/service') }}">Сервис</a>
+      <a href="{{ u.contacts|default('/contacts') }}">Контакты</a>
+    </div>
+    <div>
+      <p>Контакты</p>
+      <a href="tel:{{ b.phone_tel|default('+74951865088') }}">{{ b.phone_display|default('+7 (495) 186-50-88') }}</a>
+      <a href="{{ b.whatsapp|default('https://wa.me/79255543212') }}" target="_blank" rel="noopener">WhatsApp</a>
+      <span>{{ b.address_line|default('Лесная улица, 1') }}<br>{{ b.address_place|default('') }}<br>{{ b.address_region|default('') }}</span>
+    </div>
+  </div>
+  <div class="bp-wrap bp-footer__legal">
+    <a href="{{ b.policy|default('/policy/') }}">Политика конфиденциальности</a>
+    <a href="{{ b.policy|default('/policy/') }}">Согласие на обработку персональных данных</a>
+    <a href="{{ b.policy|default('/policy/') }}">Правовая информация</a>
+    <span>© {{ 'now'|date('Y') }} «Берег Песочной»</span>
+  </div>
+</footer>

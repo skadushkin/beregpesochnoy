@@ -1,0 +1,10 @@
+{% set photos = bereg.photos|default([]) %}
+
+<section class="bp-viewing" id="viewing">
+  <img src="{{ photos[0] }}" alt="Аэросъемка поселка «Берег Песочной»" loading="lazy">
+  <div class="bp-wrap bp-viewing__copy">
+    <h2>Приезжайте посмотреть «Берег Песочной»</h2>
+    <p>Выберите удобный день и лично посмотрите поселок, дома, парк и берег. На месте проще понять масштаб, тишину и расстояние до воды.</p>
+    <button type="button" class="bp-btn bp-btn--primary open-lv2-tour-modal">Записаться на просмотр</button>
+  </div>
+</section>

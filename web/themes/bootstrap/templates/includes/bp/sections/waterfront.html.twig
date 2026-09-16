@@ -1,0 +1,24 @@
+{% set b = bereg|default({}) %}
+{% set u = b.urls|default({}) %}
+{% set cards = b.water_cards|default([]) %}
+
+<section class="bp-water" id="water">
+  <div class="bp-wrap">
+    <p class="bp-eyebrow">Жизнь у воды</p>
+    <h2>Не просто рядом с водой — свой доступ к ней</h2>
+    <p class="bp-lead">Вдоль южной границы поселка протекает река Песочная. Для жителей обустроен понтонный пляж с причалом и прокатом лодок. Истринское водохранилище — в нескольких минутах езды.</p>
+    <div class="bp-water__grid">
+      {% for card in cards %}
+        <article>
+          <img src="{{ card.img }}" alt="{{ card.title }}" loading="lazy">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="bp-hero__actions">
+      <a class="bp-btn bp-btn--line" href="{{ u.waterfront|default('/waterfront') }}">Подробнее у воды</a>
+      <button type="button" class="bp-btn bp-btn--primary open-lv2-tour-modal">Записаться на просмотр</button>
+    </div>
+  </div>
+</section>

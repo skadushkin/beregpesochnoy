@@ -33,7 +33,7 @@
   ]
 %}
 {% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
-{% set is_dev2_front = is_dev2_site|default(false) and 'page-node-838' in attributes.class|join(' ') %}
+{% set is_dev2_front = is_dev2_landing|default(false) %}
 {% set is_dev2_inner = is_dev2_inner|default(false) %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
@@ -475,6 +475,10 @@
     <!-- ФУТЕР -->
     {% if is_dev2_inner %}
     {% include '@bootstrap/includes/ri-chrome-footer.html.twig' %}
+    {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+      tour_modal_label: 'Берег Песочной',
+      tour_modal_source: 'TEST2 внутренние страницы — экскурсия'
+    } %}
     {% elseif not is_dev2_front %}
     <section class="site-theme-footer">
       <div class="footer-container">
