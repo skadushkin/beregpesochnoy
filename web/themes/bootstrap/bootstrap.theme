@@ -1541,6 +1541,17 @@ function bootstrap_views_pre_view(\Drupal\views\ViewExecutable $view, $display_i
     $display = $view->displayHandlers->get($display_id);
     if ($display) {
       $display->overrideOption('sorts', [
+        'nid' => [
+          'id' => 'nid',
+          'table' => 'node_field_data',
+          'field' => 'nid',
+          'relationship' => 'none',
+          'group_type' => 'group',
+          'admin_label' => '',
+          'order' => 'DESC',
+          'exposed' => FALSE,
+          'plugin_id' => 'standard',
+        ],
         'created' => [
           'id' => 'created',
           'table' => 'node_field_data',
@@ -1555,17 +1566,6 @@ function bootstrap_views_pre_view(\Drupal\views\ViewExecutable $view, $display_i
           ],
           'granularity' => 'second',
           'plugin_id' => 'date',
-        ],
-        'nid' => [
-          'id' => 'nid',
-          'table' => 'node_field_data',
-          'field' => 'nid',
-          'relationship' => 'none',
-          'group_type' => 'group',
-          'admin_label' => '',
-          'order' => 'DESC',
-          'exposed' => FALSE,
-          'plugin_id' => 'standard',
         ],
       ]);
     }
@@ -1586,8 +1586,8 @@ function bootstrap_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal
   // Сбрасываем сортировку из конфигурации view (часто по названию/весу).
   $table = $query->ensureTable('node_field_data');
   $query->orderby = [];
-  $query->addOrderBy($table, 'created', 'DESC');
   $query->addOrderBy($table, 'nid', 'DESC');
+  $query->addOrderBy($table, 'created', 'DESC');
 }
 
 /**
