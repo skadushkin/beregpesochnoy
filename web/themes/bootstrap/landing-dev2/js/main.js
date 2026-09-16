@@ -78,4 +78,14 @@
     });
     window.lv2CloseTourModal = closeModal;
   }
+
+  var stripTrack = document.getElementById('riStripTrack');
+  var stripPause = document.getElementById('riStripPause');
+  if (stripTrack && stripPause) {
+    stripPause.addEventListener('click', function () {
+      var paused = stripTrack.classList.toggle('is-paused');
+      stripPause.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      stripPause.textContent = paused ? 'Пуск' : 'Пауза';
+    });
+  }
 })();
