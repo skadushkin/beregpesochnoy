@@ -88,7 +88,7 @@ body.page-node-838 :where(h1, h2, h3, p, a, ul, button, input, summary) {
   gap: 24px;
   height: 100%;
 }
-.ri-header__logo img { height: 40px; width: auto; filter: brightness(0) invert(1); }
+.ri-header__logo img { height: 64px; width: auto; filter: brightness(0) invert(1); }
 .ri-header.is-solid .ri-header__logo img { filter: none; }
 .ri-header,
 .ri-header a,
