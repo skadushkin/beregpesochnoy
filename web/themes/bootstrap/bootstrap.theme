@@ -565,10 +565,6 @@ function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void
     return;
   }
   $drop = [
-    '/css/ipoteka.css',
-    '/css/invest.css',
-    '/css/techno.css',
-    '/css/style.css',
     'Merriweather',
   ];
   foreach (array_keys($css) as $path) {

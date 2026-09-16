@@ -33,7 +33,7 @@
   ]
 %}
 {% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
-{% set is_dev2_front = 'page-node-838' in attributes.class|join(' ') %}
+{% set is_dev2_front = is_dev2_site|default(false) and 'page-node-838' in attributes.class|join(' ') %}
 {% set is_dev2_inner = is_dev2_inner|default(false) %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
@@ -43,7 +43,7 @@
     {% if not is_lighthouse %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-      {% if 'page-node-838' not in attributes.class|join(' ') and not is_dev2_inner %}
+      {% if not is_dev2_front and not is_dev2_inner %}
       <link
               rel="stylesheet"
               href="/themes/bootstrap/css/fancybox.css"

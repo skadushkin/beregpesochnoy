@@ -611,7 +611,7 @@ infra_carousel:
 
 # Шапка/подвал внутренних страниц test2
 landing_dev2_chrome:
-  version: 1.0.0
+  version: 1.0.1
   css:
     theme:
       '//fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap': { type: external, minified: true }
