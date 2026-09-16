@@ -15,6 +15,7 @@ use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Asset\AttachedAssetsInterface;
 
 
 /**
@@ -522,6 +523,34 @@ function bootstrap_page_attachments_alter(&$page) {
         'system/admin',
       ]
     );
+  }
+}
+
+/**
+ * Isolates the test2 homepage from the old theme stylesheets.
+ */
+function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void {
+  if (!bootstrap_is_node_page(838)) {
+    return;
+  }
+  $keep = [
+    'landing-dev2',
+    'landing-v2/css/fonts',
+    'landing-v2/css/tour-modal',
+    'CeraPro',
+    'Merriweather',
+  ];
+  foreach (array_keys($css) as $path) {
+    $normalized = str_replace('\\', '/', (string) $path);
+    if (!str_contains($normalized, 'themes/bootstrap/')) {
+      continue;
+    }
+    foreach ($keep as $needle) {
+      if (str_contains($normalized, $needle)) {
+        continue 2;
+      }
+    }
+    unset($css[$path]);
   }
 }
 

@@ -33,6 +33,7 @@
   ]
 %}
 {% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
+{% set is_dev2_front = 'page-node-838' in attributes.class %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
@@ -62,6 +63,7 @@
 {#    </a>#}
 
 
+{% if not is_dev2_front %}
 <div class="tap-menu-container hidden">
   <div class="tap-menu-close">
     <img class="menu_close_desc" src="/sites/default/files/img/menu_close.svg" alt="">
@@ -462,11 +464,13 @@
   </section>
 
 {% endif %}
+{% endif %}
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
 
     <!-- ФУТЕР -->
+    {% if not is_dev2_front %}
     <section class="site-theme-footer">
       <div class="footer-container">
         <div class="footer">
@@ -515,6 +519,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 
       <div class="shadow">
