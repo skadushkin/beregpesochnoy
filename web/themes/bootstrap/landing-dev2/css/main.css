@@ -8,7 +8,7 @@
   --ri-primary-2: #4ab7ab;
   --ri-grey: #f5f4f4;
   --ri-max: 1280px;
-  --ri-sans: "Cera Pro", Manrope, Cygre, system-ui, sans-serif;
+  --ri-sans: Onest, "Cera Pro", Cygre, Manrope, system-ui, sans-serif;
   --ri-display: Unbounded, Racama, Bounded, sans-serif;
 }
 
@@ -68,26 +68,25 @@ body.page-node-838 :where(h1, h2, h3, p, a, ul, button, input, summary) {
 
 .ri-header {
   position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0 0 auto;
   z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  width: min(100% - 48px, var(--ri-max));
-  height: 80px;
-  padding: 0 24px;
+  width: 100%;
+  height: 100px;
   color: #fff;
   box-sizing: border-box;
-  border-radius: 8px;
   transition: background .25s, color .25s, box-shadow .25s;
 }
 .ri-header.is-solid {
   background: #fff;
   color: var(--ri-black);
   box-shadow: 0 1px 0 var(--ri-line);
+}
+.ri-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
 }
 .ri-header__logo img { height: 40px; width: auto; filter: brightness(0) invert(1); }
 .ri-header.is-solid .ri-header__logo img { filter: none; }
@@ -98,15 +97,15 @@ body.page-node-838 :where(h1, h2, h3, p, a, ul, button, input, summary) {
 .ri-drawer a {
   font-family: var(--ri-sans);
 }
-.ri-header__nav { display: flex; gap: 28px; }
+.ri-header__nav { display: flex; gap: 32px; }
 .ri-header__nav a {
   color: inherit;
   text-decoration: none;
-  font-family: var(--ri-sans);
+  font-family: Onest, "Cera Pro", Cygre, sans-serif;
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: -.02em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
   line-height: 1;
 }
 .ri-header__right { display: flex; align-items: center; gap: 18px; }
@@ -114,10 +113,10 @@ body.page-node-838 :where(h1, h2, h3, p, a, ul, button, input, summary) {
   color: inherit;
   text-decoration: none;
   font-family: var(--ri-sans);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -.02em;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 .ri-motto {
@@ -150,13 +149,13 @@ body.page-node-838 :where(h1, h2, h3, p, a, ul, button, input, summary) {
 .ri-burger span::after { top: 7px; }
 .ri-drawer {
   position: fixed;
-  top: 104px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(100% - 48px, var(--ri-max));
+  top: 100px;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 49;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -764,8 +763,8 @@ body.page-node-838 .bp-submit {
 }
 
   @media (max-width: 980px) {
-  .ri-header { height: 64px; padding: 0 16px; width: min(100% - 28px, var(--ri-max)); top: 10px; }
-  .ri-drawer { top: 82px; width: min(100% - 28px, var(--ri-max)); }
+  .ri-header { height: 72px; padding: 0; width: 100%; top: 0; inset: 0 0 auto; }
+  .ri-drawer { top: 72px; width: 100%; left: 0; right: 0; }
   .ri-header__nav, .ri-phone, .ri-motto { display: none; }
   .ri-burger { display: block; }
   .ri h1, .ri-hero h1 { font-size: 36px; }

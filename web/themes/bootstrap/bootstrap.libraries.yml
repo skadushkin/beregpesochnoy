@@ -611,10 +611,10 @@ infra_carousel:
 
 # Главная test2 / ветка dev2 (референс residences-istra)
 landing_dev2:
-  version: 1.2.2
+  version: 1.2.3
   css:
     theme:
-      '//fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
+      '//fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Onest:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
       landing-v2/css/fonts.css: {}
       landing-dev2/css/main.css: { weight: 40 }
       landing-v2/css/tour-modal.css: { weight: 45 }
