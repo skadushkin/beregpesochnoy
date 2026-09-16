@@ -33,7 +33,7 @@
   ]
 %}
 {% set is_investoram = 'page-node-241' in attributes.class|join(' ') %}
-{% set is_dev2_front = 'page-node-838' in attributes.class %}
+{% set is_dev2_front = 'page-node-838' in attributes.class|join(' ') %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
@@ -42,7 +42,7 @@
     {% if not is_lighthouse %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-      {% if 'page-node-838' not in attributes.class %}
+      {% if 'page-node-838' not in attributes.class|join(' ') %}
       <link
               rel="stylesheet"
               href="/themes/bootstrap/css/fancybox.css"
@@ -522,6 +522,7 @@
     {% endif %}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 
+{% if not is_dev2_front %}
       <div class="shadow">
         <div class="popup popup-mess new-popup" id="online2">
           
@@ -723,6 +724,7 @@
           </div>
         </div>
       </div>
+{% endif %}
 {% if not is_lighthouse %}
       <!-- Yandex.Metrika counter --> <script > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(30520457, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/30520457" style="position:absolute; left:-9999px;" alt="Яндекс" /></div></noscript> <!-- /Yandex.Metrika counter -->
 {% if not disable_calltouch|default(false) %}
@@ -732,6 +734,7 @@
 </script>
 <!-- calltouch -->
 {% endif %}
+{% if not is_dev2_front %}
 {# {% if 'administrator' in user.roles %} #}
  <script>
               GPTConfig = {
@@ -905,6 +908,7 @@ class="AddQuestion" onsubmit="AF.Chat.AddQuestion(this); return false;">
             <span>онлайн</span>
         </div>
     </div>
+{% endif %}
 {# {% endif %} #}
 <!-- Top.Mail.Ru counter -->
 <script type="text/javascript">

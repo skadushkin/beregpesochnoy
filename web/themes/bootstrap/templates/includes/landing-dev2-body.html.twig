@@ -132,38 +132,29 @@
         <p class="ri-eyebrow">Дома и инфраструктура</p>
         <h2>Генплан ЖК<br>«Берег Песочной»</h2>
       </div>
-      <p>Нажмите на карту, чтобы посмотреть фото, цену и характеристики.<br>Значки показывают инфраструктуру посёлка.</p>
+      <p>Нажмите на дом, чтобы посмотреть фото, цену и характеристики.<br>Значки показывают инфраструктуру посёлка.</p>
     </div>
-    <div class="ri-wrap ri-plan__legend">
-      <span><i style="background:#e28787"></i>Проданные</span>
-      <span><i style="background:#83c3c8"></i>Готовые</span>
-      <span><i style="background:#2489d3"></i>Строящиеся</span>
-      <span><i style="background:#ad9170"></i>Таунхаусы</span>
-      <span><i style="background:#f6d100"></i>Участки с подрядом</span>
+    {{ attach_library('bootstrap/genplan_lazy') }}
+    <div class="front-genplan__wrap lv2-genplan ri-wrap" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
+      <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
+        <div class="lv2-genplan__loader-inner">
+          <div class="lv2-genplan__spinner" aria-hidden="true"></div>
+          <p class="lv2-genplan__loader-text">Загружаем интерактивный генплан…</p>
+        </div>
+      </div>
+      <div class="lv2-genplan__mount" hidden></div>
     </div>
-    <a class="ri-plan__map ri-wrap" href="/karta">
-      <img src="{{ img }}hero-pattern2.svg" alt="Генплан ЖК Берег Песочной" width="1920" height="1080">
-      <span class="ri-btn ri-btn--primary">На весь экран</span>
-    </a>
   </section>
 
   <section class="ri-nearby" id="infra">
-    <div class="ri-wrap ri-nearby__grid">
-      <div>
-        <p class="ri-eyebrow">Инфраструктура посёлка и Истры</p>
-        <h2>Всё необходимое<br>для обычного дня</h2>
-        <p class="ri-lead">Школы, детские сады, магазины и поликлиники — в Истре, примерно в 10 минутах езды на автомобиле.</p>
-        <p class="ri-nearby__time"><b>≈10 минут</b><span>на автомобиле до Истры</span></p>
-        <p>А дома — прогулки по парку, спорт и отдых у воды.</p>
-        <a class="ri-btn ri-btn--primary" href="/karta">Инфраструктура на карте</a>
-      </div>
-      <ul class="ri-nearby__pins">
-        <li>Школа</li>
-        <li>Детский сад</li>
-        <li>Магазины</li>
-        <li>Поликлиника</li>
-        <li>Берег Песочной</li>
-      </ul>
+    <div class="ri-wrap">
+      <p class="ri-eyebrow">Инфраструктура посёлка и Истры</p>
+      <h2>Всё необходимое<br>для обычного дня</h2>
+      <p class="ri-lead">Школы, детские сады, магазины и поликлиники — в Истре, примерно в 10 минутах езды. Ниже — карта, которую мы собирали для /karta.</p>
+    </div>
+    {{ attach_library('bootstrap/infra_map') }}
+    <div class="ri-wrap ri-karta">
+      {% include '@bootstrap/includes/infra-map.html.twig' %}
     </div>
   </section>
 

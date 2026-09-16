@@ -611,10 +611,11 @@ infra_carousel:
 
 # Главная test2 / ветка dev2 (референс residences-istra)
 landing_dev2:
-  version: 1.2.0
+  version: 1.2.2
   css:
     theme:
       '//fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
+      landing-v2/css/fonts.css: {}
       landing-dev2/css/main.css: { weight: 40 }
       landing-v2/css/tour-modal.css: { weight: 45 }
   js:
@@ -622,6 +623,8 @@ landing_dev2:
   dependencies:
     - core/drupal
     - core/once
+    - bootstrap/genplan_lazy
+    - bootstrap/infra_map
 
 # Лендинг v2 (node 838)
 landing_v2:

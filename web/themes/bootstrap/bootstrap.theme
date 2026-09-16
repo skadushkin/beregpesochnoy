@@ -539,6 +539,9 @@ function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void
     'landing-v2/css/tour-modal',
     'CeraPro',
     'Merriweather',
+    'genplan-map',
+    'genplan-lazy',
+    'infra-map',
   ];
   foreach (array_keys($css) as $path) {
     $normalized = str_replace('\\', '/', (string) $path);
@@ -1588,7 +1591,7 @@ function bootstrap_preprocess_page(&$variables) {
     $variables['ferma_products'] = bootstrap_ferma_slider_items('ferma_product');
     $variables['ferma_photos'] = bootstrap_ferma_slider_items('ferma_photo');
   }
-  if (bootstrap_is_karta_page()) {
+  if (bootstrap_is_karta_page() || bootstrap_is_node_page(838)) {
     $can_edit = \Drupal::currentUser()->hasPermission('administer nodes');
     $variables['infra_map_can_edit'] = $can_edit;
     $variables['#cache']['contexts'][] = 'user.permissions';
