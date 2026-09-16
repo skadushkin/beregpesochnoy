@@ -4,3 +4,69 @@
  * @file
  * Landing genplan embed and infrastructure map JSON endpoints.
  */
+
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\views\query\Sql;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * Must live in a module: Views does not invoke this hook from themes.
+ */
+function landing_genplan_views_pre_view(ViewExecutable $view, $display_id, array &$args): void {
+  if ($view->id() !== 'gotovye_doma' || $display_id !== 'block_7') {
+    return;
+  }
+  $display = $view->displayHandlers->get($display_id);
+  if (!$display) {
+    return;
+  }
+  $display->overrideOption('sorts', [
+    'created' => [
+      'id' => 'created',
+      'table' => 'node_field_data',
+      'field' => 'created',
+      'relationship' => 'none',
+      'group_type' => 'group',
+      'admin_label' => '',
+      'entity_type' => 'node',
+      'entity_field' => 'created',
+      'plugin_id' => 'date',
+      'order' => 'DESC',
+      'exposed' => FALSE,
+      'granularity' => 'second',
+    ],
+    'nid' => [
+      'id' => 'nid',
+      'table' => 'node_field_data',
+      'field' => 'nid',
+      'relationship' => 'none',
+      'group_type' => 'group',
+      'admin_label' => '',
+      'entity_type' => 'node',
+      'entity_field' => 'nid',
+      'plugin_id' => 'standard',
+      'order' => 'DESC',
+      'exposed' => FALSE,
+    ],
+  ]);
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Must live in a module: Views calls moduleHandler()->invokeAll() only.
+ */
+function landing_genplan_views_query_alter(ViewExecutable $view, QueryPluginBase $query): void {
+  if ($view->id() !== 'gotovye_doma' || $view->current_display !== 'block_7') {
+    return;
+  }
+  if (!$query instanceof Sql) {
+    return;
+  }
+  $table = $query->ensureTable('node_field_data');
+  $query->orderby = [];
+  $query->addOrderBy($table, 'created', 'DESC');
+  $query->addOrderBy($table, 'nid', 'DESC');
+}
