@@ -1,0 +1,254 @@
+{# Главная test2 / ветка dev2. Референс структуры — residences-istra.ru, контент Берега Песочной. #}
+{% set img = '/themes/bootstrap/landing-v2/img/' %}
+
+<header class="ri-header" id="riHeader">
+  <a class="ri-header__logo" href="/" aria-label="Берег Песочной">
+    <img src="/sites/default/files/img/logo_mob2.svg" alt="Берег Песочной" width="140" height="40">
+  </a>
+  <nav class="ri-header__nav" aria-label="Разделы">
+    <a href="#catalog">Каталог домов</a>
+    <a href="/karta">Генплан</a>
+    <a href="#infra">Инфраструктура</a>
+    <a href="#location">Расположение</a>
+    <a href="#gallery">Галерея</a>
+  </nav>
+  <div class="ri-header__right">
+    <a class="ri-header__phone" href="tel:+74951865088">+7 (495) 186-50-88</a>
+    <button type="button" class="ri-btn ri-btn--dark ri-btn--sm open-lv2-tour-modal">Записаться на показ</button>
+    <button type="button" class="ri-burger" id="riBurger" aria-label="Меню"><span></span></button>
+  </div>
+</header>
+<nav class="ri-drawer" id="riDrawer" hidden>
+  <a href="#catalog">Каталог домов</a>
+  <a href="/karta">Генплан</a>
+  <a href="#infra">Инфраструктура</a>
+  <a href="#location">Расположение</a>
+  <a href="#gallery">Галерея</a>
+  <a href="tel:+74951865088">+7 (495) 186-50-88</a>
+</nav>
+
+<main class="ri">
+  <section class="ri-hero">
+    <div class="ri-hero__media" style="background-image:url('{{ img }}hero-bg-2c2cbc.png')"></div>
+    <div class="ri-hero__shade"></div>
+    <div class="ri-wrap ri-hero__content">
+      <div class="ri-chips">
+        <span>45 минут от Москвы</span>
+        <span>Истринское водохранилище</span>
+      </div>
+      <h1>«Берег Песочной» — дома и участки у реки в Истре</h1>
+      <p>Курортный формат загородной жизни с городским уровнем комфорта: охрана, коммуникации и своя экосреда в 45 км от МКАД.</p>
+      <div class="ri-hero__actions">
+        <button type="button" class="ri-btn ri-btn--light open-lv2-tour-modal">Записаться на показ</button>
+        <a class="ri-btn ri-btn--ghost" href="/jk-bereg-pesochnoy.pdf" download>Получить презентацию</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="about">
+    <div class="ri-wrap ri-about">
+      <div class="ri-about__text">
+        <p class="ri-kicker">О проекте</p>
+        <h2>Курортный формат загородной жизни с городским комфортом</h2>
+        <p><strong>«Берег Песочной»</strong> — коттеджный посёлок в Истринском районе, рядом с рекой Песочная и в нескольких минутах от Истринского водохранилища. Посёлок создан и для отдыха, и для постоянной жизни: городские коммуникации, охрана 24/7, прописка и почтовый адрес у каждого дома.</p>
+        <p>Площадь посёлка — 28 гектаров, плюс 8 га лесопарковой зоны. Земля относится к землям населённых пунктов.</p>
+        <a class="ri-btn ri-btn--dark" href="/jk-bereg-pesochnoy.pdf" download>Получить презентацию</a>
+      </div>
+      <ul class="ri-stats">
+        <li><b>28 га</b><span>площадь посёлка</span></li>
+        <li><b>8 га</b><span>лесопарк</span></li>
+        <li><b>45 мин</b><span>до МКАД</span></li>
+        <li><b>5 мин</b><span>до водохранилища</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ri-section ri-section--tight" id="genplan">
+    <div class="ri-wrap">
+      <p class="ri-kicker">Генплан</p>
+      <h2>Приватная территория, граничащая с лесом</h2>
+      <div class="ri-genplan">
+        <a href="/karta" class="ri-genplan__map">
+          <img src="{{ img }}hero-pattern2.svg" alt="Карта посёлка Берег Песочной" width="720" height="480" loading="lazy">
+        </a>
+        <div class="ri-genplan__side">
+          <img src="{{ img }}private-territory.png" alt="Территория у леса" width="560" height="360" loading="lazy">
+          <p>Откройте дверь и окажитесь в лесу: пение птиц, вода, виды без транзитного трафика. Дом на своём участке — с городскими сетями и охраной.</p>
+          <a class="ri-btn ri-btn--dark" href="/karta">Открыть генплан</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="infra">
+    <div class="ri-wrap">
+      <p class="ri-kicker">Инфраструктура</p>
+      <h2>Инфраструктура для жизни, а не для сезона</h2>
+      <div class="ri-infra">
+        <article><h3>У воды</h3><p>Река Песочная, 5 минут до Истринского водохранилища, прогулочные маршруты.</p></article>
+        <article><h3>Спорт</h3><p>Парк 8 га, площадки и маршруты для прогулок и тренировок на свежем воздухе.</p></article>
+        <article><h3>Для детей</h3><p>Детские площадки на территории и школы Истры в короткой доступности.</p></article>
+        <article><h3>Коммуникации</h3><p>Электричество, вода, канализация, газ и интернет — как в городе.</p></article>
+        <article><h3>Безопасность</h3><p>Круглосуточная охрана и закрытая территория без сквозного трафика.</p></article>
+        <article><h3>Рядом</h3><p>Магазины, клиники и сервисы Истры — около 10 минут на машине.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section ri-water">
+    <div class="ri-water__media" style="background-image:url('{{ img }}form-bg-57e3d6.png')"></div>
+    <div class="ri-wrap ri-water__copy">
+      <p class="ri-kicker ri-kicker--light">Водная инфраструктура</p>
+      <h2>Не просто вид на воду — доступ к ней</h2>
+      <p>Посёлок стоит на берегу реки Песочная. Истринское водохранилище — в пяти минутах: пляж, прогулки, тишина без городской суеты.</p>
+      <a class="ri-btn ri-btn--light" href="/pontonnyj-plyazh">Подробнее</a>
+    </div>
+  </section>
+
+  <section class="ri-section" id="formats">
+    <div class="ri-wrap">
+      <p class="ri-kicker">Форматы</p>
+      <h2>Выберите готовый дом или свой формат</h2>
+      <div class="ri-formats">
+        <a href="/taunhausy" class="ri-format">
+          <img src="{{ img }}townhouse-card.png" alt="" loading="lazy">
+          <span>Таунхаусы</span>
+        </a>
+        <a href="/kupit-dom-v-kottedzhnom-poselke" class="ri-format">
+          <img src="{{ img }}house-1-card.png" alt="" loading="lazy">
+          <span>Частные дома</span>
+        </a>
+        <a href="/rezidents" class="ri-format">
+          <img src="{{ img }}residence-a0d3a5.png" alt="" loading="lazy">
+          <span>VIP-резиденции</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="catalog">
+    <div class="ri-wrap">
+      <div class="ri-catalog__head">
+        <div>
+          <p class="ri-kicker">Каталог домов</p>
+          <h2>Идеальный дом для вас и семьи</h2>
+        </div>
+        <nav class="ri-pills" data-lv2-catalog-tabs aria-label="Тип дома">
+          <button type="button" data-tab="1" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=2">Готовые дома</button>
+          <button type="button" class="is-active" data-tab="2" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=3" aria-selected="true">Строящиеся</button>
+          <button type="button" data-tab="4" data-catalog-href="/taunhausy">Таунхаусы</button>
+        </nav>
+      </div>
+      <div class="ri-catalog__houses" data-lv2-catalog-panels>
+        <div class="ri-catalog__panel" data-tab-panel="1" hidden>{{ drupal_view('gotovye_doma', 'block_6') }}</div>
+        <div class="ri-catalog__panel is-active" data-tab-panel="2">{{ drupal_view('gotovye_doma', 'block_3') }}</div>
+        <div class="ri-catalog__panel" data-tab-panel="4" hidden>{{ drupal_view('gotovye_doma', 'block_4') }}</div>
+      </div>
+      <div class="ri-catalog__cta">
+        <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ri-btn ri-btn--dark" data-lv2-catalog-more>Смотреть весь каталог</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="buy">
+    <div class="ri-wrap">
+      <p class="ri-kicker">Как купить</p>
+      <h2>Способы покупки</h2>
+      <div class="ri-buy">
+        <article>
+          <h3>Рассрочка</h3>
+          <p class="ri-buy__num">0%</p>
+          <p>Первый взнос и срок согласуем индивидуально.</p>
+        </article>
+        <article>
+          <h3>Ипотека</h3>
+          <p class="ri-buy__num">от 6%</p>
+          <p>Все виды ипотеки, включая семейную. Помощь с оформлением.</p>
+        </article>
+        <article>
+          <h3>Трейд-ин</h3>
+          <p>Поможем продать текущую недвижимость и зачесть средства в сделку.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="gallery">
+    <div class="ri-wrap">
+      <p class="ri-kicker">Галерея</p>
+      <h2>Архитектура и среда в деталях</h2>
+      <div class="ri-gallery">{{ drupal_view('novyy_slayder1', 'block_3') }}</div>
+    </div>
+  </section>
+
+  <section class="ri-section" id="location">
+    <div class="ri-wrap ri-location">
+      <div>
+        <p class="ri-kicker">Локация</p>
+        <h2>Тишина и природа — рядом с Москвой</h2>
+        <p>45 минут до МКАД по Новориге. Истра, магазины и школы — около 10 минут. Сам посёлок без транзитного трафика.</p>
+        <ul class="ri-roads">
+          <li>Новорижское шоссе</li>
+          <li>Волоколамское</li>
+          <li>М-11 «Нева»</li>
+        </ul>
+        <a class="ri-btn ri-btn--dark" href="https://yandex.ru/maps/213/moscow/?ll=37.093746%2C55.877213&mode=routes&rtext=55.818974%2C37.390776~55.959175%2C36.947689&rtt=auto" target="_blank" rel="noopener">Построить маршрут</a>
+      </div>
+      <div class="ri-location__card">
+        <b>45 мин</b>
+        <span>от МКАД на машине</span>
+        <img src="{{ img }}private-territory.png" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="ri-section ri-cta" id="contacts">
+    <div class="ri-wrap ri-cta__grid">
+      <div>
+        <p class="ri-kicker">Контакты</p>
+        <h2>Время выбирать стиль жизни</h2>
+        <p>Расскажем про ипотеку, покажем дома и согласуем экскурсию.</p>
+        <a class="ri-cta__phone" href="tel:+74951865088">+7 (495) 186-50-88</a>
+      </div>
+      <form class="ri-form lv2-cta-form" action="#" method="post" novalidate>
+        <input type="hidden" name="source" value="Лендинг TEST2 / residences-inspired">
+        <label><input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required></label>
+        <label><input type="tel" name="phone" class="phone-field-mask" placeholder="Ваш телефон" autocomplete="tel" required></label>
+        <label class="ri-form__agree">
+          <input type="checkbox" name="agree" required>
+          <span>Согласен с <a href="/policy/">политикой конфиденциальности</a></span>
+        </label>
+        <button type="button" class="ri-btn ri-btn--dark" id="lv2-cta-send">Отправить</button>
+        <div class="popup-success">Заявка отправлена. Спасибо.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="ri-footer">
+  <div class="ri-wrap ri-footer__grid">
+    <a href="/"><img src="/sites/default/files/img/logo-footer2.svg" alt="Берег Песочной" width="140" height="40"></a>
+    <div>
+      <p>Каталог</p>
+      <a href="/kupit-dom-v-kottedzhnom-poselke">Готовые дома</a>
+      <a href="/taunhausy">Таунхаусы</a>
+      <a href="/karta">Генплан</a>
+    </div>
+    <div>
+      <p>О посёлке</p>
+      <a href="#infra">Инфраструктура</a>
+      <a href="#location">Расположение</a>
+      <a href="/policy/">Политика</a>
+    </div>
+    <div>
+      <p>Отдел продаж</p>
+      <a href="tel:+74951865088">+7 (495) 186-50-88</a>
+      <button type="button" class="ri-btn ri-btn--light ri-btn--sm open-lv2-tour-modal">Записаться</button>
+    </div>
+  </div>
+</footer>
+
+{% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+  tour_modal_label: 'Берег Песочной',
+  tour_modal_source: 'TEST2 лендинг — экскурсия'
+} %}

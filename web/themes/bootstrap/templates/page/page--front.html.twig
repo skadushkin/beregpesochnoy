@@ -1,6 +1,6 @@
 {% if bootstrap_is_landing_v2_front|default(false) %}
-  {{ attach_library('bootstrap/landing_v2') }}
-  {% include '@bootstrap/includes/landing-v2-body.html.twig' %}
+  {{ attach_library('bootstrap/landing_dev2') }}
+  {% include '@bootstrap/includes/landing-dev2-body.html.twig' %}
 {% else %}
   {{ page.content }}
 {% endif %}

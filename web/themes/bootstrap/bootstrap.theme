@@ -268,7 +268,7 @@ function bootstrap_page_attachments_alter(&$page) {
     $page['#attached']['library'][] = 'bootstrap/atelier_script';
   }
   if (bootstrap_is_node_page(838)) {
-    $page['#attached']['library'][] = 'bootstrap/landing_v2';
+    $page['#attached']['library'][] = 'bootstrap/landing_dev2';
   }
   if ($route_name === 'entity.node.canonical' && $node instanceof \Drupal\node\NodeInterface && (int) $node->id() === 840) {
     $page['#attached']['library'][] = 'bootstrap/landing_ponton';

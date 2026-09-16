@@ -609,6 +609,20 @@ infra_carousel:
     - core/drupal
     - core/once
 
+# Главная test2 / ветка dev2 (референс residences-istra)
+landing_dev2:
+  version: 1.0.0
+  css:
+    theme:
+      landing-v2/css/fonts.css: {}
+      landing-dev2/css/main.css: { weight: 40 }
+      landing-v2/css/tour-modal.css: { weight: 45 }
+  js:
+    landing-dev2/js/main.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
 # Лендинг v2 (node 838)
 landing_v2:
   version: 1.0.45

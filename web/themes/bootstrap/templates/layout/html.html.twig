@@ -38,7 +38,7 @@
   <head>
     <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
-    {% if not is_lighthouse %}
+    {% if not is_lighthouse and 'page-node-838' not in attributes.class %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
       
