@@ -1535,6 +1535,28 @@ function bootstrap_views_pre_view(\Drupal\views\ViewExecutable $view, $display_i
       $view->setExposedInput(['type' => '2']);
     }
   }
+
+  // /proekty-domov: сначала последние добавленные проекты.
+  if ($view->id() === 'gotovye_doma' && $display_id === 'block_7') {
+    $view->setDisplay($display_id);
+    $view->display_handler->overrideOption('sorts', [
+      'created' => [
+        'id' => 'created',
+        'table' => 'node_field_data',
+        'field' => 'created',
+        'relationship' => 'none',
+        'group_type' => 'group',
+        'admin_label' => '',
+        'order' => 'DESC',
+        'exposed' => FALSE,
+        'expose' => [
+          'label' => '',
+        ],
+        'granularity' => 'second',
+        'plugin_id' => 'date',
+      ],
+    ]);
+  }
 }
 
 /**
