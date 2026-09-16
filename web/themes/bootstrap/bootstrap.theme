@@ -1538,25 +1538,56 @@ function bootstrap_views_pre_view(\Drupal\views\ViewExecutable $view, $display_i
 
   // /proekty-domov: сначала последние добавленные проекты.
   if ($view->id() === 'gotovye_doma' && $display_id === 'block_7') {
-    $view->setDisplay($display_id);
-    $view->display_handler->overrideOption('sorts', [
-      'created' => [
-        'id' => 'created',
-        'table' => 'node_field_data',
-        'field' => 'created',
-        'relationship' => 'none',
-        'group_type' => 'group',
-        'admin_label' => '',
-        'order' => 'DESC',
-        'exposed' => FALSE,
-        'expose' => [
-          'label' => '',
+    $display = $view->displayHandlers->get($display_id);
+    if ($display) {
+      $display->overrideOption('sorts', [
+        'created' => [
+          'id' => 'created',
+          'table' => 'node_field_data',
+          'field' => 'created',
+          'relationship' => 'none',
+          'group_type' => 'group',
+          'admin_label' => '',
+          'order' => 'DESC',
+          'exposed' => FALSE,
+          'expose' => [
+            'label' => '',
+          ],
+          'granularity' => 'second',
+          'plugin_id' => 'date',
         ],
-        'granularity' => 'second',
-        'plugin_id' => 'date',
-      ],
-    ]);
+        'nid' => [
+          'id' => 'nid',
+          'table' => 'node_field_data',
+          'field' => 'nid',
+          'relationship' => 'none',
+          'group_type' => 'group',
+          'admin_label' => '',
+          'order' => 'DESC',
+          'exposed' => FALSE,
+          'plugin_id' => 'standard',
+        ],
+      ]);
+    }
   }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function bootstrap_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query): void {
+  if ($view->id() !== 'gotovye_doma' || $view->current_display !== 'block_7') {
+    return;
+  }
+  if (!$query instanceof \Drupal\views\Plugin\views\query\Sql) {
+    return;
+  }
+
+  // Сбрасываем сортировку из конфигурации view (часто по названию/весу).
+  $table = $query->ensureTable('node_field_data');
+  $query->orderby = [];
+  $query->addOrderBy($table, 'created', 'DESC');
+  $query->addOrderBy($table, 'nid', 'DESC');
 }
 
 /**
