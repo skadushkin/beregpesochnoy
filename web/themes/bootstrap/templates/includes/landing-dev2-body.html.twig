@@ -137,7 +137,7 @@
       <p>Нажмите на дом, чтобы посмотреть фото, цену и характеристики.<br>Значки показывают инфраструктуру посёлка.</p>
     </div>
     {{ attach_library('bootstrap/genplan_lazy') }}
-    <div class="front-genplan__wrap lv2-genplan ri-wrap" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
+    <div class="front-genplan__wrap lv2-genplan" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
       <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
         <div class="lv2-genplan__loader-inner">
           <div class="lv2-genplan__spinner" aria-hidden="true"></div>
@@ -155,7 +155,7 @@
       <p class="ri-lead">Школы, детские сады, магазины и поликлиники — в Истре, примерно в 10 минутах езды. Ниже — карта, которую мы собирали для /karta.</p>
     </div>
     {{ attach_library('bootstrap/infra_map') }}
-    <div class="ri-wrap ri-karta">
+    <div class="ri-karta">
       {% include '@bootstrap/includes/infra-map.html.twig' %}
     </div>
   </section>
