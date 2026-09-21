@@ -1,420 +1,47 @@
-{# test2: структура aibereg.ilikelp.ru, типографика residences-istra.ru #}
-{% set img = '/themes/bootstrap/landing-v2/img/' %}
-{% set photo = '/sites/default/files/img/' %}
-{% set photos = [
-  photo ~ 'bereg-foto1.webp',
-  photo ~ 'bereg-foto2.webp',
-  photo ~ 'bereg-foto3.webp',
-  photo ~ 'bereg-foto4.webp',
-  photo ~ 'bereg-foto5.webp',
-  photo ~ 'slider2.webp',
-  photo ~ 'slider3.webp'
-] %}
+{# test2: продающая главная «Берег Песочной» по мастер-промпту. #}
+{% set b = bereg|default({}) %}
 
 <div class="landing-dev2-root">
-<header class="ri-header" id="riHeader">
-  <div class="ri-wrap ri-header__inner">
-    <a class="ri-header__logo" href="/" aria-label="Берег Песочной">
-      <img src="{{ photo }}logo_mob2.svg" alt="Берег Песочной" width="160" height="40">
-    </a>
-    <nav class="ri-header__nav" id="riMenu" aria-label="Навигация по посёлку">
-      <a href="#catalog">Дома</a>
-      <a href="#genplan">Генплан</a>
-      <a href="#films">Видео</a>
-      <a href="#gallery">Галерея</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <div class="ri-header__right">
-      <a class="ri-phone" href="tel:+74951865088">+7 (495) 186-50-88</a>
-      <span class="ri-motto">Парк · Дома · Соседи</span>
-      <button type="button" class="ri-burger" id="riBurger" aria-label="Меню" aria-controls="riMenu"><span></span></button>
-    </div>
-  </div>
-</header>
-<nav class="ri-drawer" id="riDrawer" hidden>
-  <a href="#catalog">Дома</a>
-  <a href="#genplan">Генплан</a>
-  <a href="#films">Видео</a>
-  <a href="#gallery">Галерея</a>
-  <a href="#contacts">Контакты</a>
-  <a href="tel:+74951865088">+7 (495) 186-50-88</a>
-</nav>
+  {% include '@bootstrap/includes/bp/header.html.twig' with { bp_transparent: true, bereg: b } %}
 
-<main class="ri">
-  <section class="ri-hero">
-    <img class="ri-hero__photo" src="{{ photos[0] }}" alt="Пруд с фонтаном в ЖК Берег Песочной" width="1500" height="852">
-    <div class="ri-hero__shade"></div>
-    <div class="ri-wrap ri-hero__copy">
-      <h1>Идеальная экосреда<br><span>для жизни</span></h1>
-      <p class="ri-hero__title">Жилой комплекс Берег Песочной<br>в экологически чистом районе Истры</p>
-      <p class="ri-hero__date">Дома для жизни круглый год</p>
-      <p class="ri-hero__intro">Природа, парк и отдых у воды.<br>Готовые дома и развитая инфраструктура.</p>
-      <div class="ri-hero__actions">
-        <button type="button" class="ri-btn ri-btn--primary open-lv2-tour-modal">Приехать на экскурсию</button>
-        <a class="ri-btn ri-btn--ghost" href="/jk-bereg-pesochnoy.pdf" download>Скачать презентацию</a>
-      </div>
-    </div>
-    <span class="ri-hero__place">ЖК «Берег Песочной»</span>
-  </section>
+  <main>
+    {% include '@bootstrap/includes/bp/sections/hero.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/about.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/masterplan.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/infrastructure.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/property.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/waterfront.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/gallery.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/location.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/viewing-cta.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/construction.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/lead-mid.html.twig' with { form_source: 'TEST2 главная — подборка' } %}
+    {% include '@bootstrap/includes/bp/sections/faq.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/concierge.html.twig' %}
+    {% include '@bootstrap/includes/bp/sections/final-cta.html.twig' with { form_source: 'TEST2 главная — просмотр' } %}
+  </main>
 
-  <section class="ri-strip" id="gallery" aria-labelledby="strip-title">
-    <div class="ri-wrap ri-strip__head">
-      <div>
-        <p class="ri-eyebrow">Фотографии посёлка</p>
-        <h2 id="strip-title">Посёлок сегодня</h2>
-      </div>
-      <button type="button" class="ri-strip__pause" id="riStripPause" aria-pressed="false">Пауза</button>
-    </div>
-    <div class="ri-strip__window">
-      <div class="ri-strip__track auto-motion" id="riStripTrack">
-        {% for group in 1..2 %}
-          <div class="ri-strip__group"{% if group == 2 %} aria-hidden="true"{% endif %}>
-            {% for src in photos %}
-              <img src="{{ src }}" alt="Фотография посёлка Берег Песочной" width="350" height="250" loading="lazy">
-            {% endfor %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  {% include '@bootstrap/includes/bp/footer.html.twig' %}
 
-  <section class="ri-block" id="catalog">
-    <div class="ri-wrap">
-      <div class="ri-block__head">
-        <div>
-          <p class="ri-eyebrow">Каталог домов</p>
-          <h2>Выберите дом<br>для своей семьи</h2>
-        </div>
-        <nav class="ri-pills" data-lv2-catalog-tabs aria-label="Тип дома">
-          <button type="button" data-tab="1" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=2">Готовые дома</button>
-          <button type="button" class="is-active" data-tab="2" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=3" aria-selected="true">Строящиеся дома</button>
-          <button type="button" data-tab="4" data-catalog-href="/taunhausy">Таунхаусы</button>
-        </nav>
-      </div>
-      <div class="ri-catalog" data-lv2-catalog-panels>
-        <div class="ri-catalog__panel" data-tab-panel="1" hidden>{{ drupal_view('gotovye_doma', 'block_6') }}</div>
-        <div class="ri-catalog__panel is-active" data-tab-panel="2">{{ drupal_view('gotovye_doma', 'block_3') }}</div>
-        <div class="ri-catalog__panel" data-tab-panel="4" hidden>{{ drupal_view('gotovye_doma', 'block_4') }}</div>
-      </div>
-      <div class="ri-center">
-        <a href="/kupit-dom-v-kottedzhnom-poselke?type=3" class="ri-btn ri-btn--primary" data-lv2-catalog-more>Показать ещё</a>
-      </div>
-    </div>
-  </section>
+  {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+    tour_modal_label: 'Берег Песочной',
+    tour_modal_source: 'TEST2 лендинг — экскурсия'
+  } %}
 
-  <section class="ri-block" id="included">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Понятная комплектация</p>
-      <h2>Что вы получаете вместе с домом</h2>
-      <p class="ri-lead">У домов единая базовая комплектация: тёплый контур, коммуникации и подготовленный участок. Выбирайте подходящую планировку и расположение дома.</p>
-      <div class="ri-trio">
-        <article>
-          <p class="ri-num">01 / Дом</p>
-          <h3>Тёплый контур</h3>
-          <p>Дом в комплектации «тёплый контур», окна REHAU 70-й серии и входная дверь с терморазрывом.</p>
-        </article>
-        <article>
-          <p class="ri-num">02 / Коммуникации</p>
-          <h3>Основа для комфортной жизни</h3>
-          <p>В комплектацию входят заведённая канализация, электричество 10 кВт, подведённый водопровод и оптоволоконный интернет. Газ проходит по границе участка.</p>
-        </article>
-        <article>
-          <p class="ri-num">03 / Участок</p>
-          <h3>Своё пространство снаружи</h3>
-          <p>Забор по периметру участка, отмостка из брусчатки и подготовленное машино-место. Расположение дома можно посмотреть на генплане.</p>
-        </article>
-      </div>
-      <a class="ri-textlink" href="#catalog">Сравнить дома ↗</a>
-    </div>
-  </section>
-
-  <section class="ri-plan" id="genplan">
-    <div class="ri-wrap ri-plan__head">
-      <div>
-        <p class="ri-eyebrow">Дома и инфраструктура</p>
-        <h2>Генплан ЖК<br>«Берег Песочной»</h2>
-      </div>
-      <p>Нажмите на дом, чтобы посмотреть фото, цену и характеристики.<br>Значки показывают инфраструктуру посёлка.</p>
-    </div>
-    {{ attach_library('bootstrap/genplan_lazy') }}
-    <div class="front-genplan__wrap lv2-genplan" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
-      <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
-        <div class="lv2-genplan__loader-inner">
-          <div class="lv2-genplan__spinner" aria-hidden="true"></div>
-          <p class="lv2-genplan__loader-text">Загружаем интерактивный генплан…</p>
-        </div>
-      </div>
-      <div class="lv2-genplan__mount" hidden></div>
-    </div>
-  </section>
-
-  <section class="ri-nearby" id="infra">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Инфраструктура посёлка и Истры</p>
-      <h2>Всё необходимое<br>для обычного дня</h2>
-      <p class="ri-lead">Школы, детские сады, магазины и поликлиники — в Истре, примерно в 10 минутах езды. Ниже — карта, которую мы собирали для /karta.</p>
-    </div>
-    {{ attach_library('bootstrap/infra_map') }}
-    <div class="ri-karta">
-      {% include '@bootstrap/includes/infra-map.html.twig' %}
-    </div>
-  </section>
-
-  <section class="ri-block">
-    <div class="ri-wrap ri-life">
-      <div>
-        <p class="ri-eyebrow">Повседневный комфорт</p>
-        <h2>Как устроена жизнь в посёлке</h2>
-        <div class="ri-life__cards">
-          <article>
-            <p class="ri-num">Территория</p>
-            <h3>Контролируемый въезд</h3>
-            <p>Огороженный периметр, въезд со шлагбаумом и круглосуточная охрана. В общественных пространствах предусмотрено видеонаблюдение.</p>
-          </article>
-          <article>
-            <p class="ri-num">Инженерия</p>
-            <h3>Общие сети посёлка</h3>
-            <p>Внутрипоселковая канализация с очистными, водоснабжение от скважины. Доступен оптоволоконный интернет.</p>
-          </article>
-          <article>
-            <p class="ri-num">Окружение</p>
-            <h3>Оцените всё на месте</h3>
-            <p>Посмотрите въезд, гостевую парковку и общие территории во время экскурсии.</p>
-          </article>
-        </div>
-      </div>
-      <figure>
-        <img src="{{ photos[1] }}" alt="Дома ЖК Берег Песочной с панорамным остеклением" loading="lazy">
-      </figure>
-    </div>
-  </section>
-
-  <section class="ri-family">
-    <div class="ri-wrap ri-family__grid">
-      <figure class="ri-family__vip"><img src="{{ photos[3] }}" alt="Частные резиденции" loading="lazy"><figcaption>Частные резиденции</figcaption></figure>
-      <figure class="ri-family__top"><img src="{{ photos[2] }}" alt="" loading="lazy"></figure>
-      <figure class="ri-family__mid"><img src="{{ photos[4] }}" alt="" loading="lazy"></figure>
-      <div class="ri-family__copy">
-        <p class="ri-eyebrow">Дома для вашей семьи</p>
-        <h2>Место, где вся<br><em>семья собирается<br>вместе</em></h2>
-        <a class="ri-btn ri-btn--primary" href="#catalog">Выбрать дом</a>
-      </div>
-      <figure class="ri-family__town"><img src="{{ photos[5] }}" alt="Таунхаусы" loading="lazy"><figcaption>Таунхаусы</figcaption></figure>
-      <figure class="ri-family__house"><img src="{{ photos[1] }}" alt="Частные дома" loading="lazy"><figcaption>Частные дома</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="ri-block ri-park">
-    <div class="ri-wrap">
-      <h2>Парк и площадки рядом с домом</h2>
-      <div class="ri-park__row">
-        <div class="ri-park__num"><strong>8 га</strong><span>ландшафтного парка</span></div>
-        <figure><img src="{{ photos[2] }}" alt="Прогулочные дорожки" loading="lazy"><figcaption>Прогулочные и велодорожки</figcaption></figure>
-        <figure><img src="{{ photos[0] }}" alt="Пруд с фонтаном" loading="lazy"><figcaption>Пруд с фонтаном</figcaption></figure>
-        <figure><img src="{{ photos[4] }}" alt="Детские площадки" loading="lazy"><figcaption>Детские площадки</figcaption></figure>
-        <figure><img src="{{ photos[6] }}" alt="Спорт" loading="lazy"><figcaption>Спорт на свежем воздухе</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-block" id="life">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Досуг и инфраструктура</p>
-      <h2>Есть чем заняться не только дома</h2>
-      <p class="ri-lead">В «Береге Песочной» продуманы разные сценарии отдыха: спорт, прогулки, спокойный досуг у воды и пространства для встреч с семьёй и соседями.</p>
-    </div>
-    <div class="ri-leisure">
-      {% set leisure = [
-        ['Настольный теннис', 'Отдельное помещение со столом для игры.', photos[1]],
-        ['Бильярдная', 'Отдельная клубная зона для жителей.', photos[2]],
-        ['Футбольное поле', 'Своё поле внутри посёлка.', photos[3]],
-        ['Детские площадки', 'Пространства для игр и семейного досуга.', photos[4]],
-        ['Беседки для барбекю', 'Зоны у воды для отдыха с семьёй и друзьями.', photos[5]],
-        ['Терраса у воды', 'Шезлонги и вид на воду.', photos[0]]
-      ] %}
-      <div class="ri-leisure__track">
-        {% for copy in 1..2 %}
-          {% for item in leisure %}
-            <article{% if copy == 2 %} aria-hidden="true"{% endif %}>
-              <img src="{{ item[2] }}" alt="{{ item[0] }}" loading="lazy">
-              <h3>{{ item[0] }}</h3>
-              <p>{{ item[1] }}</p>
-            </article>
-          {% endfor %}
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-block" id="films">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Видео о посёлке</p>
-      <h2>Посёлок на видео</h2>
-      <div class="ri-films">
-        <a class="ri-films__wide" href="https://kinescope.io/embed/b2ZqkZLrmBbMK8QywgXtzh" target="_blank" rel="noopener">
-          <img src="{{ photos[0] }}" alt="Видеотур по посёлку" loading="lazy">
-          <span>▶ Видеотур</span>
-        </a>
-        <a href="https://kinescope.io/embed/b2ZqkZLrmBbMK8QywgXtzh" target="_blank" rel="noopener">
-          <img src="{{ photos[2] }}" alt="Посёлок с высоты" loading="lazy">
-          <span>▶ Посёлок с высоты</span>
-        </a>
-        <a href="https://kinescope.io/embed/b2ZqkZLrmBbMK8QywgXtzh" target="_blank" rel="noopener">
-          <img src="{{ photos[5] }}" alt="Прогулка у воды" loading="lazy">
-          <span>▶ Прогулка у воды</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-present">
-    <div class="ri-wrap ri-present__grid">
-      <div>
-        <p class="ri-eyebrow">Презентация посёлка</p>
-        <h2>Узнайте больше<br>о ЖК «Берег Песочной»</h2>
-        <p>Дома, парк и инфраструктура — в одной презентации.</p>
-        <a class="ri-btn ri-btn--primary" href="/jk-bereg-pesochnoy.pdf" download>Открыть презентацию</a>
-      </div>
-      <a class="ri-present__cover" href="/jk-bereg-pesochnoy.pdf" download>
-        <img src="{{ photos[1] }}" alt="Обложка презентации" loading="lazy">
-      </a>
-    </div>
-  </section>
-
-  <section class="ri-block">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Технология БЭНПАН</p>
-      <h2>Дома из сертифицированных<br>панелей БЭНПАН</h2>
-      <p class="ri-lead">Железобетонные панели с внутренним слоем утеплителя — для прочности дома и комфортной жизни круглый год.</p>
-      <ul class="ri-checks">
-        <li>Заводское качество</li>
-        <li>Прочная конструкция</li>
-        <li>Теплоизоляция</li>
-      </ul>
-      <div class="ri-hero__actions">
-        <a class="ri-btn ri-btn--primary" href="#catalog">Выбрать дом</a>
-        <a class="ri-btn ri-btn--line" href="/node/655">О технологии и сертификатах</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-block ri-finish">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Варианты отделки</p>
-      <h2>Фасад в вашем стиле</h2>
-      <p class="ri-lead">Гладкая поверхность или отделка, которая подчеркнёт характер дома.</p>
-      <div class="ri-finish__grid">
-        <article><img src="{{ photos[2] }}" alt="" loading="lazy"><h3>Дикий камень</h3><p>Цельнолитая панель с рельефом дикого камня.</p></article>
-        <article><img src="{{ photos[3] }}" alt="" loading="lazy"><h3>Клинкер</h3><p>Облицовка фасада клинкерной плиткой.</p></article>
-        <article><img src="{{ photos[4] }}" alt="" loading="lazy"><h3>Штукатурка</h3><p>Декоративная фасадная штукатурка Ceresit.</p></article>
-        <article><img src="{{ photos[5] }}" alt="" loading="lazy"><h3>Планкен</h3><p>Планкен из лиственницы с обработкой маслом.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-block" id="steps">
-    <div class="ri-wrap">
-      <p class="ri-eyebrow">Ваш следующий шаг</p>
-      <h2>От знакомства с посёлком — к выбору дома</h2>
-      <div class="ri-trio">
-        <article>
-          <p class="ri-num">01</p>
-          <h3>Выберите варианты</h3>
-          <p>Сравните готовые и строящиеся дома. В карточках есть фотографии, планировки и расположение лота.</p>
-        </article>
-        <article>
-          <p class="ri-num">02</p>
-          <h3>Посмотрите вживую</h3>
-          <p>Оцените комнаты, естественный свет, участок и расстояния до соседних домов.</p>
-        </article>
-        <article>
-          <p class="ri-num">03</p>
-          <h3>Обсудите детали</h3>
-          <p>Уточните документы, условия покупки и этапы передачи. Отделку можно обсудить с архитектурным ателье.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-block" id="faq">
-    <div class="ri-wrap ri-faq">
-      <div>
-        <p class="ri-eyebrow">Перед просмотром</p>
-        <h2>Что стоит знать о выборе дома</h2>
-      </div>
-      <div>
-        <details open>
-          <summary>Чем готовый дом отличается от дома, готового к заселению?</summary>
-          <p>Смотрите комплектацию конкретного лота. «Тёплый контур» не означает завершённую внутреннюю отделку.</p>
-        </details>
-        <details>
-          <summary>Можно ли заказать внутреннюю отделку?</summary>
-          <p>Да. Доступны черновая отделка, White box и дизайн интерьера.</p>
-        </details>
-        <details>
-          <summary>Как выбрать расположение участка?</summary>
-          <p>Посмотрите лот на генплане, затем оцените его вживую: соседи, подъезд и виды из окон.</p>
-        </details>
-        <details>
-          <summary>Как записаться на выбранный дом?</summary>
-          <p>Оставьте телефон в форме — название дома можно уточнить при звонке.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="ri-hub" id="contacts">
-    <div class="ri-wrap ri-hub__grid">
-      <div>
-        <p class="ri-eyebrow">Ждём вас в гости</p>
-        <h2>Приезжайте посмотреть<br>«Берег Песочной»</h2>
-        <p>Прогуляйтесь по посёлку, посмотрите дома и познакомьтесь с соседями.</p>
-        <a class="ri-hub__phone" href="tel:+74951865088">+7 (495) 186-50-88</a>
-        <p class="ri-hub__addr"><strong>Лесная улица, 1</strong><br>коттеджный посёлок «Берег Песочной»,<br>городской округ Истра, Московская область</p>
-        <a class="ri-btn ri-btn--ghost" href="https://yandex.ru/maps/213/moscow/?ll=37.093746%2C55.877213&mode=routes&rtext=55.818974%2C37.390776~55.959175%2C36.947689&rtt=auto" target="_blank" rel="noopener">Построить маршрут</a>
-      </div>
-      <form class="ri-form lv2-cta-form" action="#" method="post" novalidate>
-        <h3>Записаться на экскурсию</h3>
-        <p>Оставьте телефон — договоримся о времени.</p>
-        <input type="hidden" name="source" value="Записаться на экскурсию">
-        <label><input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required></label>
-        <label><input type="tel" name="phone" class="phone-field-mask" placeholder="Телефон" autocomplete="tel" required></label>
-        <label class="ri-form__agree">
-          <input type="checkbox" name="agree" required>
-          <span>Согласен на обработку персональных данных. <a href="/policy/">Политика конфиденциальности</a></span>
-        </label>
-        <button type="button" class="ri-btn ri-btn--primary" id="lv2-cta-send">Записаться на просмотр</button>
-        <div class="popup-success">Заявка отправлена. Спасибо.</div>
-      </form>
-    </div>
-  </section>
-</main>
-
-<footer class="ri-footer">
-  <div class="ri-wrap ri-footer__grid">
-    <a href="/"><img src="{{ photo }}logo-footer2.svg" alt="Берег Песочной" width="140" height="40"></a>
-    <div>
-      <p>Каталог</p>
-      <a href="/kupit-dom-v-kottedzhnom-poselke">Готовые дома</a>
-      <a href="/taunhausy">Таунхаусы</a>
-      <a href="/karta">Генплан</a>
-    </div>
-    <div>
-      <p>О посёлке</p>
-      <a href="#infra">Инфраструктура</a>
-      <a href="#films">Видео</a>
-      <a href="/policy/">Политика</a>
-    </div>
-    <div>
-      <p>Отдел продаж</p>
-      <a href="tel:+74951865088">+7 (495) 186-50-88</a>
-      <button type="button" class="ri-btn ri-btn--primary ri-btn--sm open-lv2-tour-modal">Записаться</button>
-    </div>
-  </div>
-</footer>
-
-{% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
-  tour_modal_label: 'Берег Песочной',
-  tour_modal_source: 'TEST2 лендинг — экскурсия'
-} %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Residence",
+    "name": "ЖК Берег Песочной",
+    "url": "https://test2.beregpesochnoy.ru/",
+    "telephone": "{{ b.phone_display|default('+7 (495) 186-50-88') }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ b.address_line|default('Лесная улица, 1') }}",
+      "addressLocality": "Истра",
+      "addressRegion": "Московская область",
+      "addressCountry": "RU"
+    }
+  }
+  </script>
 </div>
