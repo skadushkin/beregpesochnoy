@@ -1,5 +1,5 @@
 svg_tooltip_lib:
-  version: 1.28
+  version: 1.29
   css:
     theme:
       css/svg-tooltip.css: {}

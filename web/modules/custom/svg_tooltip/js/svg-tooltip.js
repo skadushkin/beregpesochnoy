@@ -475,7 +475,7 @@
         ].filter(Boolean).join('\n');
 
         if (typeof window.sendLeadToBitrix === 'function') {
-          window.sendLeadToBitrix(name, ' ', phone, message, source);
+          window.sendLeadToBitrix(name, ' ', phone, message, source, $form);
         }
 
         $.ajax({

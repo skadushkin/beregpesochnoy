@@ -236,7 +236,7 @@ if (isset($_POST['lead_form']) && (string) $_POST['lead_form'] === '1') {
     $user_agent = isset($_POST['user_agent']) ? trim(strip_tags($_POST['user_agent'])) : '';
     $consent_ok = isset($_POST['consent']) && (string) $_POST['consent'] === '1';
 
-    if ($lead_title === '') {
+    if ($lead_title === '' || mb_strtolower($lead_title) === mb_strtolower($name)) {
         $lead_title = 'Заявка с сайта';
     }
 
