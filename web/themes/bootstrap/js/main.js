@@ -1,25 +1,63 @@
 /**
  * Источник заявки для Bitrix (SOURCE_DESCRIPTION / TITLE).
- * Нужен модулю автоинформирования СМС: он ищет подстроку шаблона
- * сначала в «Описание источника», затем в «Заголовок» лида.
+ * TITLE — только название формы, никогда имя из поля «Имя».
  */
-function resolveLeadSource($context, explicitSource) {
-    var source = jQuery.trim(explicitSource || '');
-    if (!source && $context && $context.length) {
-        source = jQuery.trim($context.find('input[name="source"]').first().val() || '');
+function normalizeFormTitle(raw) {
+    return jQuery.trim(String(raw || '').replace(/\s+/g, ' '));
+}
+
+function isUserNameAsTitle(title, personName) {
+    var titleNorm = normalizeFormTitle(title).toLowerCase();
+    var nameNorm = normalizeFormTitle(personName).toLowerCase();
+    if (!titleNorm) {
+        return true;
     }
-    if (!source && $context && $context.length) {
-        source = jQuery.trim(
-            $context.closest('.popup, .popup-mess, .bp-modal, form, .yana-popup, .banner-form1')
-                .find('.popup-title, .banner1-form-title, .bp-modal__title')
-                .first()
-                .text() || ''
-        );
+    if (!nameNorm) {
+        return false;
     }
-    if (!source) {
-        source = jQuery.trim(jQuery('input[name="source"]').filter(function () {
-            return jQuery.trim(jQuery(this).val() || '') !== '';
-        }).first().val() || '');
+    return titleNorm === nameNorm
+        || titleNorm === ('заявка с сайта: ' + nameNorm)
+        || titleNorm === ('форма: ' + nameNorm);
+}
+
+function formTitleFromHeading($root) {
+    var text = '';
+    if (!$root || !$root.length) {
+        return '';
+    }
+    $root.find('.popup-title, .banner1-form-title, .bp-modal__title, .cta__title, .ri-form > h3, .lead-form-title, h2, h3').each(function () {
+        var candidate = normalizeFormTitle(jQuery(this).text());
+        if (candidate && candidate.length >= 3 && candidate.length <= 90) {
+            text = candidate;
+            return false;
+        }
+    });
+    return text;
+}
+
+function resolveLeadSource($context, explicitSource, personName) {
+    var $scope = ($context && $context.length)
+        ? $context.closest('.popup, .popup-mess, .bp-modal, .yana-popup, .banner-form1, .lead-form, .lead-form-ipoteka, .cta, .ri-hub, .ri-form, form, section')
+        : jQuery();
+    if ($context && $context.length && !$scope.length) {
+        $scope = $context;
+    }
+
+    var source = normalizeFormTitle(explicitSource);
+    if (isUserNameAsTitle(source, personName)) {
+        source = '';
+    }
+    if (!source && $scope.length) {
+        source = normalizeFormTitle($scope.find('input[name="source"]').first().val() || '');
+        if (isUserNameAsTitle(source, personName)) {
+            source = '';
+        }
+    }
+    if (!source && $scope.length) {
+        source = formTitleFromHeading($scope);
+        if (isUserNameAsTitle(source, personName)) {
+            source = '';
+        }
     }
     if (!source) {
         var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
@@ -28,8 +66,13 @@ function resolveLeadSource($context, explicitSource) {
     return source;
 }
 
-function sendLeadToBitrix(name, email, phone, message, source) {
-    var sourceLabel = resolveLeadSource(null, source);
+function sendLeadToBitrix(name, email, phone, message, source, context) {
+    var personName = normalizeFormTitle(name);
+    var $context = context ? jQuery(context) : jQuery();
+    var sourceLabel = resolveLeadSource($context, source, personName);
+    if (isUserNameAsTitle(sourceLabel, personName)) {
+        sourceLabel = 'Берег Песочной';
+    }
     var emailValue = jQuery.trim(email || '');
     var hasEmail = emailValue !== '' && emailValue.indexOf('@') !== -1;
     var userMessage = jQuery.trim(String(message || ''));
@@ -38,13 +81,11 @@ function sendLeadToBitrix(name, email, phone, message, source) {
       commentParts.push('Сообщение: ' + userMessage);
     }
     commentParts.push('Страница: ' + location.href);
-    if (sourceLabel) {
-      commentParts.push('Форма: ' + sourceLabel);
-    }
+    commentParts.push('Форма: ' + sourceLabel);
     var comments = commentParts.join('\n');
     var fields = {
       TITLE: 'Заявка с сайта: ' + sourceLabel,
-      NAME: name,
+      NAME: personName || 'Без имени',
       PHONE: [{ VALUE: phone, VALUE_TYPE: 'WORK' }],
       SOURCE_ID: 'WEB',
       SOURCE_DESCRIPTION: sourceLabel,
@@ -62,6 +103,8 @@ function sendLeadToBitrix(name, email, phone, message, source) {
       }
     });
 }
+window.sendLeadToBitrix = sendLeadToBitrix;
+window.resolveLeadSource = resolveLeadSource;
   
   
   jQuery(document).ready(function () {
@@ -386,7 +429,7 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(jQuery('#online'), jQuery('#online input[name="source"]').val());
+        var leadSource = resolveLeadSource(jQuery('#online'), jQuery('#online input[name="source"]').val(), name);
         var dataForRequest = {
             'name': name,
             'email': email,
@@ -394,7 +437,7 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         }
 
-        sendLeadToBitrix(name, email, phone, '', leadSource);
+        sendLeadToBitrix(name, email, phone, '', leadSource, jQuery('#online'));
 
         jQuery.ajax({
             type: "POST",
@@ -479,14 +522,14 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val() || 'Получить консультацию');
+        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val() || 'Получить консультацию', '');
         var dataForRequest = {
             'name': ' ',
             'email': ' ',
             'phone': phone,
             'source': leadSource
         }
-        sendLeadToBitrix('Форма', ' ', phone, '', leadSource);
+        sendLeadToBitrix('', ' ', phone, '', leadSource, form);
 
         jQuery.ajax({
             type: "POST",
@@ -562,7 +605,7 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val());
+        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val(), name);
         var dataForRequest = {
             'name': name,
             'email': ' ',
@@ -570,7 +613,7 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         };
 
-        sendLeadToBitrix(name, ' ', phone, '', leadSource);
+        sendLeadToBitrix(name, ' ', phone, '', leadSource, form);
 
         jQuery.ajax({
             type: "POST",
@@ -635,7 +678,7 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val() || jQuery('#form-source').val());
+        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val(), name);
         var dataForRequest = {
             'name': name,
             'email': email,
@@ -643,7 +686,7 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         }
 
-        sendLeadToBitrix(name, email, phone, '', leadSource);
+        sendLeadToBitrix(name, email, phone, '', leadSource, form);
 
         jQuery.ajax({
             type: "POST",
@@ -759,7 +802,7 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val());
+        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val(), name);
         var dataForRequest = {
             'name': name,
             'email': email,
@@ -768,7 +811,7 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         }
 
-        sendLeadToBitrix(name, email, phone, mess, leadSource);
+        sendLeadToBitrix(name, email, phone, mess, leadSource, form);
 
         jQuery.ajax({
             type: "POST",
