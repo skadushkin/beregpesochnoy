@@ -609,37 +609,6 @@ infra_carousel:
     - core/drupal
     - core/once
 
-# Шапка/подвал внутренних страниц test2
-landing_dev2_chrome:
-  version: 1.0.1
-  css:
-    theme:
-      '//fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap': { type: external, minified: true }
-      landing-v2/css/fonts.css: {}
-      landing-dev2/css/chrome.css: { weight: 35 }
-  js:
-    landing-dev2/js/chrome.js: {}
-  dependencies:
-    - core/drupal
-    - core/once
-
-# Главная test2 / ветка dev2 (референс residences-istra)
-landing_dev2:
-  version: 1.2.4
-  css:
-    theme:
-      '//fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Onest:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
-      landing-v2/css/fonts.css: {}
-      landing-dev2/css/main.css: { weight: 40 }
-      landing-v2/css/tour-modal.css: { weight: 45 }
-  js:
-    landing-dev2/js/main.js: {}
-  dependencies:
-    - core/drupal
-    - core/once
-    - bootstrap/genplan_lazy
-    - bootstrap/infra_map
-
 # Лендинг v2 (node 838)
 landing_v2:
   version: 1.0.45
