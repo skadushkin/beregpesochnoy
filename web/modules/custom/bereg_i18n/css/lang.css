@@ -49,3 +49,22 @@ body.lang-en .cart-first-second-info-left-item:has(.second-info-left-item-main-t
 body.lang-ar .cart-first-second-info-left-item:has(.second-info-left-item-main-title) {
   display: none !important;
 }
+
+body.lang-en .cart-first-slider-main-desc,
+body.lang-ar .cart-first-slider-main-desc {
+  width: auto;
+  min-width: 196px;
+  padding-left: 18px;
+  padding-right: 18px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  body.lang-en .cart-first-slider-main-desc,
+  body.lang-ar .cart-first-slider-main-desc {
+    min-width: 85px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
