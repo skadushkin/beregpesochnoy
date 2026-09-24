@@ -5,6 +5,15 @@
  */
 function bereg_i18n_dictionary(): array {
   return [
+    'коттеджный поселок бизнес-класса у реки в Московской области' => [
+      'en' => 'a business-class cottage village by the river in the Moscow Region',
+      'ar' => 'قرية كوتيدجات من فئة رجال الأعمال على النهر في منطقة موسكو',
+    ],
+    'с подрядом для строительства в поселке' => [
+      'en' => 'turnkey construction in the village',
+      'ar' => 'بناء بنظام تسليم المفتاح في القرية',
+    ],
+    'страница 1' => ['en' => 'page 1', 'ar' => 'صفحة 1'],
     'Берег Песочной' => ['en' => 'Bereg Pesochnoy', 'ar' => 'بيريج بيسوتشنايا'],
     'БЕРЕГ ПЕСОЧНОЙ' => ['en' => 'BEREG PESOCHNOY', 'ar' => 'بيريج بيسوتشنايا'],
     'ЖК «Берег Песочной»' => ['en' => 'Bereg Pesochnoy residence', 'ar' => 'مجمّع بيريج بيسوتشنايا'],
