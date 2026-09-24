@@ -76,35 +76,84 @@ function sendLeadToBitrix(name, email, phone, message, source, context) {
     var emailValue = jQuery.trim(email || '');
     var hasEmail = emailValue !== '' && emailValue.indexOf('@') !== -1;
     var userMessage = jQuery.trim(String(message || ''));
+    var leadName = personName || 'Без имени';
     var commentParts = [];
+    commentParts.push('Имя: ' + leadName);
     if (userMessage) {
       commentParts.push('Сообщение: ' + userMessage);
     }
     commentParts.push('Страница: ' + location.href);
     commentParts.push('Форма: ' + sourceLabel);
-    var comments = commentParts.join('\n');
-    var fields = {
-      TITLE: 'Заявка с сайта: ' + sourceLabel,
-      NAME: personName || 'Без имени',
-      PHONE: [{ VALUE: phone, VALUE_TYPE: 'WORK' }],
-      SOURCE_ID: 'WEB',
-      SOURCE_DESCRIPTION: sourceLabel,
-      COMMENTS: comments.replace(/\n/g, '<br>\n')
+    var comments = commentParts.join('<br>\n');
+    // Flat keys: nested PHONE/EMAIL objects sometimes drop NAME in Bitrix REST.
+    var postData = {
+      'fields[TITLE]': 'Заявка с сайта: ' + sourceLabel,
+      'fields[NAME]': leadName,
+      'fields[PHONE][0][VALUE]': phone || '',
+      'fields[PHONE][0][VALUE_TYPE]': 'WORK',
+      'fields[SOURCE_ID]': 'WEB',
+      'fields[SOURCE_DESCRIPTION]': sourceLabel,
+      'fields[COMMENTS]': comments
     };
     if (hasEmail) {
-      fields.EMAIL = [{ VALUE: emailValue, VALUE_TYPE: 'WORK' }];
+      postData['fields[EMAIL][0][VALUE]'] = emailValue;
+      postData['fields[EMAIL][0][VALUE_TYPE]'] = 'WORK';
     }
     jQuery.ajax({
       url: 'https://oooagrokom.bitrix24.ru/rest/234/2ebwc1baokth23f1/crm.lead.add.json',
       type: 'POST',
       dataType: 'json',
-      data: {
-        fields: fields
-      }
+      data: postData
     });
 }
 window.sendLeadToBitrix = sendLeadToBitrix;
 window.resolveLeadSource = resolveLeadSource;
+
+function hidePopup() {
+    try {
+        if (window.Fancybox && typeof Fancybox.close === 'function') {
+            Fancybox.close();
+        }
+    } catch (err) {}
+    jQuery('.shadow').removeClass('active').hide();
+}
+
+function showPopup(id) {
+    var target = String(id || '').replace(/^#/, '');
+    if (!target) {
+        return;
+    }
+    try {
+        if (window.Fancybox && typeof Fancybox.show === 'function') {
+            Fancybox.show([{ src: '#' + target, type: 'inline' }]);
+            return;
+        }
+    } catch (err) {}
+    jQuery('#' + target).show();
+}
+
+function markLeadFormSuccess($form) {
+    if (!$form || !$form.length) {
+        return;
+    }
+    var $success = $form.find('.popup-success').first();
+    if (!$success.length) {
+        $success = $form.closest('.popup, .bp-modal, .cta, form').find('.popup-success').first();
+    }
+    $success.show();
+    setTimeout(function () {
+        $success.hide();
+        $form.removeData('sending');
+    }, 3000);
+}
+
+function trackCallbackGoal() {
+    try {
+        if (window.yaCounter26420151 && typeof window.yaCounter26420151.reachGoal === 'function') {
+            window.yaCounter26420151.reachGoal('callback-send-request-from-form');
+        }
+    } catch (err) {}
+}
   
   
   jQuery(document).ready(function () {
@@ -394,85 +443,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    jQuery('#online .catalog-more a').click(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var name = jQuery('#online input[name="name"]').val();
-        var email = jQuery('#online input[name="email"]').val();
-        var phone = jQuery('#online input[name="phone"]').val();
-        var confirmation = jQuery('#confirmation').prop('checked');
-        var valid = true;
-
-        if (name.length == 0) {
-            jQuery('#online input[name="name"]').parent().find('.online-notice').text('Вы не заполнили обязательное поле').css('visibility', 'visible');
-            valid = false;
-        } else {
-            jQuery('#online input[name="name"]').parent().find('.online-notice').text('').css('visibility', 'hidden');
-        }
-//		if (email.length == 0 || !emailIsValid(email)) {
-// 		if (!emailIsValid(email)) {
-// 		  jQuery('#online input[name="email"]').parent().find('.online-notice').text('Возможно, при вводе данных была допущена ошибка').css('visibility', 'visible');
-// 			valid = false;
-// 		} else {
-// 		  jQuery('#online input[name="email"]').parent().find('.online-notice').text('').css('visibility', 'hidden');
-// 		}
-
-        if (phone.length != 16) {
-            valid = false;
-            jQuery('#online input[name="phone"]').parent().find('.online-notice').text('Возможно, при вводе данных была допущена ошибка').css('visibility', 'visible');
-        } else {
-            jQuery('#online input[name="phone"]').parent().find('.online-notice').text('').css('visibility', 'hidden');
-        }
-
-        if (!valid) {
-            return false;
-        }
-
-        var leadSource = resolveLeadSource(jQuery('#online'), jQuery('#online input[name="source"]').val(), name);
-        var dataForRequest = {
-            'name': name,
-            'email': email,
-            'phone': phone,
-            'source': leadSource
-        }
-
-        sendLeadToBitrix(name, email, phone, '', leadSource, jQuery('#online'));
-
-        jQuery.ajax({
-            type: "POST",
-            url: "/form-submit/common-form/",
-            data: dataForRequest,
-            success: function (msg) {
-                hidePopup();
-                showPopup('success', false);
-                setTimeout(hidePopup, 3000);
-                /*} else {
-                  hidePopup();
-                  showPopup('error', false);
-                  setTimeout(hidePopup, 3000);
-                }*/
-            }
-        });
-
-        var ct_data = {
-            'fio': name,
-            'email': email,
-            'phoneNumber': phone,
-            'source': jQuery('#form-source').val(),
-            requestUrl: location.href,
-            sessionId: window.ct('calltracking_params','9spnkrv9').sessionId
-        };
-        console.log(ct_data);
-        jQuery.ajax({
-            url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/59663/register/',
-            dataType: 'json',
-            type: 'POST',
-            data: ct_data
-        });
-
-    });
-    
     if (jQuery('.article-page').length) {
         var $contentBlock = jQuery('.article-page');
     
@@ -573,6 +543,9 @@ jQuery(document).ready(function ($) {
     }
 
     function submitLv2LeadForm(form) {
+        if (form.data('sending')) {
+            return false;
+        }
         var checkbox = form.find('input[type="checkbox"]');
         var nameInput = form.find('input[name="name"]');
         var phoneInput = form.find('input.phone-field-mask');
@@ -613,25 +586,22 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         };
 
+        form.data('sending', true);
         sendLeadToBitrix(name, ' ', phone, '', leadSource, form);
-
+        markLeadFormSuccess(form);
         jQuery.ajax({
             type: "POST",
             url: "/form-submit/common-form/",
-            data: dataForRequest,
-            success: function () {
-                form.find('.popup-success').show();
-                setTimeout(function () {
-                    form.find('.popup-success').hide();
-                    if (form.closest('#lv2TourModal').length) {
-                        form[0].reset();
-                        if (typeof window.lv2CloseTourModal === 'function') {
-                            window.lv2CloseTourModal();
-                        }
-                    }
-                }, 3000);
-            }
+            data: dataForRequest
         });
+        setTimeout(function () {
+            if (form.closest('#lv2TourModal').length) {
+                form[0].reset();
+                if (typeof window.lv2CloseTourModal === 'function') {
+                    window.lv2CloseTourModal();
+                }
+            }
+        }, 3000);
 
         return true;
     }
@@ -733,10 +703,15 @@ jQuery(document).ready(function ($) {
     jQuery(document).on('click', '.popup-btn', function (e) {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
+        trackCallbackGoal();
 
         var form = jQuery(this).closest('.popup-body');
         if (!form.length) {
             form = jQuery(this).closest('.popup, .fancybox__content, .fancybox-content');
+        }
+        if (form.data('sending')) {
+            return false;
         }
 
         var name = jQuery.trim(form.find('input[name="name"]').val() || '');
@@ -811,33 +786,36 @@ jQuery(document).ready(function ($) {
             'source': leadSource
         }
 
+        form.data('sending', true);
         sendLeadToBitrix(name, email, phone, mess, leadSource, form);
-
+        markLeadFormSuccess(form);
         jQuery.ajax({
             type: "POST",
             url: "/form-submit/common-form/",
-            data: dataForRequest,
-            success: function (msg) {
-                // hidePopup();
-                // showPopup('success', false);
-                // alert(1);
-                form.find('.popup-success').show();
-                var _this = this;
-                setTimeout(function() {
-                    jQuery('.popup-success')
-                        .hide();
-                }.bind(this), 3000);
-
-                
-                /*} else {
-                  hidePopup();
-                  showPopup('error', false);
-                  setTimeout(hidePopup, 3000);
-                }*/
-            }
+            data: dataForRequest
         });
-
-
+        try {
+            var sessionId = '';
+            if (typeof window.ct === 'function') {
+                sessionId = window.ct('calltracking_params', '9spnkrv9').sessionId;
+            }
+            if (sessionId) {
+                jQuery.ajax({
+                    url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/59663/register/',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        fio: name,
+                        email: email,
+                        phoneNumber: phone,
+                        source: form.find('input[name="source"]').val() || leadSource,
+                        requestUrl: location.href,
+                        sessionId: sessionId
+                    }
+                });
+            }
+        } catch (err) {}
+        setTimeout(hidePopup, 3200);
     });
 
 
@@ -845,7 +823,7 @@ jQuery(document).ready(function ($) {
     jQuery('.popup-phone1').mask("+7(999) 999-9999");
     // Колесо фортуны (#phoneInput / #wheelFortunePhone) форматирует номер само —
     // глобальная маска +7 даёт 11 цифр и ломает его валидацию «ровно 10».
-    jQuery('input[name=phone]').not('#phoneInput, #wheelFortunePhone').mask("+7(999) 999-9999");
+    jQuery('input[name=phone], input.phone-field-mask').not('#phoneInput, #wheelFortunePhone').mask("+7(999) 999-9999");
     // jQuery('.lead-form-input-number').mask("+7(999) 999-9999");
     jQuery('.townhouses-first-catalog-left-nav .filter').on('click', function () {
         // Убираем активный класс со всех фильтров и добавляем его на выбранный

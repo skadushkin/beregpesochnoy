@@ -2,7 +2,7 @@
 
 # Стили и JS для фронтенда
 global-styling:
-  version: 1.0.16
+  version: 1.0.17
   js:
     js/bootstrap.js: {}
     js/jquery.maskedinput.min.js: {}
