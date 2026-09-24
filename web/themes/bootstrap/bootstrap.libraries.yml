@@ -2,7 +2,7 @@
 
 # Стили и JS для фронтенда
 global-styling:
-  version: 1.0.15
+  version: 1.0.16
   js:
     js/bootstrap.js: {}
     js/jquery.maskedinput.min.js: {}
@@ -608,6 +608,42 @@ infra_carousel:
   dependencies:
     - core/drupal
     - core/once
+
+# Шапка/подвал внутренних страниц test2
+landing_dev2_chrome:
+  version: 2.0.0
+  css:
+    theme:
+      '//fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
+      landing-v2/css/fonts.css: {}
+      landing-dev2/css/chrome.css: { weight: 35 }
+      landing-v2/css/tour-modal.css: { weight: 45 }
+  js:
+    landing-dev2/js/chrome.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery
+
+# Главная и маркетинговые страницы test2
+landing_dev2:
+  version: 2.0.0
+  css:
+    theme:
+      '//fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@400;500&display=swap': { type: external, minified: true }
+      landing-v2/css/fonts.css: {}
+      landing-dev2/css/chrome.css: { weight: 35 }
+      landing-dev2/css/main.css: { weight: 40 }
+      landing-v2/css/tour-modal.css: { weight: 45 }
+  js:
+    landing-dev2/js/chrome.js: {}
+    landing-dev2/js/main.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery
+    - bootstrap/genplan_lazy
+    - bootstrap/infra_map
 
 # Лендинг v2 (node 838)
 landing_v2:

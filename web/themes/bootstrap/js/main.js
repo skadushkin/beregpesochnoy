@@ -1106,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Преобразуем текст вариантов
         const text = option.text.trim();
-        if (text.includes('Участок') || text === 'Plot' || option.value === '4') {
+        if (lang === 'ru' && (text.includes('Участок') || option.value === '4')) {
             return;
         }
         anchor.textContent = labels[option.value] || text
