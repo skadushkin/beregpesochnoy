@@ -650,5 +650,17 @@ function bereg_i18n_dictionary(): array {
     ],
     '1 и 9 мая' => ['en' => '1 and 9 May', 'ar' => '1 و9 مايو'],
     'выходные дни' => ['en' => 'days off', 'ar' => 'أيام عطلة'],
+    'Жизнь у воды — каждый день ближе к природе. «Берег Песочной» — место, где можно наслаждаться тишиной, рыбалкой и отдыхом на берегу, не отказываясь от привычного городского комфорта.' => [
+      'en' => 'Life by the water — closer to nature every day. Bereg Pesochnoy is a place to enjoy quiet, fishing and rest on the shore without giving up familiar city comfort.',
+      'ar' => 'الحياة بجانب الماء — أقرب إلى الطبيعة كل يوم. بيريج بيسوتشنايا مكان للاستمتاع بالهدوء والصيد والراحة على الضفة دون التخلي عن راحة المدينة.',
+    ],
+    'Жизнь у воды — каждый день ближе к природе.' => [
+      'en' => 'Life by the water — closer to nature every day.',
+      'ar' => 'الحياة بجانب الماء — أقرب إلى الطبيعة كل يوم.',
+    ],
+    'место, где можно наслаждаться тишиной, рыбалкой и отдыхом на берегу, не отказываясь от привычного городского комфорта.' => [
+      'en' => 'a place to enjoy quiet, fishing and rest on the shore without giving up familiar city comfort.',
+      'ar' => 'مكان للاستمتاع بالهدوء والصيد والراحة على الضفة دون التخلي عن راحة المدينة.',
+    ],
   ];
 }
