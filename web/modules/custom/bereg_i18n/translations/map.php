@@ -2043,5 +2043,10 @@ function bereg_i18n_dictionary(): array {
       'en' => 'Travel time is 1 hour 20 minutes to Istra station',
       'ar' => 'مدة الطريق ساعة و20 دقيقة إلى محطة إسترا',
     ],
+    'Фотогалерея поселка' => ['en' => 'Village photo gallery', 'ar' => 'معرض صور القرية'],
+    'Заголовок' => ['en' => 'Category', 'ar' => 'التصنيف'],
+    'Пруды' => ['en' => 'Ponds', 'ar' => 'البرك'],
+    'Ателье примеры работ' => ['en' => 'Studio work examples', 'ar' => 'أمثلة أعمال المشغل'],
+    'Поселок' => ['en' => 'Village', 'ar' => 'القرية'],
   ];
 }
