@@ -25,8 +25,12 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
       return;
     }
     $response = $event->getResponse();
+    $contentType = (string) $response->headers->get('Content-Type', '');
+    if ($contentType !== '' && !str_contains($contentType, 'html') && !str_contains($contentType, 'text/')) {
+      return;
+    }
     $content = $response->getContent();
-    if (!is_string($content) || !str_contains($content, '<html')) {
+    if (!is_string($content) || $content === '') {
       return;
     }
     $response->setContent(bereg_i18n_translate_html($content));
