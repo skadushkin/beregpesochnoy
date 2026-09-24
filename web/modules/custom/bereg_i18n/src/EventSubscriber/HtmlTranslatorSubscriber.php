@@ -26,14 +26,20 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
     }
     $response = $event->getResponse();
     $contentType = (string) $response->headers->get('Content-Type', '');
-    if ($contentType !== '' && !str_contains($contentType, 'html') && !str_contains($contentType, 'text/')) {
+    $isHtml = $contentType === '' || str_contains($contentType, 'html') || str_contains($contentType, 'text/');
+    $isJson = str_contains($contentType, 'json');
+    if ($contentType !== '' && !$isHtml && !$isJson) {
       return;
     }
     $content = $response->getContent();
     if (!is_string($content) || $content === '') {
       return;
     }
-    $response->setContent(bereg_i18n_hide_news_html(bereg_i18n_translate_html($content)));
+    $translated = bereg_i18n_translate_html($content);
+    if (!$isJson) {
+      $translated = bereg_i18n_hide_news_html($translated);
+    }
+    $response->setContent($translated);
   }
 
 }
