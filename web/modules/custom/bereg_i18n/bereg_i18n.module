@@ -192,7 +192,53 @@ function bereg_i18n_preprocess_menu(array &$variables): void {
   if (bereg_i18n_lang() === 'ru' || empty($variables['items'])) {
     return;
   }
+  bereg_i18n_hide_news_menu_items($variables['items']);
   bereg_i18n_translate_menu_items($variables['items']);
+}
+
+/**
+ * News is hidden on EN/AR copies until those pages are translated.
+ */
+function bereg_i18n_hide_news_menu_items(array &$items): void {
+  foreach ($items as $key => &$item) {
+    if (bereg_i18n_menu_item_is_news($item)) {
+      unset($items[$key]);
+      continue;
+    }
+    if (!empty($item['below']) && is_array($item['below'])) {
+      bereg_i18n_hide_news_menu_items($item['below']);
+    }
+  }
+}
+
+function bereg_i18n_menu_item_is_news(array $item): bool {
+  $title = trim(html_entity_decode(strip_tags((string) ($item['title'] ?? '')), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+  if (in_array($title, ['Новости', 'НОВОСТИ', 'News', 'NEWS', 'أخبار'], TRUE)) {
+    return TRUE;
+  }
+  $url = '';
+  if (!empty($item['url']) && is_object($item['url']) && method_exists($item['url'], 'toString')) {
+    try {
+      $url = (string) $item['url']->toString();
+    }
+    catch (\Throwable $e) {
+      $url = '';
+    }
+  }
+  $path = strtolower((string) (parse_url($url, PHP_URL_PATH) ?: $url));
+  return (bool) preg_match('#(^|/)(news|novosti)(/|$)#', $path);
+}
+
+function bereg_i18n_hide_news_html(string $html): string {
+  $patterns = [
+    '#<div class="footer-col-item">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>\s*</div>#is',
+    '#<div class="tap-menu-top-item[^"]*">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>\s*</div>#is',
+    '#<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>#is',
+  ];
+  foreach ($patterns as $pattern) {
+    $html = preg_replace($pattern, '', $html) ?? $html;
+  }
+  return $html;
 }
 
 /**

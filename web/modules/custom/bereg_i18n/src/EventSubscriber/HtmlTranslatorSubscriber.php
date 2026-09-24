@@ -33,7 +33,7 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
     if (!is_string($content) || $content === '') {
       return;
     }
-    $response->setContent(bereg_i18n_translate_html($content));
+    $response->setContent(bereg_i18n_hide_news_html(bereg_i18n_translate_html($content)));
   }
 
 }

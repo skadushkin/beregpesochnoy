@@ -3,3 +3,7 @@ services:
     class: Drupal\bereg_i18n\EventSubscriber\HtmlTranslatorSubscriber
     tags:
       - { name: event_subscriber }
+  bereg_i18n.news_hide:
+    class: Drupal\bereg_i18n\EventSubscriber\NewsHideSubscriber
+    tags:
+      - { name: event_subscriber }
