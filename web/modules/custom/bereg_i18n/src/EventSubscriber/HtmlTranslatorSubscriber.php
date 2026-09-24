@@ -39,8 +39,10 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
       return;
     }
     $translated = bereg_i18n_translate_html($content);
-    $translated = bereg_i18n_hide_prices_html($translated);
+    // Price stripping on Views AJAX JSON breaks "Load more".
+    // CSS on body.lang-en / body.lang-ar hides prices in inserted cards.
     if (!$isJson && !$isAjax) {
+      $translated = bereg_i18n_hide_prices_html($translated);
       $translated = bereg_i18n_hide_news_html($translated);
     }
     $response->setContent($translated);

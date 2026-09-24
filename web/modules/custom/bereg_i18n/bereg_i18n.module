@@ -258,6 +258,10 @@ function bereg_i18n_library_info_alter(array &$libraries, $extension): void {
  * Hide prices on EN/AR copies.
  */
 function bereg_i18n_hide_prices_html(string $html): string {
+  $parts = preg_split('/(<(?:script)[^>]*>.*?<\/(?:script)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+  if ($parts === FALSE) {
+    return $html;
+  }
   $patterns = [
     '~<div class="catalog-item-price">[\s\S]*?</div>\s*</div>~i',
     '~<div class="product-card__price">[\s\S]*?</div>~i',
@@ -269,37 +273,29 @@ function bereg_i18n_hide_prices_html(string $html): string {
     '~<div class="product-item-data-price"[^>]*>[\s\S]*?</div>~i',
     '~<div class="second-info-left-item-main-title">[\s\S]*?</div>~i',
   ];
-  foreach ($patterns as $pattern) {
-    $replaced = preg_replace($pattern, '', $html);
-    if (is_string($replaced)) {
-      $html = $replaced;
+  $out = '';
+  foreach ($parts as $index => $part) {
+    if ($index % 2 === 1) {
+      $out .= $part;
+      continue;
     }
+    foreach ($patterns as $pattern) {
+      $replaced = preg_replace($pattern, '', $part);
+      if (is_string($replaced)) {
+        $part = $replaced;
+      }
+    }
+    $replaced = preg_replace(
+      '~\d{1,3}(?:[ \x{00A0}]\d{3})+(?:\s*(?:₽|&nbsp;₽|р(?:\b|/)|RUB|руб\.?))~u',
+      '',
+      $part
+    );
+    if (is_string($replaced)) {
+      $part = $replaced;
+    }
+    $out .= $part;
   }
-  $replaced = preg_replace(
-    '~\d{1,3}(?:[ \x{00A0}]\d{3})+(?:\s*(?:₽|&nbsp;₽|р(?:\b|/)|RUB|руб\.?))~u',
-    '',
-    $html
-  );
-  if (is_string($replaced)) {
-    $html = $replaced;
-  }
-  $replaced = preg_replace(
-    '~(?:в ипотеку|В ипотеку|mortgage from|ипотеку от)[^<\n]{0,80}~u',
-    '',
-    $html
-  );
-  if (is_string($replaced)) {
-    $html = $replaced;
-  }
-  $replaced = preg_replace(
-    '~"(?:price|house_price|lot_price|discount_price|monthly|ipoteka)"\s*:\s*"?[\d. ]+"?~u',
-    '"price":null',
-    $html
-  );
-  if (is_string($replaced)) {
-    $html = $replaced;
-  }
-  return $html;
+  return $out;
 }
 
 function bereg_i18n_hide_news_html(string $html): string {
