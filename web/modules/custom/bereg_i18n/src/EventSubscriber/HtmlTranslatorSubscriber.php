@@ -3,6 +3,7 @@
 namespace Drupal\bereg_i18n\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -13,7 +14,8 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
 
   public static function getSubscribedEvents(): array {
     return [
-      KernelEvents::RESPONSE => ['onResponse', -100],
+      // After Drupal AjaxResponseSubscriber (-100) has encoded commands.
+      KernelEvents::RESPONSE => ['onResponse', -150],
     ];
   }
 
@@ -38,13 +40,26 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
     if (!is_string($content) || $content === '') {
       return;
     }
-    $translated = bereg_i18n_translate_html($content);
-    // Price stripping on Views AJAX JSON breaks "Load more".
-    // CSS on body.lang-en / body.lang-ar hides prices in inserted cards.
-    if (!$isJson && !$isAjax) {
-      $translated = bereg_i18n_hide_prices_html($translated);
-      $translated = bereg_i18n_hide_news_html($translated);
+    // Views AJAX encodes Cyrillic as \uXXXX. Phrase replace on the raw
+    // body misses "Загрузить еще" and house-card labels.
+    if ($isJson || $isAjax) {
+      $decoded = json_decode($content, TRUE);
+      if (is_array($decoded) && $decoded !== []) {
+        $decoded = bereg_i18n_translate_json($decoded);
+        if ($response instanceof JsonResponse) {
+          $response->setData($decoded);
+          return;
+        }
+        $encoded = json_encode($decoded, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
+        if (is_string($encoded)) {
+          $response->setContent($encoded);
+        }
+        return;
+      }
     }
+    $translated = bereg_i18n_translate_html($content);
+    $translated = bereg_i18n_hide_prices_html($translated);
+    $translated = bereg_i18n_hide_news_html($translated);
     $response->setContent($translated);
   }
 

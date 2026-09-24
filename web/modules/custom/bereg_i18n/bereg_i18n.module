@@ -53,16 +53,37 @@ function bereg_i18n_translate_string(string $text, ?string $lang = NULL): string
   return $text;
 }
 
+/**
+ * Translate Cyrillic strings inside a decoded JSON / AJAX payload.
+ */
+function bereg_i18n_translate_json(mixed $data, ?string $lang = NULL): mixed {
+  if (is_string($data)) {
+    if ($data === '' || !preg_match('/[А-Яа-яЁё]/u', $data)) {
+      return $data;
+    }
+    return bereg_i18n_translate_html($data, $lang);
+  }
+  if (is_array($data)) {
+    foreach ($data as $key => $value) {
+      $data[$key] = bereg_i18n_translate_json($value, $lang);
+    }
+  }
+  return $data;
+}
+
 function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
   $lang = $lang ?? bereg_i18n_lang();
   if ($lang === 'ru' || $html === '') {
     return $html;
   }
-  require_once __DIR__ . '/translations/map.php';
-  $map = bereg_i18n_dictionary();
-  uksort($map, static function (string $a, string $b): int {
-    return mb_strlen($b) <=> mb_strlen($a);
-  });
+  $map = &drupal_static(__FUNCTION__ . ':map');
+  if ($map === NULL) {
+    require_once __DIR__ . '/translations/map.php';
+    $map = bereg_i18n_dictionary();
+    uksort($map, static function (string $a, string $b): int {
+      return mb_strlen($b) <=> mb_strlen($a);
+    });
+  }
 
   $parts = preg_split('/(<(?:style)[^>]*>.*?<\/(?:style)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
   if ($parts === FALSE) {
