@@ -2134,7 +2134,27 @@ function bereg_i18n_dictionary(): array {
       'en' => 'Custom architectural solutions and unique interior design projects for a country house, tailored to every wish of the client',
       'ar' => 'حلول معمارية خاصة ومشاريع تصميم داخلي فريدة لمنزل ريفي وفق كل رغبات العميل',
     ],
+    'og:title" content="УК"' => ['en' => 'og:title" content="Management company"', 'ar' => 'og:title" content="شركة الإدارة"'],
+    'сервис УК в' => ['en' => 'management service in', 'ar' => 'خدمة الإدارة في'],
     'сервис УК' => ['en' => 'management service', 'ar' => 'خدمة الإدارة'],
+    'management service в' => ['en' => 'management service in', 'ar' => 'خدمة الإدارة في'],
+    'поможем с обслуживанием дома и территории.' => [
+      'en' => 'we will help with the house and grounds.',
+      'ar' => 'سنساعد في المنزل والأرض.',
+    ],
+    'Единая служба для жителей Bereg Pesochnoy:' => [
+      'en' => 'A single service for Bereg Pesochnoy residents:',
+      'ar' => 'خدمة واحدة لسكان بيريج بيسوتشنايا:',
+    ],
+    'уход за участком, электрика, сантехника и бытовые работы.' => [
+      'en' => 'plot care, electrics, plumbing and household work.',
+      'ar' => 'عناية بالقطعة وكهرباء وسباكة وأعمال منزلية.',
+    ],
+    'работаем с эскроу' => ['en' => 'we work with escrow', 'ar' => 'نتعامل مع الإسكرو'],
+    'Поможем получить ипотеку от банков партнеров на покупку на дома с участком' => [
+      'en' => 'We help you get a mortgage from partner banks for a house with a plot',
+      'ar' => 'نساعد في الحصول على رهن من البنوك الشريكة لمنزل مع قطعة',
+    ],
     'Забота о доме начинается здесь — сервис УК в Береге Песочной' => [
       'en' => 'Care for the home starts here — management service in Bereg Pesochnoy',
       'ar' => 'العناية بالمنزل تبدأ هنا — خدمة الإدارة في بيريج بيسوتشنايا',
