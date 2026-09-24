@@ -650,6 +650,22 @@ function bereg_i18n_dictionary(): array {
     ],
     '1 и 9 мая' => ['en' => '1 and 9 May', 'ar' => '1 و9 مايو'],
     'выходные дни' => ['en' => 'days off', 'ar' => 'أيام عطلة'],
+    'Активный отдых в двух шагах от дома. В «Береге Песочной» спорт, природа и общение становятся частью каждого дня — для жизни, наполненной движением и яркими эмоциями.' => [
+      'en' => 'Active leisure a few steps from home. At Bereg Pesochnoy sport, nature and meeting people become part of every day — a life full of movement and emotion.',
+      'ar' => 'نشاط على بعد خطوات من المنزل. في بيريج بيسوتشنايا تصبح الرياضة والطبيعة والتواصل جزءاً من كل يوم.',
+    ],
+    'Уютные вечера с теми, кто рядом. В «Береге Песочной» дом становится местом, где можно замедлиться, наслаждаться тишиной природы и ценить простые моменты вместе.' => [
+      'en' => 'Cozy evenings with the people closest to you. At Bereg Pesochnoy home is a place to slow down, enjoy the quiet of nature and share simple moments.',
+      'ar' => 'أمسيات دافئة مع من تحبون. في بيريج بيسوتشنايا يصبح المنزل مكاناً للهدوء والاستمتاع بسكينة الطبيعة.',
+    ],
+    'Тёплые вечера в кругу близких. В «Береге Песочной» есть место для уютных встреч, долгих разговоров и отдыха на свежем воздухе — прямо рядом с домом.' => [
+      'en' => 'Warm evenings with family and friends. At Bereg Pesochnoy there is room for gatherings, long talks and rest outdoors — right next to home.',
+      'ar' => 'أمسيات دافئة مع الأحباء. في بيريج بيسوتشنايا متسع للقاءات والأحاديث والراحة في الهواء الطلق بجانب المنزل.',
+    ],
+    'Прогулки, движение и время вдвоём. В «Береге Песочной» природа становится частью повседневной жизни — здесь приятно встречать утро, кататься на велосипеде и просто наслаждаться каждым днём.' => [
+      'en' => 'Walks, movement and time together. At Bereg Pesochnoy nature becomes part of everyday life — a place to meet the morning, ride a bike and enjoy each day.',
+      'ar' => 'نزهات وحركة ووقت معاً. في بيريج بيسوتشنايا تصبح الطبيعة جزءاً من الحياة اليومية — هنا يطيب الصباح وركوب الدراجة والاستمتاع بكل يوم.',
+    ],
     'Жизнь у воды — каждый день ближе к природе. «Берег Песочной» — место, где можно наслаждаться тишиной, рыбалкой и отдыхом на берегу, не отказываясь от привычного городского комфорта.' => [
       'en' => 'Life by the water — closer to nature every day. Bereg Pesochnoy is a place to enjoy quiet, fishing and rest on the shore without giving up familiar city comfort.',
       'ar' => 'الحياة بجانب الماء — أقرب إلى الطبيعة كل يوم. بيريج بيسوتشنايا مكان للاستمتاع بالهدوء والصيد والراحة على الضفة دون التخلي عن راحة المدينة.',

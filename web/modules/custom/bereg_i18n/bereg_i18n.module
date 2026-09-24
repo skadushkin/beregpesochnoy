@@ -75,6 +75,18 @@ function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
       continue;
     }
     $part = str_replace(["\u{00A0}", '&nbsp;', '&#160;', '&#xa0;'], ' ', $part);
+    $part = preg_replace_callback('/&#x([0-9A-Fa-f]+);/', static function (array $m): string {
+      $char = mb_chr(hexdec($m[1]), 'UTF-8');
+      return $char === FALSE ? $m[0] : $char;
+    }, $part) ?? $part;
+    $part = preg_replace_callback('/&#(\d+);/', static function (array $m): string {
+      $n = (int) $m[1];
+      if (in_array($n, [34, 38, 39, 60, 62], TRUE)) {
+        return $m[0];
+      }
+      $char = mb_chr($n, 'UTF-8');
+      return $char === FALSE ? $m[0] : $char;
+    }, $part) ?? $part;
     foreach ($map as $ru => $pair) {
       $to = $pair[$lang] ?? '';
       if ($to !== '' && $ru !== $to && str_contains($part, $ru)) {
