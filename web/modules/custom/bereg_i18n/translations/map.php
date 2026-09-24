@@ -891,6 +891,14 @@ function bereg_i18n_dictionary(): array {
       'en' => 'In Bereg Pesochnoy you can buy a modern townhouse with a plot in a green area of the Moscow Region',
       'ar' => 'في بيريج بيسوتشنايا يمكن شراء تاون هاوس عصري مع أرض في منطقة نظيفة بمنطقة موسكو',
     ],
+    'В коттеджном village Bereg Pesochnoy' => [
+      'en' => 'In Bereg Pesochnoy',
+      'ar' => 'في بيريج بيسوتشنايا',
+    ],
+    'В коттеджном поселке Bereg Pesochnoy' => [
+      'en' => 'In Bereg Pesochnoy',
+      'ar' => 'في بيريج بيسوتشنايا',
+    ],
     'можно купить современный таунхаус с участком в красивом и экологически чистом районе Московской области' => [
       'en' => 'you can buy a modern townhouse with a plot in a green area of the Moscow Region',
       'ar' => 'يمكن شراء تاون هاوس عصري مع أرض في منطقة نظيفة بمنطقة موسكو',
