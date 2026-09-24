@@ -3,7 +3,8 @@
   align-items: center;
   gap: 8px;
   margin-inline-start: 12px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 .bereg-lang a {
   font: 600 12px/1 Onest, "Cera Pro", system-ui, sans-serif;
@@ -53,6 +54,49 @@ body.path-ferma #header-main-sec .bereg-lang a {
 .header-menu {
   display: flex;
   align-items: center;
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .header-menu-logo {
+    flex: 0 0 auto;
+    min-width: 48px;
+    max-width: 38%;
+  }
+  .header-menu-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+  .header-menu-items {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+  .header-menu .bereg-lang {
+    gap: 5px;
+    margin-inline-start: 8px;
+  }
+  .header-menu .bereg-lang a {
+    font-size: 11px;
+    letter-spacing: .02em;
+    padding: 2px 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-menu-logo {
+    order: 1;
+  }
+  .header-menu .bereg-lang {
+    order: 2;
+    margin-inline-start: auto;
+    margin-inline-end: 8px;
+    gap: 4px;
+  }
+  .header-menu-items {
+    order: 3;
+    flex: 0 0 auto;
+  }
 }
 
 body.lang-en .catalog-item-price,

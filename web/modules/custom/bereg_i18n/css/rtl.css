@@ -1,8 +1,10 @@
 html[dir="rtl"] body {
   direction: rtl;
 }
+html[dir="rtl"] .header-menu {
+  direction: ltr;
+}
 html[dir="rtl"] .ri-header__inner,
-html[dir="rtl"] .header-menu,
 html[dir="rtl"] .ri-header__nav,
 html[dir="rtl"] .ri-header__right,
 html[dir="rtl"] .ri-footer__grid,
