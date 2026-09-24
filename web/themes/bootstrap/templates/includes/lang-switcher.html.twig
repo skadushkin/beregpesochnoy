@@ -1,7 +1,18 @@
 {% if bereg_lang_links is defined and bereg_lang_links %}
-<nav class="bereg-lang" aria-label="Language">
+  {% set current_label = 'RU' %}
   {% for link in bereg_lang_links %}
-    <a href="{{ link.url }}" class="{{ link.active ? 'is-active' }}" hreflang="{{ link.code }}">{{ link.label }}</a>
+    {% if link.active %}
+      {% set current_label = link.label %}
+    {% endif %}
   {% endfor %}
-</nav>
+  <nav class="bereg-lang" aria-label="Language">
+    <button type="button" class="bereg-lang__btn" aria-expanded="false" aria-haspopup="listbox">
+      {{ current_label }}
+    </button>
+    <div class="bereg-lang__list" hidden>
+      {% for link in bereg_lang_links %}
+        <a href="{{ link.url }}" class="{{ link.active ? 'is-active' }}" hreflang="{{ link.code }}">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+  </nav>
 {% endif %}

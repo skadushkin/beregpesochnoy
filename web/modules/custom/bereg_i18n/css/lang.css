@@ -1,60 +1,106 @@
 .bereg-lang {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
   margin-inline-start: 12px;
   flex: 0 0 auto;
-  white-space: nowrap;
+  z-index: 60;
 }
-.bereg-lang a {
+.bereg-lang__btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: 600 12px/1 Onest, "Cera Pro", system-ui, sans-serif;
+  letter-spacing: .04em;
+  cursor: pointer;
+  padding: 4px 16px 4px 0;
+  position: relative;
+}
+.bereg-lang__btn::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+}
+.bereg-lang.is-open .bereg-lang__btn::after {
+  transform: translateY(-20%) rotate(-135deg);
+}
+.bereg-lang__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 76px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+  z-index: 80;
+}
+.bereg-lang__list[hidden] {
+  display: none;
+}
+.bereg-lang__list a {
   font: 600 12px/1 Onest, "Cera Pro", system-ui, sans-serif;
   letter-spacing: .04em;
   text-decoration: none;
-  color: inherit;
+  color: #3c3c3b;
+  padding: 8px 14px;
   opacity: .55;
-  padding: 4px 0;
 }
-.bereg-lang a.is-active {
+.bereg-lang__list a.is-active {
   opacity: 1;
 }
 .header-menu .bereg-lang,
-.header-menu .bereg-lang a {
+.header-menu .bereg-lang__btn {
   color: #fff;
 }
 .ipoteka-header .bereg-lang,
-.ipoteka-header .bereg-lang a {
+.ipoteka-header .bereg-lang__btn {
   color: #3c3c3b;
 }
 .ri-header .bereg-lang,
-.ri-header .bereg-lang a,
+.ri-header .bereg-lang__btn,
 .ri-header__right .bereg-lang {
   color: inherit;
 }
-body.page-node-838 #header-main-sec .bereg-lang a,
-body.page-node-840 #header-main-sec .bereg-lang a,
-body.page-node-850 #header-main-sec .bereg-lang a,
-body.page-node-851 #header-main-sec .bereg-lang a,
-body.page-node-853 #header-main-sec .bereg-lang a,
-body.page-node-854 #header-main-sec .bereg-lang a,
-body.page-node-875 #header-main-sec .bereg-lang a,
-body.page-node-954 #header-main-sec .bereg-lang a,
-body.page-node-955 #header-main-sec .bereg-lang a,
-body.page-node-956 #header-main-sec .bereg-lang a,
-body.page-node-968 #header-main-sec .bereg-lang a,
-body.page-node-969 #header-main-sec .bereg-lang a,
-body.page-node-978 #header-main-sec .bereg-lang a,
-body.page-node-980 #header-main-sec .bereg-lang a,
-body.page-node-1024 #header-main-sec .bereg-lang a,
-body.path-mfk #header-main-sec .bereg-lang a,
-body.page-view-mfk #header-main-sec .bereg-lang a,
-body.page-node-type-posadochnaya-ponton #header-main-sec .bereg-lang a,
-body.path-ferma #header-main-sec .bereg-lang a {
+body.page-node-838 #header-main-sec .bereg-lang__btn,
+body.page-node-840 #header-main-sec .bereg-lang__btn,
+body.page-node-850 #header-main-sec .bereg-lang__btn,
+body.page-node-851 #header-main-sec .bereg-lang__btn,
+body.page-node-853 #header-main-sec .bereg-lang__btn,
+body.page-node-854 #header-main-sec .bereg-lang__btn,
+body.page-node-875 #header-main-sec .bereg-lang__btn,
+body.page-node-954 #header-main-sec .bereg-lang__btn,
+body.page-node-955 #header-main-sec .bereg-lang__btn,
+body.page-node-956 #header-main-sec .bereg-lang__btn,
+body.page-node-968 #header-main-sec .bereg-lang__btn,
+body.page-node-969 #header-main-sec .bereg-lang__btn,
+body.page-node-978 #header-main-sec .bereg-lang__btn,
+body.page-node-980 #header-main-sec .bereg-lang__btn,
+body.page-node-1024 #header-main-sec .bereg-lang__btn,
+body.path-mfk #header-main-sec .bereg-lang__btn,
+body.page-view-mfk #header-main-sec .bereg-lang__btn,
+body.page-node-type-posadochnaya-ponton #header-main-sec .bereg-lang__btn,
+body.path-ferma #header-main-sec .bereg-lang__btn {
   color: #fff;
 }
 .header-menu {
   display: flex;
   align-items: center;
   min-width: 0;
+}
+.header-menu #menu-open {
+  display: flex !important;
+  align-items: center;
+  flex: 0 0 auto;
+  min-width: 24px;
 }
 
 @media (max-width: 1100px) {
@@ -72,30 +118,39 @@ body.path-ferma #header-main-sec .bereg-lang a {
     min-width: 0;
     justify-content: flex-end;
   }
-  .header-menu .bereg-lang {
-    gap: 5px;
-    margin-inline-start: 8px;
-  }
-  .header-menu .bereg-lang a {
-    font-size: 11px;
-    letter-spacing: .02em;
-    padding: 2px 0;
-  }
 }
 
 @media (max-width: 700px) {
+  #header-main-sec .header,
+  .header.ipoteka-header,
+  .header.no-select {
+    overflow: visible;
+  }
   .header-menu-logo {
     order: 1;
   }
   .header-menu .bereg-lang {
     order: 2;
     margin-inline-start: auto;
-    margin-inline-end: 8px;
-    gap: 4px;
+    margin-inline-end: 10px;
   }
   .header-menu-items {
     order: 3;
     flex: 0 0 auto;
+    width: auto;
+    gap: 0;
+  }
+  .header-menu-items > .header-menu-item:not(#menu-open) {
+    display: none !important;
+  }
+  .header-menu #menu-open {
+    display: flex !important;
+    min-width: 24px;
+  }
+  .header-menu #menu-open img {
+    display: block;
+    width: 22px;
+    height: auto;
   }
 }
 
