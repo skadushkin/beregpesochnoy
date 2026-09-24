@@ -140,8 +140,14 @@ body.path-ferma #header-main-sec .bereg-lang__btn {
     width: auto;
     gap: 0;
   }
-  .header-menu-items > .header-menu-item:not(#menu-open) {
+  .header-menu-items > .header-menu-item:not(#menu-open):not(.header-menu-actions) {
     display: none !important;
+  }
+  .header-menu-items > .header-menu-actions {
+    display: inline-flex !important;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 8px;
   }
   .header-menu #menu-open {
     display: flex !important;
@@ -152,6 +158,15 @@ body.path-ferma #header-main-sec .bereg-lang__btn {
     width: 22px;
     height: auto;
   }
+}
+
+.tap-menu {
+  position: relative;
+  z-index: 1;
+}
+.tap-menu-close {
+  z-index: 30;
+  pointer-events: auto;
 }
 
 body.lang-en .catalog-item-price,

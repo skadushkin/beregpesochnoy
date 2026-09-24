@@ -57,9 +57,17 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
         return;
       }
     }
+    $mtime = (string) filemtime(dirname(__DIR__, 2) . '/translations/map.php');
+    $cid = 'bereg_i18n:resp:' . bereg_i18n_lang() . ':' . $mtime . ':' . hash('sha256', $content);
+    $cached = \Drupal::cache()->get($cid);
+    if ($cached && is_string($cached->data)) {
+      $response->setContent($cached->data);
+      return;
+    }
     $translated = bereg_i18n_translate_html($content);
     $translated = bereg_i18n_hide_prices_html($translated);
     $translated = bereg_i18n_hide_news_html($translated);
+    \Drupal::cache()->set($cid, $translated);
     $response->setContent($translated);
   }
 

@@ -71,27 +71,47 @@ function bereg_i18n_translate_json(mixed $data, ?string $lang = NULL): mixed {
   return $data;
 }
 
+function bereg_i18n_sorted_map(): array {
+  $map = &drupal_static(__FUNCTION__);
+  if (is_array($map)) {
+    return $map;
+  }
+  $mtime = (string) filemtime(__DIR__ . '/translations/map.php');
+  $cid = 'bereg_i18n:sorted_map:' . $mtime;
+  $cached = \Drupal::cache()->get($cid);
+  if ($cached && is_array($cached->data)) {
+    $map = $cached->data;
+    return $map;
+  }
+  require_once __DIR__ . '/translations/map.php';
+  $map = bereg_i18n_dictionary();
+  uksort($map, static function (string $a, string $b): int {
+    return mb_strlen($b) <=> mb_strlen($a);
+  });
+  \Drupal::cache()->set($cid, $map);
+  return $map;
+}
+
 function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
   $lang = $lang ?? bereg_i18n_lang();
   if ($lang === 'ru' || $html === '') {
     return $html;
   }
-  $map = &drupal_static(__FUNCTION__ . ':map');
-  if ($map === NULL) {
-    require_once __DIR__ . '/translations/map.php';
-    $map = bereg_i18n_dictionary();
-    uksort($map, static function (string $a, string $b): int {
-      return mb_strlen($b) <=> mb_strlen($a);
-    });
+  $mtime = (string) filemtime(__DIR__ . '/translations/map.php');
+  $cid = 'bereg_i18n:html:' . $lang . ':' . $mtime . ':' . hash('sha256', $html);
+  $cached = \Drupal::cache()->get($cid);
+  if ($cached && is_string($cached->data)) {
+    return $cached->data;
   }
 
-  $parts = preg_split('/(<(?:style)[^>]*>.*?<\/(?:style)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+  $map = bereg_i18n_sorted_map();
+  $parts = preg_split('/(<(?:style|script)[^>]*>.*?<\/(?:style|script)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
   if ($parts === FALSE) {
     return $html;
   }
   $out = '';
   foreach ($parts as $index => $part) {
-    if ($index % 2 === 1) {
+    if ($index % 2 === 1 || !preg_match('/[А-Яа-яЁё]/u', $part)) {
       $out .= $part;
       continue;
     }
@@ -116,6 +136,7 @@ function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
     }
     $out .= $part;
   }
+  \Drupal::cache()->set($cid, $out);
   return $out;
 }
 

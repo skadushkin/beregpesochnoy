@@ -96,6 +96,19 @@
           });
         },
       );
+      once('bereg-tap-menu-close', '.tap-menu-close', context).forEach(
+        function (btn) {
+          btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            var menu = document.querySelector('.tap-menu-container');
+            if (menu) {
+              menu.style.transform = 'translateX(100%)';
+              menu.classList.remove('is-submenu-open');
+            }
+          });
+        },
+      );
     },
   };
 })(Drupal, once);
