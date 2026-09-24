@@ -2092,6 +2092,14 @@ function bereg_i18n_dictionary(): array {
       'en' => 'We deliver a full turnkey cycle: house architecture, construction, all engineering systems, interior design and its implementation.',
       'ar' => 'نقدّم دورة تسليم مفتاح كاملة: تصميم المنزل والبناء وكل الأنظمة الهندسية وتصميم الداخل وتنفيذه.',
     ],
+    'Мы выполняем полный цикл работ &quot;под ключ&quot;, который объединяет все задачи - архитектурное проектирование дома, строительные работы, подключение всех инженерных систем, разработка дизайн-проектов и их реализация.' => [
+      'en' => 'We deliver a full turnkey cycle: house architecture, construction, all engineering systems, interior design and its implementation.',
+      'ar' => 'نقدّم دورة تسليم مفتاح كاملة: تصميم المنزل والبناء وكل الأنظمة الهندسية وتصميم الداخل وتنفيذه.',
+    ],
+    'Мы выполняем полный цикл работ &quot;под ключ&quot;, который объединяет все задачи - архитектурное проектирование дома, строительные работы, подключение всех инженерных систем, разработка дизайн-projects и их реализация.' => [
+      'en' => 'We deliver a full turnkey cycle: house architecture, construction, all engineering systems, interior design and its implementation.',
+      'ar' => 'نقدّم دورة تسليم مفتاح كاملة: تصميم المنزل والبناء وكل الأنظمة الهندسية وتصميم الداخل وتنفيذه.',
+    ],
     'дизайн-projects' => ['en' => 'design projects', 'ar' => 'مشاريع التصميم'],
     'АРХИТЕКТУРА' => ['en' => 'ARCHITECTURE', 'ar' => 'العمارة'],
     'И ПРОЕКТИРОВАНИЕ' => ['en' => 'AND DESIGN', 'ar' => 'والتصميم'],
@@ -2111,6 +2119,49 @@ function bereg_i18n_dictionary(): array {
     'Мы осуществляем строительство как часть нашего полного цикла работ "под ключ", что позволяет нам брать на себя ответственность за каждый этап процесса от архитектурного проектирования до финальной отделки.' => [
       'en' => 'We build as part of our turnkey cycle, so we take responsibility for every stage — from architecture to the final finish.',
       'ar' => 'ننفّذ البناء ضمن دورة التسليم المفتاح ونتولى المسؤولية عن كل مرحلة من التصميم إلى التشطيب النهائي.',
+    ],
+    'Мы осуществляем строительство как часть нашего полного цикла работ &quot;под ключ&quot;, что позволяет нам брать на себя ответственность за каждый этап процесса от архитектурного проектирования до финальной отделки.' => [
+      'en' => 'We build as part of our turnkey cycle, so we take responsibility for every stage — from architecture to the final finish.',
+      'ar' => 'ننفّذ البناء ضمن دورة التسليم المفتاح ونتولى المسؤولية عن كل مرحلة من التصميم إلى التشطيب النهائي.',
+    ],
+    'подробнее' => ['en' => 'details', 'ar' => 'المزيد'],
+    'Записаться' => ['en' => 'Book', 'ar' => 'احجز'],
+    'Разработка архитектурных решений по индивидуальному проекту и уникальных дизайн-проектов интерьера загородного дома с учетом всех пожеланий заказчика' => [
+      'en' => 'Custom architectural solutions and unique interior design projects for a country house, tailored to every wish of the client',
+      'ar' => 'حلول معمارية خاصة ومشاريع تصميم داخلي فريدة لمنزل ريفي وفق كل رغبات العميل',
+    ],
+    'Разработка архитектурных решений по индивидуальному проекту и уникальных design projects интерьера загородного дома с учетом всех пожеланий заказчика' => [
+      'en' => 'Custom architectural solutions and unique interior design projects for a country house, tailored to every wish of the client',
+      'ar' => 'حلول معمارية خاصة ومشاريع تصميم داخلي فريدة لمنزل ريفي وفق كل رغبات العميل',
+    ],
+    'сервис УК' => ['en' => 'management service', 'ar' => 'خدمة الإدارة'],
+    'Забота о доме начинается здесь — сервис УК в Береге Песочной' => [
+      'en' => 'Care for the home starts here — management service in Bereg Pesochnoy',
+      'ar' => 'العناية بالمنزل تبدأ هنا — خدمة الإدارة في بيريج بيسوتشنايا',
+    ],
+    'Единая служба для жителей Bereg Pesochnoy: уход за участком, электрика, сантехника и бытовые работы. Оставьте заявку — поможем с обслуживанием дома и территории.' => [
+      'en' => 'A single service for Bereg Pesochnoy residents: plot care, electrics, plumbing and household work. Leave a request — we will help with the house and grounds.',
+      'ar' => 'خدمة واحدة لسكان بيريج بيسوتشنايا: عناية بالقطعة وكهرباء وسباكة وأعمال منزلية. اتركوا طلباً — سنساعد في المنزل والأرض.',
+    ],
+    'Единая служба для жителей «Берега Песочной»: уход за участком, электрика, сантехника и бытовые работы. Оставьте заявку — поможем с обслуживанием дома и территории.' => [
+      'en' => 'A single service for Bereg Pesochnoy residents: plot care, electrics, plumbing and household work. Leave a request — we will help with the house and grounds.',
+      'ar' => 'خدمة واحدة لسكان بيريج بيسوتشنايا: عناية بالقطعة وكهرباء وسباكة وأعمال منزلية. اتركوا طلباً — سنساعد في المنزل والأرض.',
+    ],
+    'Единая служба для жителей Bereg Pesochnoy: уход за участком, электрика, сантехника и бытовые работы. Leave a request — поможем с обслуживанием дома и территории.' => [
+      'en' => 'A single service for Bereg Pesochnoy residents: plot care, electrics, plumbing and household work. Leave a request — we will help with the house and grounds.',
+      'ar' => 'خدمة واحدة لسكان بيريج بيسوتشنايا: عناية بالقطعة وكهرباء وسباكة وأعمال منزلية. اتركوا طلباً — سنساعد في المنزل والأرض.',
+    ],
+    'Поможем получить ипотеку от банков партнеров на покупку на дома с участком в Bereg Pesochnoy, работаем с эскроу' => [
+      'en' => 'We help you get a mortgage from partner banks for a house with a plot in Bereg Pesochnoy; we work with escrow',
+      'ar' => 'نساعد في الحصول على رهن من البنوك الشريكة لمنزل مع قطعة في بيريج بيسوتشنايا ونتعامل مع الإسكرو',
+    ],
+    'Поможем получить ипотеку от банков партнеров на покупку на дома с участком в Береге Песочной, работаем с эскроу' => [
+      'en' => 'We help you get a mortgage from partner banks for a house with a plot in Bereg Pesochnoy; we work with escrow',
+      'ar' => 'نساعد في الحصول على رهن من البنوك الشريكة لمنزل مع قطعة في بيريج بيسوتشنايا ونتعامل مع الإسكرو',
+    ],
+    'Поможем получить ипотеку от банков партнеров на покупку на дома с участком в «Береге Песочной», работаем с эскроу' => [
+      'en' => 'We help you get a mortgage from partner banks for a house with a plot in Bereg Pesochnoy; we work with escrow',
+      'ar' => 'نساعد في الحصول على رهن من البنوك الشريكة لمنزل مع قطعة في بيريج بيسوتشنايا ونتعامل مع الإسكرو',
     ],
     '1 этап' => ['en' => 'Stage 1', 'ar' => 'المرحلة 1'],
     '2 этап' => ['en' => 'Stage 2', 'ar' => 'المرحلة 2'],
