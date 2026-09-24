@@ -1843,5 +1843,6 @@ function bereg_i18n_dictionary(): array {
     ],
     'Продукция БЭНПАН™' => ['en' => 'BENPAN™ products', 'ar' => 'منتجات بنبان™'],
     '(МТСК) и' => ['en' => '(MTSK) and', 'ar' => '(MTSK) و'],
+    'land га,' => ['en' => 'land,', 'ar' => 'من الأرض،'],
   ];
 }
