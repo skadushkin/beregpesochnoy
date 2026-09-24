@@ -1781,7 +1781,55 @@ function bereg_i18n_dictionary(): array {
     'Возможность здорово провести время' => ['en' => 'A good way to spend time', 'ar' => 'فرصة لقضاء وقت ممتع'],
     '&quot;КП Берег Песочной - территория 28 га, 8 га парков, городские коммуникации на участке, первая очередь сдана и заселена, рядом водохранилище&quot;' => [
       'en' => '&quot;Bereg Pesochnoy — 28 ha of land, 8 ha of parks, city utilities on the plot, the first phase completed and occupied, a reservoir nearby&quot;',
-      'ar' => '&quot;بيريج بيسوتснаيا — 28 هكتاراً و8 هكتارات حدائق ومرافق المدينة على القطعة والمرحلة الأولى مسلَّمة ومسكونة وخزان قريب&quot;',
+      'ar' => '&quot;بيريج بيسوتشنايا — 28 هكتاراً و8 هكتارات حدائق ومرافق المدينة على القطعة والمرحلة الأولى مسلَّمة ومسكونة وخزان قريب&quot;',
     ],
+    '"КП Берег Песочной - территория 28 га, 8 га парков, городские коммуникации на участке, первая очередь сдана и заселена, рядом водохранилище"' => [
+      'en' => '"Bereg Pesochnoy — 28 ha of land, 8 ha of parks, city utilities on the plot, the first phase completed and occupied, a reservoir nearby"',
+      'ar' => '"بيريج بيسوتشنايا — 28 هكتاراً و8 هكتارات حدائق ومرافق المدينة على القطعة والمرحلة الأولى مسلَّمة ومسكونة وخزان قريب"',
+    ],
+    '&quot;КП Bereg Pesochnoy - территория 28 ha, 8 ha of parks, городские коммуникации на участке, первая phase is completed and occupied, рядом водохранилище&quot;' => [
+      'en' => '&quot;Bereg Pesochnoy — 28 ha of land, 8 ha of parks, city utilities on the plot, the first phase completed and occupied, a reservoir nearby&quot;',
+      'ar' => '&quot;بيريج بيسوتشنايا — 28 هكتاراً و8 هكتارات حدائق ومرافق المدينة على القطعة والمرحلة الأولى مسلَّمة ومسكونة وخزان قريب&quot;',
+    ],
+    'инновационная технология проектирования и производства железобетонных' => [
+      'en' => 'an innovative technology for designing and producing reinforced-concrete',
+      'ar' => 'تقنية مبتكرة لتصميم وإنتاج',
+    ],
+    'конструкций для малоэтажного строительства.' => [
+      'en' => 'structures for low-rise construction.',
+      'ar' => 'منشآت للمباني منخفضة الارتفاع.',
+    ],
+    'внесена в Московский территориальный строительный каталог' => [
+      'en' => 'is listed in the Moscow territorial construction catalog',
+      'ar' => 'مدرجة في كتالوج موسكو الإنشائي',
+    ],
+    'Преимущества<br><span>технологии БЭНПАН™</span>' => [
+      'en' => 'Advantages<br><span>of BENPAN™ technology</span>',
+      'ar' => 'مزايا<br><span>تقنية بنبان™</span>',
+    ],
+    '<span>испытания</span><br class="prem-br-tag"> строительных<br> конструкций' => [
+      'en' => '<span>tests</span><br class="prem-br-tag"> of building<br> structures',
+      'ar' => '<span>اختبارات</span><br class="prem-br-tag"> المنشآت<br> الإنشائية',
+    ],
+    '<span>отзывы</span><br>about the technology' => [
+      'en' => '<span>reviews</span><br>of the technology',
+      'ar' => '<span>آراء</span><br>عن التقنية',
+    ],
+    '<span>отзывы</span><br>о технологии' => [
+      'en' => '<span>reviews</span><br>of the technology',
+      'ar' => '<span>آراء</span><br>عن التقنية',
+    ],
+    'в ипотеку <span>от' => ['en' => 'mortgage <span>from', 'ar' => 'تمويل <span>من'],
+    'Дом ' => ['en' => 'House ', 'ar' => 'منزل '],
+    ' р</div>' => ['en' => ' RUB</div>', 'ar' => ' روبل</div>'],
+    'Безопасность' => ['en' => 'Security', 'ar' => 'الأمان'],
+    'коммуникации' => ['en' => 'utilities', 'ar' => 'المرافق'],
+    'Ландшафтный парк' => ['en' => 'Landscape park', 'ar' => 'الحديقة'],
+    'Преимущества' => ['en' => 'Advantages', 'ar' => 'المزايا'],
+    '8 га парков <br>в поселке' => ['en' => '8 ha of parks <br>in the village', 'ar' => '8 هكتارات حدائق <br>في القرية'],
+    '8 ha of parks <br>в village' => ['en' => '8 ha of parks <br>in the village', 'ar' => '8 هكتارات حدائق <br>في القرية'],
+    'городские коммуникации на участке' => ['en' => 'city utilities on the plot', 'ar' => 'مرافق المدينة على القطعة'],
+    'рядом водохранилище' => ['en' => 'a reservoir nearby', 'ar' => 'خزان قريب'],
+    'территория 28' => ['en' => '28 ha of land', 'ar' => '28 هكتاراً'],
   ];
 }
