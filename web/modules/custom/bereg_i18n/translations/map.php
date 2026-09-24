@@ -2768,6 +2768,14 @@ function bereg_i18n_dictionary(): array {
       'en' => 'Ceresit decorative facade plaster ',
       'ar' => 'لياسة Ceresit الزخرفية للواجهة ',
     ],
+    'Фасадная декоративная plaster Сeresit' => [
+      'en' => 'Ceresit decorative facade plaster',
+      'ar' => 'لياسة Ceresit الزخرفية للواجهة',
+    ],
+    'Фасадная декоративная' => [
+      'en' => 'Decorative facade',
+      'ar' => 'زخرفية للواجهة',
+    ],
     'whywe-item-mob-title">дом' => ['en' => 'whywe-item-mob-title">house', 'ar' => 'whywe-item-mob-title">منزل'],
     'whywe-item-mob-title">участок' => ['en' => 'whywe-item-mob-title">plot', 'ar' => 'whywe-item-mob-title">قطعة'],
     'Двухэтажный дом 10 на 10, второй свет, участок 6,05 соток в коттеджном поселке на Новорижском шоссе, Истринский район Московской области. Все коммуникации' => [
