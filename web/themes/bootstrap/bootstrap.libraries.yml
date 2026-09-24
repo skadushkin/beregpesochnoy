@@ -184,6 +184,8 @@ maintenance_page:
 messages:
   js:
     js/messages.js: {}
+  css:
+    component: {}
 
 navigation:
   version: VERSION
@@ -402,6 +404,8 @@ infinite-scroll-fix:
   version: 1.3.0
   js:
     js/infinite-scroll-fix.js: {}
+  css:
+    component: {}
   dependencies:
     - core/jquery
     - core/once
@@ -549,6 +553,8 @@ atelier_script:
   version: 1.x
   js:
     js/atelier_script.js: {}
+  css:
+    component: {}
 
 # Интерактивный генплан (node 746, lazy embed на главной)
 genplan_map:

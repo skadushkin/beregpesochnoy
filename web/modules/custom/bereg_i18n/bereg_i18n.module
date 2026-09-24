@@ -229,6 +229,79 @@ function bereg_i18n_menu_item_is_news(array $item): bool {
   return (bool) preg_match('#(^|/)(news|novosti)(/|$)#', $path);
 }
 
+/**
+ * Implements hook_library_info_alter().
+ */
+function bereg_i18n_library_info_alter(array &$libraries, $extension): void {
+  foreach ($libraries as $id => &$library) {
+    if (!is_array($library)) {
+      unset($libraries[$id]);
+      continue;
+    }
+    foreach (['js', 'css'] as $type) {
+      if (!isset($library[$type]) || $library[$type] === NULL) {
+        $library[$type] = [];
+      }
+    }
+    if (is_array($library['css'])) {
+      foreach ($library['css'] as $category => $files) {
+        if ($files === NULL) {
+          $library['css'][$category] = [];
+        }
+      }
+    }
+  }
+  unset($library);
+}
+
+/**
+ * Hide prices on EN/AR copies.
+ */
+function bereg_i18n_hide_prices_html(string $html): string {
+  $patterns = [
+    '~<div class="catalog-item-price">[\s\S]*?</div>\s*</div>~i',
+    '~<div class="product-card__price">[\s\S]*?</div>~i',
+    '~<div class="tooltip-price-block">[\s\S]*?</div>~i',
+    '~<div class="tooltip-price">[\s\S]*?</div>~i',
+    '~<div class="popular-project-price">[\s\S]*?</div>~i',
+    '~<div class="new-town-price(?:-ipoteka)?">[\s\S]*?</div>~i',
+    '~<div class="header-under-ipoteka-price">[\s\S]*?</div>~i',
+    '~<div class="product-item-data-price"[^>]*>[\s\S]*?</div>~i',
+    '~<div class="second-info-left-item-main-title">[\s\S]*?</div>~i',
+  ];
+  foreach ($patterns as $pattern) {
+    $replaced = preg_replace($pattern, '', $html);
+    if (is_string($replaced)) {
+      $html = $replaced;
+    }
+  }
+  $replaced = preg_replace(
+    '~\d{1,3}(?:[ \x{00A0}]\d{3})+(?:\s*(?:₽|&nbsp;₽|р(?:\b|/)|RUB|руб\.?))~u',
+    '',
+    $html
+  );
+  if (is_string($replaced)) {
+    $html = $replaced;
+  }
+  $replaced = preg_replace(
+    '~(?:в ипотеку|В ипотеку|mortgage from|ипотеку от)[^<\n]{0,80}~u',
+    '',
+    $html
+  );
+  if (is_string($replaced)) {
+    $html = $replaced;
+  }
+  $replaced = preg_replace(
+    '~"(?:price|house_price|lot_price|discount_price|monthly|ipoteka)"\s*:\s*"?[\d. ]+"?~u',
+    '"price":null',
+    $html
+  );
+  if (is_string($replaced)) {
+    $html = $replaced;
+  }
+  return $html;
+}
+
 function bereg_i18n_hide_news_html(string $html): string {
   // Use ~ as delimiter: a # delimiter breaks on [/?#"] and yields
   // "Unknown modifier '"'" on Views AJAX / load-more responses.

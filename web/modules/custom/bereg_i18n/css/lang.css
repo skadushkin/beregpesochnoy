@@ -24,3 +24,28 @@
   display: flex;
   align-items: center;
 }
+
+body.lang-en .catalog-item-price,
+body.lang-ar .catalog-item-price,
+body.lang-en .product-card__price,
+body.lang-ar .product-card__price,
+body.lang-en .tooltip-price,
+body.lang-ar .tooltip-price,
+body.lang-en .tooltip-price-block,
+body.lang-ar .tooltip-price-block,
+body.lang-en .popular-project-price,
+body.lang-ar .popular-project-price,
+body.lang-en .new-town-price,
+body.lang-ar .new-town-price,
+body.lang-en .new-town-price-ipoteka,
+body.lang-ar .new-town-price-ipoteka,
+body.lang-en .header-under-ipoteka-price,
+body.lang-ar .header-under-ipoteka-price,
+body.lang-en .product-item-data-price,
+body.lang-ar .product-item-data-price,
+body.lang-en .second-info-left-item-main-title,
+body.lang-ar .second-info-left-item-main-title,
+body.lang-en .cart-first-second-info-left-item:has(.second-info-left-item-main-title),
+body.lang-ar .cart-first-second-info-left-item:has(.second-info-left-item-main-title) {
+  display: none !important;
+}

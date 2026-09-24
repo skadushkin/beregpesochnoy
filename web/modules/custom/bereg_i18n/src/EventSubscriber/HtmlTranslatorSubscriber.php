@@ -39,6 +39,7 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
       return;
     }
     $translated = bereg_i18n_translate_html($content);
+    $translated = bereg_i18n_hide_prices_html($translated);
     if (!$isJson && !$isAjax) {
       $translated = bereg_i18n_hide_news_html($translated);
     }
