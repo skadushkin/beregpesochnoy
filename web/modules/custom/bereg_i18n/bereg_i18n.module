@@ -90,12 +90,24 @@ function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
     foreach ($map as $ru => $pair) {
       $to = $pair[$lang] ?? '';
       if ($to !== '' && $ru !== $to && str_contains($part, $ru)) {
-        $part = str_replace($ru, $to, $part);
+        $part = bereg_i18n_replace_phrase($part, $ru, $to);
       }
     }
     $out .= $part;
   }
   return $out;
+}
+
+function bereg_i18n_replace_phrase(string $haystack, string $ru, string $to): string {
+  if (str_contains($ru, '<') || mb_strlen($ru) >= 16) {
+    return str_replace($ru, $to, $haystack);
+  }
+  $replaced = preg_replace(
+    '/(?<![\p{L}])' . preg_quote($ru, '/') . '(?![\p{L}])/u',
+    $to,
+    $haystack
+  );
+  return is_string($replaced) ? $replaced : $haystack;
 }
 
 /**
