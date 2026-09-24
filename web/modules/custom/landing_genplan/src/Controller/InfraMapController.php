@@ -35,6 +35,7 @@ class InfraMapController extends ControllerBase {
       $data = [];
     }
     $response = new JsonResponse($data);
+    $response->setEncodingOptions($response->getEncodingOptions() | JSON_UNESCAPED_UNICODE);
     $response->headers->set('Cache-Control', 'private, no-store');
     return $response;
   }
