@@ -2146,6 +2146,11 @@ function bereg_i18n_dictionary(): array {
       'en' => 'A single service for Bereg Pesochnoy residents:',
       'ar' => 'خدمة واحدة لسكان بيريج بيسوتشنايا:',
     ],
+    'Единая служба для жителей' => [
+      'en' => 'A single service for residents of',
+      'ar' => 'خدمة واحدة لسكان',
+    ],
+    ' в Bereg Pesochnoy' => ['en' => ' in Bereg Pesochnoy', 'ar' => ' في بيريج بيسوتشنايا'],
     'уход за участком, электрика, сантехника и бытовые работы.' => [
       'en' => 'plot care, electrics, plumbing and household work.',
       'ar' => 'عناية بالقطعة وكهرباء وسباكة وأعمال منزلية.',
