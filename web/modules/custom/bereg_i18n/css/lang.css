@@ -17,8 +17,38 @@
   opacity: 1;
 }
 .header-menu .bereg-lang,
+.header-menu .bereg-lang a {
+  color: #fff;
+}
+.ipoteka-header .bereg-lang,
+.ipoteka-header .bereg-lang a {
+  color: #3c3c3b;
+}
+.ri-header .bereg-lang,
+.ri-header .bereg-lang a,
 .ri-header__right .bereg-lang {
   color: inherit;
+}
+body.page-node-838 #header-main-sec .bereg-lang a,
+body.page-node-840 #header-main-sec .bereg-lang a,
+body.page-node-850 #header-main-sec .bereg-lang a,
+body.page-node-851 #header-main-sec .bereg-lang a,
+body.page-node-853 #header-main-sec .bereg-lang a,
+body.page-node-854 #header-main-sec .bereg-lang a,
+body.page-node-875 #header-main-sec .bereg-lang a,
+body.page-node-954 #header-main-sec .bereg-lang a,
+body.page-node-955 #header-main-sec .bereg-lang a,
+body.page-node-956 #header-main-sec .bereg-lang a,
+body.page-node-968 #header-main-sec .bereg-lang a,
+body.page-node-969 #header-main-sec .bereg-lang a,
+body.page-node-978 #header-main-sec .bereg-lang a,
+body.page-node-980 #header-main-sec .bereg-lang a,
+body.page-node-1024 #header-main-sec .bereg-lang a,
+body.path-mfk #header-main-sec .bereg-lang a,
+body.page-view-mfk #header-main-sec .bereg-lang a,
+body.page-node-type-posadochnaya-ponton #header-main-sec .bereg-lang a,
+body.path-ferma #header-main-sec .bereg-lang a {
+  color: #fff;
 }
 .header-menu {
   display: flex;
