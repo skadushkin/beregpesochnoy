@@ -115,6 +115,12 @@ function bereg_i18n_preprocess_html(array &$variables): void {
     ];
   }
 
+  if (!empty($variables['head_title']) && is_array($variables['head_title'])) {
+    foreach ($variables['head_title'] as $key => $value) {
+      $variables['head_title'][$key] = bereg_i18n_translate_html((string) $value);
+    }
+  }
+
   $variables['#attached']['library'][] = 'bereg_i18n/switcher';
   $variables['#attached']['html_head'][] = [
     [
@@ -162,6 +168,30 @@ function bereg_i18n_preprocess_menu(array &$variables): void {
     return;
   }
   bereg_i18n_translate_menu_items($variables['items']);
+}
+
+/**
+ * Implements hook_metatags_alter().
+ */
+function bereg_i18n_metatags_alter(array &$metatags, array &$context): void {
+  if (bereg_i18n_lang() === 'ru') {
+    return;
+  }
+  foreach ($metatags as $key => $value) {
+    if (is_string($value)) {
+      $metatags[$key] = bereg_i18n_translate_html($value);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function bereg_i18n_preprocess_page_title(array &$variables): void {
+  if (bereg_i18n_lang() === 'ru' || empty($variables['title'])) {
+    return;
+  }
+  $variables['title'] = bereg_i18n_translate_html((string) $variables['title']);
 }
 
 function bereg_i18n_translate_menu_items(array &$items): void {
