@@ -64,7 +64,7 @@ function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
     return mb_strlen($b) <=> mb_strlen($a);
   });
 
-  $parts = preg_split('/(<(?:script|style)[^>]*>.*?<\/(?:script|style)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+  $parts = preg_split('/(<(?:style)[^>]*>.*?<\/(?:style)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
   if ($parts === FALSE) {
     return $html;
   }
