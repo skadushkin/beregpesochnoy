@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * @file
+ * Domain-based English and Arabic copies of Bereg Pesochnoy.
+ */
+
+/**
+ * Language code for the current host: ru, en, ar.
+ */
+function bereg_i18n_lang(): string {
+  static $lang;
+  if ($lang !== NULL) {
+    return $lang;
+  }
+  $host = strtolower(\Drupal::request()->getHost());
+  if ($host === 'en.beregpesochnoy.ru' || str_starts_with($host, 'en.')) {
+    $lang = 'en';
+    return $lang;
+  }
+  if ($host === 'ae.beregpesochnoy.ru' || str_starts_with($host, 'ae.')) {
+    $lang = 'ar';
+    return $lang;
+  }
+  $lang = 'ru';
+  return $lang;
+}
+
+/**
+ * @return array{ru: string, en: string, ar: string}
+ */
+function bereg_i18n_hosts(): array {
+  return [
+    'ru' => 'https://beregpesochnoy.ru',
+    'en' => 'https://en.beregpesochnoy.ru',
+    'ar' => 'https://ae.beregpesochnoy.ru',
+  ];
+}
+
+function bereg_i18n_translate_string(string $text, ?string $lang = NULL): string {
+  $lang = $lang ?? bereg_i18n_lang();
+  if ($lang === 'ru' || $text === '') {
+    return $text;
+  }
+  $map = &drupal_static(__FUNCTION__);
+  if ($map === NULL) {
+    require_once __DIR__ . '/translations/map.php';
+    $map = bereg_i18n_dictionary();
+  }
+  if (isset($map[$text][$lang])) {
+    return $map[$text][$lang];
+  }
+  return $text;
+}
+
+function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
+  $lang = $lang ?? bereg_i18n_lang();
+  if ($lang === 'ru' || $html === '') {
+    return $html;
+  }
+  require_once __DIR__ . '/translations/map.php';
+  $map = bereg_i18n_dictionary();
+  uksort($map, static function (string $a, string $b): int {
+    return mb_strlen($b) <=> mb_strlen($a);
+  });
+
+  $parts = preg_split('/(<(?:script|style)[^>]*>.*?<\/(?:script|style)>)/is', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+  if ($parts === FALSE) {
+    return $html;
+  }
+  $out = '';
+  foreach ($parts as $index => $part) {
+    if ($index % 2 === 1) {
+      $out .= $part;
+      continue;
+    }
+    foreach ($map as $ru => $pair) {
+      $to = $pair[$lang] ?? '';
+      if ($to !== '' && $ru !== $to && str_contains($part, $ru)) {
+        $part = str_replace($ru, $to, $part);
+      }
+    }
+    $out .= $part;
+  }
+  return $out;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function bereg_i18n_preprocess_html(array &$variables): void {
+  $lang = bereg_i18n_lang();
+  $variables['bereg_lang'] = $lang;
+  $variables['bereg_dir'] = $lang === 'ar' ? 'rtl' : 'ltr';
+  $variables['html_attributes']['lang'] = $lang === 'ar' ? 'ar' : $lang;
+  $variables['html_attributes']['dir'] = $variables['bereg_dir'];
+  $variables['attributes']['class'][] = 'lang-' . $lang;
+  if ($lang === 'ar') {
+    $variables['attributes']['class'][] = 'is-rtl';
+  }
+
+  $path = \Drupal::request()->getRequestUri() ?: '/';
+  $hosts = bereg_i18n_hosts();
+  $variables['bereg_lang_links'] = [];
+  foreach ($hosts as $code => $base) {
+    $variables['bereg_lang_links'][] = [
+      'code' => $code,
+      'label' => match ($code) {
+        'en' => 'EN',
+        'ar' => 'AR',
+        default => 'RU',
+      },
+      'url' => $base . $path,
+      'active' => $code === $lang,
+    ];
+  }
+
+  $variables['#attached']['library'][] = 'bereg_i18n/switcher';
+  $variables['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => [
+        'rel' => 'alternate',
+        'hreflang' => 'ru',
+        'href' => $hosts['ru'] . $path,
+      ],
+    ],
+    'bereg_hreflang_ru',
+  ];
+  $variables['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => [
+        'rel' => 'alternate',
+        'hreflang' => 'en',
+        'href' => $hosts['en'] . $path,
+      ],
+    ],
+    'bereg_hreflang_en',
+  ];
+  $variables['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => [
+        'rel' => 'alternate',
+        'hreflang' => 'ar',
+        'href' => $hosts['ar'] . $path,
+      ],
+    ],
+    'bereg_hreflang_ar',
+  ];
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function bereg_i18n_preprocess_menu(array &$variables): void {
+  if (bereg_i18n_lang() === 'ru' || empty($variables['items'])) {
+    return;
+  }
+  bereg_i18n_translate_menu_items($variables['items']);
+}
+
+function bereg_i18n_translate_menu_items(array &$items): void {
+  foreach ($items as &$item) {
+    if (!empty($item['title'])) {
+      $item['title'] = bereg_i18n_translate_string((string) $item['title']);
+    }
+    if (!empty($item['below']) && is_array($item['below'])) {
+      bereg_i18n_translate_menu_items($item['below']);
+    }
+  }
+}

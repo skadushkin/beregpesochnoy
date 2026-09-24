@@ -1,0 +1,31 @@
+html[dir="rtl"] body {
+  direction: rtl;
+}
+html[dir="rtl"] .ri-header__inner,
+html[dir="rtl"] .header-menu,
+html[dir="rtl"] .ri-header__nav,
+html[dir="rtl"] .ri-header__right,
+html[dir="rtl"] .ri-footer__grid,
+html[dir="rtl"] .footer {
+  direction: rtl;
+}
+html[dir="rtl"] .ri-header__nav {
+  flex-direction: row-reverse;
+}
+html[dir="rtl"] .first-crumbs,
+html[dir="rtl"] .townhouses-first-title,
+html[dir="rtl"] .first-title,
+html[dir="rtl"] .banner3-title,
+html[dir="rtl"] .popup-title {
+  text-align: right;
+}
+html[dir="rtl"] .townhouses-first-catalog,
+html[dir="rtl"] .posadochnaya-catalog-sidebar {
+  direction: rtl;
+}
+html[dir="rtl"] .ymaps-2-1-79-map,
+html[dir="rtl"] #image-container,
+html[dir="rtl"] .infra-map,
+html[dir="rtl"] .lv2-genplan {
+  direction: ltr;
+}

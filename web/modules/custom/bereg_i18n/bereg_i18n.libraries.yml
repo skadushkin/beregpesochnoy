@@ -1,0 +1,11 @@
+switcher:
+  version: 1.0.0
+  css:
+    theme:
+      css/lang.css: {}
+      css/rtl.css: { weight: 80 }
+  js:
+    js/switcher.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

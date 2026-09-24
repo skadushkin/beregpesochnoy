@@ -1,0 +1,5 @@
+name: 'Bereg i18n'
+type: module
+description: 'English and Arabic copies: en.beregpesochnoy.ru and ae.beregpesochnoy.ru'
+core_version_requirement: ^10
+package: Custom

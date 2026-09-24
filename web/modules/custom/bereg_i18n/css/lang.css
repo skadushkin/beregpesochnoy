@@ -1,0 +1,26 @@
+.bereg-lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-start: 12px;
+  flex-shrink: 0;
+}
+.bereg-lang a {
+  font: 600 12px/1 Onest, "Cera Pro", system-ui, sans-serif;
+  letter-spacing: .04em;
+  text-decoration: none;
+  color: inherit;
+  opacity: .55;
+  padding: 4px 0;
+}
+.bereg-lang a.is-active {
+  opacity: 1;
+}
+.header-menu .bereg-lang,
+.ri-header__right .bereg-lang {
+  color: inherit;
+}
+.header-menu {
+  display: flex;
+  align-items: center;
+}

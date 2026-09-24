@@ -1,0 +1,5 @@
+services:
+  bereg_i18n.html_translator:
+    class: Drupal\bereg_i18n\EventSubscriber\HtmlTranslatorSubscriber
+    tags:
+      - { name: event_subscriber }
