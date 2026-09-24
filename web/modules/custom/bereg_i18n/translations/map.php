@@ -2844,6 +2844,65 @@ function bereg_i18n_dictionary(): array {
       'ar' => 'كهرباء مركزية وغاز رئيسي ومأخذ ماء خاص وصرف مركزي وإنترنت ألياف',
     ],
 
+    'этапы<br class="cart-mob-br2"> строительства' => ['en' => 'construction<br class="cart-mob-br2"> stages', 'ar' => 'مراحل<br class="cart-mob-br2"> البناء'],
+    'этапы строительства' => ['en' => 'construction stages', 'ar' => 'مراحل البناء'],
+    'Для дома про проекту БП-197 на территории КП Берег Песочной подготовлена песчаная подушка и опалубка для заливки фундамента «монолитная плита».' => [
+      'en' => 'For house project BP-197 in Bereg Pesochnoy a sand bed and formwork were prepared for a monolithic-slab foundation.',
+      'ar' => 'لمشروع المنزل BP-197 في بيريج بيسوتشنايا أُعدّت وسادة رملية و قالب لأساس بلاطة монолитية.',
+    ],
+    'В дом заведены все коммуникации, сделана разводка электрических сетей, установлена инверторная система отопления и кондиционирования. Подключен газовый котел, смонтировано сантехническое оборудование.' => [
+      'en' => 'All utilities are connected: electrical wiring, an inverter heating and air-conditioning system, a gas boiler and sanitary equipment.',
+      'ar' => 'وُصلت كل المرافق: الكهرباء ونظام تدفئة وتكييف عاكس ومرجل غاز وتجهيزات صحية.',
+    ],
+    'Завершается внутренняя отделка дома. Проект разработан в архитектурном бюро БЭНПАН. Внутренний интерьер в стиле Барнхаус. Мебель из бука по индивидуальному заказу.' => [
+      'en' => 'Interior finishing is being completed. The project is by the BENPAN architecture studio. The interior is barnhouse style. Beech furniture made to order.',
+      'ar' => 'يكتمل التشطيب الداخلي. المشروع من مشغل بنبان. الداخل بطراز بارن هاوس. أثاث زان حسب الطلب.',
+    ],
+    'ноябрь' => ['en' => 'November', 'ar' => 'نوفمبر'],
+    'март' => ['en' => 'March', 'ar' => 'مارس'],
+    'апрель' => ['en' => 'April', 'ar' => 'أبريل'],
+    'май' => ['en' => 'May', 'ar' => 'مايو'],
+    'кредит и ипотека' => ['en' => 'credit and mortgage', 'ar' => 'ائتمان ورهن'],
+    'Этот дом можно построить оформив кредит или ипотеку. БЭНПАН является аккредитованным партнером (подрядчиком) в ДОМ.РФ, Росбанк, Сбербанк, ВТБ, Альфа по всем программа на строительство ИЖС. Окажем помощь в получении кредита на строительство индивидуального жилого дома (ИЖС) на имеющемся в собственности заемщика участке или в приобретении участка и строительстве на нем загородного дома по технологии БЭНПАН.' => [
+      'en' => 'This house can be built with a loan or mortgage. BENPAN is an accredited partner (contractor) of DOM.RF, Rosbank, Sberbank, VTB and Alfa for individual-house construction programmes. We help you get a loan to build a private house on your own plot, or to buy a plot and build a country house with BENPAN technology.',
+      'ar' => 'يمكن بناء هذا المنزل بقرض أو رهن. بنبان شريك معتمد لدى DOM.RF وروس بنك وسبربنك وفي تي بي وألفا لبرامج بناء المنازل الفردية. نساعد في الحصول على قرض لبناء منزل على أرضكم أو لشراء قطعة وبناء منزل بتقنية بنبان.',
+    ],
+    'как правильно оформить ипотеку' => ['en' => 'how to arrange a mortgage correctly', 'ar' => 'كيف ترتبون الرهن بشكل صحيح'],
+    'быстрое<br> принятие<br> решения' => ['en' => 'fast<br> decision<br> making', 'ar' => 'قرار<br> سريع'],
+    'Льготные <br>условия' => ['en' => 'Preferential <br>terms', 'ar' => 'شروط <br>ميسرة'],
+    'минимальный <br>пакет<br> документов' => ['en' => 'minimal <br>document<br> pack', 'ar' => 'حد أدنى <br>من<br> المستندات'],
+    'решение <br>сложных <br>ситуаций' => ['en' => 'solving <br>complex <br>cases', 'ar' => 'حل <br>الحالات <br>المعقدة'],
+    'предложим <br>индивидуальные <br>условия' => ['en' => 'we offer <br>individual <br>terms', 'ar' => 'نقترح <br>شروطاً <br>فردية'],
+    'Дом в ипотеку — это выгодно и удобно, не надо копить всю сумму целиком, можно быстро построиться и жить в собственном доме заплатив небольшой первоначальный взнос, равномерно и предсказуемо оплачивать кредит необременительными суммами. Ипотека 2025: Как правильно взять ипотечный кредит на строительство частного дома (ИЖС), как использовать при покупке материнский капитал. На эти и другие вопросы отвечает в интервью специалист по сопровождению ипотечных сделок нашей компании.' => [
+      'en' => 'A mortgage house is practical: you do not need the full sum at once, you can build quickly, move in after a modest down payment and repay the loan in even, predictable amounts. Mortgage 2025: how to take a loan for a private house and how to use maternity capital. Our mortgage specialist answers these questions in the interview.',
+      'ar' => 'الرهن عملي: لا تحتاجون المبلغ كاملاً دفعة واحدة، يمكن البناء سريعاً والسكن بعد دفعة أولى معقولة وسداد القرض بمبالغ منتظمة. رهن 2025: كيف تأخذون قرضاً لمنزل خاص وكيف تستخدمون رأس مال الأمومة. يجيب أخصائينا في المقابلة.',
+    ],
+    'Проект двухэтажного панельного дом 8 на 13 с 5 спальнями' => [
+      'en' => 'Two-storey panel house project 8×13 with 5 bedrooms',
+      'ar' => 'مشروع منزل لوحي من طابقين 8×13 مع 5 غرف نوم',
+    ],
+    'Индивидуальный жилой дом ПБ-200 выполнен в современном стиле, общей площадью 172,6 м2' => [
+      'en' => 'Custom house PB-200 in a contemporary style, total area 172.6 m²',
+      'ar' => 'منزل فردي PB-200 بطراز معاصر، المساحة 172.6 م²',
+    ],
+    'без учета террасы и крыльца' => ['en' => 'excluding the terrace and porch', 'ar' => 'دون احتساب التراس والمدخل'],
+    'Предназначен для семьи из 7-8 человек.' => ['en' => 'Designed for a family of 7–8 people.', 'ar' => 'مخصص لأسرة من 7–8 أشخاص.'],
+    'Дом двухэтажный, без подвала. На первом этаже располагаются' => [
+      'en' => 'A two-storey house without a basement. The first floor has',
+      'ar' => 'منزل من طابقين دون قبو. في الطابق الأول',
+    ],
+    'тамбур, холл, просторная кухня, совмещенная с зонами гостиной и столовой, 2' => [
+      'en' => 'an entrance hall, a hall, a spacious kitchen combined with living and dining areas, 2',
+      'ar' => 'دهليز وردهة ومطبخ فسيح مع معيشة وطعام، 2',
+    ],
+    'санузел и техническое помещение. На втором этаже уютно разместились 2' => [
+      'en' => 'a bathroom and a technical room. The second floor comfortably has 2',
+      'ar' => 'حمّام وغرفة تقنية. في الطابق الثاني 2',
+    ],
+    'каждая со своим санузлом, небольшая кладовая и мастер спальня, с гардеробной и санузлом.' => [
+      'en' => 'each with its own bathroom, a small pantry and a master bedroom with a walk-in closet and bathroom.',
+      'ar' => 'كل منها بحمّام خاص، ومخزن صغير وغرفة نوم رئيسية مع غرفة ملابس وحمّام.',
+    ],
     'На первом этаже расположены: тамбур, холл, санузел, котельная, кабинет, спальня и большая гостиная с кухней, из которой есть выход на большую террасу.' => [
       'en' => 'The first floor has an entrance hall, a hall, a bathroom, a boiler room, a study, a bedroom and a large kitchen-living room with access to a large terrace.',
       'ar' => 'في الطابق الأول: دهليز وردهة وحمّام وغرفة غلاية ومكتب وغرفة نوم ومعيشة-مطبخ كبيرة مع خروج إلى تراس كبير.',
