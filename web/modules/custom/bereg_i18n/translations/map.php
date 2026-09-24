@@ -2760,6 +2760,14 @@ function bereg_i18n_dictionary(): array {
       'en' => 'Ceresit decorative facade plaster keeps its look for a long time and gives the surface an elegant finish.',
       'ar' => 'لياسة Ceresit الزخرفية للواجهة تدوم طويلاً وتمنح السطح مظهراً أنيقاً.',
     ],
+    'гарантирует надежную стойкость покрытия в течении долгого времени и  придает поверхности изысканный и привлекательный вид.' => [
+      'en' => 'keeps its look for a long time and gives the surface an elegant finish.',
+      'ar' => 'تدوم طويلاً وتمنح السطح مظهراً أنيقاً.',
+    ],
+    'Фасадная декоративная plaster Сeresit, ' => [
+      'en' => 'Ceresit decorative facade plaster ',
+      'ar' => 'لياسة Ceresit الزخرفية للواجهة ',
+    ],
     'whywe-item-mob-title">дом' => ['en' => 'whywe-item-mob-title">house', 'ar' => 'whywe-item-mob-title">منزل'],
     'whywe-item-mob-title">участок' => ['en' => 'whywe-item-mob-title">plot', 'ar' => 'whywe-item-mob-title">قطعة'],
     'Двухэтажный дом 10 на 10, второй свет, участок 6,05 соток в коттеджном поселке на Новорижском шоссе, Истринский район Московской области. Все коммуникации' => [
