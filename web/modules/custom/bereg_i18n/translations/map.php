@@ -650,6 +650,13 @@ function bereg_i18n_dictionary(): array {
     ],
     '1 и 9 мая' => ['en' => '1 and 9 May', 'ar' => '1 و9 مايو'],
     'выходные дни' => ['en' => 'days off', 'ar' => 'أيام عطلة'],
+    'Проданные дома' => ['en' => 'Sold homes', 'ar' => 'منازل مباعة'],
+    'Проданные' => ['en' => 'Sold', 'ar' => 'مباع'],
+    'Готовые' => ['en' => 'Ready', 'ar' => 'جاهز'],
+    'Строящиеся' => ['en' => 'Under construction', 'ar' => 'قيد الإنشاء'],
+    'Участки с подрядом' => ['en' => 'Plots with construction', 'ar' => 'أراضٍ مع البناء'],
+    'Участки with construction' => ['en' => 'Plots with construction', 'ar' => 'أراضٍ مع البناء'],
+    'Участки' => ['en' => 'Plots', 'ar' => 'أراضٍ'],
     'Активный отдых в двух шагах от дома. В «Береге Песочной» спорт, природа и общение становятся частью каждого дня — для жизни, наполненной движением и яркими эмоциями.' => [
       'en' => 'Active leisure a few steps from home. At Bereg Pesochnoy sport, nature and meeting people become part of every day — a life full of movement and emotion.',
       'ar' => 'نشاط على بعد خطوات من المنزل. في بيريج بيسوتشنايا تصبح الرياضة والطبيعة والتواصل جزءاً من كل يوم.',
