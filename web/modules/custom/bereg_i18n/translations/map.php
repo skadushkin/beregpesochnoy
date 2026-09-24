@@ -2748,6 +2748,18 @@ function bereg_i18n_dictionary(): array {
       'en' => 'Ceresit decorative facade plaster keeps its look for a long time and gives the surface an elegant finish.',
       'ar' => 'لياسة Ceresit الزخرفية للواجهة تدوم طويلاً وتمنح السطح مظهراً أنيقاً.',
     ],
+    'Фасадная декоративная plaster Сeresit, гарантирует надежную стойкость покрытия в течении долгого времени и придает поверхности изысканный и привлекательный вид.' => [
+      'en' => 'Ceresit decorative facade plaster keeps its look for a long time and gives the surface an elegant finish.',
+      'ar' => 'لياسة Ceresit الزخرفية للواجهة تدوم طويلاً وتمنح السطح مظهراً أنيقاً.',
+    ],
+    'Двухэтажный дом 10 на 10, второй свет, участок 6,05 соток в коттеджном поселке на Новорижском шоссе, Истринский район Московской области. Все коммуникации' => [
+      'en' => 'Two-storey 10×10 house with a double-height space, 6.05 ares plot in the cottage village on Novorizhskoye highway, Istra district, Moscow Region. All utilities',
+      'ar' => 'منزل من طابقين 10×10 بإضاءة ثانية، قطعة 6.05 آرات في القرية على طريق نوفوريجسكوي، منطقة إسترا، ضواحي موسكو. كل المرافق',
+    ],
+    'Двухэтажный дом 10 на 10, второй свет, участок 6,05 ares in the cottage village на Новорижском шоссе, Истринский район Московской области. All utilities' => [
+      'en' => 'Two-storey 10×10 house with a double-height space, 6.05 ares plot in the cottage village on Novorizhskoye highway, Istra district, Moscow Region. All utilities',
+      'ar' => 'منزل من طابقين 10×10 بإضاءة ثانية، قطعة 6.05 آرات في القرية على طريق نوفوريجسكوي، منطقة إسترا، ضواحي موسكو. كل المرافق',
+    ],
     'Планкен' => ['en' => 'Planken', 'ar' => 'بلانكن'],
     'Планкен из лиственницы, создаст прекрасный внешний вид дома, а обработанная маслом поверхность обеспечит эффективную защиту древесины.' => [
       'en' => 'Larch planken gives the house a fine look, and the oiled surface protects the wood.',
