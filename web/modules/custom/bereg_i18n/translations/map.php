@@ -1439,5 +1439,29 @@ function bereg_i18n_dictionary(): array {
     'МФК — экскурсия' => ['en' => 'Multifunctional complex — tour', 'ar' => 'المجمّع — جولة'],
     'Лендинг Свежая зелень — экскурсия' => ['en' => 'Fresh greens landing — tour', 'ar' => 'صفحة الخضرة — جولة'],
     'Лендинг Свежая зелень — ферма' => ['en' => 'Fresh greens landing — farm', 'ar' => 'صفحة الخضرة — مزرعة'],
+    'Парк с прудом в КП «Берег Песочной» — ландшафтный парк 8 га' => [
+      'en' => 'A park with a pond in Bereg Pesochnoy — an 8 ha landscape park',
+      'ar' => 'حديقة مع بركة في بيريج بيسوتشنايا — حديقة مناظر 8 هكتارات',
+    ],
+    'Ландшафтный парк 8 га с прудом, прогулочными дорожками, детскими площадками и зонами отдыха в КП «Берег Песочной». Собственный парк для жителей поселка без выезда за его пределы.' => [
+      'en' => 'An 8 ha landscape park with a pond, walking paths, playgrounds and rest areas in Bereg Pesochnoy. A private park for village residents without leaving the grounds.',
+      'ar' => 'حديقة مناظر 8 هكتارات مع بركة ومسارات وملاعب ومناطق راحة في بيريج بيسوتشنايا. حديقة خاصة لسكان القرية دون مغادرة الأرض.',
+    ],
+    'Многофункциональный комплекс КП «Берег Песочной»: бассейн, детская комната, магазин, кафе, спортзал и другие сервисы для жизни за городом.' => [
+      'en' => 'The multifunctional complex of Bereg Pesochnoy: a pool, kids’ room, shop, cafe, gym and other services for country living.',
+      'ar' => 'المجمّع المتعدد الوظائف في بيريج بيسوتشنايا: مسبح وغرفة أطفال ومتجر ومقهى وصالة رياضة وخدمات أخرى للحياة الريفية.',
+    ],
+    'Салон и уход за собой в Берег Песочной. Экономьте время, которое раньше уходило на дорогу в город.' => [
+      'en' => 'A salon and self-care in Bereg Pesochnoy. Save the time you used to spend going to the city.',
+      'ar' => 'صالون وعناية في بيريج بيسوتشنايا. وفّروا الوقت الذي كان يضيع في الطريق إلى المدينة.',
+    ],
+    'Спорт зал' => ['en' => 'Gym', 'ar' => 'صالة رياضة'],
+    'Подробнее' => ['en' => 'Details', 'ar' => 'المزيد'],
+    'Все' => ['en' => 'All', 'ar' => 'الكل'],
+    '≈ 50 м' => ['en' => '≈ 50 m', 'ar' => '≈ 50 م'],
+    ' м²' => ['en' => ' m²', 'ar' => ' م²'],
+    'без выезда за его пределы' => ['en' => 'without leaving the grounds', 'ar' => 'دون مغادرة الأرض'],
+    'и другие сервисы для жизни за городом' => ['en' => 'and other services for country living', 'ar' => 'وخدمات أخرى للحياة الريفية'],
+    'и другие сервисы for living за городом' => ['en' => 'and other services for country living', 'ar' => 'وخدمات أخرى للحياة الريفية'],
   ];
 }
