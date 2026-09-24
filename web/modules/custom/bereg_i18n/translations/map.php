@@ -2029,5 +2029,19 @@ function bereg_i18n_dictionary(): array {
       'en' => 'The current version of the Policy is freely available on the internet at',
       'ar' => 'النسخة الحالية من السياسة متاحة على الإنترنت على',
     ],
+    'ждем вас в гости' => ['en' => 'we look forward to seeing you', 'ar' => 'ننتظر زيارتكم'],
+    'заказать обратный звонок' => ['en' => 'request a callback', 'ar' => 'اطلب معاودة الاتصال'],
+    'От ст.м. Тушинская рейсовым автобусом №372 или на маршрутном такси. <br>Время в пути 1 час 20 мин до ст. Истра' => [
+      'en' => 'From Tushinskaya metro take bus 372 or a minibus.<br>Travel time is 1 hour 20 minutes to Istra station',
+      'ar' => 'من مترو توشينسكايا بالحافلة 372 أو الميني باص.<br>مدة الطريق ساعة و20 دقيقة إلى محطة إسترا',
+    ],
+    'От ст.м. Тушинская рейсовым автобусом №372 или на маршрутном такси.' => [
+      'en' => 'From Tushinskaya metro take bus 372 or a minibus.',
+      'ar' => 'من مترو توشينسكايا بالحافلة 372 أو الميني باص.',
+    ],
+    'Время в пути 1 час 20 мин до ст. Истра' => [
+      'en' => 'Travel time is 1 hour 20 minutes to Istra station',
+      'ar' => 'مدة الطريق ساعة و20 دقيقة إلى محطة إسترا',
+    ],
   ];
 }
