@@ -1831,5 +1831,17 @@ function bereg_i18n_dictionary(): array {
     'городские коммуникации на участке' => ['en' => 'city utilities on the plot', 'ar' => 'مرافق المدينة على القطعة'],
     'рядом водохранилище' => ['en' => 'a reservoir nearby', 'ar' => 'خزان قريب'],
     'территория 28' => ['en' => '28 ha of land', 'ar' => '28 هكتاراً'],
+    'КП Bereg Pesochnoy' => ['en' => 'Bereg Pesochnoy', 'ar' => 'بيريج بيسوتشنايا'],
+    'КП «Берег Песочной»' => ['en' => 'Bereg Pesochnoy', 'ar' => 'بيريج بيسوتشنايا'],
+    ' land га' => ['en' => ' land', 'ar' => ' من الأرض'],
+    'городские utilities на участке' => ['en' => 'city utilities on the plot', 'ar' => 'مرافق المدينة على القطعة'],
+    'городские utilities' => ['en' => 'city utilities', 'ar' => 'مرافق المدينة'],
+    'на участке, первая' => ['en' => 'on the plot, the first', 'ar' => 'على القطعة، المرحلة الأولى'],
+    'первая phase is completed and occupied' => [
+      'en' => 'the first phase is completed and occupied',
+      'ar' => 'المرحلة الأولى مسلَّمة ومسكونة',
+    ],
+    'Продукция БЭНПАН™' => ['en' => 'BENPAN™ products', 'ar' => 'منتجات بنبان™'],
+    '(МТСК) и' => ['en' => '(MTSK) and', 'ar' => '(MTSK) و'],
   ];
 }
