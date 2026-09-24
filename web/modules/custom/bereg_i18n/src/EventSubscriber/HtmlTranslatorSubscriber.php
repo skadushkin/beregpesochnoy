@@ -28,6 +28,9 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
     $contentType = (string) $response->headers->get('Content-Type', '');
     $isHtml = $contentType === '' || str_contains($contentType, 'html') || str_contains($contentType, 'text/');
     $isJson = str_contains($contentType, 'json');
+    $isAjax = str_contains($contentType, 'ajax')
+      || str_contains($event->getRequest()->getPathInfo(), '/views/ajax')
+      || $event->getRequest()->isXmlHttpRequest();
     if ($contentType !== '' && !$isHtml && !$isJson) {
       return;
     }
@@ -36,7 +39,7 @@ class HtmlTranslatorSubscriber implements EventSubscriberInterface {
       return;
     }
     $translated = bereg_i18n_translate_html($content);
-    if (!$isJson) {
+    if (!$isJson && !$isAjax) {
       $translated = bereg_i18n_hide_news_html($translated);
     }
     $response->setContent($translated);

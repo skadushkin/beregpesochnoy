@@ -230,13 +230,18 @@ function bereg_i18n_menu_item_is_news(array $item): bool {
 }
 
 function bereg_i18n_hide_news_html(string $html): string {
+  // Use ~ as delimiter: a # delimiter breaks on [/?#"] and yields
+  // "Unknown modifier '"'" on Views AJAX / load-more responses.
   $patterns = [
-    '#<div class="footer-col-item">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>\s*</div>#is',
-    '#<div class="tap-menu-top-item[^"]*">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>\s*</div>#is',
-    '#<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?#"][^"]*)?"[^>]*>.*?</a>#is',
+    '~<div class="footer-col-item">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?\#"][^"]*)?"[^>]*>.*?</a>\s*</div>~is',
+    '~<div class="tap-menu-top-item[^"]*">\s*<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?\#"][^"]*)?"[^>]*>.*?</a>\s*</div>~is',
+    '~<a[^>]+href="[^"]*(?:/news|/novosti)(?:[/?\#"][^"]*)?"[^>]*>.*?</a>~is',
   ];
   foreach ($patterns as $pattern) {
-    $html = preg_replace($pattern, '', $html) ?? $html;
+    $replaced = preg_replace($pattern, '', $html);
+    if (is_string($replaced)) {
+      $html = $replaced;
+    }
   }
   return $html;
 }

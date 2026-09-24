@@ -1087,6 +1087,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectElement = document.getElementById('edit-type');
     const filterContainer = document.getElementById('dynamic-filter');
     const form = document.getElementById('views-exposed-form-gotovye-doma-block-1');
+    const langMatch = (document.documentElement.getAttribute('lang') || '')
+      || ((document.body.className.match(/lang-(\w+)/) || [])[1] || 'ru');
+    const lang = String(langMatch).slice(0, 2);
+    const filterLabels = {
+        ru: { All: 'Все дома', 2: 'Готовые дома', 3: 'Строящиеся дома', 4: 'Участки с подрядом' },
+        en: { All: 'All homes', 2: 'Ready homes', 3: 'Homes under construction', 4: 'Plots with construction' },
+        ar: { All: 'كل المنازل', 2: 'منازل جاهزة', 3: 'منازل قيد الإنشاء', 4: 'قطع مع البناء' },
+    };
+    const labels = filterLabels[lang] || filterLabels.ru;
 
     // Создаем элементы списка <li> из опций <select>
     Array.from(selectElement.options).forEach(option => {
@@ -1097,14 +1106,18 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Преобразуем текст вариантов
         const text = option.text.trim();
-        if (text.includes('Участок')) {
+        if (text.includes('Участок') || text === 'Plot' || option.value === '4') {
             return;
         }
-        anchor.textContent = text
-            .replaceAll('Участок', 'Участки с подрядом')
-            .replaceAll('Готовый дом', 'Готовые дома')
-            .replaceAll('Строящийся дом', 'Строящиеся дома')
-            .replaceAll('- Любой -', 'Все дома');
+        anchor.textContent = labels[option.value] || text
+            .replaceAll('Участок', labels[4] || 'Участки с подрядом')
+            .replaceAll('Plot', labels[4] || 'Plots with construction')
+            .replaceAll('Готовый дом', labels[2] || 'Готовые дома')
+            .replaceAll('Готовые дома', labels[2] || 'Готовые дома')
+            .replaceAll('Строящийся дом', labels[3] || 'Строящиеся дома')
+            .replaceAll('Строящиеся дома', labels[3] || 'Строящиеся дома')
+            .replaceAll('- Любой -', labels.All || 'Все дома')
+            .replaceAll('- Any -', labels.All || 'All homes');
     
         anchor.classList.add('filter-option');
         anchor.dataset.value = option.value;
