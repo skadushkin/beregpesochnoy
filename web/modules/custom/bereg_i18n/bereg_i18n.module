@@ -169,17 +169,19 @@ function bereg_i18n_preprocess_html(array &$variables): void {
   $path = \Drupal::request()->getRequestUri() ?: '/';
   $hosts = bereg_i18n_hosts();
   $variables['bereg_lang_links'] = [];
-  foreach ($hosts as $code => $base) {
-    $variables['bereg_lang_links'][] = [
-      'code' => $code,
-      'label' => match ($code) {
-        'en' => 'EN',
-        'ar' => 'AR',
-        default => 'RU',
-      },
-      'url' => $base . $path,
-      'active' => $code === $lang,
-    ];
+  if ($lang !== 'ru') {
+    foreach ($hosts as $code => $base) {
+      $variables['bereg_lang_links'][] = [
+        'code' => $code,
+        'label' => match ($code) {
+          'en' => 'EN',
+          'ar' => 'AR',
+          default => 'RU',
+        },
+        'url' => $base . $path,
+        'active' => $code === $lang,
+      ];
+    }
   }
 
   if (!empty($variables['head_title']) && is_array($variables['head_title'])) {
@@ -188,7 +190,9 @@ function bereg_i18n_preprocess_html(array &$variables): void {
     }
   }
 
-  $variables['#attached']['library'][] = 'bereg_i18n/switcher';
+  if ($lang !== 'ru') {
+    $variables['#attached']['library'][] = 'bereg_i18n/switcher';
+  }
   $variables['#attached']['html_head'][] = [
     [
       '#type' => 'html_tag',
