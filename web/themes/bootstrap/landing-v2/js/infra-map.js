@@ -112,6 +112,9 @@
         var map = null;
         var collection = null;
         var placemarks = {};
+        var radiusCircle = null;
+        var radiusLine = null;
+        var radiusLabel = null;
 
         function setStatus(text) {
           if (statusEl) {
@@ -209,6 +212,71 @@
           if (infoEl) {
             infoEl.hidden = true;
           }
+          clearRadius();
+        }
+
+        function clearRadius() {
+          if (!map) {
+            return;
+          }
+          if (radiusCircle) {
+            map.geoObjects.remove(radiusCircle);
+            radiusCircle = null;
+          }
+          if (radiusLine) {
+            map.geoObjects.remove(radiusLine);
+            radiusLine = null;
+          }
+          if (radiusLabel) {
+            map.geoObjects.remove(radiusLabel);
+            radiusLabel = null;
+          }
+        }
+
+        function showRadius(point) {
+          clearRadius();
+          var origin = villageOf(data);
+          if (!map || !origin || !point || isVillage(point)) {
+            return;
+          }
+          var km = haversineKm(origin.coords, point.coords);
+          if (km == null || km <= 0) {
+            return;
+          }
+          var label = formatDistance(km);
+          radiusCircle = new ymaps.Circle([origin.coords, km * 1000], {
+            hintContent: label
+          }, {
+            fillColor: '#91735722',
+            strokeColor: '#917357',
+            strokeWidth: 2,
+            strokeStyle: 'dash',
+            zIndex: 80,
+            interactivityModel: 'default#silent'
+          });
+          radiusLine = new ymaps.Polyline([origin.coords, point.coords], {
+            hintContent: label
+          }, {
+            strokeColor: '#917357',
+            strokeWidth: 3,
+            strokeStyle: '1 8',
+            zIndex: 90,
+            interactivityModel: 'default#silent'
+          });
+          radiusLabel = new ymaps.Placemark([
+            (origin.coords[0] + point.coords[0]) / 2,
+            (origin.coords[1] + point.coords[1]) / 2
+          ], {
+            iconCaption: label
+          }, {
+            preset: 'islands#brownDotIcon',
+            iconCaptionMaxWidth: 180,
+            zIndex: 100,
+            interactivityModel: 'default#silent'
+          });
+          map.geoObjects.add(radiusCircle);
+          map.geoObjects.add(radiusLine);
+          map.geoObjects.add(radiusLabel);
         }
 
         function showInfo(point) {
@@ -236,6 +304,7 @@
             infoText.hidden = !point.text;
           }
           infoEl.hidden = false;
+          showRadius(point);
         }
 
         function openPoint(id) {
@@ -245,16 +314,85 @@
           if (!point) {
             return;
           }
-          ignoreMapClick = true;
-          window.setTimeout(function () {
-            ignoreMapClick = false;
-          }, 50);
           if (editing) {
             selectPoint(id, false);
           }
           else {
             showInfo(point);
           }
+        }
+
+        function pointsNear(coords, pxLimit) {
+          if (!map || !coords) {
+            return [];
+          }
+          var zoom = map.getZoom();
+          var proj = map.options.get('projection');
+          var clickPx = proj.toGlobalPixels(coords, zoom);
+          var found = [];
+          visiblePoints().forEach(function (point) {
+            var px = proj.toGlobalPixels(point.coords, zoom);
+            var dist = Math.sqrt(
+              Math.pow(px[0] - clickPx[0], 2) + Math.pow(px[1] - clickPx[1], 2)
+            );
+            if (dist <= pxLimit) {
+              found.push({ point: point, dist: dist });
+            }
+          });
+          found.sort(function (a, b) {
+            return a.dist - b.dist;
+          });
+          return found;
+        }
+
+        function zoomToPoints(points) {
+          if (!map || !points.length) {
+            return;
+          }
+          if (points.length === 1) {
+            openPoint(points[0].id);
+            return;
+          }
+          var oldZoom = map.getZoom();
+          var first = points[0].coords;
+          var bounds = [[first[0], first[1]], [first[0], first[1]]];
+          points.forEach(function (point) {
+            bounds[0][0] = Math.min(bounds[0][0], point.coords[0]);
+            bounds[0][1] = Math.min(bounds[0][1], point.coords[1]);
+            bounds[1][0] = Math.max(bounds[1][0], point.coords[0]);
+            bounds[1][1] = Math.max(bounds[1][1], point.coords[1]);
+          });
+          map.setBounds(bounds, { checkZoomRange: true, zoomMargin: [80, 80, 80, 80] });
+          window.setTimeout(function () {
+            if (map.getZoom() <= oldZoom) {
+              openPoint(points[0].id);
+            }
+          }, 350);
+        }
+
+        function tryAddEditorPoint(coords) {
+          var title = editTitle ? editTitle.value.trim() : '';
+          if (!title) {
+            setStatus('Сначала введите название точки.');
+            if (editTitle) {
+              editTitle.focus();
+            }
+            return;
+          }
+          var catId = editCat ? editCat.value : (data.categories[0] && data.categories[0].id);
+          var point = {
+            id: uid(),
+            category: catId,
+            title: title,
+            text: editText ? editText.value.trim() : '',
+            coords: coords,
+            pinned: false
+          };
+          data.points.push(point);
+          selectedId = point.id;
+          refreshPins();
+          renderList();
+          setStatus('Точка добавлена. Не забудьте сохранить JSON.');
         }
 
         function pinLayout() {
@@ -375,39 +513,7 @@
         }
 
         function bindEditor() {
-          if (!canEdit || !map) {
-            return;
-          }
-          map.events.add('click', function (event) {
-            var coords = event.get('coords');
-            window.setTimeout(function () {
-              if (ignoreMapClick || !editing) {
-                return;
-              }
-              var title = editTitle ? editTitle.value.trim() : '';
-              if (!title) {
-                setStatus('Сначала введите название точки.');
-                if (editTitle) {
-                  editTitle.focus();
-                }
-                return;
-              }
-              var catId = editCat ? editCat.value : (data.categories[0] && data.categories[0].id);
-              var point = {
-                id: uid(),
-                category: catId,
-                title: title,
-                text: editText ? editText.value.trim() : '',
-                coords: coords,
-                pinned: false
-              };
-              data.points.push(point);
-              selectedId = point.id;
-              refreshPins();
-              renderList();
-              setStatus('Точка добавлена. Не забудьте сохранить JSON.');
-            }, 0);
-          });
+          return;
         }
 
         function applyFormToSelected() {
@@ -523,25 +629,29 @@
             position: { right: 24, top: 80 }
           });
           collection = new ymaps.GeoObjectCollection();
-          collection.events.add('click', function (event) {
-            var target = event.get('target');
-            var id = target && target.properties ? target.properties.get('pointId') : '';
-            if (id) {
-              event.preventDefault();
-              openPoint(id);
-            }
-          });
           map.geoObjects.add(collection);
-          map.events.add('click', function () {
-            window.setTimeout(function () {
-              if (ignoreMapClick) {
-                ignoreMapClick = false;
+          map.events.add('click', function (event) {
+            var coords = event.get('coords');
+            var near = pointsNear(coords, 56);
+            if (editing) {
+              if (near.length && near[0].dist <= 32) {
+                openPoint(near[0].point.id);
                 return;
               }
-              if (!editing) {
-                hideInfo();
-              }
-            }, 0);
+              tryAddEditorPoint(coords);
+              return;
+            }
+            if (!near.length) {
+              hideInfo();
+              return;
+            }
+            if (near.length > 1 && near[1].dist < 40) {
+              zoomToPoints(near.map(function (item) {
+                return item.point;
+              }));
+              return;
+            }
+            openPoint(near[0].point.id);
           });
           refreshPins();
           bindEditor();
