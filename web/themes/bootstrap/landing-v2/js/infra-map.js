@@ -238,22 +238,89 @@
           infoEl.hidden = false;
         }
 
+        function openPoint(id) {
+          var point = (data.points || []).find(function (item) {
+            return item.id === id;
+          });
+          if (!point) {
+            return;
+          }
+          ignoreMapClick = true;
+          window.setTimeout(function () {
+            ignoreMapClick = false;
+          }, 50);
+          if (editing) {
+            selectPoint(id, false);
+          }
+          else {
+            showInfo(point);
+          }
+        }
+
+        function pinLayout() {
+          if (!window.ymaps) {
+            return null;
+          }
+          if (!pinLayout._class) {
+            pinLayout._class = ymaps.templateLayoutFactory.createClass(
+              '<div class="infra-map-pin{% if properties.village %} infra-map-pin--village{% endif %}{% if properties.selected %} is-selected{% endif %}">' +
+                '<div class="infra-map-pin__body" style="background:{{ properties.pinColor }};">' +
+                  '<img src="{{ properties.pinIcon }}" alt="">' +
+                '</div>' +
+                '<div class="infra-map-pin__tail" style="background:{{ properties.pinTail }};"></div>' +
+              '</div>',
+              {
+                build: function () {
+                  pinLayout._class.superclass.build.call(this);
+                  this._el = this.getParentElement()
+                    ? this.getParentElement().querySelector('.infra-map-pin')
+                    : null;
+                  this._onPin = function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    var id = this.getData().properties.get('pointId');
+                    openPoint(id);
+                  }.bind(this);
+                  if (this._el) {
+                    this._el.addEventListener('click', this._onPin);
+                    this._el.addEventListener('touchend', this._onPin);
+                  }
+                },
+                clear: function () {
+                  if (this._el && this._onPin) {
+                    this._el.removeEventListener('click', this._onPin);
+                    this._el.removeEventListener('touchend', this._onPin);
+                  }
+                  pinLayout._class.superclass.clear.call(this);
+                }
+              }
+            );
+          }
+          return pinLayout._class;
+        }
+
         function refreshPins() {
           if (!collection || !window.ymaps) {
             return;
           }
           collection.removeAll();
           placemarks = {};
+          var layout = pinLayout();
           visiblePoints().forEach(function (point) {
             var cat = catById(data, point.category);
             var village = isVillage(point);
-            var layout = ymaps.templateLayoutFactory.createClass(pinHtml(point, cat, point.id === selectedId));
             var size = village ? 64 : 52;
             var half = village ? 28 : 22;
             var placemark = new ymaps.Placemark(point.coords, {
               hintContent: point.title,
-              balloonContentHeader: point.title,
-              balloonContentBody: (cat ? cat.label : '') + (point.text ? '<br>' + point.text : '')
+              pointId: point.id,
+              village: village,
+              selected: point.id === selectedId,
+              pinColor: village ? '#FFFBF3' : (cat ? cat.color : '#917357'),
+              pinTail: village ? '#917357' : (cat ? cat.color : '#917357'),
+              pinIcon: village
+                ? '/sites/default/files/img/logo_mob2.svg'
+                : (cat ? cat.icon : '')
             }, {
               iconLayout: layout,
               iconOffset: [-half, -size],
@@ -263,15 +330,9 @@
               },
               hideIconOnBalloonOpen: false,
               hasBalloon: false,
-              cursor: 'pointer'
-            });
-            placemark.events.add('click', function (event) {
-              ignoreMapClick = true;
-              event.preventDefault();
-              if (editing) {
-                selectPoint(point.id, false);
-              }
-              showInfo(point);
+              cursor: 'pointer',
+              zIndex: village ? 700 : 650,
+              zIndexHover: 720
             });
             collection.add(placemark);
             placemarks[point.id] = placemark;
@@ -462,6 +523,14 @@
             position: { right: 24, top: 80 }
           });
           collection = new ymaps.GeoObjectCollection();
+          collection.events.add('click', function (event) {
+            var target = event.get('target');
+            var id = target && target.properties ? target.properties.get('pointId') : '';
+            if (id) {
+              event.preventDefault();
+              openPoint(id);
+            }
+          });
           map.geoObjects.add(collection);
           map.events.add('click', function () {
             window.setTimeout(function () {
