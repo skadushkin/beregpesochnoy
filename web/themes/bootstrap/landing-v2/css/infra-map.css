@@ -290,6 +290,87 @@ body.infra-map-fs-open {
   width: 44px;
   height: 52px;
   cursor: pointer;
+  pointer-events: auto;
+}
+
+.infra-map-pin--village {
+  width: 56px;
+  height: 64px;
+}
+
+.infra-map-pin--village .infra-map-pin__body {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  border: 2px solid #917357;
+  background: #fffbf3;
+}
+
+.infra-map-pin--village .infra-map-pin__body img {
+  width: 38px;
+  height: 22px;
+}
+
+.infra-map__info {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  z-index: 8;
+  width: min(320px, calc(100% - 48px));
+  padding: 18px 20px 16px;
+  border-radius: 16px;
+  background: #fffbf3;
+  color: #3c3c3b;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  font-family: "Cera Pro", sans-serif;
+}
+
+.infra-map__info[hidden] {
+  display: none;
+}
+
+.infra-map__info-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #765e50;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.infra-map__info-kicker {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #917357;
+  margin-bottom: 4px;
+}
+
+.infra-map__info-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding-right: 24px;
+}
+
+.infra-map__info-dist {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3c3c3b;
+}
+
+.infra-map__info-text {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #765e50;
 }
 
 .infra-map-pin.is-selected .infra-map-pin__body {
@@ -365,13 +446,15 @@ body.infra-map-fs-open {
   font-weight: 500;
 }
 
-.infra-map__edit-title input {
+.infra-map__edit-title input,
+.infra-map__edit-title textarea {
   width: 100%;
   padding: 6px 8px;
   border-radius: 8px;
   border: 1px solid #d8c7b4;
   background: #fff;
   font: inherit;
+  resize: vertical;
 }
 
 .infra-map__edit-hint {
@@ -519,6 +602,13 @@ body.infra-map-fs-open {
 
   .infra-map__legend-list {
     grid-template-columns: 1fr;
+  }
+
+  .infra-map__info {
+    left: 12px;
+    top: 12px;
+    width: min(280px, calc(100% - 24px));
+    padding: 14px 16px 12px;
   }
 
   .infra-map__editor {

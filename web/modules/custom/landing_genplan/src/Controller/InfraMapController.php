@@ -84,6 +84,7 @@ class InfraMapController extends ControllerBase {
         'id' => preg_replace('/[^a-z0-9_-]/i', '', (string) ($point['id'] ?? uniqid('p'))),
         'category' => preg_replace('/[^a-z0-9_-]/i', '', (string) ($point['category'] ?? '')),
         'title' => mb_substr(trim(strip_tags((string) ($point['title'] ?? ''))), 0, 120),
+        'text' => mb_substr(trim(strip_tags((string) ($point['text'] ?? ''))), 0, 400),
         'coords' => $coords,
         'pinned' => !empty($point['pinned']),
       ];
@@ -116,7 +117,8 @@ class InfraMapController extends ControllerBase {
   }
 
   private function sanitizeIcon(string $icon): string {
-    if (str_starts_with($icon, '/themes/bootstrap/landing-v2/img/')) {
+    if (str_starts_with($icon, '/themes/bootstrap/landing-v2/img/')
+      || str_starts_with($icon, '/sites/default/files/img/logo')) {
       return $icon;
     }
     return '/themes/bootstrap/landing-v2/img/genplan-v2/infra-park.svg';

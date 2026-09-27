@@ -19,6 +19,48 @@
     }) || null;
   }
 
+  function filterCats(data) {
+    return (data.categories || []).filter(function (cat) {
+      return cat.id !== 'village';
+    });
+  }
+
+  function villageOf(data) {
+    return (data.points || []).find(function (point) {
+      return point.id === 'village' || point.category === 'village';
+    }) || (data.points || []).find(function (point) {
+      return point.pinned;
+    }) || null;
+  }
+
+  function haversineKm(from, to) {
+    if (!from || !to || from.length < 2 || to.length < 2) {
+      return null;
+    }
+    var toRad = Math.PI / 180;
+    var dLat = (to[0] - from[0]) * toRad;
+    var dLon = (to[1] - from[1]) * toRad;
+    var lat1 = from[0] * toRad;
+    var lat2 = to[0] * toRad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+      + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+
+  function formatDistance(km) {
+    if (km == null || Number.isNaN(km)) {
+      return '';
+    }
+    if (km < 1) {
+      return Math.round(km * 1000) + ' м от посёлка';
+    }
+    return km.toFixed(1).replace('.', ',') + ' км от посёлка';
+  }
+
+  function isVillage(point) {
+    return !!(point && (point.id === 'village' || point.category === 'village'));
+  }
+
   function loadYmaps(apiKey) {
     return new Promise(function (resolve, reject) {
       if (window.ymaps) {
@@ -54,6 +96,13 @@
         var statusEl = root.querySelector('[data-infra-status]');
         var stageEl = root.querySelector('[data-infra-stage]');
         var fsBtn = root.querySelector('[data-infra-fs]');
+        var infoEl = root.querySelector('[data-infra-info]');
+        var infoTitle = root.querySelector('[data-infra-info-title]');
+        var infoCat = root.querySelector('[data-infra-info-cat]');
+        var infoDist = root.querySelector('[data-infra-info-dist]');
+        var infoText = root.querySelector('[data-infra-info-text]');
+        var infoClose = root.querySelector('[data-infra-info-close]');
+        var editText = root.querySelector('[data-infra-edit-text]');
         var activeCat = 'all';
         var infraOn = true;
         var editing = false;
@@ -83,9 +132,10 @@
         }
 
         function renderFilters() {
+          var cats = filterCats(data);
           if (catsEl) {
             catsEl.innerHTML = '';
-            data.categories.forEach(function (cat) {
+            cats.forEach(function (cat) {
               var btn = document.createElement('button');
               btn.type = 'button';
               btn.className = 'infra-map__cat' + (activeCat === cat.id ? ' is-active' : '');
@@ -102,7 +152,8 @@
             allBtn.classList.toggle('is-active', activeCat === 'all');
           }
           if (legendEl) {
-            legendEl.innerHTML = data.categories.map(function (cat) {
+            var legendCats = (data.categories || []).slice();
+            legendEl.innerHTML = legendCats.map(function (cat) {
               return '<div class="infra-map__legend-item"><span class="infra-map__legend-dot" style="background:' + esc(cat.color) + '"><img src="' + esc(cat.icon) + '" alt=""></span>' + esc(cat.label) + '</div>';
             }).join('');
           }
@@ -140,13 +191,51 @@
           });
         }
 
-        function pinHtml(cat, selected) {
-          var color = cat ? cat.color : '#917357';
-          var icon = cat ? cat.icon : '';
-          return '<div class="infra-map-pin' + (selected ? ' is-selected' : '') + '">' +
-            '<div class="infra-map-pin__body" style="background:' + color + '"><img src="' + icon + '" alt=""></div>' +
-            '<div class="infra-map-pin__tail" style="background:' + color + '"></div>' +
+        function pinHtml(point, cat, selected) {
+          var village = isVillage(point);
+          var color = village ? '#FFFBF3' : (cat ? cat.color : '#917357');
+          var tail = village ? '#917357' : color;
+          var icon = village
+            ? '/sites/default/files/img/logo_mob2.svg'
+            : (cat ? cat.icon : '');
+          var extra = village ? ' infra-map-pin--village' : '';
+          return '<div class="infra-map-pin' + extra + (selected ? ' is-selected' : '') + '">' +
+            '<div class="infra-map-pin__body" style="background:' + color + '"><img src="' + icon + '" alt="" onerror="this.src=\'/themes/bootstrap/landing-v2/img/infra-map/icon-village.svg\'"></div>' +
+            '<div class="infra-map-pin__tail" style="background:' + tail + '"></div>' +
             '</div>';
+        }
+
+        function hideInfo() {
+          if (infoEl) {
+            infoEl.hidden = true;
+          }
+        }
+
+        function showInfo(point) {
+          if (!infoEl || !point) {
+            return;
+          }
+          var cat = catById(data, point.category);
+          var origin = villageOf(data);
+          var dist = '';
+          if (origin && !isVillage(point)) {
+            dist = formatDistance(haversineKm(origin.coords, point.coords));
+          }
+          if (infoCat) {
+            infoCat.textContent = isVillage(point) ? 'Посёлок' : (cat ? cat.label : '');
+          }
+          if (infoTitle) {
+            infoTitle.textContent = point.title || '';
+          }
+          if (infoDist) {
+            infoDist.textContent = dist;
+            infoDist.hidden = !dist;
+          }
+          if (infoText) {
+            infoText.textContent = point.text || '';
+            infoText.hidden = !point.text;
+          }
+          infoEl.hidden = false;
         }
 
         function refreshPins() {
@@ -157,26 +246,32 @@
           placemarks = {};
           visiblePoints().forEach(function (point) {
             var cat = catById(data, point.category);
-            var layout = ymaps.templateLayoutFactory.createClass(pinHtml(cat, point.id === selectedId));
+            var village = isVillage(point);
+            var layout = ymaps.templateLayoutFactory.createClass(pinHtml(point, cat, point.id === selectedId));
+            var size = village ? 64 : 52;
+            var half = village ? 28 : 22;
             var placemark = new ymaps.Placemark(point.coords, {
               hintContent: point.title,
               balloonContentHeader: point.title,
-              balloonContentBody: cat ? cat.label : ''
+              balloonContentBody: (cat ? cat.label : '') + (point.text ? '<br>' + point.text : '')
             }, {
               iconLayout: layout,
-              iconOffset: [-22, -52],
+              iconOffset: [-half, -size],
               iconShape: {
                 type: 'Rectangle',
-                coordinates: [[-22, -52], [22, 0]]
+                coordinates: [[-half, -size], [half, 8]]
               },
-              hideIconOnBalloonOpen: false
+              hideIconOnBalloonOpen: false,
+              hasBalloon: false,
+              cursor: 'pointer'
             });
             placemark.events.add('click', function (event) {
               ignoreMapClick = true;
+              event.preventDefault();
               if (editing) {
-                event.preventDefault();
                 selectPoint(point.id, false);
               }
+              showInfo(point);
             });
             collection.add(placemark);
             placemarks[point.id] = placemark;
@@ -197,9 +292,13 @@
           if (editTitle) {
             editTitle.value = point.title;
           }
+          if (editText) {
+            editText.value = point.text || '';
+          }
           if (editCat) {
             editCat.value = point.category;
           }
+          showInfo(point);
           renderList();
           refreshPins();
           if (pan && map) {
@@ -221,11 +320,7 @@
           map.events.add('click', function (event) {
             var coords = event.get('coords');
             window.setTimeout(function () {
-              if (ignoreMapClick) {
-                ignoreMapClick = false;
-                return;
-              }
-              if (!editing) {
+              if (ignoreMapClick || !editing) {
                 return;
               }
               var title = editTitle ? editTitle.value.trim() : '';
@@ -241,6 +336,7 @@
                 id: uid(),
                 category: catId,
                 title: title,
+                text: editText ? editText.value.trim() : '',
                 coords: coords,
                 pinned: false
               };
@@ -265,6 +361,9 @@
           }
           if (editTitle) {
             point.title = editTitle.value.trim() || point.title;
+          }
+          if (editText) {
+            point.text = editText.value.trim();
           }
           if (editCat) {
             point.category = editCat.value;
@@ -364,9 +463,41 @@
           });
           collection = new ymaps.GeoObjectCollection();
           map.geoObjects.add(collection);
+          map.events.add('click', function () {
+            window.setTimeout(function () {
+              if (ignoreMapClick) {
+                ignoreMapClick = false;
+                return;
+              }
+              if (!editing) {
+                hideInfo();
+              }
+            }, 0);
+          });
           refreshPins();
           bindEditor();
+          fitMap();
           syncFullscreenUi();
+        }
+
+        function fitMap() {
+          var points = visiblePoints();
+          if (!map || !points.length) {
+            return;
+          }
+          if (points.length === 1) {
+            map.setCenter(points[0].coords, 14);
+            return;
+          }
+          var first = points[0].coords;
+          var bounds = [[first[0], first[1]], [first[0], first[1]]];
+          points.forEach(function (point) {
+            bounds[0][0] = Math.min(bounds[0][0], point.coords[0]);
+            bounds[0][1] = Math.min(bounds[0][1], point.coords[1]);
+            bounds[1][0] = Math.max(bounds[1][0], point.coords[0]);
+            bounds[1][1] = Math.max(bounds[1][1], point.coords[1]);
+          });
+          map.setBounds(bounds, { checkZoomRange: true, zoomMargin: [48, 48, 48, 48] });
         }
 
         if (allBtn) {
@@ -392,6 +523,15 @@
         if (editTitle) {
           editTitle.addEventListener('change', applyFormToSelected);
         }
+        if (editText) {
+          editText.addEventListener('change', applyFormToSelected);
+        }
+        if (infoClose) {
+          infoClose.addEventListener('click', function (event) {
+            event.preventDefault();
+            hideInfo();
+          });
+        }
         if (editCat) {
           editCat.addEventListener('change', applyFormToSelected);
         }
@@ -407,6 +547,10 @@
             if (editTitle) {
               editTitle.value = '';
             }
+            if (editText) {
+              editText.value = '';
+            }
+            hideInfo();
             refreshPins();
             renderList();
             setStatus('Точка удалена. Сохраните JSON, чтобы зафиксировать.');

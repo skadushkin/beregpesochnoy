@@ -25,6 +25,13 @@
         <path d="M4 20V28H12" stroke="#917357" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
+    <aside class="infra-map__info" data-infra-info hidden>
+      <button type="button" class="infra-map__info-close" data-infra-info-close aria-label="Закрыть">×</button>
+      <div class="infra-map__info-kicker" data-infra-info-cat></div>
+      <div class="infra-map__info-title" data-infra-info-title></div>
+      <div class="infra-map__info-dist" data-infra-info-dist></div>
+      <p class="infra-map__info-text" data-infra-info-text></p>
+    </aside>
     <aside class="infra-map__legend" aria-label="Обозначения">
       <h3 class="infra-map__legend-title">Инфраструктура</h3>
       <div class="infra-map__legend-list" data-infra-legend></div>
@@ -42,6 +49,10 @@
         <label class="infra-map__edit-title">
           Название точки
           <input type="text" data-infra-edit-title placeholder="Например: Школа №2" maxlength="120">
+        </label>
+        <label class="infra-map__edit-title">
+          Описание
+          <textarea data-infra-edit-text placeholder="Коротко, что это за объект" maxlength="400" rows="3"></textarea>
         </label>
         <p class="infra-map__edit-hint">Клик по карте ставит точку выбранной категории. Клик по точке — правка. Список ниже тоже можно выбрать.</p>
         <div class="infra-map__edit-list" data-infra-list></div>
