@@ -595,7 +595,7 @@ genplan_lazy:
     - bootstrap/genplan_map_v2
 
 infra_map:
-  version: 1.0.9
+  version: 1.0.10
   css:
     theme:
       landing-v2/css/infra-map.css: {}

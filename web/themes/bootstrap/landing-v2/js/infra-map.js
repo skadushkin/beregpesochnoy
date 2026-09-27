@@ -618,8 +618,8 @@
 
         function initMap() {
           map = new ymaps.Map('infra-map-canvas', {
-            center: data.center || [55.9194, 36.8686],
-            zoom: data.zoom || 14,
+            center: data.center || [55.959175, 36.947689],
+            zoom: data.zoom || 11,
             controls: []
           }, {
             suppressMapOpenBlock: true,
@@ -660,23 +660,13 @@
         }
 
         function fitMap() {
-          var points = visiblePoints();
-          if (!map || !points.length) {
+          if (!map) {
             return;
           }
-          if (points.length === 1) {
-            map.setCenter(points[0].coords, 14);
-            return;
-          }
-          var first = points[0].coords;
-          var bounds = [[first[0], first[1]], [first[0], first[1]]];
-          points.forEach(function (point) {
-            bounds[0][0] = Math.min(bounds[0][0], point.coords[0]);
-            bounds[0][1] = Math.min(bounds[0][1], point.coords[1]);
-            bounds[1][0] = Math.max(bounds[1][0], point.coords[0]);
-            bounds[1][1] = Math.max(bounds[1][1], point.coords[1]);
-          });
-          map.setBounds(bounds, { checkZoomRange: true, zoomMargin: [48, 48, 48, 48] });
+          var origin = villageOf(data);
+          var center = (origin && origin.coords) || data.center || [55.959175, 36.947689];
+          var zoom = data.zoom || 11;
+          map.setCenter(center, zoom);
         }
 
         if (allBtn) {
