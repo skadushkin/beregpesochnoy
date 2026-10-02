@@ -206,20 +206,12 @@
         </section>
 
 
-        <!-- ═══ ПРИВАТНАЯ ТЕРРИТОРИЯ + МАРШРУТ ═══ -->
-        <section class="section private" id="genplan">
-            <div class="cl section__inner private__text-block">
-                <h2 class="h2 h2--center">
-                    <span class="t-accent">Приватная территория</span><br>
-                    <span class="t-merit t-white">граничащая с лесом</span>
-                </h2>
-                <p class="private__lead">Откройте дверь и окунитесь в мир природы – наблюдайте за дикой флорой и фауной, слушайте пение птиц, наслаждайтесь ароматами леса. Прекрасные виды на лес и водоем создают особую атмосферу и дарят эстетическое удовольствие. Дом, органично вписанный в природный ландшафт вашего участка станет настоящим оазисом спокойствия и гармонии.</p>
-            </div>
+        <!-- ═══ ГЕНПЛАН (интерактивный, референс aibereg.ilikelp.ru) ═══ -->
+        {% include '@bootstrap/includes/genplan-lazy-block.html.twig' %}
+
+        <!-- ═══ МАРШРУТ ═══ -->
+        <section class="section private" id="route">
             <div class="private__visual">
-                <div class="private__map-wrap">
-                    <img src="{{ lv2_img }}private-territory.png" alt="Приватная территория на карте" class="private__map-img" width="1920" height="700">
-                    <div class="private__map-grad" aria-hidden="true"></div>
-                </div>
                 <div class="cl private__route-wrap">
                     <div class="route-card">
                         <div class="route-card__head">

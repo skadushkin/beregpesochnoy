@@ -1,11 +1,21 @@
-<section class="front-genplan" id="genplan">
-  <div class="front-genplan__wrap lv2-genplan" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
-    <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
-      <div class="lv2-genplan__loader-inner">
-        <div class="lv2-genplan__spinner" aria-hidden="true"></div>
-        <p class="lv2-genplan__loader-text">Загружаем интерактивный генплан…</p>
+<section class="section front-genplan-section" id="genplan" aria-labelledby="front-genplan-title">
+  <div class="cl front-genplan-section__head">
+    <p class="front-genplan-section__eyebrow">ДОМА И ИНФРАСТРУКТУРА</p>
+    <h2 class="h2 h2--center front-genplan-section__title" id="front-genplan-title">
+      <span class="t-accent">Генплан ЖК</span><br>
+      <span class="t-merit t-white">«Берег Песочной»</span>
+    </h2>
+    <p class="front-genplan-section__lead">Нажмите на дом, чтобы посмотреть фото, цену и характеристики. Значки показывают инфраструктуру посёлка.</p>
+  </div>
+  <div class="front-genplan">
+    <div class="front-genplan__wrap lv2-genplan" id="lv2Genplan" data-genplan-url="{{ path('landing_genplan.embed') }}">
+      <div class="lv2-genplan__loader" aria-live="polite" aria-busy="true">
+        <div class="lv2-genplan__loader-inner">
+          <div class="lv2-genplan__spinner" aria-hidden="true"></div>
+          <p class="lv2-genplan__loader-text">Загружаем интерактивный генплан…</p>
+        </div>
       </div>
+      <div class="lv2-genplan__mount" hidden></div>
     </div>
-    <div class="lv2-genplan__mount" hidden></div>
   </div>
 </section>
