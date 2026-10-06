@@ -2,7 +2,7 @@
 
 # Стили и JS для фронтенда
 global-styling:
-  version: 1.0.17
+  version: 1.0.19
   js:
     js/bootstrap.js: {}
     js/jquery.maskedinput.min.js: {}
@@ -653,7 +653,7 @@ landing_dev2:
 
 # Лендинг v2 (node 838)
 landing_v2:
-  version: 1.0.45
+  version: 1.0.47
   css:
     theme:
       landing-v2/css/fonts.css: {}
@@ -666,9 +666,9 @@ landing_v2:
     - core/drupal
     - core/once
 
-# Понтонный пляж (node 840)
+# Понтонная лодочная станция (node 840)
 landing_ponton:
-  version: 1.0.18
+  version: 1.0.20
   css:
     theme:
       landing-ponton/css/fonts.css: {}

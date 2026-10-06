@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  /* Попап «Записаться на экскурсию» */
+  /* Попап «Записаться на просмотр» */
   (function () {
     var modal = document.getElementById('lv2TourModal');
     if (!modal) return;

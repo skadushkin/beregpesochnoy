@@ -492,7 +492,7 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val() || 'Получить консультацию', '');
+        var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val() || 'Записаться на просмотр', '');
         var dataForRequest = {
             'name': ' ',
             'email': ' ',

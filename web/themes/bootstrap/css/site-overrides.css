@@ -402,7 +402,118 @@ body.page-view-mfk .seo-page-faq ~ .bg6 {
   color: inherit;
 }
 
-/* Инвесторам: фото Алексея Климова в попапе консультации */
+/* Карточка дома/проекта: меньше пустоты между сертификатами, отделкой и «Чем заняться» */
+body.node--type-lot .card-techno-container,
+body.node--type-project .card-techno-container,
+body.node--type-house .card-techno-container,
+body.node--type-townhouse .card-techno-container,
+body.node--type-house-under-construction .card-techno-container,
+body.page-node-type-lot .card-techno-container,
+body.page-node-type-project .card-techno-container,
+body.page-node-type-house .card-techno-container,
+body.page-node-type-townhouse .card-techno-container,
+body.page-node-type-house-under-construction .card-techno-container {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+body.node--type-lot .cart-first-slider-container,
+body.node--type-project .cart-first-slider-container,
+body.node--type-house .cart-first-slider-container,
+body.node--type-townhouse .cart-first-slider-container,
+body.node--type-house-under-construction .cart-first-slider-container,
+body.page-node-type-lot .cart-first-slider-container,
+body.page-node-type-project .cart-first-slider-container,
+body.page-node-type-house .cart-first-slider-container,
+body.page-node-type-townhouse .cart-first-slider-container,
+body.page-node-type-house-under-construction .cart-first-slider-container {
+  padding-top: 40px;
+}
+
+body.node--type-lot .what-doing2.info-container,
+body.node--type-project .what-doing2.info-container,
+body.node--type-house .what-doing2.info-container,
+body.node--type-townhouse .what-doing2.info-container,
+body.node--type-house-under-construction .what-doing2.info-container,
+body.page-node-type-lot .what-doing2.info-container,
+body.page-node-type-project .what-doing2.info-container,
+body.page-node-type-house .what-doing2.info-container,
+body.page-node-type-townhouse .what-doing2.info-container,
+body.page-node-type-house-under-construction .what-doing2.info-container {
+  padding-top: 40px;
+}
+
+.cart-first-second-info-right-main-btn {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cart-first-second-info-right-main-btn-cont--outline {
+  background-color: transparent;
+  border: 1px solid #917357;
+}
+
+.cart-first-second-info-right-main-btn-cont--outline > div:nth-child(1) {
+  color: #917357;
+}
+
+.cart-benpan-link {
+  text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  body.node--type-lot .card-techno-container,
+  body.node--type-project .card-techno-container,
+  body.node--type-house .card-techno-container,
+  body.node--type-townhouse .card-techno-container,
+  body.node--type-house-under-construction .card-techno-container,
+  body.page-node-type-lot .card-techno-container,
+  body.page-node-type-project .card-techno-container,
+  body.page-node-type-house .card-techno-container,
+  body.page-node-type-townhouse .card-techno-container,
+  body.page-node-type-house-under-construction .card-techno-container {
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  body.node--type-lot .cart-first-slider-container,
+  body.node--type-project .cart-first-slider-container,
+  body.node--type-house .cart-first-slider-container,
+  body.node--type-townhouse .cart-first-slider-container,
+  body.node--type-house-under-construction .cart-first-slider-container,
+  body.page-node-type-lot .cart-first-slider-container,
+  body.page-node-type-project .cart-first-slider-container,
+  body.page-node-type-house .cart-first-slider-container,
+  body.page-node-type-townhouse .cart-first-slider-container,
+  body.page-node-type-house-under-construction .cart-first-slider-container {
+    padding-top: 24px;
+  }
+
+  body.node--type-lot .what-doing2.info-container,
+  body.node--type-project .what-doing2.info-container,
+  body.node--type-house .what-doing2.info-container,
+  body.node--type-townhouse .what-doing2.info-container,
+  body.node--type-house-under-construction .what-doing2.info-container,
+  body.page-node-type-lot .what-doing2.info-container,
+  body.page-node-type-project .what-doing2.info-container,
+  body.page-node-type-house .what-doing2.info-container,
+  body.page-node-type-townhouse .what-doing2.info-container,
+  body.page-node-type-house-under-construction .what-doing2.info-container {
+    padding-top: 24px;
+  }
+
+  .cart-first-second-info-right-btn-mob {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .cart-first-second-info-right-btn-mob .cart-first-second-info-right-main-btn-cont {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 .page-node-241 .yana-popup {
   background-image: url("/sites/default/files/kastoom_design/bereg-klim.jpg");
   background-size: 280px auto;

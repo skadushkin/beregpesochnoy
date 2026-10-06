@@ -43,7 +43,7 @@
       }
     })();
 
-    /* Попап «Записаться на экскурсию» */
+    /* Попап «Записаться на просмотр» */
     var modal = document.getElementById('lv2TourModal');
     if (modal) {
       var closeBtn = document.getElementById('closeLv2TourModal');

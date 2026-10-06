@@ -1,13 +1,13 @@
-{# Попап «Записаться на экскурсию» — лендинги 838 / 840 #}
+{# Попап «Записаться на просмотр» — лендинги 838 / 840 #}
 <div class="bp-modal" id="lv2TourModal" aria-hidden="true">
     <div class="bp-modal__overlay" id="closeLv2TourModalOverlay"></div>
     <div class="bp-modal__content" role="dialog" aria-modal="true" aria-labelledby="lv2TourModalTitle">
         <button type="button" class="bp-modal__close" id="closeLv2TourModal" aria-label="Закрыть">×</button>
         <p class="bp-modal__label">{{ tour_modal_label|default('Берег Песочной') }}</p>
-        <h2 class="bp-modal__title" id="lv2TourModalTitle">Записаться на экскурсию</h2>
-        <p class="bp-modal__text">Оставьте контактные данные. Мы свяжемся с вами и согласуем удобное время экскурсии.</p>
+        <h2 class="bp-modal__title" id="lv2TourModalTitle">Записаться на просмотр</h2>
+        <p class="bp-modal__text">Оставьте контактные данные. Мы свяжемся с вами и согласуем удобное время просмотра.</p>
         <form class="bp-modal__form lv2-lead-form" action="#" method="post" novalidate>
-            <input type="hidden" name="source" value="{{ tour_modal_source|default('Лендинг — экскурсия') }}">
+            <input type="hidden" name="source" value="{{ tour_modal_source|default('Лендинг — просмотр') }}">
             <div class="bp-modal__field">
                 <input type="text" name="name" placeholder="Ваше имя" autocomplete="name">
                 <div class="online-notice"></div>
@@ -21,7 +21,7 @@
                 <span>Даю согласие на обработку <a href="/policy/">персональных данных</a></span>
             </label>
             <div class="online-notice"></div>
-            <button type="button" class="bp-submit" id="lv2-tour-send">Отправить заявку</button>
+            <button type="button" class="bp-submit" id="lv2-tour-send">Записаться на просмотр</button>
             <div class="popup-success">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.5 12L10.5 18L20.5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
