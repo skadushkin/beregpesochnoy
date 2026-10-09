@@ -529,6 +529,10 @@ body.page-node-type-duplex .what-doing2.info-container,
     box-sizing: border-box;
   }
 }
+.townhouses-first-catalog-right:has(.catlog-item) .duplex-empty-note {
+  display: none;
+}
+
 .page-node-241 .yana-popup {
   background-image: url("/sites/default/files/kastoom_design/bereg-klim.jpg");
   background-size: 280px auto;
