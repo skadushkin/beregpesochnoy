@@ -11,6 +11,7 @@
                 <a href="#" class="tab-link" data-tab="1">Готовые дома</a>
                 <a href="#" class="tab-link" data-tab="2">Cтроящиеся дома</a>
                 <a href="#" class="tab-link" data-tab="4">Таунхаусы</a>
+                <a href="#" class="tab-link" data-tab="5">Дуплексы</a>
                 <a href="/uchastok-s-podryadom-v-podmoskovye">Дома с подрядом</a>
                 <a href="/arhitekturnoe-atele" class="arch-link">
                     <svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +34,7 @@
             {{ drupal_view('gotovye_doma', 'block_3') }}
             {{ drupal_view('gotovye_doma', 'block_5') }}
             {{ drupal_view('gotovye_doma', 'block_4') }}
+            {% include '@bootstrap/includes/duplex-catalog-teaser.html.twig' %}
 
         </div>
     </div>

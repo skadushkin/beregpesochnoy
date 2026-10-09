@@ -266,6 +266,15 @@
                         </a>
                     </article>
                     <article class="format-card">
+                        <a href="/dupleksy" class="format-card__link">
+                            <div class="format-card__frame">
+                                <div class="format-card__bg" aria-hidden="true"></div>
+                                <img class="format-card__img format-card__img--town" src="{{ lv2_img }}townhouse-card.png" alt="">
+                                <span class="format-card__btn">Дуплексы <span class="btn-arrow">→</span></span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="format-card">
                         <a href="/kupit-dom-v-kottedzhnom-poselke" class="format-card__link">
                             <div class="format-card__frame">
                                 <div class="format-card__bg" aria-hidden="true"></div>
@@ -314,6 +323,7 @@
                         <button type="button" class="lv2-pill" data-tab="1" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=2">Готовые дома</button>
                         <button type="button" class="lv2-pill is-active" data-tab="2" data-catalog-href="/kupit-dom-v-kottedzhnom-poselke?type=3" aria-selected="true">Строящиеся дома</button>
                         <button type="button" class="lv2-pill" data-tab="4" data-catalog-href="/taunhausy">Таунхаусы</button>
+                        <button type="button" class="lv2-pill" data-tab="5" data-catalog-href="/dupleksy">Дуплексы</button>
                         {# Дома с подрядом временно скрыты
                         <button type="button" class="lv2-pill" data-tab="3" data-catalog-href="/uchastok-s-podryadom-v-podmoskovye">Дома с подрядом</button>
                         #}
@@ -329,6 +339,9 @@
                     </div>
                     <div class="lv2-catalog__panel" data-tab-panel="4" hidden>
                         {{ drupal_view('gotovye_doma', 'block_4') }}
+                    </div>
+                    <div class="lv2-catalog__panel" data-tab-panel="5" hidden>
+                        {% include '@bootstrap/includes/duplex-catalog-teaser.html.twig' %}
                     </div>
                     {# подряд (block_5) временно скрыт
                     <div class="lv2-catalog__panel" data-tab-panel="3" hidden>

@@ -528,6 +528,12 @@
       </div>
     </section>
     {% endif %}
+    <div class="bp-cookie-bar" id="bp-cookie-bar" role="dialog" aria-label="Уведомление о файлах cookie" hidden>
+      <div class="bp-cookie-bar__inner">
+        <p class="bp-cookie-bar__text">Мы используем файлы cookie, чтобы сайт работал корректно. Продолжая просмотр, вы соглашаетесь с <a href="/policy/">политикой конфиденциальности</a>.</p>
+        <button type="button" class="bp-cookie-bar__close" id="bp-cookie-close">Закрыть</button>
+      </div>
+    </div>
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
     {% if is_dev2_inner %}
       <link rel="stylesheet" href="/themes/bootstrap/css/fancybox.css">

@@ -1,0 +1,30 @@
+<div class="catlog-items-ready new-main-catalog" data-tab-content="5">
+    <div class="catalog-items-cont">
+        <div class="catalog-items views-infinite-scroll-content-wrapper clearfix" data-drupal-views-infinite-scroll-content-wrapper>
+            {% if rows %}
+                {% for row in rows %}
+                    {{ row.content }}
+                {% endfor %}
+            {% else %}
+                <div class="catlog-item"><a href="/dupleksy">
+                    <div class="catalog-item-img">
+                        <img src="/sites/default/files/img/townhouse1.PNG" alt="Дуплексы">
+                    </div>
+                    <div class="catalog-item-uptext">
+                        <div class="catalog-item-name">Дуплексы</div>
+                    </div>
+                    <div class="catalog-item-bot">
+                        <div class="catalog-item-bot-cont">
+                            <div class="catalog-item-price">
+                                <div>Цена по запросу</div>
+                            </div>
+                            <div class="catalog-item-button">
+                                <span><img src="/sites/default/files/img/catArrow.svg" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+            {% endif %}
+        </div>
+    </div>
+</div>

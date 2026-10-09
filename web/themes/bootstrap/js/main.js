@@ -2203,3 +2203,37 @@ function mortgage() {
         }
     }, 100);
 }
+
+jQuery(function initCookieBar() {
+    var KEY = 'bp_cookie_ok';
+    var bar = document.getElementById('bp-cookie-bar');
+    var closeBtn = document.getElementById('bp-cookie-close');
+    if (!bar || !closeBtn) {
+        return;
+    }
+
+    var dismissed = false;
+    try {
+        dismissed = window.localStorage.getItem(KEY) === '1';
+    } catch (e) {
+        dismissed = false;
+    }
+    if (dismissed) {
+        return;
+    }
+
+    bar.hidden = false;
+    bar.classList.add('is-visible');
+    document.documentElement.classList.add('bp-cookie-show');
+
+    closeBtn.addEventListener('click', function () {
+        try {
+            window.localStorage.setItem(KEY, '1');
+        } catch (e) {
+            // ignore storage errors
+        }
+        bar.hidden = true;
+        bar.classList.remove('is-visible');
+        document.documentElement.classList.remove('bp-cookie-show');
+    });
+});

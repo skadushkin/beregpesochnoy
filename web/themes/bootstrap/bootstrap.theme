@@ -15,6 +15,7 @@ use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Asset\AttachedAssetsInterface;
 
 
 /**
@@ -108,6 +109,12 @@ function bootstrap_preprocess_html(&$variables) {
   bootstrap_apply_site_contact_settings($variables, $variables['node_type'] ?? NULL);
   if (bootstrap_is_poselok_host()) {
     $variables['attributes']['class'][] = 'poselok-host';
+  }
+  $variables['is_dev2_site'] = bootstrap_is_test2_site();
+  $variables['is_dev2_inner'] = bootstrap_is_dev2_inner_page();
+  if ($variables['is_dev2_inner']) {
+    $variables['attributes']['class'][] = 'is-dev2-inner';
+    $variables['#attached']['library'][] = 'bootstrap/landing_dev2_chrome';
   }
   if (!empty($variables['disable_calltouch'])) {
     $variables['attributes']['class'][] = 'poselok-blog';
@@ -268,7 +275,7 @@ function bootstrap_page_attachments_alter(&$page) {
     $page['#attached']['library'][] = 'bootstrap/atelier_script';
   }
   if (bootstrap_is_node_page(838)) {
-    $page['#attached']['library'][] = 'bootstrap/landing_v2';
+    $page['#attached']['library'][] = 'bootstrap/landing_dev2';
   }
   if ($route_name === 'entity.node.canonical' && $node instanceof \Drupal\node\NodeInterface && (int) $node->id() === 840) {
     $page['#attached']['library'][] = 'bootstrap/landing_ponton';
@@ -419,6 +426,12 @@ function bootstrap_page_attachments_alter(&$page) {
   if ($route_name === 'entity.node.canonical' && $node instanceof \Drupal\node\NodeInterface && (int) $node->id() === 511) {
     $page['#attached']['library'][] = 'bootstrap/taunhausy_page_511';
   }
+  if ($route_name === 'entity.node.canonical' && $node instanceof \Drupal\node\NodeInterface) {
+    $duplex_alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+    if ($duplex_alias === '/dupleksy' || $duplex_alias === '/dupleksy/') {
+      $page['#attached']['library'][] = 'bootstrap/taunhausy_page_511';
+    }
+  }
   if (bootstrap_is_node_page(223)) {
     $page['#attached']['library'][] = 'bootstrap/catalog_seo_tags';
   }
@@ -522,6 +535,52 @@ function bootstrap_page_attachments_alter(&$page) {
         'system/admin',
       ]
     );
+  }
+}
+
+/**
+ * Isolates the test2 homepage from the old theme stylesheets.
+ */
+function bootstrap_css_alter(array &$css, AttachedAssetsInterface $assets): void {
+  if (bootstrap_is_test2_site() && bootstrap_is_node_page(838)) {
+    $keep = [
+      'landing-dev2',
+      'landing-v2/css/fonts',
+      'landing-v2/css/tour-modal',
+      'CeraPro',
+      'Merriweather',
+      'genplan-map',
+      'genplan-lazy',
+      'infra-map',
+    ];
+    foreach (array_keys($css) as $path) {
+      $normalized = str_replace('\\', '/', (string) $path);
+      if (!str_contains($normalized, 'themes/bootstrap/')) {
+        continue;
+      }
+      foreach ($keep as $needle) {
+        if (str_contains($normalized, $needle)) {
+          continue 2;
+        }
+      }
+      unset($css[$path]);
+    }
+    return;
+  }
+  if (!bootstrap_is_dev2_inner_page()) {
+    return;
+  }
+  $drop = [
+    'Merriweather',
+  ];
+  foreach (array_keys($css) as $path) {
+    $normalized = str_replace('\\', '/', (string) $path);
+    foreach ($drop as $needle) {
+      if (str_contains($normalized, $needle)) {
+        unset($css[$path]);
+        continue 2;
+      }
+    }
   }
 }
 
@@ -804,6 +863,34 @@ function bootstrap_is_karta_page(): bool {
 function bootstrap_is_poselok_host(): bool {
   $host = strtolower(\Drupal::request()->getHost());
   return str_starts_with($host, 'poselok.');
+}
+
+/**
+ * Тестовый контур test2.beregpesochnoy.ru (ветка dev2).
+ */
+function bootstrap_is_test2_site(): bool {
+  return strtolower(\Drupal::request()->getHost()) === 'test2.beregpesochnoy.ru';
+}
+
+/**
+ * Внутренние страницы test2 без отдельного лендинг-хрома.
+ */
+function bootstrap_is_dev2_inner_page(): bool {
+  if (!bootstrap_is_test2_site() || bootstrap_is_node_page(838)) {
+    return FALSE;
+  }
+  $landing_nids = [
+    840, 850, 851, 875, 954, 955, 956, 968, 969, 978, 980, 853, 854, 1024,
+  ];
+  $node = bootstrap_get_route_node();
+  if ($node instanceof NodeInterface && in_array((int) $node->id(), $landing_nids, TRUE)) {
+    return FALSE;
+  }
+  $alias = (string) \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+  if (str_starts_with($alias, '/mfk') || str_starts_with($alias, '/ferma')) {
+    return FALSE;
+  }
+  return TRUE;
 }
 
 /**
@@ -1535,59 +1622,6 @@ function bootstrap_views_pre_view(\Drupal\views\ViewExecutable $view, $display_i
       $view->setExposedInput(['type' => '2']);
     }
   }
-
-  // /proekty-domov: сначала последние добавленные проекты.
-  if ($view->id() === 'gotovye_doma' && $display_id === 'block_7') {
-    $display = $view->displayHandlers->get($display_id);
-    if ($display) {
-      $display->overrideOption('sorts', [
-        'nid' => [
-          'id' => 'nid',
-          'table' => 'node_field_data',
-          'field' => 'nid',
-          'relationship' => 'none',
-          'group_type' => 'group',
-          'admin_label' => '',
-          'order' => 'DESC',
-          'exposed' => FALSE,
-          'plugin_id' => 'standard',
-        ],
-        'created' => [
-          'id' => 'created',
-          'table' => 'node_field_data',
-          'field' => 'created',
-          'relationship' => 'none',
-          'group_type' => 'group',
-          'admin_label' => '',
-          'order' => 'DESC',
-          'exposed' => FALSE,
-          'expose' => [
-            'label' => '',
-          ],
-          'granularity' => 'second',
-          'plugin_id' => 'date',
-        ],
-      ]);
-    }
-  }
-}
-
-/**
- * Implements hook_views_query_alter().
- */
-function bootstrap_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query): void {
-  if ($view->id() !== 'gotovye_doma' || $view->current_display !== 'block_7') {
-    return;
-  }
-  if (!$query instanceof \Drupal\views\Plugin\views\query\Sql) {
-    return;
-  }
-
-  // Сбрасываем сортировку из конфигурации view (часто по названию/весу).
-  $table = $query->ensureTable('node_field_data');
-  $query->orderby = [];
-  $query->addOrderBy($table, 'nid', 'DESC');
-  $query->addOrderBy($table, 'created', 'DESC');
 }
 
 /**
@@ -1612,7 +1646,7 @@ function bootstrap_preprocess_page(&$variables) {
     $variables['ferma_products'] = bootstrap_ferma_slider_items('ferma_product');
     $variables['ferma_photos'] = bootstrap_ferma_slider_items('ferma_photo');
   }
-  if (bootstrap_is_karta_page()) {
+  if (bootstrap_is_karta_page() || bootstrap_is_node_page(838)) {
     $can_edit = \Drupal::currentUser()->hasPermission('administer nodes');
     $variables['infra_map_can_edit'] = $can_edit;
     $variables['#cache']['contexts'][] = 'user.permissions';
@@ -1628,7 +1662,7 @@ function bootstrap_preprocess_page(&$variables) {
   if ($route_node instanceof NodeInterface && in_array($route_node->bundle(), ['posadochnaya_katalog', 'posadochnaya_ponton'], TRUE)) {
     $variables['posadochnaya'] = bootstrap_posadochnaya_page_data($route_node);
   }
-    if (!empty($variables['node']) && in_array($variables['node']->bundle(), ['lot', 'project', 'house', 'townhouse', 'house_under_construction'])) {
+    if (!empty($variables['node']) && in_array($variables['node']->bundle(), ['lot', 'project', 'house', 'townhouse', 'duplex', 'house_under_construction'])) {
             $variables['theme_hook_suggestions'][] = 'page__project_template';
         }
   $source = theme_get_setting('bootstrap_source');
@@ -2313,9 +2347,13 @@ function bootstrap_theme_suggestions_page_alter(array &$suggestions, array $vari
 
     }
     $suggestions[] = 'page__node__' . $node->bundle();
-     if (in_array($node->bundle(), ['lot', 'project', 'house', 'townhouse', 'house_under_construction'])) {
+     if (in_array($node->bundle(), ['lot', 'project', 'house', 'townhouse', 'duplex', 'house_under_construction'])) {
             $suggestions[] = 'page__project_template';
         }
+    $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+    if ($alias === '/dupleksy' || $alias === '/dupleksy/') {
+      $suggestions[] = 'page__dupleksy';
+    }
   }
 
   if (bootstrap_is_karta_page()) {

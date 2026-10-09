@@ -291,6 +291,7 @@ body.path-ferma .cta__title * {
 body.page-node-854 .bg6,
 body.path-ferma .bg6,
 body.page-node-511 .bg6,
+body.path-dupleksy .bg6,
 body.path-mfk .bg6,
 body.page-view-mfk .bg6,
 body.page-node-type-posadochnaya-katalog .bg6,
@@ -300,11 +301,13 @@ body.node--type-lot .bg6,
 body.node--type-project .bg6,
 body.node--type-house .bg6,
 body.node--type-townhouse .bg6,
+body.node--type-duplex .bg6,
 body.node--type-house-under-construction .bg6,
 body.page-node-type-lot .bg6,
 body.page-node-type-project .bg6,
 body.page-node-type-house .bg6,
 body.page-node-type-townhouse .bg6,
+body.page-node-type-duplex .bg6,
 body.page-node-type-house-under-construction .bg6,
 .posadochnaya-katalog .bg6,
 .posadochnaya-ponton .bg6,
@@ -407,11 +410,13 @@ body.node--type-lot .card-techno-container,
 body.node--type-project .card-techno-container,
 body.node--type-house .card-techno-container,
 body.node--type-townhouse .card-techno-container,
+body.node--type-duplex .card-techno-container,
 body.node--type-house-under-construction .card-techno-container,
 body.page-node-type-lot .card-techno-container,
 body.page-node-type-project .card-techno-container,
 body.page-node-type-house .card-techno-container,
 body.page-node-type-townhouse .card-techno-container,
+body.page-node-type-duplex .card-techno-container,
 body.page-node-type-house-under-construction .card-techno-container {
   padding-top: 64px;
   padding-bottom: 40px;
@@ -421,11 +426,13 @@ body.node--type-lot .cart-first-slider-container,
 body.node--type-project .cart-first-slider-container,
 body.node--type-house .cart-first-slider-container,
 body.node--type-townhouse .cart-first-slider-container,
+body.node--type-duplex .cart-first-slider-container,
 body.node--type-house-under-construction .cart-first-slider-container,
 body.page-node-type-lot .cart-first-slider-container,
 body.page-node-type-project .cart-first-slider-container,
 body.page-node-type-house .cart-first-slider-container,
 body.page-node-type-townhouse .cart-first-slider-container,
+body.page-node-type-duplex .cart-first-slider-container,
 body.page-node-type-house-under-construction .cart-first-slider-container {
   padding-top: 40px;
 }
@@ -434,11 +441,13 @@ body.node--type-lot .what-doing2.info-container,
 body.node--type-project .what-doing2.info-container,
 body.node--type-house .what-doing2.info-container,
 body.node--type-townhouse .what-doing2.info-container,
+body.node--type-duplex .what-doing2.info-container,
 body.node--type-house-under-construction .what-doing2.info-container,
 body.page-node-type-lot .what-doing2.info-container,
 body.page-node-type-project .what-doing2.info-container,
 body.page-node-type-house .what-doing2.info-container,
 body.page-node-type-townhouse .what-doing2.info-container,
+body.page-node-type-duplex .what-doing2.info-container,
 body.page-node-type-house-under-construction .what-doing2.info-container {
   padding-top: 40px;
 }
@@ -466,11 +475,13 @@ body.page-node-type-house-under-construction .what-doing2.info-container {
   body.node--type-project .card-techno-container,
   body.node--type-house .card-techno-container,
   body.node--type-townhouse .card-techno-container,
+body.node--type-duplex .card-techno-container,
   body.node--type-house-under-construction .card-techno-container,
   body.page-node-type-lot .card-techno-container,
   body.page-node-type-project .card-techno-container,
   body.page-node-type-house .card-techno-container,
   body.page-node-type-townhouse .card-techno-container,
+body.page-node-type-duplex .card-techno-container,
   body.page-node-type-house-under-construction .card-techno-container {
     padding-top: 32px;
     padding-bottom: 24px;
@@ -480,11 +491,13 @@ body.page-node-type-house-under-construction .what-doing2.info-container {
   body.node--type-project .cart-first-slider-container,
   body.node--type-house .cart-first-slider-container,
   body.node--type-townhouse .cart-first-slider-container,
+body.node--type-duplex .cart-first-slider-container,
   body.node--type-house-under-construction .cart-first-slider-container,
   body.page-node-type-lot .cart-first-slider-container,
   body.page-node-type-project .cart-first-slider-container,
   body.page-node-type-house .cart-first-slider-container,
   body.page-node-type-townhouse .cart-first-slider-container,
+body.page-node-type-duplex .cart-first-slider-container,
   body.page-node-type-house-under-construction .cart-first-slider-container {
     padding-top: 24px;
   }
@@ -493,11 +506,13 @@ body.page-node-type-house-under-construction .what-doing2.info-container {
   body.node--type-project .what-doing2.info-container,
   body.node--type-house .what-doing2.info-container,
   body.node--type-townhouse .what-doing2.info-container,
+body.node--type-duplex .what-doing2.info-container,
   body.node--type-house-under-construction .what-doing2.info-container,
   body.page-node-type-lot .what-doing2.info-container,
   body.page-node-type-project .what-doing2.info-container,
   body.page-node-type-house .what-doing2.info-container,
   body.page-node-type-townhouse .what-doing2.info-container,
+body.page-node-type-duplex .what-doing2.info-container,
   body.page-node-type-house-under-construction .what-doing2.info-container {
     padding-top: 24px;
   }
@@ -518,4 +533,79 @@ body.page-node-type-house-under-construction .what-doing2.info-container {
   background-image: url("/sites/default/files/kastoom_design/bereg-klim.jpg");
   background-size: 280px auto;
   background-position: right 16px bottom 0;
+}
+
+.bp-cookie-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10050;
+  background: #3c3c3b;
+  color: #f4eada;
+  border-top: 1px solid #917357;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+}
+
+html.bp-cookie-show .bp-cookie-bar,
+.bp-cookie-bar.is-visible {
+  display: block;
+}
+
+.bp-cookie-bar__inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 16px 24px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.bp-cookie-bar__text {
+  margin: 0;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #f4eada;
+}
+
+.bp-cookie-bar__text a {
+  color: #ad9170;
+  text-decoration: underline;
+}
+
+.bp-cookie-bar__close {
+  flex-shrink: 0;
+  min-width: 140px;
+  height: 44px;
+  padding: 0 22px;
+  border: 1px solid #917357;
+  background: #917357;
+  color: #f4eada;
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.bp-cookie-bar__close:hover {
+  background: transparent;
+  color: #f4eada;
+}
+
+@media (max-width: 760px) {
+  .bp-cookie-bar__inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px 16px;
+    gap: 12px;
+  }
+
+  .bp-cookie-bar__close {
+    width: 100%;
+  }
 }
