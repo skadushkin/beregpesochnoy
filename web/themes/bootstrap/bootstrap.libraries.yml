@@ -2,7 +2,7 @@
 
 # Стили и JS для фронтенда
 global-styling:
-  version: 1.0.21
+  version: 1.0.22
   js:
     js/bootstrap.js: {}
     js/jquery.maskedinput.min.js: {}
@@ -653,7 +653,7 @@ landing_dev2:
 
 # Лендинг v2 (node 838)
 landing_v2:
-  version: 1.0.48
+  version: 1.0.49
   css:
     theme:
       landing-v2/css/fonts.css: {}

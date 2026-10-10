@@ -245,22 +245,6 @@ body.page-view-cameras .cameras-item-title *,
 }
 
 
-body.page-node-50 .bg6,
-body.page-node-223 .bg6,
-body.page-node-980 .bg6,
-body.page-node-852 .bg6,
-body.page-node-838 .bg6,
-body.page-node-840 .bg6,
-body.page-node-850 .bg6,
-body.page-node-851 .bg6,
-body.page-node-875 .bg6,
-body.page-node-954 .bg6,
-body.page-node-955 .bg6,
-body.page-node-956 .bg6,
-body.page-node-968 .bg6,
-body.page-node-969 .bg6,
-body.page-node-978 .bg6,
-body.page-node-853 .bg6,
 body.page-node-1024 h1,
 body.page-node-1024 h2,
 body.page-node-1024 h3,
@@ -288,6 +272,22 @@ body.path-ferma .cta__title * {
   font-family: Merriweather, serif !important;
 }
 
+body.page-node-50 .bg6,
+body.page-node-223 .bg6,
+body.page-node-980 .bg6,
+body.page-node-852 .bg6,
+body.page-node-838 .bg6,
+body.page-node-840 .bg6,
+body.page-node-850 .bg6,
+body.page-node-851 .bg6,
+body.page-node-875 .bg6,
+body.page-node-954 .bg6,
+body.page-node-955 .bg6,
+body.page-node-956 .bg6,
+body.page-node-968 .bg6,
+body.page-node-969 .bg6,
+body.page-node-978 .bg6,
+body.page-node-853 .bg6,
 body.page-node-854 .bg6,
 body.path-ferma .bg6,
 body.page-node-511 .bg6,
@@ -322,6 +322,12 @@ section:has(.town-videos) + .bg6,
 body.path-mfk .seo-page-faq ~ .bg6,
 body.page-view-mfk .seo-page-faq ~ .bg6 {
   margin-top: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .bg6 {
+    margin-top: 0 !important;
+  }
 }
 
 /* Плашка «Окончание строительства» — Figma 7783:2012 */
