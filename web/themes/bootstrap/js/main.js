@@ -539,7 +539,7 @@ jQuery(document).ready(function ($) {
             }
             return input.next('.online-notice');
         }
-        return form.find('input[type="checkbox"]').closest('.cta__agree, .bp-modal__agree').next('.online-notice');
+        return form.find('input[type="checkbox"]').closest('.cta__agree, .bp-modal__agree, .sell-form__agree').next('.online-notice');
     }
 
     function submitLv2LeadForm(form) {
@@ -579,15 +579,28 @@ jQuery(document).ready(function ($) {
         }
 
         var leadSource = resolveLeadSource(form, form.find('input[name="source"]').val(), name);
+        var extraBits = [];
+        form.find('[data-lead-extra]').each(function () {
+            var value = jQuery.trim(jQuery(this).val());
+            var label = jQuery(this).attr('data-lead-extra') || this.name;
+            if (value) {
+                extraBits.push(label + ': ' + value);
+            }
+        });
+        var extraMessage = extraBits.join('\n');
+        if (extraMessage) {
+            leadSource = leadSource + ' | ' + extraBits.join('; ');
+        }
         var dataForRequest = {
             'name': name,
             'email': ' ',
             'phone': phone,
-            'source': leadSource
+            'source': leadSource,
+            'message': extraMessage
         };
 
         form.data('sending', true);
-        sendLeadToBitrix(name, ' ', phone, '', leadSource, form);
+        sendLeadToBitrix(name, ' ', phone, extraMessage, leadSource, form);
         markLeadFormSuccess(form);
         jQuery.ajax({
             type: "POST",
@@ -606,7 +619,7 @@ jQuery(document).ready(function ($) {
         return true;
     }
 
-    jQuery('#lv2-cta-send, #lv2-tour-send').click(function (e) {
+    jQuery('#lv2-cta-send, #lv2-tour-send, [data-sell-send]').click(function (e) {
         e.preventDefault();
         e.stopPropagation();
         submitLv2LeadForm(jQuery(this).closest('form'));

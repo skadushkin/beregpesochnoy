@@ -1,0 +1,398 @@
+/**
+ * Продающая серия: жизнь / экскурсия / зима / тест-драйв.
+ * Токены как у landing v2. Не подключать на другие страницы.
+ */
+
+body.path-zhizn-v-poselke,
+body.path-excursion,
+body.path-zimoj,
+body.path-poprobujte-pozhit {
+  background: #323232;
+  color: #fff;
+}
+
+.sell {
+  padding-bottom: 48px;
+}
+
+.sell-hero {
+  position: relative;
+  min-height: min(78vh, 760px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.sell-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.sell-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sell-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(50, 50, 50, 0.15) 0%, rgba(50, 50, 50, 0.88) 78%, #323232 100%);
+}
+
+.sell-hero__content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 760px;
+}
+
+.sell-hero__kicker {
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b3ce7d;
+}
+
+.sell-hero__title {
+  font-family: Merriweather, serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.sell-hero__lead {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 34em;
+}
+
+.sell-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sell-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.sell-stat {
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(60, 60, 59, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sell-stat strong {
+  display: block;
+  font-family: Merriweather, serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.sell-stat span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sell-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sell-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #3c3c3b;
+  min-height: 100%;
+  transition: transform .2s;
+}
+
+.sell-card:hover {
+  transform: translateY(-3px);
+}
+
+.sell-card__photo {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.sell-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sell-card__body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sell-card__label {
+  color: #b3ce7d;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sell-card h3 {
+  font-family: Merriweather, serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.sell-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sell-card--wide {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.sell-card--wide .sell-card__photo {
+  flex: 1;
+  aspect-ratio: auto;
+  min-height: 280px;
+}
+
+.sell-card--wide .sell-card__body {
+  flex: 1;
+  justify-content: center;
+  padding: 40px;
+}
+
+.sell-cta .sell-hero__actions {
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.sell-see {
+  display: grid;
+  gap: 16px;
+}
+
+.sell-see__item {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 16px 12px 12px;
+  border-radius: 24px;
+  background: #3c3c3b;
+}
+
+.sell-see__item img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.sell-see__num {
+  color: #b3ce7d;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.sell-see__item h3 {
+  font-family: Merriweather, serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 4px 0;
+}
+
+.sell-see__item p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+}
+
+.sell-day {
+  display: grid;
+  gap: 0;
+  border-left: 1px solid rgba(179, 206, 125, 0.35);
+  margin-left: 12px;
+  padding-left: 28px;
+}
+
+.sell-day__step {
+  position: relative;
+  padding: 0 0 32px;
+}
+
+.sell-day__step::before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #b3ce7d;
+  box-shadow: 0 0 0 6px rgba(179, 206, 125, 0.18);
+}
+
+.sell-day__step strong {
+  display: block;
+  font-family: Merriweather, serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.sell-day__step p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sell-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: start;
+  padding: 40px;
+  border-radius: 32px;
+  background: #3c3c3b;
+}
+
+.sell-form h2 {
+  margin-bottom: 12px;
+}
+
+.sell-form__lead {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 24px;
+}
+
+.sell-form form {
+  display: grid;
+  gap: 14px;
+}
+
+.sell-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.sell-form input,
+.sell-form select,
+.sell-form textarea {
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: #323232;
+  color: #fff;
+  font: inherit;
+}
+
+.sell-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.sell-form input::placeholder,
+.sell-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.sell-form .bp-modal__agree,
+.sell-form .sell-form__agree {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.sell-form .sell-form__agree a {
+  text-decoration: underline;
+}
+
+.sell-form .online-notice {
+  visibility: hidden;
+  min-height: 16px;
+  font-size: 12px;
+  color: #f4cfcf;
+}
+
+.sell-form .popup-success {
+  display: none;
+  color: #b3ce7d;
+}
+
+.sell-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sell-prose {
+  max-width: 46em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .sell-stats,
+  .sell-grid,
+  .sell-form,
+  .sell-form__row,
+  .sell-see__item {
+    grid-template-columns: 1fr;
+  }
+
+  .sell-hero {
+    min-height: 72vh;
+  }
+
+  .sell-hero__content {
+    padding-bottom: 32px;
+  }
+
+  .sell-form {
+    padding: 24px;
+    gap: 28px;
+  }
+
+  .sell-see__item img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .sell .btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .sell-card--wide {
+    flex-direction: column;
+  }
+}

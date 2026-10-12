@@ -1,0 +1,110 @@
+{% set lv2 = '/themes/bootstrap/landing-v2/img/' %}
+{% set pt = '/themes/bootstrap/landing-ponton/img/' %}
+
+<main class="landing sell">
+  <section class="sell-hero" id="top">
+    <div class="sell-hero__bg" aria-hidden="true">
+      <img src="{{ pt }}lifestyle-vip.png" alt="" width="1920" height="900">
+    </div>
+    <div class="cl sell-hero__content">
+      <p class="sell-hero__kicker">Тест-драйв поселка</p>
+      <h1 class="sell-hero__title">Попробуйте пожить здесь</h1>
+      <p class="sell-hero__lead">Одна ночь в «Береге Песочной» стоит десяти презентаций. Для дома за 15–30 млн это самый честный аргумент: приехать, остаться и утром понять, ваше это место или нет.</p>
+      <div class="sell-hero__actions">
+        <a href="#book" class="btn btn--fill">Оставить заявку <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a href="/excursion" class="btn btn--outline">Сначала экскурсия</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cl section__inner">
+      <div class="sell-stats">
+        <article class="sell-stat"><strong>1 ночь</strong><span>в гостевом формате на территории поселка</span></article>
+        <article class="sell-stat"><strong>Утро в Истре</strong><span>школа, кофе, магазины — как у будущих соседей</span></article>
+        <article class="sell-stat"><strong>Вечер дома</strong><span>интернет, тишина, свет, своя дорога назад</span></article>
+        <article class="sell-stat"><strong>Без сделки</strong><span>ночь не обязывает купить. Она помогает решить</span></article>
+      </div>
+      <div class="sell-prose">
+        <p>Если есть возможность остановиться в гостевом доме, мы организуем сутки. Не шоу-рум на двадцать минут, а обычный вечер и обычное утро. Именно так покупают дом, в котором собираются жить, а не «держать».</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="day">
+    <div class="cl section__inner">
+      <h2 class="h2">Как проходит ночь</h2>
+      <div class="sell-day">
+        <article class="sell-day__step">
+          <strong>Приезжаете</strong>
+          <p>Днём, пока светло. Видите въезд, охрану, дорогу, свой будущий маршрут от Москвы.</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Остаётесь</strong>
+          <p>Вечер в поселке: тишина, свет на улицах, соседи, которые уже живут, а не «скоро заселятся».</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Утром едете в Истру</strong>
+          <p>Десять минут до города. Кофе, школа, сад, аптека — проверка повседневной логистики, не витрины.</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Вечером возвращаетесь</strong>
+          <p>Обратная дорога без героики. Если она спокойная, жить здесь можно. Если нет — лучше узнать сейчас.</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Проверяете интернет</strong>
+          <p>Созвон, почта, кино. Оптика либо работает как в городе, либо разговор заканчивается вечером.</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Гуляете</strong>
+          <p>Парк, река, своя улица в сумерках. Этого нельзя показать в слайде — только ногами.</p>
+        </article>
+        <article class="sell-day__step">
+          <strong>Смотрите инфраструктуру</strong>
+          <p>Не «на генплане», а как ей пользуются. После этого решение про дом обычно становится простым.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="book">
+    <div class="cl">
+      <div class="sell-form">
+        <div>
+          <h2 class="h2">Хочу пожить одну ночь</h2>
+          <p class="sell-form__lead">Напишите удобные даты и сколько человек. Мы скажем, получится ли организовать гостевой формат, и предложим ближайшие слоты.</p>
+        </div>
+        <form class="lv2-lead-form sell-lead-form" action="#" method="post" novalidate>
+          <input type="hidden" name="source" value="Страница «Попробуйте пожить здесь»">
+          <div class="bp-modal__field">
+            <input type="text" name="name" placeholder="Имя" autocomplete="name">
+            <div class="online-notice"></div>
+          </div>
+          <div class="bp-modal__field">
+            <input type="tel" name="phone" class="phone-field-mask" placeholder="Телефон" autocomplete="tel">
+            <div class="online-notice"></div>
+          </div>
+          <div class="sell-form__row">
+            <input type="text" name="date" data-lead-extra="Дата" placeholder="Желаемые даты">
+            <input type="text" name="people" data-lead-extra="Человек" placeholder="Количество человек" inputmode="numeric">
+          </div>
+          <textarea name="comment" data-lead-extra="Комментарий" placeholder="Что хотите проверить за ночь"></textarea>
+          <label class="sell-form__agree">
+            <input type="checkbox" name="agree">
+            <span>Даю согласие на обработку <a href="/policy/">персональных данных</a></span>
+          </label>
+          <div class="online-notice"></div>
+          <button type="button" class="btn btn--fill" data-sell-send>Оставить заявку</button>
+          <div class="popup-success">Заявка отправлена. Мы свяжемся и расскажем про ближайшие даты.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {{ drupal_entity('block_content', '44') }}
+
+  {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+    tour_modal_label: 'Берег Песочной',
+    tour_modal_source: 'Страница «Попробуйте пожить здесь» — просмотр'
+  } %}
+</main>

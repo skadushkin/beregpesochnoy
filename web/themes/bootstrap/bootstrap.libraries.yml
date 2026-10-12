@@ -2,7 +2,7 @@
 
 # Стили и JS для фронтенда
 global-styling:
-  version: 1.0.22
+  version: 1.0.23
   js:
     js/bootstrap.js: {}
     js/jquery.maskedinput.min.js: {}
@@ -650,6 +650,20 @@ landing_dev2:
     - core/jquery
     - bootstrap/genplan_lazy
     - bootstrap/infra_map
+
+# Лендинг v2 (node 838)
+# Продающая серия: жизнь / экскурсия / зима / тест-драйв
+sell_pages:
+  version: 1.0.0
+  css:
+    theme:
+      landing-v2/css/tour-modal.css: {}
+      landing-sell/css/sell.css: { weight: 40 }
+  js:
+    landing-istra/js/main.js: {}
+  dependencies:
+    - core/drupal
+    - bootstrap/landing_v2
 
 # Лендинг v2 (node 838)
 landing_v2:

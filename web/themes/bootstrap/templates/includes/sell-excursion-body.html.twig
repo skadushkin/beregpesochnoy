@@ -1,0 +1,138 @@
+{% set lv2 = '/themes/bootstrap/landing-v2/img/' %}
+{% set pt = '/themes/bootstrap/landing-ponton/img/' %}
+{% set pk = '/themes/bootstrap/landing-park/img/' %}
+
+<main class="landing sell">
+  <section class="sell-hero" id="top">
+    <div class="sell-hero__bg" aria-hidden="true">
+      <img src="{{ lv2 }}map-section.png" alt="" width="1920" height="900">
+    </div>
+    <div class="cl sell-hero__content">
+      <p class="sell-hero__kicker">Экскурсия в поселок</p>
+      <h1 class="sell-hero__title">Не заявка.<br>Маршрут на два часа.</h1>
+      <p class="sell-hero__lead">Покажем генплан, готовые и строящиеся дома, инфраструктуру, реку и парк. По дороге менеджер отвечает на вопросы, которые обычно остаются после сайта.</p>
+      <div class="sell-hero__actions">
+        <a href="#book" class="btn btn--fill">Записаться <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a href="/zhizn-v-poselke" class="btn btn--outline">Сначала про жизнь</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cl section__inner">
+      <div class="sell-stats">
+        <article class="sell-stat"><strong>2 часа</strong><span>достаточно, чтобы понять место, а не только дом</span></article>
+        <article class="sell-stat"><strong>7 точек</strong><span>маршрут, а не «посмотрим что получится»</span></article>
+        <article class="sell-stat"><strong>С менеджером</strong><span>живые ответы, а не презентация с ноутбука</span></article>
+        <article class="sell-stat"><strong>Без обязательств</strong><span>можно приехать семьёй и просто походить</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="route">
+    <div class="cl section__inner">
+      <h2 class="h2">Что увидите</h2>
+      <div class="sell-see">
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}hero-side-6ba87f.png" alt="Генплан поселка">
+          <div>
+            <span class="sell-see__num">01</span>
+            <h3>Генплан</h3>
+            <p>Как устроен поселок, где парк, река, въезд и какие участки уже живые.</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}catalog-house-1.png" alt="Готовые дома">
+          <div>
+            <span class="sell-see__num">02</span>
+            <h3>Готовые дома</h3>
+            <p>Можно зайти, увидеть отделку, свет, участок и понять масштаб, а не смотреть рендер.</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}house-type-1-2a1390.png" alt="Строящиеся дома">
+          <div>
+            <span class="sell-see__num">03</span>
+            <h3>Строящиеся дома</h3>
+            <p>Стадия, материалы, сроки. Честно, на объекте, а не в буклете.</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}infrastructure-main-c23441.png" alt="Инфраструктура">
+          <div>
+            <span class="sell-see__num">04</span>
+            <h3>Инфраструктуру</h3>
+            <p>Охрана, дороги, коммуникации, повседневные сервисы внутри и в Истре.</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}lake-35dda4.png" alt="Река Песочная">
+          <div>
+            <span class="sell-see__num">05</span>
+            <h3>Реку</h3>
+            <p>Песочная и вид на воду — то, ради чего люди выбирают это место, а не «участок у леса».</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ pk }}lifestyle-pond-7d2f61.png" alt="Парк с прудом">
+          <div>
+            <span class="sell-see__num">06</span>
+            <h3>Парк</h3>
+            <p>Пруд, аллеи, площадки. Проходите пешком — так лучше чувствуется масштаб 8 гектаров.</p>
+          </div>
+        </article>
+        <article class="sell-see__item">
+          <img src="{{ lv2 }}contact-person.png" alt="Ответы менеджера">
+          <div>
+            <span class="sell-see__num">07</span>
+            <h3>Ответы менеджера</h3>
+            <p>Ипотека, сроки, соседи, зима, школа, интернет. Всё, что обычно остаётся «потом уточним».</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="book">
+    <div class="cl">
+      <div class="sell-form">
+        <div>
+          <h2 class="h2">Записаться на экскурсию</h2>
+          <p class="sell-form__lead">Оставьте имя, телефон и удобную дату. Подберём время, встретим на въезде и проведём по маршруту.</p>
+          <p class="sell-form__lead">Если хотите посмотреть конкретный дом — напишите его в заявке.</p>
+        </div>
+        <form class="lv2-lead-form sell-lead-form" action="#" method="post" novalidate>
+          <input type="hidden" name="source" value="Страница «Экскурсия» — запись">
+          <div class="bp-modal__field">
+            <input type="text" name="name" placeholder="Имя" autocomplete="name">
+            <div class="online-notice"></div>
+          </div>
+          <div class="bp-modal__field">
+            <input type="tel" name="phone" class="phone-field-mask" placeholder="Телефон" autocomplete="tel">
+            <div class="online-notice"></div>
+          </div>
+          <div class="sell-form__row">
+            <input type="text" name="date" data-lead-extra="Дата" placeholder="Желаемая дата" autocomplete="off">
+            <input type="text" name="people" data-lead-extra="Человек" placeholder="Количество человек" inputmode="numeric">
+          </div>
+          <input type="text" name="object" data-lead-extra="Объект" placeholder="Интересующий объект">
+          <textarea name="comment" data-lead-extra="Комментарий" placeholder="Комментарий"></textarea>
+          <label class="sell-form__agree">
+            <input type="checkbox" name="agree">
+            <span>Даю согласие на обработку <a href="/policy/">персональных данных</a></span>
+          </label>
+          <div class="online-notice"></div>
+          <button type="button" class="btn btn--fill" data-sell-send>Записаться</button>
+          <div class="popup-success">Заявка отправлена. Мы свяжемся и подтвердим время.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {{ drupal_entity('block_content', '44') }}
+
+  {% include '@bootstrap/includes/landing-tour-modal.html.twig' with {
+    tour_modal_label: 'Берег Песочной',
+    tour_modal_source: 'Страница «Экскурсия» — просмотр'
+  } %}
+</main>
