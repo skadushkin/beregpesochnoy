@@ -122,7 +122,7 @@
         var editThumbs = root.querySelector('[data-infra-edit-thumbs]');
         var draftImages = [];
         var MAX_IMAGES = 8;
-        var activeCat = 'all';
+        var activeCats = new Set();
         var infraOn = true;
         var editing = false;
         var selectedId = '';
@@ -150,8 +150,40 @@
             if (!infraOn) {
               return false;
             }
-            return activeCat === 'all' || point.category === activeCat;
+            return isAllCats() || activeCats.has(point.category);
           });
+        }
+
+        function allCatIds() {
+          return filterCats(data).map(function (cat) {
+            return cat.id;
+          });
+        }
+
+        function isAllCats() {
+          return activeCats.size === 0;
+        }
+
+        function catIsOn(id) {
+          return isAllCats() || activeCats.has(id);
+        }
+
+        function toggleCat(id) {
+          if (isAllCats()) {
+            activeCats = new Set([id]);
+            return;
+          }
+          if (activeCats.has(id)) {
+            activeCats.delete(id);
+            return;
+          }
+          activeCats.add(id);
+          var ids = allCatIds();
+          if (ids.length && ids.every(function (catId) {
+            return activeCats.has(catId);
+          })) {
+            activeCats = new Set();
+          }
         }
 
         function renderFilters() {
@@ -161,18 +193,22 @@
             cats.forEach(function (cat) {
               var btn = document.createElement('button');
               btn.type = 'button';
-              btn.className = 'infra-map__cat' + (activeCat === cat.id ? ' is-active' : '');
+              var on = catIsOn(cat.id) && !isAllCats();
+              btn.className = 'infra-map__cat' + (on ? ' is-active' : '');
+              btn.setAttribute('aria-pressed', on ? 'true' : 'false');
               btn.innerHTML = '<span class="infra-map__cat-icon" style="background:' + esc(cat.color) + '"><img src="' + esc(cat.icon) + '" alt=""></span><span>' + esc(cat.label) + '</span>';
               btn.addEventListener('click', function () {
-                activeCat = cat.id;
+                toggleCat(cat.id);
                 renderFilters();
                 refreshPins();
+                hideInfoIfHidden();
               });
               catsEl.appendChild(btn);
             });
           }
           if (allBtn) {
-            allBtn.classList.toggle('is-active', activeCat === 'all');
+            allBtn.classList.toggle('is-active', isAllCats());
+            allBtn.setAttribute('aria-pressed', isAllCats() ? 'true' : 'false');
           }
           if (legendEl) {
             var legendCats = (data.categories || []).slice();
@@ -226,6 +262,18 @@
             '<div class="infra-map-pin__body" style="background:' + color + '"><img src="' + icon + '" alt="" onerror="this.src=\'/themes/bootstrap/landing-v2/img/infra-map/icon-village.svg\'"></div>' +
             '<div class="infra-map-pin__tail" style="background:' + tail + '"></div>' +
             '</div>';
+        }
+
+        function hideInfoIfHidden() {
+          if (!selectedId) {
+            return;
+          }
+          var visible = visiblePoints().some(function (point) {
+            return point.id === selectedId;
+          });
+          if (!visible) {
+            hideInfo();
+          }
         }
 
         function hideInfo() {
@@ -900,7 +948,7 @@
 
         if (allBtn) {
           allBtn.addEventListener('click', function () {
-            activeCat = 'all';
+            activeCats = new Set();
             renderFilters();
             refreshPins();
           });
