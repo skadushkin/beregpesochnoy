@@ -115,6 +115,8 @@
         var infoPhoto = root.querySelector('[data-infra-info-photo]');
         var infoPhotoMain = root.querySelector('[data-infra-info-photo-main]');
         var infoThumbs = root.querySelector('[data-infra-info-thumbs]');
+        var infoYandex = root.querySelector('[data-infra-info-yandex]');
+        var infoYandexImg = root.querySelector('[data-infra-info-yandex-img]');
         var editText = root.querySelector('[data-infra-edit-text]');
         var editImage = root.querySelector('[data-infra-edit-image]');
         var editThumbs = root.querySelector('[data-infra-edit-thumbs]');
@@ -233,7 +235,51 @@
           if (infoPhoto) {
             infoPhoto.hidden = true;
           }
+          if (infoYandex) {
+            infoYandex.hidden = true;
+          }
           clearRadius();
+        }
+
+        function yandexSnapshotUrl(coords) {
+          if (!coords || coords.length < 2) {
+            return '';
+          }
+          var lat = coords[0];
+          var lon = coords[1];
+          return 'https://static-maps.yandex.ru/1.x/?l=sat,skl&z=16&size=450,240&ll=' +
+            encodeURIComponent(lon + ',' + lat) +
+            '&pt=' + encodeURIComponent(lon + ',' + lat + ',pm2rdm');
+        }
+
+        function yandexMapsUrl(coords) {
+          if (!coords || coords.length < 2) {
+            return '';
+          }
+          return 'https://yandex.ru/maps/?l=sat&z=17&pt=' + coords[1] + ',' + coords[0];
+        }
+
+        function renderYandexSnapshot(point) {
+          if (!infoYandex || !infoYandexImg) {
+            return;
+          }
+          var src = point && point.coords ? yandexSnapshotUrl(point.coords) : '';
+          if (!src) {
+            infoYandex.hidden = true;
+            infoYandexImg.removeAttribute('src');
+            infoYandex.removeAttribute('href');
+            return;
+          }
+          infoYandexImg.alt = point.title ? ('Яндекс.Карты: ' + point.title) : 'Снимок Яндекс.Карт';
+          infoYandexImg.onerror = function () {
+            infoYandex.hidden = true;
+          };
+          infoYandexImg.onload = function () {
+            infoYandex.hidden = false;
+          };
+          infoYandex.href = yandexMapsUrl(point.coords);
+          infoYandexImg.src = src;
+          infoYandex.hidden = false;
         }
 
         function renderInfoPhotos(images) {
@@ -407,6 +453,7 @@
             infoText.textContent = point.text || '';
             infoText.hidden = !point.text;
           }
+          renderYandexSnapshot(point);
           renderInfoPhotos(pointImages(point));
           infoEl.hidden = false;
           showRadius(point);

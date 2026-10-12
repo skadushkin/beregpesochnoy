@@ -106,6 +106,8 @@ function bereg_i18n_dictionary(): array {
     'Информация' => ['en' => 'Information', 'ar' => 'معلومات'],
     'Изображения' => ['en' => 'Images', 'ar' => 'صور'],
     'Добавить фото' => ['en' => 'Add photo', 'ar' => 'أضف صورة'],
+    'Открыть на Яндекс.Картах' => ['en' => 'Open in Yandex Maps', 'ar' => 'افتح في خرائط ياندكس'],
+    'Снимок Яндекс.Карт' => ['en' => 'Yandex Maps snapshot', 'ar' => 'لقطة من خرائط ياندكس'],
     'К объекту можно прикрепить фото — они появятся в карточке.' => [
       'en' => 'You can attach photos to an object — they will appear in the card.',
       'ar' => 'يمكن إرفاق صور بالكائن — ستظهر في البطاقة.',
