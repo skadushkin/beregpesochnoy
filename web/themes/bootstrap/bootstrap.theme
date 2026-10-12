@@ -2352,8 +2352,16 @@ function bootstrap_theme_suggestions_page_alter(array &$suggestions, array $vari
             $suggestions[] = 'page__project_template';
         }
     $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
-    if ($alias === '/dupleksy' || $alias === '/dupleksy/') {
-      $suggestions[] = 'page__dupleksy';
+    $alias = rtrim((string) $alias, '/');
+    $sell_pages = [
+      '/dupleksy' => 'page__dupleksy',
+      '/zhizn-v-poselke' => 'page__zhizn_v_poselke',
+      '/excursion' => 'page__excursion',
+      '/zimoj' => 'page__zimoj',
+      '/poprobujte-pozhit' => 'page__poprobujte_pozhit',
+    ];
+    if (isset($sell_pages[$alias])) {
+      $suggestions[] = $sell_pages[$alias];
     }
   }
 
