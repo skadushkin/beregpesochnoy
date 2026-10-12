@@ -127,7 +127,8 @@
         var ignoreMapClick = false;
         var data = { center: [55.9194, 36.8686], zoom: 14, categories: [], points: [] };
         var map = null;
-        var collection = null;
+        var clusterer = null;
+        var villageLayer = null;
         var placemarks = {};
         var radiusCircle = null;
         var radiusLine = null;
@@ -542,25 +543,89 @@
           return pinLayout._class;
         }
 
+        function clusterLayout() {
+          if (!window.ymaps) {
+            return null;
+          }
+          if (!clusterLayout._class) {
+            clusterLayout._class = ymaps.templateLayoutFactory.createClass(
+              '<div class="infra-map-cluster" style="background:{{ properties.clusterColor }};">{{ properties.clusterCount }}</div>'
+            );
+          }
+          return clusterLayout._class;
+        }
+
+        function buildClusterer() {
+          var instance = new ymaps.Clusterer({
+            clusterDisableClickZoom: false,
+            clusterOpenBalloonOnClick: false,
+            clusterHideIconOnBalloonOpen: true,
+            gridSize: 72,
+            minClusterSize: 2,
+            groupByCoordinates: false,
+            hasBalloon: false,
+            hasHint: true,
+            zoomMargin: 48,
+            clusterIconLayout: clusterLayout(),
+            clusterIconOffset: [-22, -22],
+            clusterIconShape: {
+              type: 'Circle',
+              coordinates: [0, 0],
+              radius: 22
+            }
+          });
+          instance.createCluster = function (center, geoObjects) {
+            var cluster = ymaps.Clusterer.prototype.createCluster.call(this, center, geoObjects);
+            var counts = {};
+            geoObjects.forEach(function (obj) {
+              var color = obj.properties.get('pinColor') || '#917357';
+              counts[color] = (counts[color] || 0) + 1;
+            });
+            var colors = Object.keys(counts);
+            var color = colors.length === 1 ? colors[0] : '#917357';
+            var n = geoObjects.length;
+            var size = n >= 10 ? 26 : 22;
+            cluster.properties.set({
+              clusterColor: color,
+              clusterCount: n,
+              hintContent: n + ' объектов'
+            });
+            cluster.options.set({
+              iconLayout: clusterLayout(),
+              iconOffset: [-size, -size],
+              iconShape: {
+                type: 'Circle',
+                coordinates: [0, 0],
+                radius: size
+              }
+            });
+            return cluster;
+          };
+          return instance;
+        }
+
         function refreshPins() {
-          if (!collection || !window.ymaps) {
+          if (!clusterer || !villageLayer || !window.ymaps) {
             return;
           }
-          collection.removeAll();
+          clusterer.removeAll();
+          villageLayer.removeAll();
           placemarks = {};
+          clusterer.options.set('minClusterSize', editing ? 99 : 2);
           var layout = pinLayout();
           visiblePoints().forEach(function (point) {
             var cat = catById(data, point.category);
             var village = isVillage(point);
             var size = village ? 64 : 52;
             var half = village ? 28 : 22;
+            var color = cat ? cat.color : '#917357';
             var placemark = new ymaps.Placemark(point.coords, {
               hintContent: point.title,
               pointId: point.id,
               village: village,
               selected: point.id === selectedId,
-              pinColor: village ? '#FFFBF3' : (cat ? cat.color : '#917357'),
-              pinTail: village ? '#917357' : (cat ? cat.color : '#917357'),
+              pinColor: village ? '#FFFBF3' : color,
+              pinTail: village ? '#917357' : color,
               pinIcon: village
                 ? '/sites/default/files/img/logo_mob2.svg'
                 : (cat ? cat.icon : '')
@@ -577,7 +642,12 @@
               zIndex: village ? 700 : 650,
               zIndexHover: 720
             });
-            collection.add(placemark);
+            if (village) {
+              villageLayer.add(placemark);
+            }
+            else {
+              clusterer.add(placemark);
+            }
             placemarks[point.id] = placemark;
           });
           if (deleteBtn) {
@@ -738,8 +808,10 @@
           map.controls.add('zoomControl', {
             position: { right: 24, top: 80 }
           });
-          collection = new ymaps.GeoObjectCollection();
-          map.geoObjects.add(collection);
+          villageLayer = new ymaps.GeoObjectCollection();
+          map.geoObjects.add(villageLayer);
+          clusterer = buildClusterer();
+          map.geoObjects.add(clusterer);
           map.events.add('click', function (event) {
             var coords = event.get('coords');
             var near = pointsNear(coords, 56);
@@ -796,6 +868,7 @@
           editToggle.addEventListener('change', function () {
             editing = editToggle.checked;
             root.classList.toggle('is-editing', editing);
+            refreshPins();
             setStatus(editing ? 'Режим редактирования включён.' : '');
           });
         }

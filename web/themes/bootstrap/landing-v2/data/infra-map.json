@@ -1,6 +1,9 @@
 {
-  "center": [55.959175, 36.947689],
-  "zoom": 11,
+  "center": [
+    55.959175,
+    36.947689
+  ],
+  "zoom": 12,
   "categories": [
     {
       "id": "village",
@@ -57,63 +60,659 @@
       "category": "village",
       "title": "КП «Берег Песочной»",
       "text": "Коттеджный посёлок бизнес-класса на берегу реки Песочной. 45 км от МКАД по Новорижскому шоссе.",
-      "coords": [55.959175, 36.947689],
+      "coords": [
+        55.959175,
+        36.947689
+      ],
       "pinned": true
     },
     {
-      "id": "istra-center",
-      "category": "park",
-      "title": "Истра, центр",
-      "text": "Городская инфраструктура Истры: магазины, сервисы и повседневные дела примерно в 10 минутах езды.",
-      "coords": [55.9142, 36.8613],
+      "id": "school-internat-hearing",
+      "category": "school",
+      "title": "Школа-интернат для слабослышащих детей",
+      "text": "Коррекционная школа-интернат в Андреевском, около 2,5 км от посёлка.",
+      "coords": [
+        55.95844,
+        36.9084
+      ],
       "pinned": false
     },
     {
-      "id": "istra-station",
-      "category": "transport",
-      "title": "Станция Истра",
-      "text": "Железнодорожная станция Истра — удобный выезд в Москву и по области.",
-      "coords": [55.9097, 36.8694],
+      "id": "school-3",
+      "category": "school",
+      "title": "СОШ №3 им. М.Ю. Лермонтова",
+      "text": "Средняя школа в Истре на улице Кирова.",
+      "coords": [
+        55.9241,
+        36.87364
+      ],
       "pinned": false
     },
     {
-      "id": "istra-hospital",
+      "id": "school-1",
+      "category": "school",
+      "title": "СОШ №1 им. А.П. Чехова",
+      "text": "Средняя школа в Истре на Советской улице.",
+      "coords": [
+        55.92112,
+        36.85829
+      ],
+      "pinned": false
+    },
+    {
+      "id": "school-lyceum",
+      "category": "school",
+      "title": "Лицей города Истры",
+      "text": "Муниципальный лицей на улице Босова.",
+      "coords": [
+        55.91124,
+        36.86335
+      ],
+      "pinned": false
+    },
+    {
+      "id": "school-manikhino",
+      "category": "school",
+      "title": "Манихинская средняя школа",
+      "text": "Школа в Манихино, по дороге к железнодорожной станции.",
+      "coords": [
+        55.89542,
+        36.93963
+      ],
+      "pinned": false
+    },
+    {
+      "id": "school-2",
+      "category": "school",
+      "title": "СОШ №2 им. Н.К. Крупской",
+      "text": "Средняя школа в Истре.",
+      "coords": [
+        55.90689,
+        36.8653
+      ],
+      "pinned": false
+    },
+    {
+      "id": "school-oktyabrskaya",
+      "category": "school",
+      "title": "Октябрьская СОШ",
+      "text": "Средняя школа в посёлке Октябрьский.",
+      "coords": [
+        55.87428,
+        36.94699
+      ],
+      "pinned": false
+    },
+    {
+      "id": "school-luchinskaya",
+      "category": "school",
+      "title": "Лучинская СОШ",
+      "text": "Средняя школа в Лучинском, у Нового Иерусалима.",
+      "coords": [
+        55.91026,
+        36.81545
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-18",
+      "category": "kindergarten",
+      "title": "Детский сад №18 «Золотой ключик»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.91951,
+        36.87837
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-21",
+      "category": "kindergarten",
+      "title": "Детский сад №21",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.92,
+        36.85696
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-48",
+      "category": "kindergarten",
+      "title": "Детский сад №48 «Светлячок»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.91206,
+        36.87361
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-47",
+      "category": "kindergarten",
+      "title": "Детский сад №47 «Колокольчик»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.91221,
+        36.8639
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-24",
+      "category": "kindergarten",
+      "title": "Детский сад №24 «Берёзка»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.9102,
+        36.86869
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-22",
+      "category": "kindergarten",
+      "title": "Детский сад №22 «Кораблик»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.91326,
+        36.85541
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-19",
+      "category": "kindergarten",
+      "title": "Детский сад №19",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.9097,
+        36.86717
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-20",
+      "category": "kindergarten",
+      "title": "Детский сад №20 «Росинка»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.91576,
+        36.83724
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-26",
+      "category": "kindergarten",
+      "title": "Детский сад №26 «Родничок»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.90521,
+        36.86332
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-23",
+      "category": "kindergarten",
+      "title": "Детский сад №23 «Солнышко»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.90763,
+        36.85729
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-52",
+      "category": "kindergarten",
+      "title": "Детский сад №52 «Ромашка»",
+      "text": "Муниципальный детский сад в Истре.",
+      "coords": [
+        55.90704,
+        36.85675
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-28-lytkino",
+      "category": "kindergarten",
+      "title": "Лыткинская школа-детский сад №28",
+      "text": "Начальная школа и детский сад в Лыткино.",
+      "coords": [
+        56.01951,
+        37.00424
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-29",
+      "category": "kindergarten",
+      "title": "Детский сад №29",
+      "text": "Муниципальный детский сад в округе Истра.",
+      "coords": [
+        55.99527,
+        36.81858
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-43",
+      "category": "kindergarten",
+      "title": "Детский сад №43",
+      "text": "Муниципальный детский сад в посёлке Октябрьский.",
+      "coords": [
+        55.87229,
+        36.94742
+      ],
+      "pinned": false
+    },
+    {
+      "id": "kg-snegiryok",
+      "category": "kindergarten",
+      "title": "Детский сад «Снегирёк»",
+      "text": "Детский сад в Снегирях.",
+      "coords": [
+        55.88454,
+        37.0306
+      ],
+      "pinned": false
+    },
+    {
+      "id": "med-holmy",
+      "category": "medicine",
+      "title": "Реабилитационный центр «Холмы»",
+      "text": "Медицинский реабилитационный центр рядом с посёлком.",
+      "coords": [
+        55.9764,
+        36.98331
+      ],
+      "pinned": false
+    },
+    {
+      "id": "med-crb-old",
       "category": "medicine",
       "title": "Истринская ЦРБ",
-      "text": "Центральная районная больница Истры: поликлиника и стационар.",
-      "coords": [55.9058, 36.8519],
+      "text": "Центральная районная больница Истры.",
+      "coords": [
+        55.92923,
+        36.86567
+      ],
       "pinned": false
     },
     {
-      "id": "istra-school",
-      "category": "school",
-      "title": "Школа №2, Истра",
-      "text": "Средняя общеобразовательная школа в Истре.",
-      "coords": [55.9174, 36.8681],
+      "id": "med-clinic",
+      "category": "medicine",
+      "title": "Поликлиника Истры",
+      "text": "Взрослая поликлиника на улице Урицкого.",
+      "coords": [
+        55.92852,
+        36.86771
+      ],
       "pinned": false
     },
     {
-      "id": "istra-sad",
-      "category": "kindergarten",
-      "title": "Детский сад, Истра",
-      "text": "Детские сады Истры в нескольких минутах езды от посёлка.",
-      "coords": [55.9161, 36.8724],
+      "id": "med-paracels",
+      "category": "medicine",
+      "title": "Медицинский центр «Парацельс»",
+      "text": "Частный медицинский центр в Истре.",
+      "coords": [
+        55.92286,
+        36.87264
+      ],
       "pinned": false
     },
     {
-      "id": "istra-shop",
+      "id": "med-child",
+      "category": "medicine",
+      "title": "Детская поликлиника",
+      "text": "Детская поликлиника Истры на улице 9-й Гвардейской Дивизии.",
+      "coords": [
+        55.91324,
+        36.86743
+      ],
+      "pinned": false
+    },
+    {
+      "id": "med-irkb",
+      "category": "medicine",
+      "title": "Истринская областная клиническая больница",
+      "text": "Стационар и поликлиника на Спортивной улице.",
+      "coords": [
+        55.90442,
+        36.87605
+      ],
+      "pinned": false
+    },
+    {
+      "id": "med-fnkc",
+      "category": "medicine",
+      "title": "ФНКЦ реаниматологии и реабилитации",
+      "text": "Федеральный научно-клинический центр в округе Истра.",
+      "coords": [
+        56.0207,
+        36.98636
+      ],
+      "pinned": false
+    },
+    {
+      "id": "med-snegiri",
+      "category": "medicine",
+      "title": "Снегирёвская поликлиника",
+      "text": "Поликлиника в Снегирях.",
+      "coords": [
+        55.88755,
+        37.03074
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-severny",
       "category": "shop",
-      "title": "Магазины на Ленина",
-      "text": "Торговая улица в центре Истры: продукты, бытовые товары и сервисы.",
-      "coords": [55.9152, 36.8598],
+      "title": "ТЦ «Северный»",
+      "text": "Торговый центр на севере Истры.",
+      "coords": [
+        55.94436,
+        36.83917
+      ],
       "pinned": false
     },
     {
-      "id": "new-jerusalem",
+      "id": "shop-pyaterochka-sovet",
+      "category": "shop",
+      "title": "Пятёрочка на Советской",
+      "text": "Супермаркет в Истре.",
+      "coords": [
+        55.91998,
+        36.86516
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-dixy-andreev",
+      "category": "shop",
+      "title": "Дикси у Андреевского",
+      "text": "Супермаркет по дороге в Истру.",
+      "coords": [
+        55.94855,
+        36.8351
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-istria",
+      "category": "shop",
+      "title": "ТЦ «Истрия»",
+      "text": "Торговый центр в Истре.",
+      "coords": [
+        55.91373,
+        36.86702
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-istra-city",
+      "category": "shop",
+      "title": "ТЦ «Истра-Сити»",
+      "text": "Торговый центр в центре Истры.",
+      "coords": [
+        55.9133,
+        36.86609
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-istrinsky",
+      "category": "shop",
+      "title": "ТЦ «Истринский»",
+      "text": "Торговый комплекс в Истре.",
+      "coords": [
+        55.91357,
+        36.86365
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-central",
+      "category": "shop",
+      "title": "ТЦ «Центральный»",
+      "text": "Торговый центр в центре Истры.",
+      "coords": [
+        55.91294,
+        36.86392
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-briz",
+      "category": "shop",
+      "title": "ТЦ «Бриз»",
+      "text": "Торговый центр в Истре.",
+      "coords": [
+        55.9155,
+        36.85595
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-pyaterochka-lenina",
+      "category": "shop",
+      "title": "Пятёрочка на Ленина",
+      "text": "Супермаркет на улице Ленина.",
+      "coords": [
+        55.90984,
+        36.85906
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-dixy-istra",
+      "category": "shop",
+      "title": "Дикси в Истре",
+      "text": "Супермаркет в Истре.",
+      "coords": [
+        55.90563,
+        36.86668
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-verny",
+      "category": "shop",
+      "title": "«Верный»",
+      "text": "Супермаркет у Манихино.",
+      "coords": [
+        55.90813,
+        36.92713
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-da",
+      "category": "shop",
+      "title": "«Да!»",
+      "text": "Супермаркет у Манихино.",
+      "coords": [
+        55.90714,
+        36.9335
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-zhemchuzhina",
+      "category": "shop",
+      "title": "ТЦ «Жемчужина»",
+      "text": "Торговый центр в Истре.",
+      "coords": [
+        55.90571,
+        36.89042
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-jerusalem",
+      "category": "shop",
+      "title": "ТЦ «Новый Иерусалим»",
+      "text": "Торговый центр у станции Новоиерусалимская.",
+      "coords": [
+        55.91261,
+        36.82606
+      ],
+      "pinned": false
+    },
+    {
+      "id": "shop-perekrestok",
+      "category": "shop",
+      "title": "«Перекрёсток»",
+      "text": "Супермаркет в округе Истра.",
+      "coords": [
+        55.97194,
+        36.82213
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-stadium",
+      "category": "sport",
+      "title": "Стадион Истра",
+      "text": "Городской стадион Истры.",
+      "coords": [
+        55.9197,
+        36.84846
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-arena",
+      "category": "sport",
+      "title": "Спортивный комплекс «Арена-Истра»",
+      "text": "Физкультурно-оздоровительный комплекс в Истре.",
+      "coords": [
+        55.90565,
+        36.8743
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-fovor",
+      "category": "sport",
+      "title": "Горнолыжный комплекс «Гора Фавор»",
+      "text": "Горнолыжный склон у Нового Иерусалима.",
+      "coords": [
+        55.92217,
+        36.82838
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-tennis",
+      "category": "sport",
+      "title": "Истринская школа тенниса",
+      "text": "Теннисный клуб в Истре.",
+      "coords": [
+        55.89819,
+        36.85488
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-manikhino-ski",
+      "category": "sport",
+      "title": "Горнолыжная база «Манихино»",
+      "text": "Горнолыжный склон в Манихино.",
+      "coords": [
+        55.8806,
+        36.9404
+      ],
+      "pinned": false
+    },
+    {
+      "id": "sport-astra",
+      "category": "sport",
+      "title": "Горнолыжный клуб Astra",
+      "text": "Горнолыжный склон в округе Истра.",
+      "coords": [
+        55.87845,
+        36.9362
+      ],
+      "pinned": false
+    },
+    {
+      "id": "park-city",
+      "category": "park",
+      "title": "Городской парк Истры",
+      "text": "Городской парк для прогулок в центре Истры.",
+      "coords": [
+        55.91863,
+        36.85656
+      ],
+      "pinned": false
+    },
+    {
+      "id": "park-new-jerusalem",
       "category": "park",
       "title": "Новоиерусалимский монастырь",
-      "text": "Исторический монастырь и музейный комплекс на Истре — прогулки и культурный досуг.",
-      "coords": [55.9219, 36.8422],
+      "text": "Исторический монастырь и музейный комплекс — прогулки и культурный досуг.",
+      "coords": [
+        55.92171,
+        36.84546
+      ],
+      "pinned": false
+    },
+    {
+      "id": "park-gethsemane",
+      "category": "park",
+      "title": "Гефсиманский сад",
+      "text": "Парк у Новоиерусалимского монастыря.",
+      "coords": [
+        55.92166,
+        36.83811
+      ],
+      "pinned": false
+    },
+    {
+      "id": "tr-manikhino-2",
+      "category": "transport",
+      "title": "Станция Манихино-2",
+      "text": "Станция Большого кольца МЖД, около 5 км от посёлка.",
+      "coords": [
+        55.91294,
+        36.96298
+      ],
+      "pinned": false
+    },
+    {
+      "id": "tr-istra",
+      "category": "transport",
+      "title": "Станция Истра",
+      "text": "Железнодорожная станция Истра, Рижское направление.",
+      "coords": [
+        55.9097,
+        36.8694
+      ],
+      "pinned": false
+    },
+    {
+      "id": "tr-manikhino-1",
+      "category": "transport",
+      "title": "Станция Манихино-1",
+      "text": "Станция Рижского направления МЖД.",
+      "coords": [
+        55.89068,
+        36.92949
+      ],
+      "pinned": false
+    },
+    {
+      "id": "tr-novoirusalem",
+      "category": "transport",
+      "title": "Станция Новоиерусалимская",
+      "text": "Станция Рижского направления у монастыря и музея.",
+      "coords": [
+        55.9117,
+        36.82251
+      ],
       "pinned": false
     }
   ]
