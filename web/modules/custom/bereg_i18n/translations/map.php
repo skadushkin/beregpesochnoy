@@ -104,6 +104,12 @@ function bereg_i18n_dictionary(): array {
     'записаться' => ['en' => 'book', 'ar' => 'سجّل'],
     'на экскурсию' => ['en' => 'a viewing', 'ar' => 'زيارة'],
     'Информация' => ['en' => 'Information', 'ar' => 'معلومات'],
+    'Изображения' => ['en' => 'Images', 'ar' => 'صور'],
+    'Добавить фото' => ['en' => 'Add photo', 'ar' => 'أضف صورة'],
+    'К объекту можно прикрепить фото — они появятся в карточке.' => [
+      'en' => 'You can attach photos to an object — they will appear in the card.',
+      'ar' => 'يمكن إرفاق صور بالكائن — ستظهر في البطاقة.',
+    ],
     'Покупка' => ['en' => 'Purchase', 'ar' => 'الشراء'],
     'все права защищены' => ['en' => 'all rights reserved', 'ar' => 'جميع الحقوق محفوظة'],
     'Купить дом в коттеджном поселке' => ['en' => 'Buy a house in the cottage village', 'ar' => 'اشترِ منزلاً في القرية'],

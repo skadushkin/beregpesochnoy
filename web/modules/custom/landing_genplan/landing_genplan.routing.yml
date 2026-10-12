@@ -21,3 +21,12 @@ landing_infra_map.save:
   requirements:
     _permission: 'administer nodes'
     _csrf_request_header_token: 'TRUE'
+
+landing_infra_map.upload:
+  path: '/infra-map/image'
+  defaults:
+    _controller: '\Drupal\landing_genplan\Controller\InfraMapController::upload'
+  methods: [POST]
+  requirements:
+    _permission: 'administer nodes'
+    _csrf_request_header_token: 'TRUE'

@@ -57,9 +57,19 @@
     return km.toFixed(1).replace('.', ',') + ' км от посёлка';
   }
 
-  function isVillage(point) {
-    return !!(point && (point.id === 'village' || point.category === 'village'));
-  }
+        function isVillage(point) {
+          return !!(point && (point.id === 'village' || point.category === 'village'));
+        }
+
+        function pointImages(point) {
+          if (!point) {
+            return [];
+          }
+          if (Array.isArray(point.images) && point.images.length) {
+            return point.images.filter(Boolean);
+          }
+          return point.image ? [point.image] : [];
+        }
 
   function loadYmaps(apiKey) {
     return new Promise(function (resolve, reject) {
@@ -102,7 +112,14 @@
         var infoDist = root.querySelector('[data-infra-info-dist]');
         var infoText = root.querySelector('[data-infra-info-text]');
         var infoClose = root.querySelector('[data-infra-info-close]');
+        var infoPhoto = root.querySelector('[data-infra-info-photo]');
+        var infoPhotoMain = root.querySelector('[data-infra-info-photo-main]');
+        var infoThumbs = root.querySelector('[data-infra-info-thumbs]');
         var editText = root.querySelector('[data-infra-edit-text]');
+        var editImage = root.querySelector('[data-infra-edit-image]');
+        var editThumbs = root.querySelector('[data-infra-edit-thumbs]');
+        var draftImages = [];
+        var MAX_IMAGES = 8;
         var activeCat = 'all';
         var infraOn = true;
         var editing = false;
@@ -212,7 +229,93 @@
           if (infoEl) {
             infoEl.hidden = true;
           }
+          if (infoPhoto) {
+            infoPhoto.hidden = true;
+          }
           clearRadius();
+        }
+
+        function renderInfoPhotos(images) {
+          if (!infoPhoto || !infoPhotoMain) {
+            return;
+          }
+          if (!images.length) {
+            infoPhoto.hidden = true;
+            infoPhotoMain.removeAttribute('src');
+            if (infoThumbs) {
+              infoThumbs.hidden = true;
+              infoThumbs.innerHTML = '';
+            }
+            return;
+          }
+          infoPhoto.hidden = false;
+          infoPhotoMain.src = images[0];
+          infoPhotoMain.alt = '';
+          if (!infoThumbs) {
+            return;
+          }
+          if (images.length < 2) {
+            infoThumbs.hidden = true;
+            infoThumbs.innerHTML = '';
+            return;
+          }
+          infoThumbs.hidden = false;
+          infoThumbs.innerHTML = images.map(function (url, index) {
+            return '<button type="button" class="infra-map__info-thumb' + (index === 0 ? ' is-active' : '') + '" data-src="' + esc(url) + '"><img src="' + esc(url) + '" alt=""></button>';
+          }).join('');
+          infoThumbs.querySelectorAll('[data-src]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              infoPhotoMain.src = btn.getAttribute('data-src') || '';
+              infoThumbs.querySelectorAll('.infra-map__info-thumb').forEach(function (item) {
+                item.classList.toggle('is-active', item === btn);
+              });
+            });
+          });
+        }
+
+        function renderDraftImages() {
+          if (!editThumbs) {
+            return;
+          }
+          if (!draftImages.length) {
+            editThumbs.innerHTML = '';
+            return;
+          }
+          editThumbs.innerHTML = draftImages.map(function (url, index) {
+            return '<div class="infra-map__edit-thumb">' +
+              '<img src="' + esc(url) + '" alt="">' +
+              '<button type="button" class="infra-map__edit-thumb-remove" data-index="' + index + '" aria-label="Убрать фото">×</button>' +
+              '</div>';
+          }).join('');
+          editThumbs.querySelectorAll('[data-index]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var index = parseInt(btn.getAttribute('data-index'), 10);
+              if (Number.isNaN(index)) {
+                return;
+              }
+              draftImages.splice(index, 1);
+              renderDraftImages();
+              applyFormToSelected();
+            });
+          });
+        }
+
+        function uploadImage(file) {
+          if (!settings.imageUrl) {
+            return Promise.reject();
+          }
+          var body = new FormData();
+          body.append('image', file);
+          return fetch(settings.imageUrl, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              'X-CSRF-Token': settings.csrf || ''
+            },
+            body: body
+          }).then(function (response) {
+            return response.json();
+          });
         }
 
         function clearRadius() {
@@ -303,6 +406,7 @@
             infoText.textContent = point.text || '';
             infoText.hidden = !point.text;
           }
+          renderInfoPhotos(pointImages(point));
           infoEl.hidden = false;
           showRadius(point);
         }
@@ -386,7 +490,8 @@
             title: title,
             text: editText ? editText.value.trim() : '',
             coords: coords,
-            pinned: false
+            pinned: false,
+            images: draftImages.slice()
           };
           data.points.push(point);
           selectedId = point.id;
@@ -497,6 +602,8 @@
           if (editCat) {
             editCat.value = point.category;
           }
+          draftImages = pointImages(point).slice();
+          renderDraftImages();
           showInfo(point);
           renderList();
           refreshPins();
@@ -535,8 +642,11 @@
           if (editCat) {
             point.category = editCat.value;
           }
+          point.images = draftImages.slice();
+          delete point.image;
           refreshPins();
           renderList();
+          showInfo(point);
         }
 
         function save() {
@@ -704,6 +814,37 @@
         if (editCat) {
           editCat.addEventListener('change', applyFormToSelected);
         }
+        if (editImage) {
+          editImage.addEventListener('change', function () {
+            var files = Array.prototype.slice.call(editImage.files || []);
+            editImage.value = '';
+            if (!files.length) {
+              return;
+            }
+            var room = MAX_IMAGES - draftImages.length;
+            if (room <= 0) {
+              setStatus('Можно прикрепить не больше ' + MAX_IMAGES + ' фото.');
+              return;
+            }
+            files = files.slice(0, room);
+            setStatus('Загружаем фото…');
+            files.reduce(function (chain, file) {
+              return chain.then(function () {
+                return uploadImage(file).then(function (json) {
+                  if (json && json.ok && json.url && draftImages.length < MAX_IMAGES) {
+                    draftImages.push(json.url);
+                  }
+                });
+              });
+            }, Promise.resolve()).then(function () {
+              renderDraftImages();
+              applyFormToSelected();
+              setStatus('Фото добавлено. Сохраните JSON, чтобы зафиксировать.');
+            }).catch(function () {
+              setStatus('Не удалось загрузить фото.');
+            });
+          });
+        }
         if (deleteBtn) {
           deleteBtn.addEventListener('click', function () {
             if (!selectedId) {
@@ -719,6 +860,8 @@
             if (editText) {
               editText.value = '';
             }
+            draftImages = [];
+            renderDraftImages();
             hideInfo();
             refreshPins();
             renderList();

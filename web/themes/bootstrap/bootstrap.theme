@@ -1655,6 +1655,7 @@ function bootstrap_preprocess_page(&$variables) {
       'apiKey' => '8b3c0e42-94a9-4039-aa46-092bbaa136cf',
       'dataUrl' => '/infra-map/data',
       'saveUrl' => '/infra-map/save',
+      'imageUrl' => '/infra-map/image',
       'csrf' => $can_edit ? \Drupal::csrfToken()->get(\Drupal\Core\Access\CsrfRequestHeaderAccessCheck::TOKEN_KEY) : '',
     ];
   }

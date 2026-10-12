@@ -15,6 +15,12 @@ class InfraMapController extends ControllerBase {
 
   private const PUBLIC_URI = 'public://infra-map/data.json';
 
+  private const IMAGE_DIR = 'public://infra-map/images';
+
+  private const MAX_IMAGES = 8;
+
+  private const MAX_IMAGE_BYTES = 5242880;
+
   /**
    * Default JSON shipped with the theme.
    */
@@ -80,7 +86,7 @@ class InfraMapController extends ControllerBase {
       if ($coords === NULL) {
         continue;
       }
-      $clean['points'][] = [
+      $item = [
         'id' => preg_replace('/[^a-z0-9_-]/i', '', (string) ($point['id'] ?? uniqid('p'))),
         'category' => preg_replace('/[^a-z0-9_-]/i', '', (string) ($point['category'] ?? '')),
         'title' => mb_substr(trim(strip_tags((string) ($point['title'] ?? ''))), 0, 120),
@@ -88,6 +94,11 @@ class InfraMapController extends ControllerBase {
         'coords' => $coords,
         'pinned' => !empty($point['pinned']),
       ];
+      $images = $this->sanitizeImages($point['images'] ?? ($point['image'] ?? NULL));
+      if ($images !== []) {
+        $item['images'] = $images;
+      }
+      $clean['points'][] = $item;
     }
 
     $fs = \Drupal::service('file_system');
@@ -97,6 +108,51 @@ class InfraMapController extends ControllerBase {
     $fs->saveData($json, self::PUBLIC_URI, FileExists::Replace);
 
     return new JsonResponse(['ok' => TRUE, 'data' => $clean]);
+  }
+
+  /**
+   * POST /infra-map/image
+   */
+  public function upload(Request $request): JsonResponse {
+    if (!$this->currentUser()->hasPermission('administer nodes')) {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'forbidden'], 403);
+    }
+
+    $file = $request->files->get('image');
+    if (!$file || !$file->isValid()) {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'missing'], 400);
+    }
+    if ($file->getSize() > self::MAX_IMAGE_BYTES) {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'too_large'], 400);
+    }
+
+    $path = $file->getRealPath();
+    if (!is_string($path) || $path === '') {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'missing'], 400);
+    }
+    $info = @getimagesize($path);
+    $allowed = [
+      'image/jpeg' => 'jpg',
+      'image/png' => 'png',
+      'image/webp' => 'webp',
+      'image/gif' => 'gif',
+    ];
+    $mime = is_array($info) ? (string) ($info['mime'] ?? '') : '';
+    if (!isset($allowed[$mime])) {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'type'], 400);
+    }
+
+    $fs = \Drupal::service('file_system');
+    $fs->prepareDirectory(self::IMAGE_DIR, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+    $uri = self::IMAGE_DIR . '/p' . uniqid('', TRUE) . '.' . $allowed[$mime];
+    $contents = file_get_contents($path);
+    if ($contents === FALSE) {
+      return new JsonResponse(['ok' => FALSE, 'error' => 'missing'], 400);
+    }
+    $fs->saveData($contents, $uri, FileExists::Replace);
+    $url = \Drupal::service('file_url_generator')->generateString($uri);
+
+    return new JsonResponse(['ok' => TRUE, 'url' => $url]);
   }
 
   /**
@@ -114,6 +170,49 @@ class InfraMapController extends ControllerBase {
       return NULL;
     }
     return [$lat, $lon];
+  }
+
+  /**
+   * @param mixed $raw
+   *
+   * @return list<string>
+   */
+  private function sanitizeImages($raw): array {
+    if (is_string($raw) && $raw !== '') {
+      $raw = [$raw];
+    }
+    if (!is_array($raw)) {
+      return [];
+    }
+    $out = [];
+    foreach ($raw as $item) {
+      if (!is_string($item)) {
+        continue;
+      }
+      $url = $this->sanitizeImage($item);
+      if ($url !== '' && !in_array($url, $out, TRUE)) {
+        $out[] = $url;
+      }
+      if (count($out) >= self::MAX_IMAGES) {
+        break;
+      }
+    }
+    return $out;
+  }
+
+  private function sanitizeImage(string $url): string {
+    $url = trim($url);
+    if ($url === '') {
+      return '';
+    }
+    $path = parse_url($url, PHP_URL_PATH);
+    if (!is_string($path) || $path === '') {
+      $path = $url;
+    }
+    if (preg_match('#^/sites/default/files/infra-map/images/[A-Za-z0-9._-]+\.(jpe?g|png|webp|gif)$#', $path)) {
+      return $path;
+    }
+    return '';
   }
 
   private function sanitizeIcon(string $icon): string {

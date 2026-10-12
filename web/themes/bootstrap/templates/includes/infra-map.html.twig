@@ -29,6 +29,10 @@
       <button type="button" class="infra-map__info-close" data-infra-info-close aria-label="Закрыть">×</button>
       <div class="infra-map__info-kicker" data-infra-info-cat></div>
       <div class="infra-map__info-title" data-infra-info-title></div>
+      <div class="infra-map__info-photo" data-infra-info-photo hidden>
+        <img data-infra-info-photo-main alt="">
+        <div class="infra-map__info-thumbs" data-infra-info-thumbs hidden></div>
+      </div>
       <div class="infra-map__info-dist" data-infra-info-dist></div>
       <p class="infra-map__info-text" data-infra-info-text></p>
     </aside>
@@ -54,7 +58,15 @@
           Описание
           <textarea data-infra-edit-text placeholder="Коротко, что это за объект" maxlength="400" rows="3"></textarea>
         </label>
-        <p class="infra-map__edit-hint">Клик по карте ставит точку выбранной категории. Клик по точке — правка. Список ниже тоже можно выбрать.</p>
+        <div class="infra-map__edit-photos">
+          <span>Изображения</span>
+          <div class="infra-map__edit-thumbs" data-infra-edit-thumbs></div>
+          <label class="infra-map__edit-file">
+            <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-infra-edit-image>
+            <span>Добавить фото</span>
+          </label>
+        </div>
+        <p class="infra-map__edit-hint">Клик по карте ставит точку выбранной категории. Клик по точке — правка. К объекту можно прикрепить фото — они появятся в карточке.</p>
         <div class="infra-map__edit-list" data-infra-list></div>
         <div class="infra-map__edit-actions">
           <button type="button" class="infra-map__delete" data-infra-delete hidden>Удалить точку</button>
