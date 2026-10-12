@@ -13,6 +13,9 @@ body:has(.infra-map-page-wrap) .infra-map-page-wrap.first-container,
   max-width: none;
   padding: 0;
   width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: clip;
 }
 
 .infra-map-page-wrap {
@@ -25,6 +28,8 @@ body:has(.infra-map-page-wrap) .infra-map-page-wrap.first-container,
 
 .infra-map {
   width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .infra-map__filters {
@@ -33,6 +38,7 @@ body:has(.infra-map-page-wrap) .infra-map-page-wrap.first-container,
   margin: 0 auto 24px;
   padding: 0 24px;
   box-sizing: border-box;
+  min-width: 0;
 }
 
 .infra-map__filters-inner {
@@ -206,6 +212,8 @@ body:has(.infra-map-page-wrap) .infra-map-page-wrap.first-container,
 .infra-map__stage {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .infra-map__canvas {
@@ -788,13 +796,7 @@ body.infra-map-fs-open {
   }
 
   .infra-map__legend {
-    left: 12px;
-    bottom: 12px;
-    padding: 14px 16px;
-  }
-
-  .infra-map__legend-list {
-    grid-template-columns: 1fr;
+    display: none;
   }
 
   .infra-map__info {
