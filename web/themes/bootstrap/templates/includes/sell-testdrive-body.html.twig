@@ -89,9 +89,10 @@
             <input type="text" name="people" data-lead-extra="Человек" placeholder="Количество человек" inputmode="numeric">
           </div>
           <textarea name="comment" data-lead-extra="Комментарий" placeholder="Что хотите проверить за ночь"></textarea>
-          <label class="sell-form__agree">
-            <input type="checkbox" name="agree">
-            <span>Даю согласие на обработку <a href="/policy/">персональных данных</a></span>
+          <label class="cta__agree">
+            <input type="checkbox" name="agree" required>
+            <span class="cta__check" aria-hidden="true"></span>
+            <span class="cta__agree-text">Даю согласие на обработку <a href="/policy/">персональных данных</a></span>
           </label>
           <div class="online-notice"></div>
           <button type="button" class="btn btn--fill" data-sell-send>Оставить заявку</button>
