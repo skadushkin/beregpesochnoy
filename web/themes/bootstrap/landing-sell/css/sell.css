@@ -273,6 +273,9 @@ body.path-poprobujte-pozhit #header-main-sec .ipoteka-header .header-menu-item:f
 .sell-hero__content {
   position: relative;
   z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: clamp(120px, 14vw, 176px);
   padding-bottom: 56px;
   display: flex;
   flex-direction: column;
@@ -668,6 +671,7 @@ body.path-poprobujte-pozhit #header-main-sec .ipoteka-header .header-menu-item:f
   }
 
   .sell-hero__content {
+    padding-top: 104px;
     padding-bottom: 32px;
   }
 

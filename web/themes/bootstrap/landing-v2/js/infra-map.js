@@ -61,6 +61,36 @@
           return !!(point && (point.id === 'village' || point.category === 'village'));
         }
 
+        var STOCK_PT = '/themes/bootstrap/landing-ponton/img/';
+        var STOCK_PK = '/themes/bootstrap/landing-park/img/';
+        var STOCK_LV2 = '/themes/bootstrap/landing-v2/img/';
+        var POINT_STOCK_IMAGES = {
+          village: [STOCK_PT + 'lifestyle-day-family-c23441.png'],
+          'park-new-jerusalem': [STOCK_PK + 'lifestyle-pond-7d2f61.png'],
+          'park-gethsemane': [STOCK_PK + 'lifestyle-route.png'],
+          'park-city': [STOCK_PK + 'hero-park-31a4fe.png'],
+          'sport-stadium': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'sport-arena': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'sport-fovor': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'sport-tennis': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'sport-manikhino-ski': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'sport-astra': [STOCK_PK + 'bento-sport-1f00a4.png'],
+          'tr-manikhino-2': [STOCK_LV2 + 'route-map.svg'],
+          'tr-istra': [STOCK_LV2 + 'route-map.svg'],
+          'tr-manikhino-1': [STOCK_LV2 + 'route-map.svg'],
+          'tr-novoirusalem': [STOCK_LV2 + 'route-map.svg']
+        };
+
+        var CATEGORY_STOCK_IMAGES = {
+          school: [STOCK_LV2 + 'family-townhouse.png'],
+          kindergarten: [STOCK_LV2 + 'family-townhouse.png'],
+          medicine: [STOCK_LV2 + 'private-territory.png'],
+          shop: [STOCK_PT + 'bento-cafe.png'],
+          sport: [STOCK_PK + 'bento-sport-1f00a4.png'],
+          park: [STOCK_PK + 'hero-park-31a4fe.png'],
+          transport: [STOCK_LV2 + 'route-map.svg']
+        };
+
         function pointImages(point) {
           if (!point) {
             return [];
@@ -68,7 +98,16 @@
           if (Array.isArray(point.images) && point.images.length) {
             return point.images.filter(Boolean);
           }
-          return point.image ? [point.image] : [];
+          if (point.image) {
+            return [point.image];
+          }
+          if (point.id && POINT_STOCK_IMAGES[point.id]) {
+            return POINT_STOCK_IMAGES[point.id].slice();
+          }
+          if (point.category && CATEGORY_STOCK_IMAGES[point.category]) {
+            return CATEGORY_STOCK_IMAGES[point.category].slice();
+          }
+          return [];
         }
 
   function loadYmaps(apiKey) {
@@ -501,7 +540,9 @@
             infoText.textContent = point.text || '';
             infoText.hidden = !point.text;
           }
-          renderYandexSnapshot(point);
+          if (infoYandex) {
+            infoYandex.hidden = true;
+          }
           renderInfoPhotos(pointImages(point));
           infoEl.hidden = false;
           showRadius(point);

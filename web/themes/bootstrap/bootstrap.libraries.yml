@@ -595,7 +595,7 @@ genplan_lazy:
     - bootstrap/genplan_map_v2
 
 infra_map:
-  version: 1.0.17
+  version: 1.0.18
   css:
     theme:
       landing-v2/css/infra-map.css: {}
@@ -654,7 +654,7 @@ landing_dev2:
 # Лендинг v2 (node 838)
 # Продающая серия: жизнь / экскурсия / зима / тест-драйв
 sell_pages:
-  version: 1.0.5
+  version: 1.0.6
   css:
     theme:
       landing-v2/css/tour-modal.css: {}
