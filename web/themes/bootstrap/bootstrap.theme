@@ -33,6 +33,19 @@ function bootstrap_preprocess_html(&$variables) {
   if ($alias === '/ferma' || str_starts_with((string) $alias, '/ferma/')) {
     $variables['attributes']['class'][] = 'path-ferma';
   }
+  $sell_path_classes = [
+    '/zhizn-v-poselke' => 'path-zhizn-v-poselke',
+    '/excursion' => 'path-excursion',
+    '/zimoj' => 'path-zimoj',
+    '/poprobujte-pozhit' => 'path-poprobujte-pozhit',
+  ];
+  $alias_normalized = rtrim((string) $alias, '/');
+  foreach ($sell_path_classes as $sell_alias => $class) {
+    if ($alias_normalized === $sell_alias || str_starts_with($alias_normalized, $sell_alias . '/')) {
+      $variables['attributes']['class'][] = $class;
+      break;
+    }
+  }
   if (bootstrap_is_karta_page()) {
     $variables['attributes']['class'][] = 'path-karta';
   }

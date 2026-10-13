@@ -88,7 +88,15 @@ body.page-node-1024 #header-main-sec .bereg-lang__btn,
 body.path-mfk #header-main-sec .bereg-lang__btn,
 body.page-view-mfk #header-main-sec .bereg-lang__btn,
 body.page-node-type-posadochnaya-ponton #header-main-sec .bereg-lang__btn,
-body.path-ferma #header-main-sec .bereg-lang__btn {
+body.path-ferma #header-main-sec .bereg-lang__btn,
+body.path-excursion #header-main-sec .bereg-lang__btn,
+body.path-zimoj #header-main-sec .bereg-lang__btn,
+body.path-poprobujte-pozhit #header-main-sec .bereg-lang__btn,
+body.path-zhizn-v-poselke #header-main-sec .bereg-lang__btn,
+body.page-node-1033 #header-main-sec .bereg-lang__btn,
+body.page-node-1034 #header-main-sec .bereg-lang__btn,
+body.page-node-1035 #header-main-sec .bereg-lang__btn,
+body.page-node-1036 #header-main-sec .bereg-lang__btn {
   color: #fff;
 }
 .header-menu {
