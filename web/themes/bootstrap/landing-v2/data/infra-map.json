@@ -65,7 +65,7 @@
         36.947689
       ],
       "pinned": true,
-      "image": "/themes/bootstrap/landing-ponton/img/lifestyle-day-family-c23441.png"
+      "image": "https://avatars.mds.yandex.net/get-altay/16299341/2a0000019aa8ec8a0ba04aae0d9c24815cf6/XXXL"
     },
     {
       "id": "school-internat-hearing",
@@ -76,7 +76,8 @@
         55.95844,
         36.9084
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/372953/2a0000018559a42dc407c4362dd0ddfe2ed5/XXXL"
     },
     {
       "id": "school-3",
@@ -87,7 +88,8 @@
         55.9241,
         36.87364
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15510144/2a00000194cb50220d3a5bada88d83da83eb/XXXL"
     },
     {
       "id": "school-1",
@@ -98,7 +100,8 @@
         55.92112,
         36.85829
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/367512/2a0000015c20f17a8518cc87ae8fc109e13c/XXXL"
     },
     {
       "id": "school-lyceum",
@@ -109,7 +112,8 @@
         55.91124,
         36.86335
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/916509/2a0000015fa63587d8233b2d240253f06310/XXXL"
     },
     {
       "id": "school-manikhino",
@@ -120,7 +124,8 @@
         55.89542,
         36.93963
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/492546/2a0000015e7ff49e06f392768fbb00174a2a/XXXL"
     },
     {
       "id": "school-2",
@@ -131,7 +136,8 @@
         55.90689,
         36.8653
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4538345/2a0000017959de20aa0c04183fcd8dd0f99b/XXXL"
     },
     {
       "id": "school-oktyabrskaya",
@@ -142,7 +148,8 @@
         55.87428,
         36.94699
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/492546/2a0000015e7ff850e6185683aa4c1f2419bb/XXXL"
     },
     {
       "id": "school-luchinskaya",
@@ -153,7 +160,8 @@
         55.91026,
         36.81545
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4437246/2a0000017758ccffbc1fb30f86cec9d6a71d/XXXL"
     },
     {
       "id": "kg-18",
@@ -164,7 +172,8 @@
         55.91951,
         36.87837
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/367512/2a0000015c20f0467991f023a8ecbe824b1a/XXXL"
     },
     {
       "id": "kg-21",
@@ -175,7 +184,8 @@
         55.92,
         36.85696
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/7691421/2a00000184668d19fc0c5ad6ddb0efe66b23/XXXL"
     },
     {
       "id": "kg-48",
@@ -186,7 +196,8 @@
         55.91206,
         36.87361
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4361937/2a0000017758b9b369a69d6a29ff86c2b09e/XXXL"
     },
     {
       "id": "kg-47",
@@ -197,7 +208,8 @@
         55.91221,
         36.8639
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/236825/2a0000015dcb757816cd14ad1bbfacde09d6/XXXL"
     },
     {
       "id": "kg-24",
@@ -208,7 +220,8 @@
         55.9102,
         36.86869
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/363317/2a0000015e61602603be1ec41b17c9468092/XXXL"
     },
     {
       "id": "kg-22",
@@ -219,7 +232,8 @@
         55.91326,
         36.85541
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/859900/2a0000015e614dbe1225de989721572251f0/XXXL"
     },
     {
       "id": "kg-19",
@@ -230,7 +244,8 @@
         55.9097,
         36.86717
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/5486790/2a0000017d0f54ab7031f2e15538e5adf53d/XXXL"
     },
     {
       "id": "kg-20",
@@ -241,7 +256,8 @@
         55.91576,
         36.83724
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/12731162/2a0000018fb9c4ade5c307ad96c2ef455fef/XXXL"
     },
     {
       "id": "kg-26",
@@ -252,7 +268,8 @@
         55.90521,
         36.86332
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/492546/2a0000015e616025ff56b20f1538eb121829/XXXL"
     },
     {
       "id": "kg-23",
@@ -263,7 +280,8 @@
         55.90763,
         36.85729
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/3912953/2a00000175bd6ce2a48ff1fb1641ffd28484/XXXL"
     },
     {
       "id": "kg-52",
@@ -274,7 +292,8 @@
         55.90704,
         36.85675
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/5503221/2a0000017d1356e3f22e8675acae47085f6f/XXXL"
     },
     {
       "id": "kg-28-lytkino",
@@ -285,7 +304,8 @@
         56.01951,
         37.00424
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/750075/2a0000018680ba8b826b2b88e79c01444026/XXXL"
     },
     {
       "id": "kg-29",
@@ -308,7 +328,8 @@
         55.87229,
         36.94742
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/993981/2a0000016147a4bcc7e29eaf196de24b97ef/XXXL"
     },
     {
       "id": "kg-snegiryok",
@@ -319,7 +340,8 @@
         55.88454,
         37.0306
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/17765111/2a0000019eb541de0f5d8e990336acf90c16/XXXL"
     },
     {
       "id": "med-holmy",
@@ -330,7 +352,8 @@
         55.9764,
         36.98331
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/12550566/2a0000018ec6d35c7430478f1d0a2e0ec4b8/XXXL"
     },
     {
       "id": "med-crb-old",
@@ -341,7 +364,8 @@
         55.92923,
         36.86567
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15152716/2a0000019735ead046c497f9d042a50f7241/XXXL"
     },
     {
       "id": "med-clinic",
@@ -352,7 +376,8 @@
         55.92852,
         36.86771
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/859900/2a0000015ea44dd2326dc9abe57a204ef7f3/XXXL"
     },
     {
       "id": "med-paracels",
@@ -363,7 +388,8 @@
         55.92286,
         36.87264
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10703420/2a0000018b61c62b70e145c69afbaf8a1761/XXXL"
     },
     {
       "id": "med-child",
@@ -374,7 +400,8 @@
         55.91324,
         36.86743
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4719974/2a00000179430cebb37df853a95ef7856e65/XXXL"
     },
     {
       "id": "med-irkb",
@@ -385,7 +412,8 @@
         55.90442,
         36.87605
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15152716/2a0000019735ead046c497f9d042a50f7241/XXXL"
     },
     {
       "id": "med-fnkc",
@@ -396,7 +424,8 @@
         56.0207,
         36.98636
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/7456447/2a000001830f2e56c51a51c8d93f74ece32a/XXXL"
     },
     {
       "id": "med-snegiri",
@@ -407,7 +436,8 @@
         55.88755,
         37.03074
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/2809325/2a00000172b69e331c105a5cfbc46a700e79/XXXL"
     },
     {
       "id": "shop-severny",
@@ -418,7 +448,8 @@
         55.94436,
         36.83917
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/910613/2a000001620ce9d266c4715f533849ff6c04/XXXL"
     },
     {
       "id": "shop-pyaterochka-sovet",
@@ -429,7 +460,8 @@
         55.91998,
         36.86516
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10578166/2a0000018d5aba28261452335715ee6505be/XXXL"
     },
     {
       "id": "shop-dixy-andreev",
@@ -440,7 +472,8 @@
         55.94855,
         36.8351
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/17754824/2a0000019cd3d54cd92a4df8b77681b1fea1/XXXL"
     },
     {
       "id": "shop-istria",
@@ -451,7 +484,8 @@
         55.91373,
         36.86702
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/1371862/2a00000185a493a5b40b5c4a3be1e1c21e3f/XXXL"
     },
     {
       "id": "shop-istra-city",
@@ -462,7 +496,8 @@
         55.9133,
         36.86609
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10702157/2a0000018b0eb27ff8f0185a7e1663e3c0d8/XXXL"
     },
     {
       "id": "shop-istrinsky",
@@ -473,7 +508,8 @@
         55.91357,
         36.86365
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4465779/2a0000017925aa1d7d43cd39e2e53124cd26/XXXL"
     },
     {
       "id": "shop-central",
@@ -484,7 +520,8 @@
         55.91294,
         36.86392
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/1923723/2a0000017015a11a45d806eca72709e80ab9/XXXL"
     },
     {
       "id": "shop-briz",
@@ -495,7 +532,8 @@
         55.9155,
         36.85595
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/7779554/2a00000188290e89377b43055baa19556e19/XXXL"
     },
     {
       "id": "shop-pyaterochka-lenina",
@@ -506,7 +544,8 @@
         55.90984,
         36.85906
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10578166/2a0000018d5aba28261452335715ee6505be/XXXL"
     },
     {
       "id": "shop-dixy-istra",
@@ -517,7 +556,8 @@
         55.90563,
         36.86668
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/11937221/2a0000018f3ec4bcb8c333a6b9accd611548/XXXL"
     },
     {
       "id": "shop-verny",
@@ -528,7 +568,8 @@
         55.90813,
         36.92713
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/16166099/2a0000019b8f2233e2f081a986b1445d13cc/XXXL"
     },
     {
       "id": "shop-da",
@@ -539,7 +580,8 @@
         55.90714,
         36.9335
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10647561/2a0000018d21dfbb2973cec76d2d19989151/XXXL"
     },
     {
       "id": "shop-zhemchuzhina",
@@ -550,7 +592,8 @@
         55.90571,
         36.89042
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15343885/2a000001975ebcb0a6c5f9d61c2db44c3512/XXXL"
     },
     {
       "id": "shop-jerusalem",
@@ -561,7 +604,8 @@
         55.91261,
         36.82606
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/14333651/2a00000195ad2fe4436c4b79299137fbdd63/XXXL"
     },
     {
       "id": "shop-perekrestok",
@@ -572,7 +616,8 @@
         55.97194,
         36.82213
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4377463/2a0000017a41af40c19f64d405630bf4654d/XXXL"
     },
     {
       "id": "sport-stadium",
@@ -583,7 +628,8 @@
         55.9197,
         36.84846
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/1018548/2a00000184c3dcd1118ccc262493b577e5e6/XXXL"
     },
     {
       "id": "sport-arena",
@@ -594,7 +640,8 @@
         55.90565,
         36.8743
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/4392922/2a0000017c4192095ccd227f89d1b6cc52f2/XXXL"
     },
     {
       "id": "sport-fovor",
@@ -605,7 +652,8 @@
         55.92217,
         36.82838
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/16472720/2a0000019b9cab63212db2151c4528a10830/XXXL"
     },
     {
       "id": "sport-tennis",
@@ -616,7 +664,8 @@
         55.89819,
         36.85488
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/200322/2a0000015b15b77e64e1ac26959bc0785774/XXXL"
     },
     {
       "id": "sport-manikhino-ski",
@@ -638,7 +687,8 @@
         55.87845,
         36.9362
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/228191/2a00000187054161f4eb686d2fde4a835873/XXXL"
     },
     {
       "id": "park-city",
@@ -649,7 +699,8 @@
         55.91863,
         36.85656
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/16485345/2a00000197a85d7fa1ed985c823908f4ebf5/XXXL"
     },
     {
       "id": "park-new-jerusalem",
@@ -660,7 +711,8 @@
         55.92171,
         36.84546
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/236825/2a0000015c0624cae69b0806b28c87a736e9/XXXL"
     },
     {
       "id": "park-gethsemane",
@@ -671,7 +723,8 @@
         55.92166,
         36.83811
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/2384989/2a000001739b2ddfa724cead33678832fb90/XXXL"
     },
     {
       "id": "tr-manikhino-2",
@@ -682,7 +735,8 @@
         55.91294,
         36.96298
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15185043/2a000001949ead9a865bd38fe83854ab36fe/XXXL"
     },
     {
       "id": "tr-istra",
@@ -693,7 +747,8 @@
         55.9097,
         36.8694
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15712232/2a0000019a8c30ee085e12eb1557d9a248db/XXXL"
     },
     {
       "id": "tr-manikhino-1",
@@ -704,7 +759,8 @@
         55.89068,
         36.92949
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/10589039/2a0000018b24a8b142bd65018c2bd0e3ae27/XXXL"
     },
     {
       "id": "tr-novoirusalem",
@@ -715,7 +771,8 @@
         55.9117,
         36.82251
       ],
-      "pinned": false
+      "pinned": false,
+      "image": "https://avatars.mds.yandex.net/get-altay/15131175/2a00000195a2fc0d7cdab7d0882af6456303/XXXL"
     }
   ]
 }
