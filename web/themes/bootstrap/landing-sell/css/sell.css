@@ -575,7 +575,7 @@ body.path-poprobujte-pozhit #header-main-sec .ipoteka-header .header-menu-item:f
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid #fff;
   border-radius: 4px;
   background: transparent;
   position: relative;
@@ -599,18 +599,18 @@ body.path-poprobujte-pozhit #header-main-sec .ipoteka-header .header-menu-item:f
   transform: rotate(-45deg);
 }
 
-.sell-form .cta__agree-text {
+.sell .sell-form .cta__agree .cta__agree-text {
   flex: 1;
   min-width: 0;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 300;
-  line-height: 18px;
-  color: rgba(255, 255, 255, 0.72);
+  line-height: 21px;
+  color: #fff;
 }
 
-.sell-form .cta__agree-text a {
+.sell .sell-form .cta__agree .cta__agree-text a {
   text-decoration: underline;
-  color: rgba(255, 255, 255, 0.72);
+  color: #fff;
 }
 
 .sell-form .online-notice {
