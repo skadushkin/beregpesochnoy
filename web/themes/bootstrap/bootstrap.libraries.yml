@@ -558,7 +558,7 @@ atelier_script:
 
 # Интерактивный генплан (node 746, lazy embed на главной)
 genplan_map:
-  version: 1.0.9
+  version: 1.0.10
   css:
     theme:
       landing-v2/css/genplan-map.css: {}
@@ -571,7 +571,7 @@ genplan_map:
     - svg_tooltip/svg_tooltip_lib
 
 genplan_map_v2:
-  version: 1.0.27
+  version: 1.0.28
   css:
     theme:
       landing-v2/css/genplan-map.css: {}
