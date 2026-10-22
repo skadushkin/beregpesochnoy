@@ -69,7 +69,10 @@ body.page-node-838 .hero__bg {
       rgba(50, 50, 50, 0.85) 89%,
       rgba(50, 50, 50, 0.93) 94%,
       #323232 100%),
-    url('../img/hero-bg-2c2cbc.png');
+    image-set(
+      url('../img/hero-bg-2c2cbc.webp') type('image/webp'),
+      url('../img/hero-bg-2c2cbc.png') type('image/png')
+    );
 }
 
 body.page-node-838 .hero__intro {

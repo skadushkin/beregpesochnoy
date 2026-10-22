@@ -170,7 +170,10 @@ h1 *, h2 *, .h2 * {
       rgba(50, 50, 50, 0.85) 89%,
       rgba(50, 50, 50, 0.93) 94%,
       #323232 100%),
-    url('../img/hero-bg-2c2cbc.png');
+    image-set(
+      url('../img/hero-bg-2c2cbc.webp') type('image/webp'),
+      url('../img/hero-bg-2c2cbc.png') type('image/png')
+    );
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -493,7 +496,10 @@ h1 *, h2 *, .h2 * {
       rgba(50, 50, 50, 0.85) 89%,
       rgba(50, 50, 50, 0.93) 94%,
       var(--bg) 99%),
-    url('../img/lake-35dda4.png');
+    image-set(
+      url('../img/lake-35dda4.webp') type('image/webp'),
+      url('../img/lake-35dda4.png') type('image/png')
+    );
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1124,6 +1130,11 @@ h1 *, h2 *, .h2 * {
   border-radius: 32px;
   background: rgba(255, 255, 255, 0.2);
   z-index: 0;
+}
+.format-card__frame > picture,
+.private__map-wrap > picture,
+.atelier__photo-link > picture {
+  display: contents;
 }
 .format-card__img {
   position: absolute;

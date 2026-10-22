@@ -667,7 +667,7 @@ sell_pages:
 
 # Лендинг v2 (node 838)
 landing_v2:
-  version: 1.0.49
+  version: 1.0.50
   css:
     theme:
       landing-v2/css/fonts.css: {}

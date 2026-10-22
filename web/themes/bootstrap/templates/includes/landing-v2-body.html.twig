@@ -40,7 +40,7 @@
             <div class="cl">
                 <div class="hero__map-row">
                     <div class="hero__map">
-                        <img src="{{ lv2_img }}hero-pattern2.svg" alt="Карта поселка" class="hero__map-img">
+                        <img src="{{ lv2_img }}hero-pattern2.svg" alt="Карта поселка" class="hero__map-img" width="656" height="515" decoding="async">
                     </div>
                     <div class="hero__about">
                         <p>Коттеджный поселок «Берег Песочной» расположен в Истринском районе, в 45 километрах от Москвы. Здесь есть всё для повседневной жизни и удалённой работы: магистральные коммуникации, оптоволоконный интернет, охрана, парк и спортивные зоны. Формат подходит тем, кто хочет жить за городом и сохранять здоровый ритм — прогулки, спорт и инфраструктура рядом с домом.</p>
@@ -133,27 +133,27 @@
                         <div class="family__viewport">
                             <div class="family__stack" id="familyTrack">
                         <article class="family__item">
-                            <video class="family__img family__img--vip" poster="{{ lv2_img }}vip-41c417.png" data-src="{{ lv2_vid }}family-vip.mp4" muted loop playsinline preload="none" aria-label="VIP резиденции"></video>
+                            <video class="family__img family__img--vip" poster="{{ lv2_img }}vip-41c417.webp" data-src="{{ lv2_vid }}family-vip.mp4" muted loop playsinline preload="none" aria-label="VIP резиденции"></video>
                             <p class="family__tag family__tag--vip">частные вип резиденции</p>
                             <div class="family__bubble family__bubble--vip">
                                 <p>Эксклюзивное предложение для ценителей природы и городского комфорта.</p>
                             </div>
                         </article>
                         <article class="family__item family__item--decorative">
-                            <video class="family__img family__img--top" poster="{{ lv2_img }}family-img31.png" data-src="{{ lv2_vid }}family-top.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                            <video class="family__img family__img--top" poster="{{ lv2_img }}family-img31.webp" data-src="{{ lv2_vid }}family-top.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                         </article>
                         <article class="family__item family__item--decorative">
-                            <video class="family__img family__img--mid" poster="{{ lv2_img }}family-img30-24cea3.png" data-src="{{ lv2_vid }}family-mid.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                            <video class="family__img family__img--mid" poster="{{ lv2_img }}family-img30-24cea3.webp" data-src="{{ lv2_vid }}family-mid.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                         </article>
                         <article class="family__item">
-                            <video class="family__img family__img--town" poster="{{ lv2_img }}family-townhouse.png" data-src="{{ lv2_vid }}family-town.mp4" muted loop playsinline preload="none" aria-label="Таунхаусы"></video>
+                            <video class="family__img family__img--town" poster="{{ lv2_img }}family-townhouse.webp" data-src="{{ lv2_vid }}family-town.mp4" muted loop playsinline preload="none" aria-label="Таунхаусы"></video>
                             <p class="family__tag family__tag--town">таунхаусы</p>
                             <div class="family__bubble family__bubble--town">
                                 <p>Все преимущества квартиры и частного дома на берегу реки Песочная</p>
                             </div>
                         </article>
                         <article class="family__item">
-                            <video class="family__img family__img--house" poster="{{ lv2_img }}private-house.png" data-src="{{ lv2_vid }}family-house.mp4" muted loop playsinline preload="none" aria-label="Частные дома"></video>
+                            <video class="family__img family__img--house" poster="{{ lv2_img }}private-house.webp" data-src="{{ lv2_vid }}family-house.mp4" muted loop playsinline preload="none" aria-label="Частные дома"></video>
                             <p class="family__tag family__tag--house">частные дома</p>
                             <div class="family__bubble family__bubble--house">
                                 <p>Любые конфигурации и дизайн на ваш вкус. Жизнь за городом с городским комфортом.</p>
@@ -217,7 +217,10 @@
             </div>
             <div class="private__visual">
                 <div class="private__map-wrap">
-                    <img src="{{ lv2_img }}private-territory.png" alt="Приватная территория на карте" class="private__map-img" width="1920" height="700">
+                    <picture>
+                        <source type="image/webp" srcset="{{ lv2_img }}private-territory.webp">
+                        <img src="{{ lv2_img }}private-territory.png" alt="Приватная территория на карте" class="private__map-img" width="1365" height="768" loading="lazy" decoding="async">
+                    </picture>
                     <div class="private__map-grad" aria-hidden="true"></div>
                 </div>
                 <div class="cl private__route-wrap">
@@ -259,7 +262,10 @@
                         <a href="/taunhausy" class="format-card__link">
                             <div class="format-card__frame">
                                 <div class="format-card__bg" aria-hidden="true"></div>
-                                <img class="format-card__img format-card__img--town" src="{{ lv2_img }}townhouse-card.png" alt="">
+                                <picture>
+                                  <source type="image/webp" srcset="{{ lv2_img }}townhouse-card.webp">
+                                  <img class="format-card__img format-card__img--town" src="{{ lv2_img }}townhouse-card.png" alt="" width="800" height="800" loading="lazy" decoding="async">
+                                </picture>
                                 {# badge % временно скрыт #}
                                 <span class="format-card__btn">Таунхаусы <span class="btn-arrow">→</span></span>
                             </div>
@@ -269,7 +275,10 @@
                         <a href="/kupit-dom-v-kottedzhnom-poselke" class="format-card__link">
                             <div class="format-card__frame">
                                 <div class="format-card__bg" aria-hidden="true"></div>
-                                <img class="format-card__img format-card__img--house" src="{{ lv2_img }}house-1-card.png" alt="">
+                                <picture>
+                                  <source type="image/webp" srcset="{{ lv2_img }}house-1-card.webp">
+                                  <img class="format-card__img format-card__img--house" src="{{ lv2_img }}house-1-card.png" alt="" width="900" height="540" loading="lazy" decoding="async">
+                                </picture>
                                 <span class="format-card__btn">Частные дома <span class="btn-arrow">→</span></span>
                             </div>
                         </a>
@@ -278,7 +287,10 @@
                         <a href="/rezidents" class="format-card__link">
                             <div class="format-card__frame">
                                 <div class="format-card__bg" aria-hidden="true"></div>
-                                <img class="format-card__img format-card__img--vip" src="{{ lv2_img }}residence-a0d3a5.png" alt="">
+                                <picture>
+                                  <source type="image/webp" srcset="{{ lv2_img }}residence-a0d3a5.webp">
+                                  <img class="format-card__img format-card__img--vip" src="{{ lv2_img }}residence-a0d3a5.png" alt="" width="900" height="488" loading="lazy" decoding="async">
+                                </picture>
                                 <span class="format-card__btn">VIP резиденции <span class="btn-arrow">→</span></span>
                             </div>
                         </a>
@@ -292,7 +304,7 @@
         <section class="section atelier">
             <div class="cl atelier__cl">
                 <div class="atelier__block">
-                     <a href="/arhitekturnoe-atele" class="atelier__photo-link"><img src="{{ lv2_img }}atelier-new.png" alt="Интерьер загородного дома" class="atelier__photo" width="297" height="476"></a>
+                     <a href="/arhitekturnoe-atele" class="atelier__photo-link"><picture><source type="image/webp" srcset="{{ lv2_img }}atelier-new.webp"><img src="{{ lv2_img }}atelier-new.png" alt="Интерьер загородного дома" class="atelier__photo" width="297" height="476" loading="lazy" decoding="async"></picture></a>
                     <p class="atelier__label">Архитектурное ателье</p>
                     <div class="atelier__card">
                         <h3 class="atelier__title"><span class="t-merit">Внутренняя отделка</span><br><span class="t-accent">и создание интерьера</span></h3>
@@ -347,7 +359,7 @@
         <section class="section cta" id="contacts">
             <div class="cl">
                 <div class="cta-block">
-                    <div class="cta-block__media" style="background-image:url('{{ lv2_img }}form-bg-57e3d6.png')" role="img" aria-label=""></div>
+                    <div class="cta-block__media" style="background-image:url('{{ lv2_img }}form-bg-57e3d6.webp')" role="img" aria-label=""></div>
                     <div class="cta-block__panel">
                         <h2 class="cta__title">
                             <span class="cta__title-row">Время выбирать</span><br>

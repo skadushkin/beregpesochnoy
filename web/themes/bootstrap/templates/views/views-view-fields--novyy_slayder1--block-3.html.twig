@@ -5,13 +5,13 @@
 {% endif %}
 {% set image_url = '' %}
 {% if row._entity.field_image.entity.uri.value is defined %}
-  {% set image_url = file_url(row._entity.field_image.entity.uri.value) %}
+  {% set image_url = file_url(row._entity.field_image.entity.uri.value|image_style('wide')) %}
 {% elseif row._entity.field_image.0.entity.uri.value is defined %}
-  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value) %}
+  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value|image_style('wide')) %}
 {% endif %}
 
 {% if image_url %}
   <figure class="gallery-carousel__item" data-caption="{{ caption|e('html_attr') }}">
-    <img src="{{ image_url }}" alt="" loading="lazy">
+    <img src="{{ image_url }}" alt="" loading="lazy" decoding="async">
   </figure>
 {% endif %}
