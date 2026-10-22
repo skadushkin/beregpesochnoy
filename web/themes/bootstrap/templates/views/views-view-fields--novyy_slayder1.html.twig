@@ -7,9 +7,9 @@
 {% set label = category_label|default(slide_title) %}
 {% set image_url = '' %}
 {% if row._entity.field_image.entity.uri.value is defined %}
-  {% set image_url = file_url(row._entity.field_image.entity.uri.value|image_style('wide')) %}
+  {% set image_url = row._entity.field_image.entity.uri.value|image_style('wide') %}
 {% elseif row._entity.field_image.0.entity.uri.value is defined %}
-  {% set image_url = file_url(row._entity.field_image.0.entity.uri.value|image_style('wide')) %}
+  {% set image_url = row._entity.field_image.0.entity.uri.value|image_style('wide') %}
 {% endif %}
 
 {% if image_url %}
