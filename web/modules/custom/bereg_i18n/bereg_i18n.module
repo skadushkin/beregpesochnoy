@@ -116,7 +116,6 @@ function bereg_i18n_translate_html(string $html, ?string $lang = NULL): string {
       continue;
     }
     $part = str_replace(["\u{00A0}", '&nbsp;', '&#160;', '&#xa0;'], ' ', $part);
-    $part = preg_replace('/ {2,}/', ' ', $part) ?? $part;
     $part = preg_replace_callback('/&#x([0-9A-Fa-f]+);/', static function (array $m): string {
       $char = mb_chr(hexdec($m[1]), 'UTF-8');
       return $char === FALSE ? $m[0] : $char;
