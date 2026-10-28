@@ -1224,6 +1224,7 @@ function bereg_i18n_dictionary(): array {
     ],
     'Устройте уютные вечера у камина' => ['en' => 'Enjoy cozy evenings by the fireplace', 'ar' => 'أمضوا أمسيات دافئة عند المدفأة'],
     'Расслабляйтесь у собственного бассейна' => ['en' => 'Relax by your own pool', 'ar' => 'استرخوا عند مسبحكم'],
+    'Расслабляйтесь  у собственного бассейна' => ['en' => 'Relax by your own pool', 'ar' => 'استرخوا عند مسبحكم'],
     'Прогуляйтесь по живописному лесу' => ['en' => 'Walk through the scenic forest', 'ar' => 'تنزّهوا في الغابة الخلابة'],
     'НАСЛАЖДЕНИЕ ЖИЗНЬЮ В ГАРМОНИИ С ПРИРОДОЙ' => [
       'en' => 'ENJOYING LIFE IN HARMONY WITH NATURE',
