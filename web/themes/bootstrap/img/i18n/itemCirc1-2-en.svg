@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 210" width="210" height="210">
+  <defs>
+    <path id="circ1" d="M105,105 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/>
+  </defs>
+  <circle cx="105" cy="105" r="88" fill="none" stroke="#c4a37a" stroke-width="1.2"/>
+  <text fill="#c4a37a" font-size="11" font-family="Georgia, 'Times New Roman', serif" letter-spacing="1.6">
+    <textPath href="#circ1" startOffset="50%" text-anchor="middle">environmentally clean territory</textPath>
+  </text>
+</svg>
